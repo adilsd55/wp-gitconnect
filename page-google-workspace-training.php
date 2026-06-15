@@ -866,5 +866,6 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Escape'&&document.activeElement===inp){clearDeckSearch();inp.blur();}
 });
 </script>
+<?php bh_back_to_index_button('training-hub-index', 'All Trainings'); ?>
 </body>
 </html>

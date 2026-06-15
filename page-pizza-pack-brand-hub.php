@@ -3247,6 +3247,7 @@ function updateActiveResult(results){
   }
 }
 </script>
+<?php bh_back_to_index_button('brand-hub-index', 'All Hubs'); ?>
 </body>
 </html>
 

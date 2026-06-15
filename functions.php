@@ -24,6 +24,48 @@ add_action('after_setup_theme', function() {
 // toolbar in via output buffering proved unreliable on some hosts (blank pages).
 // Editors should manage content from the dashboard at /wp-admin/ instead.
 
+// FLOATING "BACK TO INDEX" BUTTON
+// Self-contained button printed inside a template (call it right before </body>).
+// Links back to the given index page by slug. Inline styles keep it independent of
+// each template's own CSS / loaded fonts.
+function bh_back_to_index_button( $slug = 'training-hub-index', $label = 'All Trainings' ) {
+
+    $page = get_page_by_path( $slug );
+    if ( ! $page ) {
+        return;
+    }
+    $url = get_permalink( $page );
+    if ( ! $url ) {
+        return;
+    }
+    ?>
+    <style>
+      .bh-back-btn{
+        position:fixed; left:20px; bottom:20px; z-index:99999;
+        display:inline-flex; align-items:center; gap:9px;
+        padding:11px 18px 11px 14px;
+        background:#1A1814; color:#F2EDE2;
+        font-family:'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size:11px; letter-spacing:0.14em; text-transform:uppercase; font-weight:500;
+        text-decoration:none; border-radius:999px;
+        box-shadow:0 8px 24px -8px rgba(0,0,0,0.45);
+        transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+      }
+      .bh-back-btn:hover{
+        background:#3A3530; transform:translateY(-2px);
+        box-shadow:0 12px 28px -8px rgba(0,0,0,0.55);
+      }
+      .bh-back-btn .bh-arrow{ font-size:15px; line-height:1; transition:transform .25s ease; }
+      .bh-back-btn:hover .bh-arrow{ transform:translateX(-3px); }
+      @media print{ .bh-back-btn{ display:none; } }
+    </style>
+    <a href="<?php echo esc_url( $url ); ?>" class="bh-back-btn" aria-label="<?php echo esc_attr( $label ); ?>">
+      <span class="bh-arrow" aria-hidden="true">&larr;</span>
+      <span><?php echo esc_html( $label ); ?></span>
+    </a>
+    <?php
+}
+
 // BRAND HUB PROTECTION
 // Redirect non-logged-in visitors away from brand hub pages to the login page.
 add_action('template_redirect', function() {

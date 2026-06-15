@@ -818,5 +818,6 @@ function retakeQuiz(){startQuiz(qSection);}
 function closeQuiz(){document.getElementById('quiz-overlay').style.display='none';}
 function printCard(){var n=document.getElementById('cert-name-field').value.trim();if(!n){alert('Please enter your name first.');document.getElementById('cert-name-field').focus();return;}window.print();}
 </script>
+<?php bh_back_to_index_button('training-hub-index', 'All Trainings'); ?>
 </body>
 </html>
