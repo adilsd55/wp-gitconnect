@@ -19,53 +19,10 @@ add_action('after_setup_theme', function() {
     add_theme_support('title-tag');
 });
 
-// ADMIN TOOLBAR FOR EDITORS
-// These page templates are self-contained HTML and never call wp_head()/wp_footer(),
-// so WordPress can't inject the admin toolbar. For users who can edit pages, we
-// buffer the page and, on shutdown, splice in wp_head()/wp_footer() so the toolbar
-// (and its "Edit Page" / dashboard links) appear. Visitors and training-only users
-// still get clean, chrome-free pages.
-//
-// Note: the buffering and the wp_head()/wp_footer() capture must NOT happen inside an
-// ob_start() callback — PHP forbids output buffering inside a buffer handler. So we
-// start a plain buffer here and process it on the 'shutdown' hook instead.
-add_action('template_redirect', function() {
-
-    if ( ! is_user_logged_in() || ! current_user_can( 'edit_pages' ) || ! is_admin_bar_showing() ) {
-        return;
-    }
-
-    $GLOBALS['bh_toolbar_buffering'] = true;
-    ob_start();
-});
-
-add_action('shutdown', function() {
-
-    if ( empty( $GLOBALS['bh_toolbar_buffering'] ) || ob_get_level() < 1 ) {
-        return;
-    }
-
-    $html = ob_get_clean();
-
-    // Only touch full HTML documents that lack the WP hooks.
-    if ( stripos( $html, '</head>' ) !== false && stripos( $html, '</body>' ) !== false ) {
-
-        ob_start(); wp_head();   $head   = ob_get_clean();
-        ob_start(); wp_footer(); $footer = ob_get_clean();
-
-        $splice = function( $haystack, $needle, $piece ) {
-            $pos = stripos( $haystack, $needle );
-            return $pos === false
-                ? $haystack
-                : substr( $haystack, 0, $pos ) . $piece . substr( $haystack, $pos );
-        };
-
-        $html = $splice( $html, '</head>', $head );
-        $html = $splice( $html, '</body>', $footer );
-    }
-
-    echo $html;
-}, 0);
+// NOTE: The admin toolbar is intentionally NOT injected into these self-contained
+// templates. They don't call wp_head()/wp_footer(), and attempting to splice the
+// toolbar in via output buffering proved unreliable on some hosts (blank pages).
+// Editors should manage content from the dashboard at /wp-admin/ instead.
 
 // BRAND HUB PROTECTION
 // Redirect non-logged-in visitors away from brand hub pages to the login page.
