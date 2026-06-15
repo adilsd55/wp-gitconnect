@@ -30,39 +30,49 @@ add_action('after_setup_theme', function() {
 // each template's own CSS / loaded fonts.
 function bh_back_to_index_button( $slug = 'training-hub-index', $label = 'All Trainings' ) {
 
+    // Prefer the requested index page; fall back to the site home so the button
+    // is always visible even before the index page has been created.
     $page = get_page_by_path( $slug );
-    if ( ! $page ) {
-        return;
-    }
-    $url = get_permalink( $page );
+    $url  = $page ? get_permalink( $page ) : home_url( '/' );
     if ( ! $url ) {
         return;
     }
+
+    $logout_url = wp_nonce_url(
+        add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ),
+        'brand_hub_logout'
+    );
     ?>
     <style>
-      .bh-back-btn{
+      .bh-fab-wrap{
         position:fixed; left:20px; bottom:20px; z-index:99999;
+        display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      }
+      .bh-back-btn, .bh-signout-btn{
         display:inline-flex; align-items:center; gap:9px;
-        padding:11px 18px 11px 14px;
-        background:#1A1814; color:#F2EDE2;
+        padding:11px 18px; text-decoration:none; border-radius:999px;
         font-family:'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
         font-size:11px; letter-spacing:0.14em; text-transform:uppercase; font-weight:500;
-        text-decoration:none; border-radius:999px;
         box-shadow:0 8px 24px -8px rgba(0,0,0,0.45);
-        transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+        transition:transform .25s ease, background .25s ease, box-shadow .25s ease, color .25s ease;
       }
-      .bh-back-btn:hover{
-        background:#3A3530; transform:translateY(-2px);
-        box-shadow:0 12px 28px -8px rgba(0,0,0,0.55);
-      }
+      .bh-back-btn{ background:#1A1814; color:#F2EDE2; padding-left:14px; }
+      .bh-back-btn:hover{ background:#3A3530; transform:translateY(-2px); box-shadow:0 12px 28px -8px rgba(0,0,0,0.55); }
       .bh-back-btn .bh-arrow{ font-size:15px; line-height:1; transition:transform .25s ease; }
       .bh-back-btn:hover .bh-arrow{ transform:translateX(-3px); }
-      @media print{ .bh-back-btn{ display:none; } }
+      .bh-signout-btn{ background:#FAF6EC; color:#B0322B; border:1px solid rgba(176,50,43,0.35); }
+      .bh-signout-btn:hover{ background:#fff; color:#8A1E24; transform:translateY(-2px); box-shadow:0 12px 28px -8px rgba(0,0,0,0.3); }
+      @media print{ .bh-fab-wrap{ display:none; } }
     </style>
-    <a href="<?php echo esc_url( $url ); ?>" class="bh-back-btn" aria-label="<?php echo esc_attr( $label ); ?>">
-      <span class="bh-arrow" aria-hidden="true">&larr;</span>
-      <span><?php echo esc_html( $label ); ?></span>
-    </a>
+    <div class="bh-fab-wrap">
+      <a href="<?php echo esc_url( $url ); ?>" class="bh-back-btn" aria-label="<?php echo esc_attr( $label ); ?>">
+        <span class="bh-arrow" aria-hidden="true">&larr;</span>
+        <span><?php echo esc_html( $label ); ?></span>
+      </a>
+      <?php if ( is_user_logged_in() ) : ?>
+      <a href="<?php echo esc_url( $logout_url ); ?>" class="bh-signout-btn">Sign Out</a>
+      <?php endif; ?>
+    </div>
     <?php
 }
 

@@ -141,8 +141,32 @@ body::before{
   50%{opacity:0.5;transform:scale(0.85);}
 }
 
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+.topnav{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.topnav a{
+  font-family:'DM Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  text-decoration:none;
+  transition:color 0.2s;
+}
+.topnav a:hover{color:var(--ink);}
+.topnav a.signout{color:#B0322B;}
+.topnav a.signout:hover{color:#8A1E24;}
+
 @media (max-width:768px){
   .topbar{margin-bottom:56px;flex-direction:column;align-items:flex-start;gap:16px;}
+  .topbar-right{flex-wrap:wrap;gap:14px;}
 }
 
 /* ===== MASTHEAD ===== */
@@ -429,7 +453,15 @@ body::before{
       <span class="dots"><span></span><span></span><span></span><span></span><span></span><span></span></span>
       <span>Training Library · v1</span>
     </div>
-    <div class="status">Team Access Only</div>
+    <div class="topbar-right">
+      <?php if ( is_user_logged_in() ) : ?>
+      <nav class="topnav">
+        <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'brand-hub-index' ) ) ?: home_url( '/' ) ); ?>">Brand Hubs</a>
+        <a class="signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>">Sign Out</a>
+      </nav>
+      <?php endif; ?>
+      <div class="status">Team Access Only</div>
+    </div>
   </header>
 
   <!-- MASTHEAD -->
