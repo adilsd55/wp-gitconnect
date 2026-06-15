@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pizza Pack — Brand Knowledge Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -3250,6 +3249,6 @@ function updateActiveResult(results){
 }
 </script>
 <?php bh_back_to_index_button('brand-hub-index', 'All Hubs'); ?>
+
 </body>
 </html>
-

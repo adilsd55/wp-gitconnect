@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wild Earth — Brand Knowledge Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -3386,6 +3385,6 @@ window.addEventListener('afterprint', () => {
 });
 </script>
 <?php bh_back_to_index_button('brand-hub-index', 'All Hubs'); ?>
+
 </body>
 </html>
-
