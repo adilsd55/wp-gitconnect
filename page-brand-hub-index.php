@@ -69,6 +69,11 @@ body::before{
   padding:6px 12px;border-radius:999px;background:var(--cream);
 }
 @media(max-width:560px){.topbar .tag{display:none}}
+.bh-topnav{margin-left:auto;display:flex;align-items:center;gap:16px}
+.bh-topnav a{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:700;text-decoration:none;transition:color .2s}
+.bh-topnav a:hover{color:var(--red)}
+.bh-topnav a.bh-signout{color:var(--red-deep)}
+.bh-topnav + .tag{margin-left:0}
 
 /* ===== HERO ===== */
 .hero{position:relative;padding:84px 0 72px;overflow:hidden}
@@ -205,6 +210,12 @@ body::before{
         <strong>Brand Knowledge Library</strong>
       </div>
     </div>
+    <?php if ( is_user_logged_in() ) : ?>
+    <nav class="bh-topnav">
+      <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'training-hub-index' ) ) ?: home_url( '/' ) ); ?>">Training Hub</a>
+      <a class="bh-signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>">Sign Out</a>
+    </nav>
+    <?php endif; ?>
     <span class="tag">Internal · Onboarding & Reference</span>
   </div>
 </header>

@@ -8,11 +8,12 @@
 3. Upload the zip and click **Activate**
 
 ### Step 2: Create the Pages
-Create 7 pages in **Pages  Add New**:
+Create these pages in **Pages  Add New**:
 
 | Page Title | Slug | Template to assign |
 |---|---|---|
 | Brand Hub Index | `brand-hub-index` | Brand Hub Index |
+| Aline Insoles Brand Hub | `aline-insoles-brand-hub` | Aline Insoles Brand Hub |
 | Pizza Pack Brand Hub | `pizza-pack-brand-hub` | Pizza Pack Brand Hub |
 | Spark Brand Hub | `spark-brand-hub` | Spark Brand Hub |
 | SugarMD Brand Hub | `sugar-md-brand-hub` | SugarMD Brand Hub |

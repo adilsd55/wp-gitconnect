@@ -83,6 +83,7 @@ add_action('template_redirect', function() {
     $protected_templates = [
         // Brand hubs
         'Brand Hub Index',
+        'Aline Insoles Brand Hub',
         'Pizza Pack Brand Hub',
         'Spark Brand Hub',
         'SugarMD Brand Hub',
