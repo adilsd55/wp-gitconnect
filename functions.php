@@ -19,9 +19,38 @@ add_action('after_setup_theme', function() {
     add_theme_support('title-tag');
 });
 
-// Hide admin bar on front end
-add_action('wp_head', function() {
-    echo '<style>body.logged-in { margin-top: 0 !important; } #wpadminbar { display: none !important; }</style>';
+// ADMIN TOOLBAR FOR EDITORS
+// These page templates are self-contained HTML and never call wp_head()/wp_footer(),
+// so WordPress can't inject the admin toolbar. For users who can edit pages, we
+// capture the page output and splice in wp_head()/wp_footer() so the toolbar (and
+// its "Edit Page" / dashboard links) appear. Visitors and training-only users still
+// get clean, chrome-free pages.
+add_action('template_redirect', function() {
+
+    if ( ! is_user_logged_in() || ! current_user_can( 'edit_pages' ) || ! is_admin_bar_showing() ) {
+        return;
+    }
+
+    ob_start(function( $html ) {
+        // Only touch full HTML documents that lack the WP hooks.
+        if ( stripos( $html, '</head>' ) === false || stripos( $html, '</body>' ) === false ) {
+            return $html;
+        }
+
+        ob_start(); wp_head();   $head   = ob_get_clean();
+        ob_start(); wp_footer(); $footer = ob_get_clean();
+
+        $splice = function( $haystack, $needle, $piece ) {
+            $pos = stripos( $haystack, $needle );
+            return $pos === false
+                ? $haystack
+                : substr( $haystack, 0, $pos ) . $piece . substr( $haystack, $pos );
+        };
+
+        $html = $splice( $html, '</head>', $head );
+        $html = $splice( $html, '</body>', $footer );
+        return $html;
+    });
 });
 
 // BRAND HUB PROTECTION
