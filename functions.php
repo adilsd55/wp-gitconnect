@@ -1,5 +1,20 @@
 <?php
 
+/*
+ * GOOGLE SIGN-IN CONFIG
+ * For security, define these in wp-config.php instead of editing them here, e.g.:
+ *
+ *   define('BH_GOOGLE_CLIENT_ID',     '1234567890-abcdef.apps.googleusercontent.com');
+ *   define('BH_GOOGLE_CLIENT_SECRET', 'GOCSPX-xxxxxxxxxxxxxxxxxxxx');
+ *
+ * The OAuth client's "Authorized redirect URI" in Google Cloud must be exactly:
+ *   <your-site-url>/?brand_hub_google=callback
+ */
+if ( ! defined( 'BH_GOOGLE_CLIENT_ID' ) )     define( 'BH_GOOGLE_CLIENT_ID', '' );
+if ( ! defined( 'BH_GOOGLE_CLIENT_SECRET' ) ) define( 'BH_GOOGLE_CLIENT_SECRET', '' );
+// Only Google accounts on this domain may sign in.
+if ( ! defined( 'BH_ALLOWED_DOMAIN' ) )       define( 'BH_ALLOWED_DOMAIN', 'inventel.net' );
+
 add_action('after_setup_theme', function() {
     add_theme_support('title-tag');
 });
@@ -14,6 +29,7 @@ add_action('wp_head', function() {
 add_action('template_redirect', function() {
 
     $protected_templates = [
+        // Brand hubs
         'Brand Hub Index',
         'Pizza Pack Brand Hub',
         'Spark Brand Hub',
@@ -21,6 +37,20 @@ add_action('template_redirect', function() {
         'Wild Earth Brand Hub',
         'Clean & Hit Brand Hub',
         'Drain Buddy Brand Hub',
+        // Platform training pages
+        'Training Hub Index',
+        'Resource Library',
+        'Canva Training',
+        'Claude Training',
+        'Figma Training',
+        'Google Workspace Training',
+        'Gorgias Training',
+        'Meta Ads Account Training',
+        'Meta Business Manager Training',
+        'Recharge Training',
+        'ShipStation Training',
+        'Shopify Training',
+        'Triple Whale Training',
     ];
 
     if ( is_page() ) {
@@ -35,6 +65,12 @@ add_action('template_redirect', function() {
         if ( in_array( $template_name, $protected_templates ) && ! is_user_logged_in() ) {
             $login_page = get_permalink( get_page_by_path( 'brand-hub-login' ) );
             if ( $login_page ) {
+                // Remember where they were headed so we can return them after login.
+                $login_page = add_query_arg(
+                    'redirect_to',
+                    rawurlencode( home_url( add_query_arg( [] ) ) ),
+                    $login_page
+                );
                 wp_redirect( $login_page );
                 exit;
             }
@@ -71,8 +107,13 @@ add_action('init', function() {
             exit;
         }
 
-        $index = get_permalink( get_page_by_path( 'brand-hub-index' ) );
-        wp_redirect( $index ?: home_url() );
+        $redirect = isset( $_POST['redirect_to'] )
+            ? wp_validate_redirect( esc_url_raw( wp_unslash( $_POST['redirect_to'] ) ), '' )
+            : '';
+        if ( ! $redirect ) {
+            $redirect = get_permalink( get_page_by_path( 'brand-hub-index' ) ) ?: home_url();
+        }
+        wp_redirect( $redirect );
         exit;
     }
 });
@@ -87,3 +128,184 @@ add_action('init', function() {
         exit;
     }
 });
+
+// ----------------------------------------------------------------------------
+// GOOGLE SIGN-IN (custom OAuth 2.0, no plugin)
+// ----------------------------------------------------------------------------
+
+/** The fixed redirect URI Google calls back to. Must match Google Cloud config. */
+function bh_google_redirect_uri() {
+    return home_url( '/?brand_hub_google=callback' );
+}
+
+/** URL of the login page (with optional ?login= status). */
+function bh_login_page_url( $status = '' ) {
+    $url = get_permalink( get_page_by_path( 'brand-hub-login' ) ) ?: home_url();
+    return $status ? add_query_arg( 'login', $status, $url ) : $url;
+}
+
+// STEP 1 — Kick off the OAuth flow: redirect the user to Google.
+add_action('init', function() {
+    if ( ( $_GET['brand_hub_google'] ?? '' ) !== 'start' ) {
+        return;
+    }
+
+    if ( ! BH_GOOGLE_CLIENT_ID || ! BH_GOOGLE_CLIENT_SECRET ) {
+        wp_redirect( bh_login_page_url( 'oauth_unconfigured' ) );
+        exit;
+    }
+
+    // CSRF protection: random state echoed back by Google and matched to a cookie.
+    $state    = wp_generate_password( 32, false );
+    $redirect = isset( $_GET['redirect_to'] ) ? esc_url_raw( wp_unslash( $_GET['redirect_to'] ) ) : '';
+
+    $secure = is_ssl();
+    setcookie( 'bh_oauth_state', $state, time() + 600, COOKIEPATH ?: '/', COOKIE_DOMAIN, $secure, true );
+    setcookie( 'bh_oauth_redirect', $redirect, time() + 600, COOKIEPATH ?: '/', COOKIE_DOMAIN, $secure, true );
+
+    $auth_url = 'https://accounts.google.com/o/oauth2/v2/auth?' . http_build_query( [
+        'client_id'     => BH_GOOGLE_CLIENT_ID,
+        'redirect_uri'  => bh_google_redirect_uri(),
+        'response_type' => 'code',
+        'scope'         => 'openid email profile',
+        'state'         => $state,
+        'hd'            => BH_ALLOWED_DOMAIN, // hint Google to the Workspace domain
+        'prompt'        => 'select_account',
+        'access_type'   => 'online',
+    ] );
+
+    wp_redirect( $auth_url );
+    exit;
+});
+
+// STEP 2 — Handle Google's callback: verify, enforce domain, log in.
+add_action('init', function() {
+    if ( ( $_GET['brand_hub_google'] ?? '' ) !== 'callback' ) {
+        return;
+    }
+
+    // User denied consent or Google returned an error.
+    if ( isset( $_GET['error'] ) || ! isset( $_GET['code'] ) ) {
+        wp_redirect( bh_login_page_url( 'oauth_failed' ) );
+        exit;
+    }
+
+    // Validate state against the cookie we set in step 1.
+    $state_cookie = $_COOKIE['bh_oauth_state'] ?? '';
+    $state_param  = $_GET['state'] ?? '';
+    if ( ! $state_cookie || ! hash_equals( $state_cookie, $state_param ) ) {
+        wp_redirect( bh_login_page_url( 'oauth_failed' ) );
+        exit;
+    }
+
+    // Exchange the authorization code for tokens.
+    $response = wp_remote_post( 'https://oauth2.googleapis.com/token', [
+        'timeout' => 15,
+        'body'    => [
+            'code'          => sanitize_text_field( wp_unslash( $_GET['code'] ) ),
+            'client_id'     => BH_GOOGLE_CLIENT_ID,
+            'client_secret' => BH_GOOGLE_CLIENT_SECRET,
+            'redirect_uri'  => bh_google_redirect_uri(),
+            'grant_type'    => 'authorization_code',
+        ],
+    ] );
+
+    if ( is_wp_error( $response ) ) {
+        wp_redirect( bh_login_page_url( 'oauth_failed' ) );
+        exit;
+    }
+
+    $token = json_decode( wp_remote_retrieve_body( $response ), true );
+    if ( empty( $token['id_token'] ) ) {
+        wp_redirect( bh_login_page_url( 'oauth_failed' ) );
+        exit;
+    }
+
+    // Decode the ID token. It came directly from Google's token endpoint over
+    // TLS, so per Google's guidance the signature need not be re-verified here;
+    // we still check the audience, issuer, and expiry.
+    $claims = bh_decode_jwt_payload( $token['id_token'] );
+    if ( ! $claims ) {
+        wp_redirect( bh_login_page_url( 'oauth_failed' ) );
+        exit;
+    }
+
+    $aud_ok = ( ( $claims['aud'] ?? '' ) === BH_GOOGLE_CLIENT_ID );
+    $iss_ok = in_array( $claims['iss'] ?? '', [ 'accounts.google.com', 'https://accounts.google.com' ], true );
+    $exp_ok = ( (int) ( $claims['exp'] ?? 0 ) > time() );
+    if ( ! $aud_ok || ! $iss_ok || ! $exp_ok ) {
+        wp_redirect( bh_login_page_url( 'oauth_failed' ) );
+        exit;
+    }
+
+    $email          = strtolower( $claims['email'] ?? '' );
+    $email_verified = ! empty( $claims['email_verified'] ) &&
+                      ( $claims['email_verified'] === true || $claims['email_verified'] === 'true' );
+    $hd             = strtolower( $claims['hd'] ?? '' );
+    $domain         = strtolower( BH_ALLOWED_DOMAIN );
+
+    // Enforce the allowed Google Workspace domain.
+    $domain_ok = $email_verified
+        && substr( $email, -strlen( '@' . $domain ) ) === '@' . $domain
+        && ( $hd === '' || $hd === $domain );
+
+    if ( ! $email || ! $domain_ok ) {
+        wp_redirect( bh_login_page_url( 'unauthorized' ) );
+        exit;
+    }
+
+    // Find or create the matching WordPress user, then log them in.
+    $user = get_user_by( 'email', $email );
+    if ( ! $user ) {
+        $base     = sanitize_user( current( explode( '@', $email ) ), true );
+        $username = $base ?: 'user_' . wp_generate_password( 6, false );
+        $suffix   = 1;
+        while ( username_exists( $username ) ) {
+            $username = $base . $suffix++;
+        }
+        $user_id = wp_insert_user( [
+            'user_login'   => $username,
+            'user_email'   => $email,
+            'user_pass'    => wp_generate_password( 24 ),
+            'display_name' => $claims['name'] ?? $username,
+            'first_name'   => $claims['given_name'] ?? '',
+            'last_name'    => $claims['family_name'] ?? '',
+            'role'         => 'subscriber',
+        ] );
+        if ( is_wp_error( $user_id ) ) {
+            wp_redirect( bh_login_page_url( 'oauth_failed' ) );
+            exit;
+        }
+        $user = get_user_by( 'id', $user_id );
+    }
+
+    wp_set_current_user( $user->ID );
+    wp_set_auth_cookie( $user->ID, true );
+
+    // Return them to where they were headed (validated to this site).
+    $redirect = $_COOKIE['bh_oauth_redirect'] ?? '';
+    $redirect = $redirect ? wp_validate_redirect( $redirect, '' ) : '';
+    if ( ! $redirect ) {
+        $redirect = get_permalink( get_page_by_path( 'brand-hub-index' ) ) ?: home_url();
+    }
+
+    // Clear the short-lived OAuth cookies.
+    $secure = is_ssl();
+    setcookie( 'bh_oauth_state', '', time() - 3600, COOKIEPATH ?: '/', COOKIE_DOMAIN, $secure, true );
+    setcookie( 'bh_oauth_redirect', '', time() - 3600, COOKIEPATH ?: '/', COOKIE_DOMAIN, $secure, true );
+
+    wp_redirect( $redirect );
+    exit;
+});
+
+/** Decode (without signature verification) the payload of a JWT. */
+function bh_decode_jwt_payload( $jwt ) {
+    $parts = explode( '.', $jwt );
+    if ( count( $parts ) !== 3 ) {
+        return null;
+    }
+    $payload = strtr( $parts[1], '-_', '+/' );
+    $payload = base64_decode( $payload . str_repeat( '=', ( 4 - strlen( $payload ) % 4 ) % 4 ) );
+    $data    = json_decode( $payload, true );
+    return is_array( $data ) ? $data : null;
+}

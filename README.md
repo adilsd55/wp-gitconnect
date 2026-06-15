@@ -32,6 +32,7 @@ These 12 self-contained training templates were added from the Platform Training
 
 | Page Title | Slug | Template to assign |
 |---|---|---|
+| Platform Training | `training-hub-index` | Training Hub Index |
 | Training Resource Library | `resource-library` | Resource Library |
 | Canva Training | `canva-training` | Canva Training |
 | Claude Training | `claude-training` | Claude Training |
@@ -45,7 +46,35 @@ These 12 self-contained training templates were added from the Platform Training
 | Shopify Training | `shopify-training` | Shopify Training |
 | Triple Whale Training | `triple-whale-training` | Triple Whale Training |
 
-The **Resource Library** landing page links to every training page automatically via WordPress permalinks (`get_page_by_path`), so the slugs above must match exactly. These pages are **not** behind the brand-hub login.
+The **Resource Library** landing page links to every training page automatically via WordPress permalinks (`get_page_by_path`), so the slugs above must match exactly. These pages **are** behind the brand-hub login (see below).
+
+## Login & Access Control
+
+All brand hub pages **and** all 12 training pages require login. Non-logged-in visitors are redirected to the **Brand Hub Login** page (`brand-hub-login`) and returned to the page they wanted after signing in.
+
+Two sign-in methods are offered on the login page:
+- **Sign in with Google** (recommended) — restricted to `@inventel.net` Google Workspace accounts.
+- **Username / password** — the existing WordPress login, also restricted to `@inventel.net` users.
+
+### Google Sign-In setup
+
+1. **Create an OAuth client** in [Google Cloud Console](https://console.cloud.google.com/) → *APIs & Services → Credentials → Create Credentials → OAuth client ID → Web application*.
+2. Under **Authorized redirect URIs**, add exactly:
+   ```
+   https://YOUR-SITE.com/?brand_hub_google=callback
+   ```
+   (use your real site URL; it must match character-for-character).
+3. Copy the **Client ID** and **Client Secret**, then add them to `wp-config.php` (above the `/* That's all */` line):
+   ```php
+   define('BH_GOOGLE_CLIENT_ID',     'xxxxxxxx.apps.googleusercontent.com');
+   define('BH_GOOGLE_CLIENT_SECRET', 'GOCSPX-xxxxxxxxxxxxxxxx');
+   // Optional — defaults to inventel.net:
+   define('BH_ALLOWED_DOMAIN', 'inventel.net');
+   ```
+   Keeping the secret in `wp-config.php` (not in the theme) keeps it out of version control.
+4. That's it. The "Sign in with Google" button appears automatically. First-time users get a WordPress account created on the fly (role: *subscriber*); only verified `@inventel.net` addresses are allowed in — anyone else is rejected with an "access restricted" message.
+
+> The OAuth Client ID/Secret are **not** stored in the theme. Until they are defined, the Google button shows a "not configured" message and the password login keeps working.
 
 ## Notes
 - All pages are fully self-contained  no external CSS or JS files needed
