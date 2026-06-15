@@ -493,6 +493,8 @@ hr.divider{border:none;border-top:2px dashed rgba(201,162,78,.5);margin:28px 0}
     <a href="#faq" onclick="closeDrawer()"><span class="toc-drawer-num">24</span><span class="toc-drawer-label">FAQ</span></a>
     <a href="#resources" onclick="closeDrawer()"><span class="toc-drawer-num">25</span><span class="toc-drawer-label">Resources &amp; Contacts</span></a>
     <a href="#quiz" onclick="closeDrawer()"><span class="toc-drawer-num">26</span><span class="toc-drawer-label">Knowledge Check Quiz</span></a>
+    <a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>" style="color:#B0322B;font-weight:600;"><span class="toc-drawer-num">⎋</span><span class="toc-drawer-label">Sign Out</span></a>
+
   </nav>
 </aside>
 

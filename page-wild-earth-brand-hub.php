@@ -576,6 +576,8 @@ body.printing .nav-search-wrap{display:none}
     <a href="#faq" onclick="closeTocDrawer()"><span class="toc-drawer-num">26</span><span class="toc-drawer-label">FAQ</span></a>
     <a href="#resources" onclick="closeTocDrawer()"><span class="toc-drawer-num">27</span><span class="toc-drawer-label">Resources &amp; Contacts</span></a>
     <a href="#quiz-section" onclick="closeTocDrawer()"><span class="toc-drawer-num">28</span><span class="toc-drawer-label">Knowledge Check Quiz</span></a>
+    <a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>" style="color:#B0322B;font-weight:600;"><span class="toc-drawer-num">⎋</span><span class="toc-drawer-label">Sign Out</span></a>
+
   </nav>
 </aside>
 
