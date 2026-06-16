@@ -43,6 +43,15 @@ function bh_template_url( $template_file, $fallback = '' ) {
     return $fallback !== '' ? $fallback : home_url( '/' );
 }
 
+// FAVICON
+// These templates don't call wp_head(), so the favicon must be printed manually.
+// Call bh_favicon_tags() right before </head> in each template.
+function bh_favicon_tags() {
+    $url = get_template_directory_uri() . '/assets/favicon.png';
+    echo '<link rel="icon" type="image/png" href="' . esc_url( $url ) . '">' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . esc_url( $url ) . '">' . "\n";
+}
+
 // FLOATING "BACK TO INDEX" BUTTON
 // Self-contained button printed inside a template (call it right before </body>).
 // Links back to the relevant index by its template (robust to whatever slug the
