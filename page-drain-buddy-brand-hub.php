@@ -471,6 +471,7 @@ hr.divider{border:none;border-top:2px dashed rgba(196,154,77,.5);margin:24px 0}
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

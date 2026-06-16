@@ -362,6 +362,7 @@ li{margin-bottom:5px;font-size:14px}
 .print-cert-area{display:none}
 body.printing .print-cert-area{display:block}
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

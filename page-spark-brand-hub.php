@@ -364,6 +364,7 @@ body.printing .name-printed{display:block !important}
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

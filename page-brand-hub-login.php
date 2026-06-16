@@ -289,6 +289,7 @@ body::before{
 
 ::selection{background:var(--ink);color:var(--paper);}
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

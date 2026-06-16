@@ -510,6 +510,7 @@ body.printing .nav-search-wrap{display:none}
   .nav-search-wrap{margin:0 8px 0 0;max-width:none}
 }
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

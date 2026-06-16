@@ -271,6 +271,7 @@ body.printing #top-nav, body.printing #floating-toc-btn, body.printing #toc-draw
 body.printing .section-toggle{display:none!important}
 body.printing .collapsible.collapsed .section-body{display:block!important}
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

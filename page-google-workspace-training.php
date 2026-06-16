@@ -225,6 +225,7 @@ a:hover{text-decoration:underline;color:#1340b0}
 mark.search-match{background:#fef08a;color:#1a1a1a;border-radius:2px;padding:0 2px}
 @media print{.search-bar-wrap{display:none!important}}
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

@@ -437,6 +437,7 @@ hr.divider{border:none;border-top:2px dashed rgba(201,162,78,.5);margin:28px 0}
 .callout-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
 .note{background:var(--ch-cream-light);border:1px dashed var(--ch-fairway-light);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--ch-text-muted);font-style:italic;margin:10px 0}
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

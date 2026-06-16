@@ -510,6 +510,7 @@ body.printing .nav-search-wrap{display:none}
 .logo-preview-card.light .logo-preview-label{color:var(--pp-red)}
 .logo-preview-card.dark .logo-preview-label{color:var(--pp-cheese)}
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

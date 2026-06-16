@@ -214,6 +214,7 @@ a:hover{text-decoration:underline;color:#1340b0}
 .search-count{color:#fcd9b6;font-size:12px;min-width:90px;text-align:right;font-weight:600;flex-shrink:0}
 mark.search-match{background:#fef08a;color:#1a1a1a;border-radius:2px;padding:0 2px}
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

@@ -102,6 +102,7 @@ a:hover{text-decoration:underline;color:#1340b0}
 .footer-note a{color:#fcd9b6}
 .footer-note .ft-sm{font-size:11px;opacity:.65;margin-top:12px}
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 

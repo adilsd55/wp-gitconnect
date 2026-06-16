@@ -197,6 +197,7 @@ body::before{
   .hero{padding:60px 0 50px}
 }
 </style>
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 
