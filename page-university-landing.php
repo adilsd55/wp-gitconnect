@@ -66,6 +66,9 @@ a:hover{text-decoration:underline}
 .mark-txt small{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;line-height:1}
 .mark-txt strong{font-size:1.02rem;font-weight:700}
 .topnav{margin-left:auto;display:flex;align-items:center;gap:8px}
+.topbar .tag{margin-left:auto;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red-deep);font-weight:700;border:1px solid var(--rule);padding:6px 12px;border-radius:999px;background:var(--cream)}
+.topnav + .tag{margin-left:0}
+@media(max-width:560px){.topbar .tag{display:none}}
 .topnav a{
   font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
   color:var(--red-deep);border:1px solid var(--rule);
@@ -224,6 +227,7 @@ a:hover{text-decoration:underline}
       <a class="signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>"><span class="ic">🚪</span><span class="lbl">Sign Out</span></a>
       <?php endif; ?>
     </nav>
+    <span class="tag">Internal · Onboarding & Reference</span>
   </div>
 </header>
 

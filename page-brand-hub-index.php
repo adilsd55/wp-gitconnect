@@ -227,7 +227,6 @@ body::before{
       <a class="bh-signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>"><span class="ic">🚪</span><span class="lbl">Sign Out</span></a>
     </nav>
     <?php endif; ?>
-    <span class="tag">Internal · Onboarding & Reference</span>
   </div>
 </header>
 
