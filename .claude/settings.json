@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(perl -0777 -pi -e 's{<\\\\?php /\\\\* Template Name: Brand Hub Library \\\\*/ \\\\?>}{<?php /* Template Name: Brand Hub Index */ ?>}' page-hub-index.php)",
+      "Bash(cp page-hub-index.php page-brand-hub-index.php)",
+      "Bash(perl -0777 -pi -e 's{<\\\\?php /\\\\* Template Name: Resource Library Landing \\\\*/ \\\\?>}{<?php /* Template Name: Resource Library */ ?>}' page-resource-library-landing.php)",
+      "Bash(cp page-resource-library-landing.php page-resource-library.php)",
+      "Bash(rm -f page-hub-index.php page-resource-library-landing.php)"
+    ]
+  }
+}

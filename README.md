@@ -33,6 +33,7 @@ These 12 self-contained training templates were added from the Platform Training
 
 | Page Title | Slug | Template to assign |
 |---|---|---|
+| Inventel University | `university` | University Landing |
 | Platform Training | `training-hub-index` | Training Hub Index |
 | Training Resource Library | `resource-library` | Resource Library |
 | Canva Training | `canva-training` | Canva Training |

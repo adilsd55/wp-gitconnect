@@ -108,39 +108,39 @@ body::before{
 /* ===== HOW IT WORKS ===== */
 .guide{padding:30px 0 8px}
 .guide-card{
-  background:linear-gradient(165deg,var(--ink) 0%,var(--ink-2) 100%);
-  color:var(--cream);border-radius:22px;padding:46px clamp(28px,5vw,56px);
-  box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+  background:var(--cream);
+  color:var(--ink);border:1px solid var(--rule);border-radius:22px;padding:46px clamp(28px,5vw,56px);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
 .guide-card::after{
   content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;
-  background:radial-gradient(circle,rgba(196,30,42,.20),transparent 70%);
+  background:radial-gradient(circle,rgba(196,30,42,.10),transparent 70%);pointer-events:none;
 }
 .guide-card h2{
-  font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.5rem,3.2vw,2.1rem);
-  position:relative;z-index:1;margin-bottom:8px;
+  font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3.2vw,2.1rem);
+  position:relative;z-index:1;margin-bottom:8px;color:var(--ink);
 }
-.guide-card .sub{color:rgba(251,247,236,.7);max-width:62ch;position:relative;z-index:1;margin-bottom:34px}
-.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.1);
-  border-radius:14px;overflow:hidden;position:relative;z-index:1}
-.step{background:var(--ink-2);padding:24px 20px}
+.guide-card .sub{color:var(--muted);max-width:62ch;position:relative;z-index:1;margin-bottom:34px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+  position:relative;z-index:1}
+.step{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:24px 20px}
 .step .num{
-  font-family:'Fraunces',serif;font-size:.95rem;color:var(--gold-soft);font-weight:600;
-  display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;
-  background:rgba(232,80,91,.16);border:1px solid rgba(232,80,91,.34);margin-bottom:13px;
+  font-family:'Fraunces',serif;font-size:.95rem;color:#fff;font-weight:600;
+  display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(150deg,var(--red),var(--red-deep));margin-bottom:13px;
 }
-.step h3{font-size:.98rem;font-weight:600;margin-bottom:7px}
-.step p{font-size:.86rem;color:rgba(251,247,236,.68);line-height:1.5}
-.step b{color:var(--gold-soft);font-weight:600}
+.step h3{font-size:.98rem;font-weight:700;margin-bottom:7px;color:var(--ink)}
+.step p{font-size:.88rem;color:var(--muted);line-height:1.5}
+.step b{color:var(--red-deep);font-weight:700}
 @media(max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.steps{grid-template-columns:1fr}}
 .guide-note{
   margin-top:26px;position:relative;z-index:1;display:flex;gap:13px;align-items:flex-start;
-  background:rgba(196,30,42,.14);border:1px solid rgba(232,80,91,.30);
-  border-radius:12px;padding:16px 18px;font-size:.92rem;color:rgba(251,247,236,.92);
+  background:rgba(196,30,42,.07);border:1px solid rgba(196,30,42,.20);
+  border-radius:12px;padding:16px 18px;font-size:.92rem;color:var(--ink-2);
 }
 .guide-note .ic{font-size:1.15rem;line-height:1.3;flex:none}
-.guide-note b{color:var(--gold-soft)}
+.guide-note b{color:var(--red-deep);font-weight:700}
 
 /* ===== BRANDS ===== */
 .brands{padding:64px 0 90px}
@@ -213,7 +213,7 @@ body::before{
     </div>
     <?php if ( is_user_logged_in() ) : ?>
     <nav class="bh-topnav">
-      <a href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ?: home_url( '/' ) ); ?>">Training Hub</a>
+      <a href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ); ?>">Training Hub</a>
       <a class="bh-signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>">Sign Out</a>
     </nav>
     <?php endif; ?>

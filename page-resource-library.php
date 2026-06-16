@@ -2,291 +2,423 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>InvenTel — Training Resource Library</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventel — Training Resource Library</title>
+<meta name="description" content="The Inventel Training Resource Library. Learn every platform and tool the company uses, read each guide front to back, and pass the certification quiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+:root{
+  --ink:#141414;
+  --ink-2:#1F1F1F;
+  --paper:#F6F2EE;
+  --paper-2:#ECE5DF;
+  --cream:#FCFAF8;
+  --red:#C41E2A;
+  --red-deep:#8E1219;
+  --red-soft:#E8505B;
+  --gold:#C41E2A;
+  --gold-soft:#F2A8AE;
+  --rule:rgba(20,20,20,.14);
+  --muted:#5E5A57;
+  --link:#0055CC;
+  --shadow:0 1px 2px rgba(20,20,20,.05),0 8px 30px rgba(20,20,20,.10);
+  --shadow-lg:0 30px 80px rgba(20,20,20,.34);
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f7f7f5;color:#1a1a1a;line-height:1.6}
-a{color:#1a56db;text-decoration:none}
-a:hover{text-decoration:underline;color:#1340b0}
+body{
+  font-family:'Outfit',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* faint paper grain */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(20,20,20,.05) 1px,transparent 1px);
+  background-size:4px 4px;
+}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 28px}
 
-/* ── Logo ── */
-.inventel-logo{display:inline-block;background:#fff;border:3px solid #b0b0b0;border-radius:28px;padding:6px 24px;font-family:'Segoe UI',Arial,sans-serif;font-size:32px;font-weight:800;letter-spacing:-.5px;line-height:1.2;box-shadow:inset 0 1px 4px rgba(0,0,0,.08)}
-.logo-inven{color:#3a3a3a}.logo-tel{color:#c0392b}
+/* ===== TOP BAR ===== */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,238,224,.82);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule);
+}
+.topbar-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:14px}
+.mark{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:.01em;text-decoration:none;color:inherit}
+.mark:hover{text-decoration:none}
+.mark-badge{
+  width:34px;height:34px;border-radius:9px;flex:none;
+  background:linear-gradient(150deg,var(--red),var(--red-deep));
+  display:grid;place-items:center;color:#fff;
+  font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.mark-txt small{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;line-height:1}
+.mark-txt strong{font-size:1.02rem;font-weight:700}
+.topbar .back{
+  margin-left:auto;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--red-deep);font-weight:700;border:1px solid var(--rule);
+  padding:6px 14px;border-radius:999px;background:var(--cream);display:inline-flex;align-items:center;gap:6px;
+}
+.topbar .back:hover{text-decoration:none;border-color:var(--red);color:var(--red)}
 
-/* ── Header ── */
-.header-band{background:#8B0000;color:#fff;padding:34px 32px 26px;text-align:center}
-.header-company{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.85;margin:16px 0 8px}
-.header-h1{font-size:30px;font-weight:800;margin-bottom:8px}
-.header-subtitle{font-size:14px;opacity:.9;max-width:680px;margin:0 auto}
-.stat-row{background:#6D0000;display:flex;justify-content:space-around;flex-wrap:wrap;padding:14px 20px;gap:10px}
-.stat-item{text-align:center;min-width:90px}
-.stat-val{display:block;font-size:18px;font-weight:800;color:#fcd9b6}
-.stat-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:#fff;opacity:.85}
-.mandatory-bar{background:#2d0000;color:#fcd9b6;text-align:center;padding:10px 20px;font-size:13px;font-weight:600}
+/* ===== HERO ===== */
+.hero{position:relative;padding:84px 0 72px;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(120% 90% at 88% -10%,rgba(196,30,42,.16),transparent 55%),
+    radial-gradient(90% 80% at 6% 110%,rgba(196,30,42,.13),transparent 60%);
+}
+.hero .wrap{position:relative;z-index:1}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;
+  color:var(--red-deep);margin-bottom:22px;
+}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--gold);display:inline-block}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:clamp(2.5rem,6.2vw,4.5rem);line-height:1.02;letter-spacing:-.01em;
+  max-width:17ch;
+}
+.hero h1 em{font-style:italic;color:var(--red);position:relative}
+.hero h1 .u{
+  background:linear-gradient(transparent 64%,rgba(196,30,42,.30) 64%);
+}
+.lede{
+  font-family:'Fraunces',serif;font-weight:400;font-style:italic;
+  font-size:clamp(1.12rem,2.2vw,1.45rem);color:var(--ink-2);
+  max-width:52ch;margin-top:24px;line-height:1.5;
+}
 
-/* ── Body ── */
-.wrap{max-width:1040px;margin:0 auto;padding:30px 18px 60px}
-
-/* ── Welcome lede ── */
-.welcome{margin:6px 0 30px}
-.welcome .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;letter-spacing:2.6px;text-transform:uppercase;font-weight:700;color:#8B0000;margin-bottom:16px}
-.welcome .eyebrow::before{content:"";width:30px;height:2px;background:#c0392b;display:inline-block}
-.welcome h2{font-size:30px;font-weight:800;color:#2d0000;line-height:1.15;margin-bottom:16px;letter-spacing:-.4px}
-.welcome h2 em{font-style:italic;color:#c0392b;font-weight:800}
-.welcome .lede{font-size:16px;color:#3a3a3a;max-width:60ch;line-height:1.6}
-.welcome .lede strong{color:#2d0000}
-
-/* ── How to use — dark guide card ── */
-.guide-card{background:linear-gradient(180deg,#fff 0%,#fdf6f5 100%);border:1px solid #f0dada;border-top:6px solid #8B0000;border-radius:18px;padding:38px clamp(24px,5vw,46px);box-shadow:0 18px 44px rgba(139,0,0,.14);position:relative;overflow:hidden;margin-bottom:40px}
-.guide-card::after{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(192,57,43,.10),transparent 70%);pointer-events:none}
-.guide-card .ghead-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#c0392b;margin-bottom:12px;position:relative;z-index:1}
-.guide-card .ghead-eyebrow::before{content:"";width:24px;height:2px;background:#c0392b;display:inline-block}
-.guide-card h3{font-size:clamp(22px,3vw,28px);font-weight:800;position:relative;z-index:1;margin-bottom:8px;color:#2d0000;letter-spacing:-.4px}
-.guide-card .sub{color:#5c5050;max-width:64ch;position:relative;z-index:1;margin-bottom:28px;font-size:14px}
-.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative;z-index:1}
-.step{background:#fff;border:1px solid #eed7d7;border-top:3px solid #c0392b;border-radius:12px;padding:20px 18px;box-shadow:0 2px 8px rgba(45,0,0,.05);transition:transform .15s,box-shadow .15s}
-.step:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(139,0,0,.14)}
-.step .num{font-size:15px;color:#fff;font-weight:800;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#c0392b,#8B0000);box-shadow:0 3px 8px rgba(139,0,0,.3);margin-bottom:14px}
-.step h4{font-size:14px;font-weight:800;margin-bottom:7px;color:#2d0000}
-.step p{font-size:12.5px;color:#555;line-height:1.55}
-.step b{color:#8B0000;font-weight:700}
+/* ===== HOW IT WORKS ===== */
+.guide{padding:30px 0 8px}
+.guide-card{
+  background:var(--cream);
+  color:var(--ink);border:1px solid var(--rule);border-radius:22px;padding:46px clamp(28px,5vw,56px);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.guide-card::after{
+  content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,30,42,.10),transparent 70%);pointer-events:none;
+}
+.guide-card h2{
+  font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3.2vw,2.1rem);
+  position:relative;z-index:1;margin-bottom:8px;color:var(--ink);
+}
+.guide-card .sub{color:var(--muted);max-width:62ch;position:relative;z-index:1;margin-bottom:34px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+  position:relative;z-index:1}
+.step{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:24px 20px}
+.step .num{
+  font-family:'Fraunces',serif;font-size:.95rem;color:#fff;font-weight:600;
+  display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(150deg,var(--red),var(--red-deep));margin-bottom:13px;
+}
+.step h3{font-size:.98rem;font-weight:700;margin-bottom:7px;color:var(--ink)}
+.step p{font-size:.88rem;color:var(--muted);line-height:1.5}
+.step b{color:var(--red-deep);font-weight:700}
 @media(max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.steps{grid-template-columns:1fr}}
-.guide-note{margin-top:16px;position:relative;z-index:1;display:flex;gap:13px;align-items:flex-start;background:#fbeceb;border:1px solid #f1c9c5;border-left:4px solid #c0392b;border-radius:10px;padding:15px 18px;font-size:13.5px;color:#3a2020}
-.guide-note .ic{font-size:18px;line-height:1.3;flex:none}
-.guide-note b{color:#8B0000;font-weight:800}
+.guide-note{
+  margin-top:26px;position:relative;z-index:1;display:flex;gap:13px;align-items:flex-start;
+  background:rgba(196,30,42,.07);border:1px solid rgba(196,30,42,.20);
+  border-radius:12px;padding:16px 18px;font-size:.92rem;color:var(--ink-2);
+}
+.guide-note .ic{font-size:1.15rem;line-height:1.3;flex:none}
+.guide-note b{color:var(--red-deep);font-weight:700}
 
-/* ── Section label ── */
-.lib-label{text-align:center;margin:10px 0 22px}
-.lib-label h2{font-size:22px;font-weight:800;color:#2d0000;display:inline-block;border-bottom:3px solid #8B0000;padding-bottom:6px}
-.lib-label p{font-size:13px;color:#777;margin-top:10px}
+/* ===== DECKS ===== */
+.brands{padding:64px 0 90px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.01em}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:40ch}
 
-/* ── Deck cards ── */
-.deck-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:900px){.deck-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.deck-grid{grid-template-columns:1fr}}
-
-.deck-card{display:block;background:#fff;border:1px solid #e5e5e0;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);transition:transform .16s,box-shadow .16s,border-color .16s;text-decoration:none;color:inherit}
-.deck-card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(139,0,0,.18);border-color:#8B0000;text-decoration:none}
-
-.deck-thumb{height:120px;display:flex;align-items:center;justify-content:center;position:relative;background:#8B0000}
-.deck-thumb .glyph{font-size:46px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.25))}
-.deck-thumb .badge-corner{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.35);color:#fcd9b6;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;padding:3px 8px;border-radius:4px}
-
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
+.card{
+  position:relative;display:flex;flex-direction:column;
+  border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;
+  background:var(--cream);border:1px solid var(--rule);
+  box-shadow:var(--shadow);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s;
+  opacity:0;transform:translateY(22px);
+}
+.card.in{opacity:1;transform:none}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent;text-decoration:none}
+.card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.thumb{
+  position:relative;aspect-ratio:16/10;display:grid;place-items:center;padding:30px;
+  overflow:hidden;
+}
+.thumb::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);
+  transform:translateX(-120%);transition:transform .7s ease;
+}
+.card:hover .thumb::after{transform:translateX(120%)}
+.thumb .glyph{font-size:3.4rem;position:relative;z-index:1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.3));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover .thumb .glyph{transform:scale(1.07)}
+.badge-corner{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0,0,.32);color:#fff;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:4px 9px;border-radius:999px}
 /* thumbnail color variants — shades of red */
-.t-shopify{background:linear-gradient(135deg,#8B0000,#b81d1d)}
-.t-gorgias{background:linear-gradient(135deg,#6D0000,#9c1f1f)}
-.t-google{background:linear-gradient(135deg,#a31515,#d13030)}
-.t-triple{background:linear-gradient(135deg,#5a0000,#8B0000)}
-.t-recharge{background:linear-gradient(135deg,#991b1b,#c0392b)}
-.t-canva{background:linear-gradient(135deg,#7f1d1d,#b02a2a)}
-.t-meta-bm{background:linear-gradient(135deg,#8B0000,#a31515)}
-.t-figma{background:linear-gradient(135deg,#6D0000,#a52a2a)}
-.t-ship{background:linear-gradient(135deg,#a31515,#c0392b)}
-.t-meta-ads{background:linear-gradient(135deg,#7f1d1d,#a31515)}
-.t-claude{background:linear-gradient(135deg,#5a0000,#9c1f1f)}
+.t-shopify{background:linear-gradient(155deg,#b81d1d,#8B0000)}
+.t-gorgias{background:linear-gradient(155deg,#9c1f1f,#6D0000)}
+.t-google{background:linear-gradient(155deg,#d13030,#a31515)}
+.t-triple{background:linear-gradient(155deg,#8B0000,#5a0000)}
+.t-recharge{background:linear-gradient(155deg,#c0392b,#991b1b)}
+.t-canva{background:linear-gradient(155deg,#b02a2a,#7f1d1d)}
+.t-meta-bm{background:linear-gradient(155deg,#a31515,#8B0000)}
+.t-figma{background:linear-gradient(155deg,#a52a2a,#6D0000)}
+.t-ship{background:linear-gradient(155deg,#c0392b,#a31515)}
+.t-meta-ads{background:linear-gradient(155deg,#a31515,#7f1d1d)}
+.t-claude{background:linear-gradient(155deg,#9c1f1f,#5a0000)}
+.card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;line-height:1.1}
+.card-tag{font-size:.86rem;color:var(--red-deep);font-weight:600;font-style:italic;font-family:'Fraunces',serif;margin-top:3px}
+.card-desc{font-size:.92rem;color:var(--muted);margin-top:13px;line-height:1.55;flex:1}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--rule)}
+.chip{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+  color:var(--red-deep);background:rgba(196,30,42,.08);padding:5px 10px;border-radius:999px}
+.go{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.9rem;color:var(--ink)}
+.go svg{transition:transform .3s}
+.card:hover .go svg{transform:translateX(4px)}
 
-.deck-info{padding:18px 18px 18px}
-.deck-info h3{font-size:21px;font-weight:800;color:#2d0000;margin-bottom:8px;letter-spacing:-.3px;line-height:1.15;display:inline-block;border-bottom:3px solid #c0392b;padding-bottom:5px}
-.deck-card:hover .deck-info h3{color:#8B0000}
-.deck-info p{font-size:12.5px;color:#5c5c5c;line-height:1.55;margin:6px 0 12px}
-.deck-cta{font-size:12px;font-weight:700;color:#c0392b;text-transform:uppercase;letter-spacing:.5px}
-.deck-card:hover .deck-cta{color:#8B0000}
+/* ===== FOOTER ===== */
+.foot{border-top:1px solid var(--rule);padding:34px 0 46px;color:var(--muted);font-size:.85rem}
+.foot-in{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.foot strong{color:var(--ink);font-weight:600}
 
-/* ── Footer ── */
-.footer-note{background:#2d0000;color:#e8d5c4;border-radius:12px;padding:24px 28px;font-size:13px;line-height:1.8;margin-top:34px;text-align:center}
-.footer-note strong{color:#fff}
-.footer-note a{color:#fcd9b6}
-.footer-note .ft-sm{font-size:11px;opacity:.65;margin-top:12px}
+@media(max-width:600px){
+  .hero{padding:60px 0 50px}
+}
 </style>
 <?php bh_favicon_tags(); ?>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
-<div class="header-band">
-  <div class="inventel-logo"><span class="logo-inven">Inven</span><span class="logo-tel">Tel</span></div>
-  <div class="header-company">InvenTel Innovations — Training Resource Library</div>
-  <div class="header-h1">Welcome to the InvenTel Resource Library</div>
-  <div class="header-subtitle">Your home for learning every platform and tool the company puts in your hands — built to get you confident, fast.</div>
-</div>
-<div class="stat-row">
-  <div class="stat-item"><span class="stat-val">3</span><span class="stat-lbl">Learning Levels</span></div>
-  <div class="stat-item"><span class="stat-val">Self-Contained</span><span class="stat-lbl">No External Links Required</span></div>
-  <div class="stat-item"><span class="stat-val">Quizzes</span><span class="stat-lbl">Per Platform</span></div>
-</div>
-<div class="mandatory-bar">⚠️ Read the full training guide for any platform you're granted access to — then keep it as your reference.</div>
-
-<div class="wrap">
-
-  <!-- ── WELCOME ── -->
-  <div class="welcome">
-    <span class="eyebrow">InvenTel team</span>
-    <h2>Learn the <em>tools</em> you work with every day.</h2>
-    <p class="lede">Thank you for taking the time to learn the tools InvenTel provides to you. Every platform we use has its own guide in this library, written to take you from your very first login to confident, independent work. The better you know each tool, the easier your day-to-day becomes — whatever your role. Whether you're new, picking up a platform for the first time, or just sharpening up, this library is yours to use.</p>
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="mark" href="<?php echo esc_url( bh_template_url('page-university-landing.php') ); ?>">
+      <div class="mark-badge">i</div>
+      <div class="mark-txt">
+        <small>Inventel Innovations</small>
+        <strong>Training Resource Library</strong>
+      </div>
+    </a>
+    <a class="back" href="<?php echo esc_url( bh_template_url('page-university-landing.php') ); ?>">← University</a>
   </div>
+</header>
 
-  <!-- ── HOW TO USE ── -->
-  <div class="guide-card">
-    <span class="ghead-eyebrow">Getting Started</span>
-    <h3>How to use this library</h3>
-    <p class="sub">Each platform has its own complete, self-contained training guide. It's not just for onboarding — it's the reference you'll keep coming back to whenever a question comes up while you work.</p>
-    <div class="steps">
-      <div class="step">
-        <span class="num">1</span>
-        <h4>Read it start to finish</h4>
-        <p>When you're <b>granted access</b> to a platform, read its guide <b>from start to finish</b> before you dive in.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow">Inventel team</span>
+    <h1>Master the <em class="u">tools</em> you work with.</h1>
+    <p class="lede">Thank you for taking the time to learn the tools Inventel provides to you. Every platform we use has its own complete guide — written to take you from your very first login to confident, independent work. The better you know each tool, the easier your day-to-day becomes, whatever your role.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="guide">
+  <div class="wrap">
+    <div class="guide-card">
+      <h2>How to use this library</h2>
+      <p class="sub">Each platform has its own complete, self-contained training guide. It's not just for onboarding — it's the reference you'll keep coming back to whenever a question comes up while you work.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="num">1</span>
+          <h3>Read it start to finish</h3>
+          <p>When you're <b>granted access</b> to a platform, read its guide <b>from start to finish</b> before you dive in.</p>
+        </div>
+        <div class="step">
+          <span class="num">2</span>
+          <h3>Keep it close</h3>
+          <p>After your first read, use the guide as your <b>everyday reference</b> whenever a question comes up.</p>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <h3>New access = new quiz</h3>
+          <p>Each time new access is shared with you, read that platform's training, then take the <b>mandatory quiz</b> at the end.</p>
+        </div>
+        <div class="step">
+          <span class="num">4</span>
+          <h3>Send your results</h3>
+          <p>Send a copy of your completed quiz to the <b>Performance Team</b> and your <b>Department Lead</b>.</p>
+        </div>
+        <div class="step">
+          <span class="num">5</span>
+          <h3>Stay ready</h3>
+          <p>Got free time between tasks? Work through the <b>intermediate</b> and <b>advanced</b> material on your own.</p>
+        </div>
       </div>
-      <div class="step">
-        <span class="num">2</span>
-        <h4>Keep it close</h4>
-        <p>After your first read, use the guide as your <b>everyday reference</b> whenever a question comes up.</p>
+      <div class="guide-note">
+        <span class="ic">📌</span>
+        <span>Your <b>Department Lead</b> may also assign intermediate or advanced learning as <b>mandatory</b> — not just optional self-study.</span>
       </div>
-      <div class="step">
-        <span class="num">3</span>
-        <h4>New access = new quiz</h4>
-        <p>Each time new access is shared with you, read that platform's training, then take the <b>mandatory quiz</b> at the end.</p>
-      </div>
-      <div class="step">
-        <span class="num">4</span>
-        <h4>Send your results</h4>
-        <p>Send a copy of your completed quiz to the <b>Performance Team</b> and your <b>Department Lead</b>.</p>
-      </div>
-      <div class="step">
-        <span class="num">5</span>
-        <h4>Stay ready</h4>
-        <p>Got free time between tasks? Work through the <b>intermediate</b> and <b>advanced</b> material and quizzes on your own.</p>
+      <div class="guide-note">
+        <span class="ic">💡</span>
+        <span>Every guide is packed with <b>tips and tricks</b>, shortcuts, and best practices that make the tools faster to use — worth a read even for platforms you already know well.</span>
       </div>
     </div>
-    <div class="guide-note">
-      <span class="ic">📌</span>
-      <span>Your <b>Department Lead</b> may also assign intermediate or advanced learning as <b>mandatory</b> — not just optional self-study.</span>
+  </div>
+</section>
+
+<!-- DECKS -->
+<section class="brands">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The Training Library</h2>
+      <p>Tap any guide to open it. Each one is a complete, self-contained training deck.</p>
     </div>
-    <div class="guide-note">
-      <span class="ic">💡</span>
-      <span>Every guide is packed with <b>tips and tricks</b>, shortcuts, and best practices that make the tools faster to use — worth a read even for platforms you already know well.</span>
+    <div class="grid" id="grid">
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-shopify-training.php') ); ?>">
+        <div class="thumb t-shopify"><span class="badge-corner">Storefront</span><span class="glyph">🛒</span></div>
+        <div class="card-body">
+          <div class="card-name">Shopify</div>
+          <div class="card-tag">Run the online store</div>
+          <p class="card-desc">Run the online store end to end — products, orders, inventory, and storefront management.</p>
+          <div class="card-foot"><span class="chip">Storefront</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-gorgias-training.php') ); ?>">
+        <div class="thumb t-gorgias"><span class="badge-corner">Support</span><span class="glyph">💬</span></div>
+        <div class="card-body">
+          <div class="card-name">Gorgias CRM</div>
+          <div class="card-tag">One shared inbox</div>
+          <p class="card-desc">Handle customer support tickets, macros, and helpdesk workflows in one shared inbox.</p>
+          <div class="card-foot"><span class="chip">Support</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-google-workspace-training.php') ); ?>">
+        <div class="thumb t-google"><span class="badge-corner">Core</span><span class="glyph">📧</span></div>
+        <div class="card-body">
+          <div class="card-name">Google Workspace</div>
+          <div class="card-tag">The daily backbone</div>
+          <p class="card-desc">Gmail, Drive, Docs, Sheets, and Calendar — the daily backbone of company communication.</p>
+          <div class="card-foot"><span class="chip">Core</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-triple-whale-training.php') ); ?>">
+        <div class="thumb t-triple"><span class="badge-corner">Analytics</span><span class="glyph">📊</span></div>
+        <div class="card-body">
+          <div class="card-name">Triple Whale</div>
+          <div class="card-tag">The numbers that drive decisions</div>
+          <p class="card-desc">Track ecommerce performance, attribution, and the metrics that drive marketing decisions.</p>
+          <div class="card-foot"><span class="chip">Analytics</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-recharge-training.php') ); ?>">
+        <div class="thumb t-recharge"><span class="badge-corner">Subscriptions</span><span class="glyph">🔁</span></div>
+        <div class="card-body">
+          <div class="card-name">Recharge</div>
+          <div class="card-tag">Recurring revenue, handled</div>
+          <p class="card-desc">Manage subscriptions, recurring billing, and customer retention for repeat orders.</p>
+          <div class="card-foot"><span class="chip">Subscriptions</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-canva-training.php') ); ?>">
+        <div class="thumb t-canva"><span class="badge-corner">Design</span><span class="glyph">🎨</span></div>
+        <div class="card-body">
+          <div class="card-name">Canva</div>
+          <div class="card-tag">On-brand, no design background</div>
+          <p class="card-desc">Create on-brand graphics, social posts, and marketing assets without a design background.</p>
+          <div class="card-foot"><span class="chip">Design</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-meta-business-manager-training.php') ); ?>">
+        <div class="thumb t-meta-bm"><span class="badge-corner">Admin</span><span class="glyph">🏢</span></div>
+        <div class="card-body">
+          <div class="card-name">Meta Business Manager</div>
+          <div class="card-tag">The Meta control room</div>
+          <p class="card-desc">Manage pages, ad accounts, assets, and team permissions across the Meta ecosystem.</p>
+          <div class="card-foot"><span class="chip">Admin</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-figma-training.php') ); ?>">
+        <div class="thumb t-figma"><span class="badge-corner">Design</span><span class="glyph">✏️</span></div>
+        <div class="card-body">
+          <div class="card-name">Figma</div>
+          <div class="card-tag">Design, together, in real time</div>
+          <p class="card-desc">Collaborate on interface design, prototypes, and shared design files in real time.</p>
+          <div class="card-foot"><span class="chip">Design</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-shipstation-training.php') ); ?>">
+        <div class="thumb t-ship"><span class="badge-corner">Fulfillment</span><span class="glyph">📦</span></div>
+        <div class="card-body">
+          <div class="card-name">ShipStation</div>
+          <div class="card-tag">Get orders out the door</div>
+          <p class="card-desc">Process, batch, and label shipments — the hub for getting orders out the door.</p>
+          <div class="card-foot"><span class="chip">Fulfillment</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-meta-ads-account-training.php') ); ?>">
+        <div class="thumb t-meta-ads"><span class="badge-corner">Advertising</span><span class="glyph">📣</span></div>
+        <div class="card-body">
+          <div class="card-name">Meta Ads</div>
+          <div class="card-tag">Campaigns that perform</div>
+          <p class="card-desc">Build, launch, and optimize ad campaigns across Facebook and Instagram.</p>
+          <div class="card-foot"><span class="chip">Advertising</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-claude-training.php') ); ?>">
+        <div class="thumb t-claude"><span class="badge-corner">AI</span><span class="glyph">🤖</span></div>
+        <div class="card-body">
+          <div class="card-name">Claude</div>
+          <div class="card-tag">AI, used the right way</div>
+          <p class="card-desc">Use AI to draft, research, summarize, and speed up your everyday work the right way.</p>
+          <div class="card-foot"><span class="chip">AI</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
     </div>
   </div>
+</section>
 
-  <!-- ── LIBRARY ── -->
-  <div class="lib-label">
-    <h2>📚 The Training Library</h2>
-    <p>Click any guide to open it. Each one is a complete, self-contained training deck.</p>
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span><strong>Inventel Innovations</strong> · Training Resource Library</span>
+    <span>Internal use only · 2026</span>
   </div>
+</footer>
 
-  <div class="deck-grid">
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-shopify-training.php') ); ?>">
-      <div class="deck-thumb t-shopify"><span class="glyph">🛒</span><span class="badge-corner">Storefront</span></div>
-      <div class="deck-info">
-        <h3>Shopify</h3>
-        <p>Run the online store end to end — products, orders, inventory, and storefront management.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-gorgias-training.php') ); ?>">
-      <div class="deck-thumb t-gorgias"><span class="glyph">💬</span><span class="badge-corner">Support</span></div>
-      <div class="deck-info">
-        <h3>Gorgias CRM</h3>
-        <p>Handle customer support tickets, macros, and helpdesk workflows in one shared inbox.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-google-workspace-training.php') ); ?>">
-      <div class="deck-thumb t-google"><span class="glyph">📧</span><span class="badge-corner">Core</span></div>
-      <div class="deck-info">
-        <h3>Google Workspace</h3>
-        <p>Gmail, Drive, Docs, Sheets, and Calendar — the daily backbone of company communication.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-triple-whale-training.php') ); ?>">
-      <div class="deck-thumb t-triple"><span class="glyph">📊</span><span class="badge-corner">Analytics</span></div>
-      <div class="deck-info">
-        <h3>Triple Whale</h3>
-        <p>Track ecommerce performance, attribution, and the metrics that drive marketing decisions.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-recharge-training.php') ); ?>">
-      <div class="deck-thumb t-recharge"><span class="glyph">🔁</span><span class="badge-corner">Subscriptions</span></div>
-      <div class="deck-info">
-        <h3>Recharge</h3>
-        <p>Manage subscriptions, recurring billing, and customer retention for repeat orders.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-canva-training.php') ); ?>">
-      <div class="deck-thumb t-canva"><span class="glyph">🎨</span><span class="badge-corner">Design</span></div>
-      <div class="deck-info">
-        <h3>Canva</h3>
-        <p>Create on-brand graphics, social posts, and marketing assets without a design background.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-meta-business-manager-training.php') ); ?>">
-      <div class="deck-thumb t-meta-bm"><span class="glyph">🏢</span><span class="badge-corner">Admin</span></div>
-      <div class="deck-info">
-        <h3>Meta Business Manager</h3>
-        <p>Manage pages, ad accounts, assets, and team permissions across the Meta ecosystem.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-figma-training.php') ); ?>">
-      <div class="deck-thumb t-figma"><span class="glyph">✏️</span><span class="badge-corner">Design</span></div>
-      <div class="deck-info">
-        <h3>Figma</h3>
-        <p>Collaborate on interface design, prototypes, and shared design files in real time.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-shipstation-training.php') ); ?>">
-      <div class="deck-thumb t-ship"><span class="glyph">📦</span><span class="badge-corner">Fulfillment</span></div>
-      <div class="deck-info">
-        <h3>ShipStation</h3>
-        <p>Process, batch, and label shipments — the hub for getting orders out the door.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-meta-ads-account-training.php') ); ?>">
-      <div class="deck-thumb t-meta-ads"><span class="glyph">📣</span><span class="badge-corner">Advertising</span></div>
-      <div class="deck-info">
-        <h3>Meta Ads</h3>
-        <p>Build, launch, and optimize ad campaigns across Facebook and Instagram.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-claude-training.php') ); ?>">
-      <div class="deck-thumb t-claude"><span class="glyph">🤖</span><span class="badge-corner">AI</span></div>
-      <div class="deck-info">
-        <h3>Claude</h3>
-        <p>Use AI to draft, research, summarize, and speed up your everyday work the right way.</p>
-        <span class="deck-cta">Open Guide →</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- ── FOOTER ── -->
-  <div class="footer-note">
-    <p><strong>Remember:</strong> read every guide for the platforms you're given, take the mandatory quiz, and send your results to the Performance Team and your Department Lead.</p>
-    <p>For training questions or platform access, reach out to the <strong>HR Training Coordinator who assisted you during onboarding</strong>.</p>
-    <p class="ft-sm">InvenTel Innovations — Training Resource Library</p>
-  </div>
-
-</div>
+<script>
+const cards=document.querySelectorAll('.card');
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach((e)=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const idx=[...cards].indexOf(el);
+      setTimeout(()=>el.classList.add('in'),(idx%4)*90);
+      io.unobserve(el);
+    }
+  });
+},{threshold:.12});
+cards.forEach(c=>io.observe(c));
+</script>
 </body>
 </html>

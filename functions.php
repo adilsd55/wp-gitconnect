@@ -109,6 +109,8 @@ function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All 
 add_action('template_redirect', function() {
 
     $protected_templates = [
+        // Landing / index pages
+        'University Landing',
         // Brand hubs
         'Brand Hub Index',
         'Aline Insoles Brand Hub',
