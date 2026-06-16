@@ -69,11 +69,20 @@ body::before{
   padding:6px 12px;border-radius:999px;background:var(--cream);
 }
 @media(max-width:560px){.topbar .tag{display:none}}
-.bh-topnav{margin-left:auto;display:flex;align-items:center;gap:16px}
-.bh-topnav a{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:700;text-decoration:none;transition:color .2s}
-.bh-topnav a:hover{color:var(--red)}
-.bh-topnav a.bh-signout{color:var(--red-deep)}
+.bh-topnav{margin-left:auto;display:flex;align-items:center;gap:8px}
+.bh-topnav a{
+  font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  color:var(--red-deep);border:1px solid var(--rule);
+  padding:8px 16px;border-radius:999px;background:var(--cream);
+  display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  transition:background .2s,border-color .2s,color .2s,transform .2s;
+}
+.bh-topnav a:hover{text-decoration:none;background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-1px)}
+.bh-topnav a .ic{font-size:.95rem;line-height:1}
+.bh-topnav a.bh-signout{color:#fff;background:var(--red-deep);border-color:var(--red-deep)}
+.bh-topnav a.bh-signout:hover{background:#6f0e14;border-color:#6f0e14}
 .bh-topnav + .tag{margin-left:0}
+@media(max-width:620px){.bh-topnav a{padding:8px 12px}.bh-topnav a .lbl{display:none}.bh-topnav a .ic{font-size:1.1rem}}
 
 /* ===== HERO ===== */
 .hero{position:relative;padding:84px 0 72px;overflow:hidden}
@@ -213,8 +222,9 @@ body::before{
     </div>
     <?php if ( is_user_logged_in() ) : ?>
     <nav class="bh-topnav">
-      <a href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ); ?>">Training Hub</a>
-      <a class="bh-signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>">Sign Out</a>
+      <a href="<?php echo esc_url( bh_template_url('page-university-landing.php') ); ?>"><span class="ic">🎓</span><span class="lbl">University</span></a>
+      <a href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ); ?>"><span class="ic">📚</span><span class="lbl">Training Hub</span></a>
+      <a class="bh-signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>"><span class="ic">🚪</span><span class="lbl">Sign Out</span></a>
     </nav>
     <?php endif; ?>
     <span class="tag">Internal · Onboarding & Reference</span>
