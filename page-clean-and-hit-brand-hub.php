@@ -39,7 +39,7 @@ body{font-family:'Inter',sans-serif;background:var(--ch-cream-light);color:var(-
 
 /* TOP NAV */
 #top-nav{position:sticky;top:0;z-index:1000;background:var(--ch-fairway-deep);box-shadow:0 2px 12px rgba(0,0,0,.25)}
-.nav-inner{display:flex;align-items:center;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
 .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--ch-cream);white-space:nowrap;letter-spacing:.08em;flex-shrink:0}
 .nav-search-wrap{flex:1;position:relative;max-width:420px}
 .nav-search{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(201,162,78,.3);color:#fff;padding:7px 12px 7px 32px;border-radius:18px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:all .15s}

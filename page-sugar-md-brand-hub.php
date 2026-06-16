@@ -50,7 +50,7 @@ body{font-family:'Inter',sans-serif;background:var(--sm-cream);color:var(--sm-te
 
 /* TOP NAV */
 #top-nav{position:sticky;top:0;z-index:1000;background:var(--sm-sage-deep);box-shadow:0 2px 12px rgba(0,0,0,.25)}
-.nav-inner{display:flex;align-items:center;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
 .nav-brand{font-family:'Fraunces',serif;font-weight:700;font-size:21px;color:var(--sm-gold);white-space:nowrap;letter-spacing:.02em;flex-shrink:0}
 .nav-brand .nav-brand-md{color:var(--sm-cream);font-weight:500}
 .nav-search-wrap{flex:1;position:relative;max-width:420px}

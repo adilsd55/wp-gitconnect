@@ -37,7 +37,7 @@ body{font-family:'Inter',sans-serif;background:var(--db-porcelain);color:var(--d
 
 /* TOP NAV */
 #top-nav{position:sticky;top:0;z-index:1000;background:var(--db-hydro-deep);box-shadow:0 2px 12px rgba(0,0,0,.25)}
-.nav-inner{display:flex;align-items:center;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
 .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--db-mist);white-space:nowrap;letter-spacing:.08em;flex-shrink:0}
 .nav-brand .nav-brand-accent{color:var(--db-brass-bright)}
 .nav-search-wrap{flex:1;position:relative;max-width:420px}
