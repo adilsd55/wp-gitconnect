@@ -34,8 +34,7 @@ These 12 self-contained training templates were added from the Platform Training
 | Page Title | Slug | Template to assign |
 |---|---|---|
 | Inventel University | `university` | University Landing |
-| Platform Training | `training-hub-index` | Training Hub Index |
-| Training Resource Library | `resource-library` | Resource Library |
+| Training Hub (Resource Library) | `training-hub-index` | Training Hub Index |
 | Canva Training | `canva-training` | Canva Training |
 | Claude Training | `claude-training` | Claude Training |
 | Figma Training | `figma-training` | Figma Training |
@@ -48,7 +47,7 @@ These 12 self-contained training templates were added from the Platform Training
 | Shopify Training | `shopify-training` | Shopify Training |
 | Triple Whale Training | `triple-whale-training` | Triple Whale Training |
 
-The **Resource Library** landing page links to every training page automatically via WordPress permalinks (`get_page_by_path`), so the slugs above must match exactly. These pages **are** behind the brand-hub login (see below).
+The **Training Hub** (Resource Library) links to every training page automatically, resolved by each page's assigned **template** (`bh_template_url()`), so slugs can be anything you like. These pages **are** behind the login (see below).
 
 ## Login & Access Control
 

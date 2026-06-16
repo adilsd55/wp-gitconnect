@@ -122,7 +122,6 @@ add_action('template_redirect', function() {
         'Drain Buddy Brand Hub',
         // Platform training pages
         'Training Hub Index',
-        'Resource Library',
         'Canva Training',
         'Claude Training',
         'Figma Training',

@@ -3,683 +3,422 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Platform Training — Index</title>
+<title>Inventel — Training Resource Library</title>
+<meta name="description" content="The Inventel Training Resource Library. Learn every platform and tool the company uses, read each guide front to back, and pass the certification quiz.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Neutral editorial palette — intentionally restrained so tool colors pop */
-  --paper:#F2EDE2;
-  --paper-deep:#EAE3D2;
-  --paper-edge:#DDD3BE;
-  --ink:#1A1814;
-  --ink-soft:#3A3530;
-  --ink-mute:#6E665B;
-  --ink-faint:#9C9385;
-  --rule:#C9BFA8;
-
-  /* Per-tool accent colors */
-  --shopify:#5E8E3E;
-  --recharge:#1E2A78;
-  --gorgias:#00A39A;
-  --shipstation:#2C6EF2;
-  --whale:#6B4EFF;
-  --meta-bm:#0064E0;
-  --meta-ads:#0866FF;
-  --google:#1A73E8;
-  --claude:#C8623E;
-  --figma:#A259FF;
-  --canva:#00B7C2;
+  --ink:#141414;
+  --ink-2:#1F1F1F;
+  --paper:#F6F2EE;
+  --paper-2:#ECE5DF;
+  --cream:#FCFAF8;
+  --red:#C41E2A;
+  --red-deep:#8E1219;
+  --red-soft:#E8505B;
+  --gold:#C41E2A;
+  --gold-soft:#F2A8AE;
+  --rule:rgba(20,20,20,.14);
+  --muted:#5E5A57;
+  --link:#0055CC;
+  --shadow:0 1px 2px rgba(20,20,20,.05),0 8px 30px rgba(20,20,20,.10);
+  --shadow-lg:0 30px 80px rgba(20,20,20,.34);
 }
-
-*{margin:0;padding:0;box-sizing:border-box;}
-
-html{scroll-behavior:smooth;}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  font-family:'Inter', sans-serif;
+  font-family:'Outfit',system-ui,sans-serif;
   background:var(--paper);
   color:var(--ink);
-  font-weight:400;
-  line-height:1.5;
-  min-height:100vh;
-  background-image:
-    radial-gradient(ellipse at 15% 0%, rgba(8,102,255,0.025), transparent 50%),
-    radial-gradient(ellipse at 85% 100%, rgba(94,142,62,0.03), transparent 55%),
-    radial-gradient(ellipse at 50% 50%, var(--paper) 0%, var(--paper-deep) 100%);
-  position:relative;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
-
-/* Grain overlay */
+/* faint paper grain */
 body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:1;
-  opacity:0.35;
-  mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(20,20,20,.05) 1px,transparent 1px);
+  background-size:4px 4px;
 }
-
-.page{
-  position:relative;
-  z-index:2;
-  max-width:1280px;
-  margin:0 auto;
-  padding:48px 56px 80px;
-}
-
-@media (max-width:768px){
-  .page{padding:32px 24px 56px;}
-}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 28px}
 
 /* ===== TOP BAR ===== */
 .topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-bottom:24px;
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,238,224,.82);
+  backdrop-filter:blur(12px);
   border-bottom:1px solid var(--rule);
-  margin-bottom:80px;
+}
+.topbar-in{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:14px}
+.mark{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:.01em;text-decoration:none;color:inherit}
+.mark:hover{text-decoration:none}
+.mark-badge{
+  width:34px;height:34px;border-radius:9px;flex:none;
+  background:linear-gradient(150deg,var(--red),var(--red-deep));
+  display:grid;place-items:center;color:#fff;
+  font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.mark-txt small{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;line-height:1}
+.mark-txt strong{font-size:1.02rem;font-weight:700}
+.topbar .back{
+  margin-left:auto;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--red-deep);font-weight:700;border:1px solid var(--rule);
+  padding:6px 14px;border-radius:999px;background:var(--cream);display:inline-flex;align-items:center;gap:6px;
+}
+.topbar .back:hover{text-decoration:none;border-color:var(--red);color:var(--red)}
+
+/* ===== HERO ===== */
+.hero{position:relative;padding:84px 0 72px;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(120% 90% at 88% -10%,rgba(196,30,42,.16),transparent 55%),
+    radial-gradient(90% 80% at 6% 110%,rgba(196,30,42,.13),transparent 60%);
+}
+.hero .wrap{position:relative;z-index:1}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;
+  color:var(--red-deep);margin-bottom:22px;
+}
+.eyebrow::before{content:"";width:30px;height:2px;background:var(--gold);display:inline-block}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:600;
+  font-size:clamp(2.5rem,6.2vw,4.5rem);line-height:1.02;letter-spacing:-.01em;
+  max-width:17ch;
+}
+.hero h1 em{font-style:italic;color:var(--red);position:relative}
+.hero h1 .u{
+  background:linear-gradient(transparent 64%,rgba(196,30,42,.30) 64%);
+}
+.lede{
+  font-family:'Fraunces',serif;font-weight:400;font-style:italic;
+  font-size:clamp(1.12rem,2.2vw,1.45rem);color:var(--ink-2);
+  max-width:52ch;margin-top:24px;line-height:1.5;
 }
 
-.mark{
-  font-family:'DM Mono', monospace;
-  font-size:11px;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  display:flex;
-  align-items:center;
-  gap:14px;
+/* ===== HOW IT WORKS ===== */
+.guide{padding:30px 0 8px}
+.guide-card{
+  background:var(--cream);
+  color:var(--ink);border:1px solid var(--rule);border-radius:22px;padding:46px clamp(28px,5vw,56px);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
+.guide-card::after{
+  content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,30,42,.10),transparent 70%);pointer-events:none;
+}
+.guide-card h2{
+  font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3.2vw,2.1rem);
+  position:relative;z-index:1;margin-bottom:8px;color:var(--ink);
+}
+.guide-card .sub{color:var(--muted);max-width:62ch;position:relative;z-index:1;margin-bottom:34px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+  position:relative;z-index:1}
+.step{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:24px 20px}
+.step .num{
+  font-family:'Fraunces',serif;font-size:.95rem;color:#fff;font-weight:600;
+  display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(150deg,var(--red),var(--red-deep));margin-bottom:13px;
+}
+.step h3{font-size:.98rem;font-weight:700;margin-bottom:7px;color:var(--ink)}
+.step p{font-size:.88rem;color:var(--muted);line-height:1.5}
+.step b{color:var(--red-deep);font-weight:700}
+@media(max-width:980px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+.guide-note{
+  margin-top:26px;position:relative;z-index:1;display:flex;gap:13px;align-items:flex-start;
+  background:rgba(196,30,42,.07);border:1px solid rgba(196,30,42,.20);
+  border-radius:12px;padding:16px 18px;font-size:.92rem;color:var(--ink-2);
+}
+.guide-note .ic{font-size:1.15rem;line-height:1.3;flex:none}
+.guide-note b{color:var(--red-deep);font-weight:700}
 
-.mark .dots{
-  display:flex;
-  gap:5px;
-}
-.mark .dots span{
-  display:block;
-  width:9px;height:9px;
-  border-radius:50%;
-}
-.mark .dots span:nth-child(1){background:var(--shopify);}
-.mark .dots span:nth-child(2){background:var(--gorgias);}
-.mark .dots span:nth-child(3){background:var(--whale);}
-.mark .dots span:nth-child(4){background:var(--meta-ads);}
-.mark .dots span:nth-child(5){background:var(--claude);}
-.mark .dots span:nth-child(6){background:var(--figma);}
+/* ===== DECKS ===== */
+.brands{padding:64px 0 90px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.01em}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:40ch}
 
-.status{
-  font-family:'DM Mono', monospace;
-  font-size:10.5px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--ink);
-  padding:6px 12px;
-  border:1px solid var(--ink);
-  border-radius:999px;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
-.status::before{
-  content:'';
-  width:6px;height:6px;
-  background:var(--meta-ads);
-  border-radius:50%;
-  animation:pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes pulse{
-  0%,100%{opacity:1;transform:scale(1);}
-  50%{opacity:0.5;transform:scale(0.85);}
-}
-
-.topbar-right{
-  display:flex;
-  align-items:center;
-  gap:22px;
-}
-.topnav{
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-.topnav a{
-  font-family:'DM Mono', monospace;
-  font-size:11px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  text-decoration:none;
-  transition:color 0.2s;
-}
-.topnav a:hover{color:var(--ink);}
-.topnav a.signout{color:#B0322B;}
-.topnav a.signout:hover{color:#8A1E24;}
-
-@media (max-width:768px){
-  .topbar{margin-bottom:56px;flex-direction:column;align-items:flex-start;gap:16px;}
-  .topbar-right{flex-wrap:wrap;gap:14px;}
-}
-
-/* ===== MASTHEAD ===== */
-.masthead{
-  margin-bottom:88px;
-  display:grid;
-  grid-template-columns:1fr 360px;
-  gap:64px;
-  align-items:end;
-  animation:rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-
-@keyframes rise{
-  from{opacity:0;transform:translateY(24px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-.masthead h1{
-  font-family:'Fraunces', serif;
-  font-weight:500;
-  font-size:clamp(56px, 9vw, 132px);
-  line-height:0.92;
-  letter-spacing:-0.035em;
-  color:var(--ink);
-  font-variation-settings:"opsz" 144, "SOFT" 50;
-}
-.masthead h1 .ital{
-  font-style:italic;
-  font-weight:400;
-  font-variation-settings:"opsz" 144, "SOFT" 100;
-}
-
-.masthead .meta{
-  font-family:'Inter', sans-serif;
-  font-size:14.5px;
-  line-height:1.6;
-  color:var(--ink-soft);
-  max-width:340px;
-  padding-bottom:14px;
-}
-.masthead .meta strong{
-  color:var(--ink);
-  font-weight:500;
-}
-
-@media (max-width:900px){
-  .masthead{grid-template-columns:1fr;gap:32px;margin-bottom:64px;}
-  .masthead .meta{padding-bottom:0;}
-}
-
-/* ===== SECTION LABEL ===== */
-.section-label{
-  font-family:'DM Mono', monospace;
-  font-size:11px;
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  color:var(--ink-mute);
-  display:flex;
-  align-items:center;
-  gap:14px;
-  margin-bottom:32px;
-}
-.section-label::after{
-  content:'';
-  flex:1;
-  height:1px;
-  background:var(--rule);
-}
-
-/* ===== CARD GRID ===== */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:24px;
-}
-
-@media (max-width:1080px){
-  .grid{grid-template-columns:repeat(2, 1fr);}
-}
-@media (max-width:680px){
-  .grid{grid-template-columns:1fr;gap:20px;}
-}
-
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
 .card{
-  position:relative;
-  display:grid;
-  grid-template-columns:8px 1fr;
-  background:#FAF6EC;
-  border:1px solid var(--paper-edge);
-  border-radius:4px;
-  text-decoration:none;
-  color:inherit;
+  position:relative;display:flex;flex-direction:column;
+  border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;
+  background:var(--cream);border:1px solid var(--rule);
+  box-shadow:var(--shadow);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s;
+  opacity:0;transform:translateY(22px);
+}
+.card.in{opacity:1;transform:none}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent;text-decoration:none}
+.card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.thumb{
+  position:relative;aspect-ratio:16/10;display:grid;place-items:center;padding:30px;
   overflow:hidden;
-  transition:transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
-             box-shadow 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
-             border-color 0.4s ease;
-  animation:rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
-
-.card:nth-child(1){animation-delay:0.04s;}
-.card:nth-child(2){animation-delay:0.08s;}
-.card:nth-child(3){animation-delay:0.12s;}
-.card:nth-child(4){animation-delay:0.16s;}
-.card:nth-child(5){animation-delay:0.20s;}
-.card:nth-child(6){animation-delay:0.24s;}
-.card:nth-child(7){animation-delay:0.28s;}
-.card:nth-child(8){animation-delay:0.32s;}
-.card:nth-child(9){animation-delay:0.36s;}
-.card:nth-child(10){animation-delay:0.40s;}
-.card:nth-child(11){animation-delay:0.44s;}
-
-.card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 24px 48px -16px rgba(40,30,15,0.18),
-             0 4px 12px -4px rgba(40,30,15,0.08);
-  border-color:#C0B59B;
+.thumb::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.16) 50%,transparent 60%);
+  transform:translateX(-120%);transition:transform .7s ease;
 }
-
-.card .stripe{
-  background:var(--accent);
-  position:relative;
-}
-
-.card .body{
-  padding:32px 30px 28px;
-  display:flex;
-  flex-direction:column;
-  min-height:260px;
-}
-
-@media (max-width:520px){
-  .card .body{padding:28px 24px 24px;min-height:230px;}
-}
-
-.card .row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-family:'DM Mono', monospace;
-  font-size:11px;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--ink-mute);
-  margin-bottom:24px;
-}
-
-.card .num{
-  color:var(--ink);
-  font-weight:500;
-}
-
-.card .swatch{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-}
-.card .swatch::before{
-  content:'';
-  width:8px;height:8px;border-radius:50%;
-  background:var(--accent);
-  display:inline-block;
-}
-
-.card h2{
-  font-family:'Fraunces', serif;
-  font-weight:500;
-  font-variation-settings:"opsz" 144, "SOFT" 30;
-  font-size:38px;
-  line-height:0.98;
-  letter-spacing:-0.025em;
-  color:var(--ink);
-  margin-bottom:10px;
-}
-
-.card h2 .ital{
-  font-style:italic;
-  font-weight:400;
-}
-
-.card .kicker{
-  font-family:'DM Mono', monospace;
-  font-size:10.5px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  font-weight:500;
-  color:var(--ink-mute);
-  margin-bottom:18px;
-}
-
-.card .desc{
-  font-family:'Inter', sans-serif;
-  font-size:14px;
-  line-height:1.55;
-  color:var(--ink-soft);
-  font-weight:400;
-  flex:1;
-}
-
-.card .cta{
-  margin-top:22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-top:18px;
-  border-top:1px solid var(--paper-edge);
-  font-family:'DM Mono', monospace;
-  font-size:11px;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--ink);
-}
-
-.card .arrow{
-  font-family:'Fraunces', serif;
-  font-size:22px;
-  font-weight:400;
-  color:var(--ink);
-  transition:transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
-  display:inline-block;
-}
-
-.card:hover .arrow{
-  transform:translateX(8px);
-}
-
-/* Per-card accent assignment */
-.card.shopify{ --accent: var(--shopify); }
-.card.recharge{ --accent: var(--recharge); }
-.card.gorgias{ --accent: var(--gorgias); }
-.card.shipstation{ --accent: var(--shipstation); }
-.card.whale{ --accent: var(--whale); }
-.card.meta-bm{ --accent: var(--meta-bm); }
-.card.meta-ads{ --accent: var(--meta-ads); }
-.card.google{ --accent: var(--google); }
-.card.claude{ --accent: var(--claude); }
-.card.figma{ --accent: var(--figma); }
-.card.canva{ --accent: var(--canva); }
+.card:hover .thumb::after{transform:translateX(120%)}
+.thumb .glyph{font-size:3.4rem;position:relative;z-index:1;filter:drop-shadow(0 3px 6px rgba(0,0,0,.3));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.card:hover .thumb .glyph{transform:scale(1.07)}
+.badge-corner{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0,0,.32);color:#fff;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:4px 9px;border-radius:999px}
+/* thumbnail color variants — shades of red */
+.t-shopify{background:linear-gradient(155deg,#b81d1d,#8B0000)}
+.t-gorgias{background:linear-gradient(155deg,#9c1f1f,#6D0000)}
+.t-google{background:linear-gradient(155deg,#d13030,#a31515)}
+.t-triple{background:linear-gradient(155deg,#8B0000,#5a0000)}
+.t-recharge{background:linear-gradient(155deg,#c0392b,#991b1b)}
+.t-canva{background:linear-gradient(155deg,#b02a2a,#7f1d1d)}
+.t-meta-bm{background:linear-gradient(155deg,#a31515,#8B0000)}
+.t-figma{background:linear-gradient(155deg,#a52a2a,#6D0000)}
+.t-ship{background:linear-gradient(155deg,#c0392b,#a31515)}
+.t-meta-ads{background:linear-gradient(155deg,#a31515,#7f1d1d)}
+.t-claude{background:linear-gradient(155deg,#9c1f1f,#5a0000)}
+.card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;line-height:1.1}
+.card-tag{font-size:.86rem;color:var(--red-deep);font-weight:600;font-style:italic;font-family:'Fraunces',serif;margin-top:3px}
+.card-desc{font-size:.92rem;color:var(--muted);margin-top:13px;line-height:1.55;flex:1}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--rule)}
+.chip{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+  color:var(--red-deep);background:rgba(196,30,42,.08);padding:5px 10px;border-radius:999px}
+.go{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.9rem;color:var(--ink)}
+.go svg{transition:transform .3s}
+.card:hover .go svg{transform:translateX(4px)}
 
 /* ===== FOOTER ===== */
-.footer{
-  margin-top:96px;
-  padding-top:32px;
-  border-top:1px solid var(--rule);
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:32px;
-  font-family:'DM Mono', monospace;
-  font-size:11px;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  color:var(--ink-mute);
-}
+.foot{border-top:1px solid var(--rule);padding:34px 0 46px;color:var(--muted);font-size:.85rem}
+.foot-in{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.foot strong{color:var(--ink);font-weight:600}
 
-.footer .note{
-  max-width:520px;
-  text-transform:none;
-  letter-spacing:0;
-  font-family:'Inter', sans-serif;
-  font-size:13px;
-  line-height:1.55;
-  color:var(--ink-soft);
+@media(max-width:600px){
+  .hero{padding:60px 0 50px}
 }
-.footer .note strong{
-  color:var(--ink);
-  font-weight:500;
-}
-
-@media (max-width:768px){
-  .footer{flex-direction:column;gap:20px;margin-top:64px;}
-}
-
-/* Selection */
-::selection{background:var(--ink);color:var(--paper);}
 </style>
 <?php bh_favicon_tags(); ?>
 </head>
 <body>
 
-<div class="page">
-
-  <!-- TOP BAR -->
-  <header class="topbar">
-    <div class="mark">
-      <span class="dots"><span></span><span></span><span></span><span></span><span></span><span></span></span>
-      <span>Training Library · v1</span>
-    </div>
-    <div class="topbar-right">
-      <?php if ( is_user_logged_in() ) : ?>
-      <nav class="topnav">
-        <a href="<?php echo esc_url( bh_template_url('page-brand-hub-index.php') ?: home_url( '/' ) ); ?>">Brand Hubs</a>
-        <a class="signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>">Sign Out</a>
-      </nav>
-      <?php endif; ?>
-      <div class="status">Team Access Only</div>
-    </div>
-  </header>
-
-  <!-- MASTHEAD -->
-  <section class="masthead">
-    <h1>Platform<br><span class="ital">Training.</span></h1>
-    <p class="meta">
-      <strong>Eleven self-contained training guides for the tools the team uses every day.</strong>
-      Each page is a single-page walkthrough covering setup, core workflows, and best practices. Click any card to open.
-    </p>
-  </section>
-
-  <!-- SECTION LABEL -->
-  <div class="section-label">
-    <span>The Trainings · 11</span>
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="mark" href="<?php echo esc_url( bh_template_url('page-university-landing.php') ); ?>">
+      <div class="mark-badge">i</div>
+      <div class="mark-txt">
+        <small>Inventel Innovations</small>
+        <strong>Training Resource Library</strong>
+      </div>
+    </a>
+    <a class="back" href="<?php echo esc_url( bh_template_url('page-university-landing.php') ); ?>">← University</a>
   </div>
+</header>
 
-  <!-- CARDS -->
-  <section class="grid">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow">Inventel team</span>
+    <h1>Master the <em class="u">tools</em> you work with.</h1>
+    <p class="lede">Thank you for taking the time to learn the tools Inventel provides to you. Every platform we use has its own complete guide — written to take you from your very first login to confident, independent work. The better you know each tool, the easier your day-to-day becomes, whatever your role.</p>
+  </div>
+</section>
 
-    <a href="<?php echo bh_template_url('page-shopify-training.php'); ?>" class="card shopify">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">01 / 11</span>
-          <span class="swatch">Storefront</span>
+<!-- HOW IT WORKS -->
+<section class="guide">
+  <div class="wrap">
+    <div class="guide-card">
+      <h2>How to use this library</h2>
+      <p class="sub">Each platform has its own complete, self-contained training guide. It's not just for onboarding — it's the reference you'll keep coming back to whenever a question comes up while you work.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="num">1</span>
+          <h3>Read it start to finish</h3>
+          <p>When you're <b>granted access</b> to a platform, read its guide <b>from start to finish</b> before you dive in.</p>
         </div>
-        <h2>Shopify</h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">The store's operating system. Catalog, orders, customers, and the daily workflows that keep the storefront running.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
+        <div class="step">
+          <span class="num">2</span>
+          <h3>Keep it close</h3>
+          <p>After your first read, use the guide as your <b>everyday reference</b> whenever a question comes up.</p>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <h3>New access = new quiz</h3>
+          <p>Each time new access is shared with you, read that platform's training, then take the <b>mandatory quiz</b> at the end.</p>
+        </div>
+        <div class="step">
+          <span class="num">4</span>
+          <h3>Send your results</h3>
+          <p>Send a copy of your completed quiz to the <b>Performance Team</b> and your <b>Department Lead</b>.</p>
+        </div>
+        <div class="step">
+          <span class="num">5</span>
+          <h3>Stay ready</h3>
+          <p>Got free time between tasks? Work through the <b>intermediate</b> and <b>advanced</b> material on your own.</p>
         </div>
       </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-recharge-training.php'); ?>" class="card recharge">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">02 / 11</span>
-          <span class="swatch">Subscriptions</span>
-        </div>
-        <h2>Recharge</h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">Subscriptions and recurring billing. How plans, churn tools, and the customer portal keep repeat revenue flowing.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
+      <div class="guide-note">
+        <span class="ic">📌</span>
+        <span>Your <b>Department Lead</b> may also assign intermediate or advanced learning as <b>mandatory</b> — not just optional self-study.</span>
       </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-gorgias-training.php'); ?>" class="card gorgias">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">03 / 11</span>
-          <span class="swatch">Helpdesk</span>
-        </div>
-        <h2>Gorgias</h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">The CX helpdesk. Tickets, macros, automations, and the routing rules that keep response times low.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
+      <div class="guide-note">
+        <span class="ic">💡</span>
+        <span>Every guide is packed with <b>tips and tricks</b>, shortcuts, and best practices that make the tools faster to use — worth a read even for platforms you already know well.</span>
       </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-shipstation-training.php'); ?>" class="card shipstation">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">04 / 11</span>
-          <span class="swatch">Fulfilment</span>
-        </div>
-        <h2>Ship<span class="ital">Station</span></h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">Order fulfilment and shipping. Labels, carriers, batch workflows, and the rules that get parcels out the door.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-triple-whale-training.php'); ?>" class="card whale">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">05 / 11</span>
-          <span class="swatch">Analytics</span>
-        </div>
-        <h2>Triple <span class="ital">Whale</span></h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">Ecommerce analytics and attribution. Dashboards, metrics, and reading the data that drives spend decisions.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-meta-business-manager-training.php'); ?>" class="card meta-bm">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">06 / 11</span>
-          <span class="swatch">Meta</span>
-        </div>
-        <h2>Business <span class="ital">Manager</span></h2>
-        <div class="kicker">Meta · Platform Training</div>
-        <p class="desc">The control center for Meta assets. Accounts, pages, permissions, and the structure behind Meta advertising.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-meta-ads-account-training.php'); ?>" class="card meta-ads">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">07 / 11</span>
-          <span class="swatch">Meta</span>
-        </div>
-        <h2>Ads <span class="ital">Account</span></h2>
-        <div class="kicker">Meta · Platform Training</div>
-        <p class="desc">Campaign setup and management on Meta. Account structure, billing, and launching ads the right way.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-google-workspace-training.php'); ?>" class="card google">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">08 / 11</span>
-          <span class="swatch">Workspace</span>
-        </div>
-        <h2>Google <span class="ital">Workspace</span></h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">Gmail, Drive, Docs, and Calendar. The everyday collaboration stack and how the team uses it well.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-claude-training.php'); ?>" class="card claude">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">09 / 11</span>
-          <span class="swatch">AI</span>
-        </div>
-        <h2>Claude</h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">AI assistance with Claude. Prompting, workflows, and using the model safely for real day-to-day tasks.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-figma-training.php'); ?>" class="card figma">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">10 / 11</span>
-          <span class="swatch">Design</span>
-        </div>
-        <h2>Figma</h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">Collaborative design. Files, frames, components, and how to work alongside the design team in Figma.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="<?php echo bh_template_url('page-canva-training.php'); ?>" class="card canva">
-      <div class="stripe"></div>
-      <div class="body">
-        <div class="row">
-          <span class="num">11 / 11</span>
-          <span class="swatch">Creative</span>
-        </div>
-        <h2>Canva</h2>
-        <div class="kicker">Platform Training</div>
-        <p class="desc">Fast on-brand creative. Templates, brand kit, and producing marketing assets without a designer.</p>
-        <div class="cta">
-          <span>Open Training</span>
-          <span class="arrow">→</span>
-        </div>
-      </div>
-    </a>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="note">
-      <strong>For the team:</strong> these training pages are internal and require sign-in. They're flagged <code style="font-family:'DM Mono',monospace;font-size:12px;">noindex</code> so they won't surface in search.
     </div>
-    <div><?php echo date('F Y'); ?></div>
-  </footer>
+  </div>
+</section>
 
-</div>
+<!-- DECKS -->
+<section class="brands">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The Training Library</h2>
+      <p>Tap any guide to open it. Each one is a complete, self-contained training deck.</p>
+    </div>
+    <div class="grid" id="grid">
 
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-shopify-training.php') ); ?>">
+        <div class="thumb t-shopify"><span class="badge-corner">Storefront</span><span class="glyph">🛒</span></div>
+        <div class="card-body">
+          <div class="card-name">Shopify</div>
+          <div class="card-tag">Run the online store</div>
+          <p class="card-desc">Run the online store end to end — products, orders, inventory, and storefront management.</p>
+          <div class="card-foot"><span class="chip">Storefront</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-gorgias-training.php') ); ?>">
+        <div class="thumb t-gorgias"><span class="badge-corner">Support</span><span class="glyph">💬</span></div>
+        <div class="card-body">
+          <div class="card-name">Gorgias CRM</div>
+          <div class="card-tag">One shared inbox</div>
+          <p class="card-desc">Handle customer support tickets, macros, and helpdesk workflows in one shared inbox.</p>
+          <div class="card-foot"><span class="chip">Support</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-google-workspace-training.php') ); ?>">
+        <div class="thumb t-google"><span class="badge-corner">Core</span><span class="glyph">📧</span></div>
+        <div class="card-body">
+          <div class="card-name">Google Workspace</div>
+          <div class="card-tag">The daily backbone</div>
+          <p class="card-desc">Gmail, Drive, Docs, Sheets, and Calendar — the daily backbone of company communication.</p>
+          <div class="card-foot"><span class="chip">Core</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-triple-whale-training.php') ); ?>">
+        <div class="thumb t-triple"><span class="badge-corner">Analytics</span><span class="glyph">📊</span></div>
+        <div class="card-body">
+          <div class="card-name">Triple Whale</div>
+          <div class="card-tag">The numbers that drive decisions</div>
+          <p class="card-desc">Track ecommerce performance, attribution, and the metrics that drive marketing decisions.</p>
+          <div class="card-foot"><span class="chip">Analytics</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-recharge-training.php') ); ?>">
+        <div class="thumb t-recharge"><span class="badge-corner">Subscriptions</span><span class="glyph">🔁</span></div>
+        <div class="card-body">
+          <div class="card-name">Recharge</div>
+          <div class="card-tag">Recurring revenue, handled</div>
+          <p class="card-desc">Manage subscriptions, recurring billing, and customer retention for repeat orders.</p>
+          <div class="card-foot"><span class="chip">Subscriptions</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-canva-training.php') ); ?>">
+        <div class="thumb t-canva"><span class="badge-corner">Design</span><span class="glyph">🎨</span></div>
+        <div class="card-body">
+          <div class="card-name">Canva</div>
+          <div class="card-tag">On-brand, no design background</div>
+          <p class="card-desc">Create on-brand graphics, social posts, and marketing assets without a design background.</p>
+          <div class="card-foot"><span class="chip">Design</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-meta-business-manager-training.php') ); ?>">
+        <div class="thumb t-meta-bm"><span class="badge-corner">Admin</span><span class="glyph">🏢</span></div>
+        <div class="card-body">
+          <div class="card-name">Meta Business Manager</div>
+          <div class="card-tag">The Meta control room</div>
+          <p class="card-desc">Manage pages, ad accounts, assets, and team permissions across the Meta ecosystem.</p>
+          <div class="card-foot"><span class="chip">Admin</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-figma-training.php') ); ?>">
+        <div class="thumb t-figma"><span class="badge-corner">Design</span><span class="glyph">✏️</span></div>
+        <div class="card-body">
+          <div class="card-name">Figma</div>
+          <div class="card-tag">Design, together, in real time</div>
+          <p class="card-desc">Collaborate on interface design, prototypes, and shared design files in real time.</p>
+          <div class="card-foot"><span class="chip">Design</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-shipstation-training.php') ); ?>">
+        <div class="thumb t-ship"><span class="badge-corner">Fulfillment</span><span class="glyph">📦</span></div>
+        <div class="card-body">
+          <div class="card-name">ShipStation</div>
+          <div class="card-tag">Get orders out the door</div>
+          <p class="card-desc">Process, batch, and label shipments — the hub for getting orders out the door.</p>
+          <div class="card-foot"><span class="chip">Fulfillment</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-meta-ads-account-training.php') ); ?>">
+        <div class="thumb t-meta-ads"><span class="badge-corner">Advertising</span><span class="glyph">📣</span></div>
+        <div class="card-body">
+          <div class="card-name">Meta Ads</div>
+          <div class="card-tag">Campaigns that perform</div>
+          <p class="card-desc">Build, launch, and optimize ad campaigns across Facebook and Instagram.</p>
+          <div class="card-foot"><span class="chip">Advertising</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-claude-training.php') ); ?>">
+        <div class="thumb t-claude"><span class="badge-corner">AI</span><span class="glyph">🤖</span></div>
+        <div class="card-body">
+          <div class="card-name">Claude</div>
+          <div class="card-tag">AI, used the right way</div>
+          <p class="card-desc">Use AI to draft, research, summarize, and speed up your everyday work the right way.</p>
+          <div class="card-foot"><span class="chip">AI</span><span class="go">Open guide <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span><strong>Inventel Innovations</strong> · Training Resource Library</span>
+    <span>Internal use only · 2026</span>
+  </div>
+</footer>
+
+<script>
+const cards=document.querySelectorAll('.card');
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach((e)=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const idx=[...cards].indexOf(el);
+      setTimeout(()=>el.classList.add('in'),(idx%4)*90);
+      io.unobserve(el);
+    }
+  });
+},{threshold:.12});
+cards.forEach(c=>io.observe(c));
+</script>
 </body>
 </html>

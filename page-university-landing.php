@@ -217,7 +217,7 @@ a:hover{text-decoration:underline}
     </div>
     <nav class="topnav">
       <a href="<?php echo esc_url( bh_template_url('page-brand-hub-index.php') ); ?>"><span class="ic">🏷️</span><span class="lbl">Brand Hubs</span></a>
-      <a href="<?php echo esc_url( bh_template_url('page-resource-library.php') ); ?>"><span class="ic">📚</span><span class="lbl">Resource Library</span></a>
+      <a href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ); ?>"><span class="ic">📚</span><span class="lbl">Resource Library</span></a>
     </nav>
   </div>
 </header>
@@ -297,7 +297,7 @@ a:hover{text-decoration:underline}
       </a>
 
       <!-- RESOURCE LIBRARY -->
-      <a class="card" href="<?php echo esc_url( bh_template_url('page-resource-library.php') ); ?>">
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ); ?>">
         <div class="thumb t-library"><span class="glyph">📚</span></div>
         <div class="card-body">
           <div class="card-name">Resource Library</div>
