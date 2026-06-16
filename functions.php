@@ -24,16 +24,35 @@ add_action('after_setup_theme', function() {
 // toolbar in via output buffering proved unreliable on some hosts (blank pages).
 // Editors should manage content from the dashboard at /wp-admin/ instead.
 
+// Resolve a page's URL by the THEME TEMPLATE it is assigned, not by slug. This is
+// robust: the template file is fixed by this theme, while the page slug is chosen
+// freely in WordPress (e.g. the Training Hub may live at /traning-hub/). Falls back
+// to the site home (or a provided fallback) when no page uses that template yet.
+function bh_template_url( $template_file, $fallback = '' ) {
+    $ids = get_posts( array(
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1,
+        'fields'      => 'ids',
+        'meta_key'    => '_wp_page_template',
+        'meta_value'  => $template_file,
+    ) );
+    if ( ! empty( $ids ) ) {
+        return get_permalink( $ids[0] );
+    }
+    return $fallback !== '' ? $fallback : home_url( '/' );
+}
+
 // FLOATING "BACK TO INDEX" BUTTON
 // Self-contained button printed inside a template (call it right before </body>).
-// Links back to the given index page by slug. Inline styles keep it independent of
-// each template's own CSS / loaded fonts.
-function bh_back_to_index_button( $slug = 'training-hub-index', $label = 'All Trainings' ) {
+// Links back to the relevant index by its template (robust to whatever slug the
+// page uses). Inline styles keep it independent of each template's own CSS / fonts.
+function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All Trainings' ) {
 
-    // Prefer the requested index page; fall back to the site home so the button
-    // is always visible even before the index page has been created.
-    $page = get_page_by_path( $slug );
-    $url  = $page ? get_permalink( $page ) : home_url( '/' );
+    $template_file = ( strpos( $target, 'brand' ) !== false )
+        ? 'page-brand-hub-index.php'
+        : 'page-training-hub-index.php';
+    $url = bh_template_url( $template_file );
     if ( ! $url ) {
         return;
     }
@@ -116,7 +135,7 @@ add_action('template_redirect', function() {
         }
 
         if ( in_array( $template_name, $protected_templates ) && ! is_user_logged_in() ) {
-            $login_page = get_permalink( get_page_by_path( 'brand-hub-login' ) );
+            $login_page = bh_template_url('page-brand-hub-login.php');
             if ( $login_page ) {
                 // Remember where they were headed so we can return them after login.
                 $login_page = add_query_arg(
@@ -146,7 +165,7 @@ add_action('init', function() {
             'remember'      => $remember,
         ], false );
 
-        $login_page = get_permalink( get_page_by_path( 'brand-hub-login' ) );
+        $login_page = bh_template_url('page-brand-hub-login.php');
 
         if ( is_wp_error( $user ) ) {
             wp_redirect( add_query_arg( 'login', 'failed', $login_page ) );
@@ -164,7 +183,7 @@ add_action('init', function() {
             ? wp_validate_redirect( esc_url_raw( wp_unslash( $_POST['redirect_to'] ) ), '' )
             : '';
         if ( ! $redirect ) {
-            $redirect = get_permalink( get_page_by_path( 'brand-hub-index' ) ) ?: home_url();
+            $redirect = bh_template_url('page-brand-hub-index.php') ?: home_url();
         }
         wp_redirect( $redirect );
         exit;
@@ -176,7 +195,7 @@ add_action('init', function() {
     if ( isset( $_GET['brand_hub_logout'] ) && isset( $_GET['_wpnonce'] ) &&
          wp_verify_nonce( $_GET['_wpnonce'], 'brand_hub_logout' ) ) {
         wp_logout();
-        $login_page = get_permalink( get_page_by_path( 'brand-hub-login' ) );
+        $login_page = bh_template_url('page-brand-hub-login.php');
         wp_redirect( add_query_arg( 'login', 'loggedout', $login_page ?: home_url() ) );
         exit;
     }
@@ -193,7 +212,7 @@ function bh_google_redirect_uri() {
 
 /** URL of the login page (with optional ?login= status). */
 function bh_login_page_url( $status = '' ) {
-    $url = get_permalink( get_page_by_path( 'brand-hub-login' ) ) ?: home_url();
+    $url = bh_template_url('page-brand-hub-login.php') ?: home_url();
     return $status ? add_query_arg( 'login', $status, $url ) : $url;
 }
 
@@ -339,7 +358,7 @@ add_action('init', function() {
     $redirect = $_COOKIE['bh_oauth_redirect'] ?? '';
     $redirect = $redirect ? wp_validate_redirect( $redirect, '' ) : '';
     if ( ! $redirect ) {
-        $redirect = get_permalink( get_page_by_path( 'brand-hub-index' ) ) ?: home_url();
+        $redirect = bh_template_url('page-brand-hub-index.php') ?: home_url();
     }
 
     // Clear the short-lived OAuth cookies.

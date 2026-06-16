@@ -456,7 +456,7 @@ body::before{
     <div class="topbar-right">
       <?php if ( is_user_logged_in() ) : ?>
       <nav class="topnav">
-        <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'brand-hub-index' ) ) ?: home_url( '/' ) ); ?>">Brand Hubs</a>
+        <a href="<?php echo esc_url( bh_template_url('page-brand-hub-index.php') ?: home_url( '/' ) ); ?>">Brand Hubs</a>
         <a class="signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>">Sign Out</a>
       </nav>
       <?php endif; ?>
@@ -481,7 +481,7 @@ body::before{
   <!-- CARDS -->
   <section class="grid">
 
-    <a href="<?php echo get_permalink(get_page_by_path('shopify-training')); ?>" class="card shopify">
+    <a href="<?php echo bh_template_url('page-shopify-training.php'); ?>" class="card shopify">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -498,7 +498,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('recharge-training')); ?>" class="card recharge">
+    <a href="<?php echo bh_template_url('page-recharge-training.php'); ?>" class="card recharge">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -515,7 +515,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('gorgias-training')); ?>" class="card gorgias">
+    <a href="<?php echo bh_template_url('page-gorgias-training.php'); ?>" class="card gorgias">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -532,7 +532,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('shipstation-training')); ?>" class="card shipstation">
+    <a href="<?php echo bh_template_url('page-shipstation-training.php'); ?>" class="card shipstation">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -549,7 +549,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('triple-whale-training')); ?>" class="card whale">
+    <a href="<?php echo bh_template_url('page-triple-whale-training.php'); ?>" class="card whale">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -566,7 +566,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('meta-business-manager-training')); ?>" class="card meta-bm">
+    <a href="<?php echo bh_template_url('page-meta-business-manager-training.php'); ?>" class="card meta-bm">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -583,7 +583,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('meta-ads-account-training')); ?>" class="card meta-ads">
+    <a href="<?php echo bh_template_url('page-meta-ads-account-training.php'); ?>" class="card meta-ads">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -600,7 +600,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('google-workspace-training')); ?>" class="card google">
+    <a href="<?php echo bh_template_url('page-google-workspace-training.php'); ?>" class="card google">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -617,7 +617,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('claude-training')); ?>" class="card claude">
+    <a href="<?php echo bh_template_url('page-claude-training.php'); ?>" class="card claude">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -634,7 +634,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('figma-training')); ?>" class="card figma">
+    <a href="<?php echo bh_template_url('page-figma-training.php'); ?>" class="card figma">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">
@@ -651,7 +651,7 @@ body::before{
       </div>
     </a>
 
-    <a href="<?php echo get_permalink(get_page_by_path('canva-training')); ?>" class="card canva">
+    <a href="<?php echo bh_template_url('page-canva-training.php'); ?>" class="card canva">
       <div class="stripe"></div>
       <div class="body">
         <div class="row">

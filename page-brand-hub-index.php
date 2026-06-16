@@ -212,7 +212,7 @@ body::before{
     </div>
     <?php if ( is_user_logged_in() ) : ?>
     <nav class="bh-topnav">
-      <a href="<?php echo esc_url( get_permalink( get_page_by_path( 'training-hub-index' ) ) ?: home_url( '/' ) ); ?>">Training Hub</a>
+      <a href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ?: home_url( '/' ) ); ?>">Training Hub</a>
       <a class="bh-signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>">Sign Out</a>
     </nav>
     <?php endif; ?>
@@ -285,7 +285,7 @@ body::before{
     <div class="grid" id="grid">
 
       <!-- WILD EARTH -->
-      <a class="card" href="<?php echo esc_url( get_permalink( get_page_by_path('wild-earth-brand-hub') ) ); ?>" style="--bp:#1B4332;--bp2:#2D6A4F">
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-wild-earth-brand-hub.php') ); ?>" style="--bp:#1B4332;--bp2:#2D6A4F">
         <div class="thumb" style="background:linear-gradient(155deg,#2D6A4F,#1B4332)">
           <img src="https://wildearth.com/cdn/shop/files/Logo_no_tag.png" alt="Wild Earth" class="logo-rev" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'Wild Earth'}))">
@@ -302,7 +302,7 @@ body::before{
       </a>
 
       <!-- SUGAR MD -->
-      <a class="card" href="<?php echo esc_url( get_permalink( get_page_by_path('sugar-md-brand-hub') ) ); ?>" style="--bp:#1F2520;--bp2:#525849">
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-sugar-md-brand-hub.php') ); ?>" style="--bp:#1F2520;--bp2:#525849">
         <div class="thumb" style="background:linear-gradient(155deg,#3A4035,#1F2520)">
           <img src="https://www.sugarmds.com/cdn/shop/files/imgi_1_Logo_Atoms_1.svg" alt="SugarMD" class="logo-rev" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'SugarMD'}))">
@@ -319,7 +319,7 @@ body::before{
       </a>
 
       <!-- PIZZA PACK -->
-      <a class="card" href="<?php echo esc_url( get_permalink( get_page_by_path('pizza-pack-brand-hub') ) ); ?>" style="--bp:#1F1A17;--bp2:#D7282F">
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-pizza-pack-brand-hub.php') ); ?>" style="--bp:#1F1A17;--bp2:#D7282F">
         <div class="thumb" style="background:linear-gradient(155deg,#D7282F,#1F1A17)">
           <img src="https://pizzapack.com/cdn/shop/files/PP_Logo_White.png" alt="Pizza Pack" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'Pizza Pack'}))">
@@ -336,7 +336,7 @@ body::before{
       </a>
 
       <!-- SPARK -->
-      <a class="card" href="<?php echo esc_url( get_permalink( get_page_by_path('spark-brand-hub') ) ); ?>" style="--bp:#2A2A28;--bp2:#B86340">
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-spark-brand-hub.php') ); ?>" style="--bp:#2A2A28;--bp2:#B86340">
         <div class="thumb" style="background:linear-gradient(155deg,#B86340,#2A2A28)">
           <img src="https://sparkfirestarter.com/cdn/shop/files/Spark_Logo_Black_360x.png" alt="Spark" class="logo-rev" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'Spark'}))">
@@ -353,7 +353,7 @@ body::before{
       </a>
 
       <!-- CLEAN & HIT -->
-      <a class="card" href="<?php echo esc_url( get_permalink( get_page_by_path('clean-and-hit-brand-hub') ) ); ?>" style="--bp:#1F4E2C;--bp2:#C9A24E">
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-clean-and-hit-brand-hub.php') ); ?>" style="--bp:#1F4E2C;--bp2:#C9A24E">
         <div class="thumb" style="background:linear-gradient(155deg,#2C6B3C,#1F4E2C)">
           <img src="https://cleanandhit.com/cdn/shop/files/clean-and-hit-logo-reversed.png" alt="Clean &amp; Hit" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'Clean &amp; Hit'}))">
@@ -370,7 +370,7 @@ body::before{
       </a>
 
       <!-- DRAIN BUDDY -->
-      <a class="card" href="<?php echo esc_url( get_permalink( get_page_by_path('drain-buddy-brand-hub') ) ); ?>" style="--bp:#0E5379;--bp2:#2C7A7B">
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-drain-buddy-brand-hub.php') ); ?>" style="--bp:#0E5379;--bp2:#2C7A7B">
         <div class="thumb" style="background:linear-gradient(155deg,#2C7A7B,#0E5379)">
           <img src="https://www.drainstrain.com/cdn/shop/files/Image20240717003911_1_1.png" alt="Drain Buddy" class="logo-rev" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'Drain Buddy'}))">
@@ -387,7 +387,7 @@ body::before{
       </a>
 
       <!-- ALINE -->
-      <a class="card" href="<?php echo esc_url( get_permalink( get_page_by_path('aline-insoles-brand-hub') ) ); ?>" style="--bp:#111111;--bp2:#CC1F17">
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-aline-insoles-brand-hub.php') ); ?>" style="--bp:#111111;--bp2:#CC1F17">
         <div class="thumb" style="background:linear-gradient(155deg,#CC1F17,#111111)">
           <img src="https://alineinsoles.com/cdn/shop/files/ALINE-Integrated-Mark-600wi.png" alt="ALINE Insoles" class="logo-rev" loading="lazy"
                onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'ALINE'}))">

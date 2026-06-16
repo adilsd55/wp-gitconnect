@@ -178,7 +178,7 @@ a:hover{text-decoration:underline;color:#1340b0}
 
   <div class="deck-grid">
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('shopify-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-shopify-training.php') ); ?>">
       <div class="deck-thumb t-shopify"><span class="glyph">🛒</span><span class="badge-corner">Storefront</span></div>
       <div class="deck-info">
         <h3>Shopify</h3>
@@ -187,7 +187,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('gorgias-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-gorgias-training.php') ); ?>">
       <div class="deck-thumb t-gorgias"><span class="glyph">💬</span><span class="badge-corner">Support</span></div>
       <div class="deck-info">
         <h3>Gorgias CRM</h3>
@@ -196,7 +196,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('google-workspace-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-google-workspace-training.php') ); ?>">
       <div class="deck-thumb t-google"><span class="glyph">📧</span><span class="badge-corner">Core</span></div>
       <div class="deck-info">
         <h3>Google Workspace</h3>
@@ -205,7 +205,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('triple-whale-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-triple-whale-training.php') ); ?>">
       <div class="deck-thumb t-triple"><span class="glyph">📊</span><span class="badge-corner">Analytics</span></div>
       <div class="deck-info">
         <h3>Triple Whale</h3>
@@ -214,7 +214,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('recharge-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-recharge-training.php') ); ?>">
       <div class="deck-thumb t-recharge"><span class="glyph">🔁</span><span class="badge-corner">Subscriptions</span></div>
       <div class="deck-info">
         <h3>Recharge</h3>
@@ -223,7 +223,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('canva-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-canva-training.php') ); ?>">
       <div class="deck-thumb t-canva"><span class="glyph">🎨</span><span class="badge-corner">Design</span></div>
       <div class="deck-info">
         <h3>Canva</h3>
@@ -232,7 +232,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('meta-business-manager-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-meta-business-manager-training.php') ); ?>">
       <div class="deck-thumb t-meta-bm"><span class="glyph">🏢</span><span class="badge-corner">Admin</span></div>
       <div class="deck-info">
         <h3>Meta Business Manager</h3>
@@ -241,7 +241,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('figma-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-figma-training.php') ); ?>">
       <div class="deck-thumb t-figma"><span class="glyph">✏️</span><span class="badge-corner">Design</span></div>
       <div class="deck-info">
         <h3>Figma</h3>
@@ -250,7 +250,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('shipstation-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-shipstation-training.php') ); ?>">
       <div class="deck-thumb t-ship"><span class="glyph">📦</span><span class="badge-corner">Fulfillment</span></div>
       <div class="deck-info">
         <h3>ShipStation</h3>
@@ -259,7 +259,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('meta-ads-account-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-meta-ads-account-training.php') ); ?>">
       <div class="deck-thumb t-meta-ads"><span class="glyph">📣</span><span class="badge-corner">Advertising</span></div>
       <div class="deck-info">
         <h3>Meta Ads</h3>
@@ -268,7 +268,7 @@ a:hover{text-decoration:underline;color:#1340b0}
       </div>
     </a>
 
-    <a class="deck-card" href="<?php echo esc_url( get_permalink( get_page_by_path('claude-training') ) ); ?>">
+    <a class="deck-card" href="<?php echo esc_url( bh_template_url('page-claude-training.php') ); ?>">
       <div class="deck-thumb t-claude"><span class="glyph">🤖</span><span class="badge-corner">AI</span></div>
       <div class="deck-info">
         <h3>Claude</h3>
