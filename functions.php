@@ -209,7 +209,7 @@ add_action('init', function() {
             ? wp_validate_redirect( esc_url_raw( wp_unslash( $_POST['redirect_to'] ) ), '' )
             : '';
         if ( ! $redirect ) {
-            $redirect = bh_template_url('page-brand-hub-index.php') ?: home_url();
+            $redirect = bh_template_url('page-university-landing.php') ?: home_url();
         }
         wp_redirect( $redirect );
         exit;
@@ -384,7 +384,7 @@ add_action('init', function() {
     $redirect = $_COOKIE['bh_oauth_redirect'] ?? '';
     $redirect = $redirect ? wp_validate_redirect( $redirect, '' ) : '';
     if ( ! $redirect ) {
-        $redirect = bh_template_url('page-brand-hub-index.php') ?: home_url();
+        $redirect = bh_template_url('page-university-landing.php') ?: home_url();
     }
 
     // Clear the short-lived OAuth cookies.

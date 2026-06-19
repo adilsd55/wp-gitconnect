@@ -216,7 +216,6 @@ a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
-<?php bh_back_to_index_button( 'brand-hub-index', 'All Hubs', false ); ?>
 
 <!-- TOP BAR -->
 <header class="topbar">

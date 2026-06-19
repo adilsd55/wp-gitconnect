@@ -209,6 +209,7 @@ body::before{
 <?php bh_favicon_tags(); ?>
 </head>
 <body>
+<?php bh_back_to_index_button( 'university-landing', 'University', false ); ?>
 
 <!-- TOP BAR -->
 <header class="topbar">
