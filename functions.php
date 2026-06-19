@@ -58,9 +58,12 @@ function bh_favicon_tags() {
 // page uses). Inline styles keep it independent of each template's own CSS / fonts.
 function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All Trainings', $show_signout = true ) {
 
-    $template_file = ( strpos( $target, 'brand' ) !== false )
-        ? 'page-brand-hub-index.php'
-        : 'page-training-hub-index.php';
+    $template_map = [
+        'brand-hub-index'    => 'page-brand-hub-index.php',
+        'training-hub-index' => 'page-training-hub-index.php',
+        'university-landing' => 'page-university-landing.php',
+    ];
+    $template_file = $template_map[ $target ] ?? 'page-training-hub-index.php';
     $url = bh_template_url( $template_file );
     if ( ! $url ) {
         return;
@@ -72,7 +75,7 @@ function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All 
     );
     ?>
     <style>
-      /* ── back button (bottom-left) ── */
+      /* ── bottom-left fixed bar ── */
       .bh-fab-wrap{
         position:fixed; left:20px; bottom:20px; z-index:99999;
         display:flex; align-items:center; gap:10px; flex-wrap:wrap;
@@ -89,33 +92,31 @@ function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All 
       .bh-back-btn:hover{ background:#3A3530; transform:translateY(-2px); box-shadow:0 12px 28px -8px rgba(0,0,0,0.55); }
       .bh-back-btn .bh-arrow{ font-size:15px; line-height:1; transition:transform .25s ease; }
       .bh-back-btn:hover .bh-arrow{ transform:translateX(-3px); }
-      /* ── sign-out (fixed top-right, every page) ── */
-      .bh-signout-fixed{
-        position:fixed; top:10px; right:16px; z-index:999999;
+      /* ── sign-out pill (bottom-left, beside back button) ── */
+      .bh-signout-btn{
         display:inline-flex; align-items:center; gap:7px;
-        padding:8px 16px; border-radius:999px; text-decoration:none;
+        padding:11px 18px; border-radius:999px; text-decoration:none;
         font-family:'DM Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
-        background:#8E1219; color:#fff;
-        border:1px solid #8E1219;
-        box-shadow:0 4px 14px rgba(0,0,0,0.25);
-        transition:background .2s, border-color .2s, transform .2s, box-shadow .2s;
+        font-size:11px; letter-spacing:0.14em; text-transform:uppercase; font-weight:700;
+        background:#8E1219; color:#fff; border:1px solid #8E1219;
+        box-shadow:0 8px 24px -8px rgba(0,0,0,0.45);
+        transition:background .2s, border-color .2s, transform .25s ease, box-shadow .25s ease;
       }
-      .bh-signout-fixed:hover{ background:#6f0e14; border-color:#6f0e14; transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,0.32); text-decoration:none; }
-      .bh-signout-fixed .bh-so-icon{ font-size:.95rem; line-height:1; }
-      @media print{ .bh-fab-wrap, .bh-signout-fixed{ display:none; } }
+      .bh-signout-btn:hover{ background:#6f0e14; border-color:#6f0e14; transform:translateY(-2px); box-shadow:0 12px 28px -8px rgba(0,0,0,0.55); text-decoration:none; }
+      @media print{ .bh-fab-wrap{ display:none; } }
     </style>
     <div class="bh-fab-wrap">
       <a href="<?php echo esc_url( $url ); ?>" class="bh-back-btn" aria-label="<?php echo esc_attr( $label ); ?>">
         <span class="bh-arrow" aria-hidden="true">&larr;</span>
         <span><?php echo esc_html( $label ); ?></span>
       </a>
+      <?php if ( $show_signout && is_user_logged_in() ) : ?>
+      <a href="<?php echo esc_url( $logout_url ); ?>" class="bh-signout-btn" aria-label="Sign out">
+        <span>🚪</span><span>Sign Out</span>
+      </a>
+      <?php endif; ?>
     </div>
-    <?php if ( $show_signout && is_user_logged_in() ) : ?>
-    <a href="<?php echo esc_url( $logout_url ); ?>" class="bh-signout-fixed" aria-label="Sign out">
-      <span class="bh-so-icon">🚪</span><span>Sign Out</span>
-    </a>
-    <?php endif; ?><?php
+    <?php
 }
 
 // BRAND HUB PROTECTION
