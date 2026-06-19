@@ -111,6 +111,7 @@ add_action('template_redirect', function() {
     $protected_templates = [
         // Landing / index pages
         'University Landing',
+        'Company Policy Hub',
         // Brand hubs
         'Brand Hub Index',
         'Aline Insoles Brand Hub',
