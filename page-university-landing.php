@@ -227,9 +227,12 @@ a:hover{text-decoration:underline}
       </div>
     </div>
     <nav class="topnav">
-      <a href="inventel-company-policy-hub__11_.html"><span class="ic">📋</span><span class="lbl">Policy Hub</span></a>
-      <a href="index.html"><span class="ic">🏷️</span><span class="lbl">Brand Hubs</span></a>
-      <a href="InvenTel_Resource_Library_Landing.html"><span class="ic">📚</span><span class="lbl">Resource Library</span></a>
+      <a href="<?php echo esc_url(bh_template_url('page-company-policy-hub.php')); ?>"><span class="ic">📋</span><span class="lbl">Policy Hub</span></a>
+      <a href="<?php echo esc_url(bh_template_url('page-brand-hub-index.php')); ?>"><span class="ic">🏷️</span><span class="lbl">Brand Hubs</span></a>
+      <a href="<?php echo esc_url(bh_template_url('page-training-hub-index.php')); ?>"><span class="ic">📚</span><span class="lbl">Resource Library</span></a>
+      <?php if ( is_user_logged_in() ) : $logout_url = wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ); ?>
+      <a href="<?php echo esc_url( $logout_url ); ?>"><span class="ic">🚪</span><span class="lbl">Sign Out</span></a>
+      <?php endif; ?>
     </nav>
   </div>
 </header>
@@ -288,7 +291,7 @@ a:hover{text-decoration:underline}
     </div>
     <div class="grid" id="grid">
 
-      <a class="card" href="inventel-company-policy-hub__11_.html">
+      <a class="card" href="<?php echo esc_url(bh_template_url('page-company-policy-hub.php')); ?>">
         <div class="thumb t-policy"><span class="glyph">📋</span></div>
         <div class="card-body">
           <span class="req-flag">★ Start Here · Onboarding</span>
@@ -309,7 +312,7 @@ a:hover{text-decoration:underline}
       </a>
 
       <!-- BRAND HUBS -->
-      <a class="card" href="index.html">
+      <a class="card" href="<?php echo esc_url(bh_template_url('page-brand-hub-index.php')); ?>">
         <div class="thumb t-brand"><span class="glyph">🏷️</span></div>
         <div class="card-body">
           <div class="card-name">Brand Knowledge Hubs</div>
@@ -329,7 +332,7 @@ a:hover{text-decoration:underline}
       </a>
 
       <!-- RESOURCE LIBRARY -->
-      <a class="card" href="InvenTel_Resource_Library_Landing.html">
+      <a class="card" href="<?php echo esc_url(bh_template_url('page-training-hub-index.php')); ?>">
         <div class="thumb t-library"><span class="glyph">📚</span></div>
         <div class="card-body">
           <div class="card-name">Resource Library</div>
