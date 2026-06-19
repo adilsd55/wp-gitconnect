@@ -45,7 +45,7 @@ body{font-family:'Inter',sans-serif;background:var(--iv-paper);color:var(--iv-te
 .nav-inner{display:flex;align-items:center;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
 .nav-brand{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:#fff;white-space:nowrap;letter-spacing:.04em;flex-shrink:0;display:flex;align-items:center;gap:9px}
 .nav-brand .nav-dot{width:9px;height:9px;border-radius:50%;background:var(--iv-amber);box-shadow:0 0 0 3px rgba(232,163,61,.25);flex-shrink:0}
-.nav-search-wrap{flex:1;position:relative;max-width:440px}
+.nav-search-wrap{flex:1;position:relative}
 .nav-search{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(46,125,209,.35);color:#fff;padding:7px 12px 7px 32px;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:all .15s}
 .nav-search::placeholder{color:rgba(207,226,243,.55)}
 .nav-search:focus{border-color:var(--iv-signal);background:rgba(255,255,255,.11)}
