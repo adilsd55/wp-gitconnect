@@ -216,7 +216,7 @@ a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
-<?php bh_back_to_index_button( 'training-hub-index', 'All Trainings', false ); ?>
+<?php bh_back_to_index_button( 'brand-hub-index', 'All Hubs', false ); ?>
 
 <!-- TOP BAR -->
 <header class="topbar">
@@ -229,7 +229,7 @@ a:hover{text-decoration:underline}
       </div>
     </div>
     <nav class="topnav">
-      <a href="<?php echo esc_url(bh_template_url('page-company-policy-hub.php')); ?>"><span class="ic">📋</span><span class="lbl">Policy Hub</span></a>
+      <?php $__ph = get_page_by_path('company-policy-hub'); ?><a href="<?php echo esc_url($__ph ? get_permalink($__ph->ID) : bh_template_url('page-company-policy-hub.php')); ?>"><span class="ic">📋</span><span class="lbl">Policy Hub</span></a>
       <a href="<?php echo esc_url(bh_template_url('page-brand-hub-index.php')); ?>"><span class="ic">🏷️</span><span class="lbl">Brand Hubs</span></a>
       <a href="<?php echo esc_url(bh_template_url('page-training-hub-index.php')); ?>"><span class="ic">📚</span><span class="lbl">Resource Library</span></a>
       <?php if ( is_user_logged_in() ) : ?>
@@ -293,7 +293,7 @@ a:hover{text-decoration:underline}
     </div>
     <div class="grid" id="grid">
 
-      <a class="card" href="<?php echo esc_url(bh_template_url('page-company-policy-hub.php')); ?>">
+      <a class="card" href="<?php $__ph = $__ph ?? get_page_by_path('company-policy-hub'); echo esc_url($__ph ? get_permalink($__ph->ID) : bh_template_url('page-company-policy-hub.php')); ?>">
         <div class="thumb t-policy"><span class="glyph">📋</span></div>
         <div class="card-body">
           <span class="req-flag">★ Start Here · Onboarding</span>
