@@ -76,6 +76,8 @@ a:hover{text-decoration:underline}
 }
 .topnav a:hover{text-decoration:none;background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-1px)}
 .topnav a .ic{font-size:.95rem;line-height:1}
+.topnav a.signout{color:#fff;background:var(--red-deep);border-color:var(--red-deep)}
+.topnav a.signout:hover{background:#6f0e14;border-color:#6f0e14}
 @media(max-width:620px){
   .topnav a{padding:8px 12px}
   .topnav a .lbl{display:none}
@@ -214,7 +216,7 @@ a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
-<?php bh_back_to_index_button(); ?>
+<?php bh_back_to_index_button( 'training-hub-index', 'All Trainings', false ); ?>
 
 <!-- TOP BAR -->
 <header class="topbar">
@@ -230,6 +232,9 @@ a:hover{text-decoration:underline}
       <a href="<?php echo esc_url(bh_template_url('page-company-policy-hub.php')); ?>"><span class="ic">📋</span><span class="lbl">Policy Hub</span></a>
       <a href="<?php echo esc_url(bh_template_url('page-brand-hub-index.php')); ?>"><span class="ic">🏷️</span><span class="lbl">Brand Hubs</span></a>
       <a href="<?php echo esc_url(bh_template_url('page-training-hub-index.php')); ?>"><span class="ic">📚</span><span class="lbl">Resource Library</span></a>
+      <?php if ( is_user_logged_in() ) : ?>
+      <a class="signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>"><span class="ic">🚪</span><span class="lbl">Sign Out</span></a>
+      <?php endif; ?>
     </nav>
   </div>
 </header>
