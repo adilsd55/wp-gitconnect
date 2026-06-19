@@ -1,10 +1,12 @@
-<?php /* Template Name: University Landing */ ?>
+﻿<?php /* Template Name: University Landing */ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inventel University — Learning Home</title>
+<?php bh_favicon_tags(); ?>
 <meta name="description" content="InvenTel University. Two sections: Brand Knowledge Hubs and the Resource Library. Learn the brands you support and the platforms you work in.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,9 +68,6 @@ a:hover{text-decoration:underline}
 .mark-txt small{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;line-height:1}
 .mark-txt strong{font-size:1.02rem;font-weight:700}
 .topnav{margin-left:auto;display:flex;align-items:center;gap:8px}
-.topbar .tag{margin-left:auto;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--red-deep);font-weight:700;border:1px solid var(--rule);padding:6px 12px;border-radius:999px;background:var(--cream)}
-.topnav + .tag{margin-left:0}
-@media(max-width:560px){.topbar .tag{display:none}}
 .topnav a{
   font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
   color:var(--red-deep);border:1px solid var(--rule);
@@ -76,8 +75,6 @@ a:hover{text-decoration:underline}
   display:inline-flex;align-items:center;gap:7px;transition:background .2s,border-color .2s,color .2s,transform .2s;
 }
 .topnav a:hover{text-decoration:none;background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-1px)}
-.topnav a.signout{color:#fff;background:var(--red-deep);border-color:var(--red-deep)}
-.topnav a.signout:hover{background:#6f0e14;border-color:#6f0e14}
 .topnav a .ic{font-size:.95rem;line-height:1}
 @media(max-width:620px){
   .topnav a{padding:8px 12px}
@@ -105,8 +102,9 @@ a:hover{text-decoration:underline}
   font-size:clamp(2.5rem,6.2vw,4.5rem);line-height:1.02;letter-spacing:-.01em;
   max-width:18ch;
 }
-.hero h1 em{font-style:italic;color:var(--red);position:relative}
+.hero h1 .hl-red{font-style:italic;color:var(--red);position:relative}
 .hero h1 .u{
+  color:var(--ink);font-style:normal;
   background:linear-gradient(transparent 64%,rgba(196,30,42,.30) 64%);
 }
 .lede{
@@ -157,8 +155,15 @@ a:hover{text-decoration:underline}
 .sec-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.01em}
 .sec-head p{color:var(--muted);font-size:.95rem;max-width:40ch}
 
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.req-flag{
+  display:inline-flex;align-items:center;gap:6px;font-size:.62rem;font-weight:800;
+  letter-spacing:.11em;text-transform:uppercase;color:#fff;background:var(--red);
+  padding:5px 11px;border-radius:999px;margin-bottom:12px;align-self:flex-start;
+}
+
 .card{
   position:relative;display:flex;flex-direction:column;
   border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;
@@ -183,6 +188,7 @@ a:hover{text-decoration:underline}
 .card:hover .thumb .glyph{transform:scale(1.07)}
 .t-brand{background:linear-gradient(155deg,#A52A2A,#6D0000)}
 .t-library{background:linear-gradient(155deg,#D13030,#8E1219)}
+.t-policy{background:linear-gradient(150deg,#2d0000,#7a0a0a)}
 .card-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
 .card-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;line-height:1.1}
 .card-tag{font-size:.9rem;color:var(--red-deep);font-weight:600;font-style:italic;font-family:'Fraunces',serif;margin-top:4px}
@@ -206,9 +212,9 @@ a:hover{text-decoration:underline}
   .hero{padding:60px 0 50px}
 }
 </style>
-<?php bh_favicon_tags(); ?>
 </head>
 <body>
+<?php bh_back_to_index_button(); ?>
 
 <!-- TOP BAR -->
 <header class="topbar">
@@ -221,13 +227,10 @@ a:hover{text-decoration:underline}
       </div>
     </div>
     <nav class="topnav">
-      <a href="<?php echo esc_url( bh_template_url('page-brand-hub-index.php') ); ?>"><span class="ic">🏷️</span><span class="lbl">Brand Hubs</span></a>
-      <a href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ); ?>"><span class="ic">📚</span><span class="lbl">Resource Library</span></a>
-      <?php if ( is_user_logged_in() ) : ?>
-      <a class="signout" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'brand_hub_logout', '1', home_url( '/' ) ), 'brand_hub_logout' ) ); ?>"><span class="ic">🚪</span><span class="lbl">Sign Out</span></a>
-      <?php endif; ?>
+      <a href="inventel-company-policy-hub__11_.html"><span class="ic">📋</span><span class="lbl">Policy Hub</span></a>
+      <a href="index.html"><span class="ic">🏷️</span><span class="lbl">Brand Hubs</span></a>
+      <a href="InvenTel_Resource_Library_Landing.html"><span class="ic">📚</span><span class="lbl">Resource Library</span></a>
     </nav>
-    <span class="tag">Internal · Onboarding & Reference</span>
   </div>
 </header>
 
@@ -236,8 +239,8 @@ a:hover{text-decoration:underline}
   <div class="hero-bg"></div>
   <div class="wrap">
     <span class="eyebrow">Inventel team</span>
-    <h1>One home for everything you <em class="u">learn</em> here.</h1>
-    <p class="lede">Welcome to Inventel University. Everything is organized into two sections — the brands you support, and the platforms you work in. Whether you're brand new or just sharpening up, start with whichever one fits what you need today.</p>
+    <h1>One home for <em class="hl-red">everything</em> you <span class="u">learn</span> here.</h1>
+    <p class="lede">Welcome to Inventel University. Everything is organized into three sections — how the company works, the brands you support, and the platforms you work in. Whether you're brand new or just sharpening up, start with whichever one fits what you need today.</p>
   </div>
 </section>
 
@@ -251,7 +254,7 @@ a:hover{text-decoration:underline}
         <div class="step">
           <span class="num">1</span>
           <h3>Choose your section</h3>
-          <p>Head into the <b>Brand Knowledge Hubs</b> to learn a brand, or the <b>Resource Library</b> to learn a platform or tool.</p>
+          <p>Start with the <b>Company Policy Hub</b> to learn how we work, then head into the <b>Brand Hubs</b> or <b>Resource Library</b> as needed.</p>
         </div>
         <div class="step">
           <span class="num">2</span>
@@ -266,7 +269,7 @@ a:hover{text-decoration:underline}
       </div>
       <div class="guide-note">
         <span class="ic">📌</span>
-        <span>Not sure which section you need? <b>Brands</b> = what we sell. <b>Library</b> = the tools we use to sell it. Most people will use both over time.</span>
+        <span>Not sure where to begin? <b>Policy Hub</b> = how the company runs. <b>Brands</b> = what we sell. <b>Library</b> = the tools we use to sell it. New hires start with the Policy Hub.</span>
       </div>
       <div class="guide-note">
         <span class="ic">💡</span>
@@ -285,8 +288,28 @@ a:hover{text-decoration:underline}
     </div>
     <div class="grid" id="grid">
 
+      <a class="card" href="inventel-company-policy-hub__11_.html">
+        <div class="thumb t-policy"><span class="glyph">📋</span></div>
+        <div class="card-body">
+          <span class="req-flag">★ Start Here · Onboarding</span>
+          <div class="card-name">Company Policy &amp; Onboarding Hub</div>
+          <div class="card-tag">How Inventel works — and how we work together</div>
+          <p class="card-desc">The single source of truth for how the company runs. Reviewed by every new hire during onboarding, and available to all team members as a reference.</p>
+          <ul class="card-list">
+            <li>Company handbook, code of conduct &amp; expectations</li>
+            <li>Org structure, leadership &amp; key HR contacts</li>
+            <li>Working hours, time off &amp; PTO policy</li>
+            <li>Accounting, invoicing &amp; day-to-day processes</li>
+          </ul>
+          <div class="card-foot">
+            <span class="chip">All Team Members</span>
+            <span class="go">Open hub <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </a>
+
       <!-- BRAND HUBS -->
-      <a class="card" href="<?php echo esc_url( bh_template_url('page-brand-hub-index.php') ); ?>">
+      <a class="card" href="index.html">
         <div class="thumb t-brand"><span class="glyph">🏷️</span></div>
         <div class="card-body">
           <div class="card-name">Brand Knowledge Hubs</div>
@@ -306,7 +329,7 @@ a:hover{text-decoration:underline}
       </a>
 
       <!-- RESOURCE LIBRARY -->
-      <a class="card" href="<?php echo esc_url( bh_template_url('page-training-hub-index.php') ); ?>">
+      <a class="card" href="InvenTel_Resource_Library_Landing.html">
         <div class="thumb t-library"><span class="glyph">📚</span></div>
         <div class="card-body">
           <div class="card-name">Resource Library</div>
