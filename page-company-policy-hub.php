@@ -362,7 +362,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
 </style>
 </head>
 <body>
-<?php bh_back_to_index_button(); ?>
+<?php bh_back_to_index_button( 'university-landing', 'University' ); ?>
 
 <!-- ============ TOP NAV ============ -->
 <nav id="top-nav">
