@@ -123,55 +123,23 @@ function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All 
 // Redirect non-logged-in visitors away from brand hub pages to the login page.
 add_action('template_redirect', function() {
 
-    $protected_templates = [
-        // Landing / index pages
-        'University Landing',
-        'Company Policy Hub',
-        // Brand hubs
-        'Brand Hub Index',
-        'Aline Insoles Brand Hub',
-        'Pizza Pack Brand Hub',
-        'Spark Brand Hub',
-        'SugarMD Brand Hub',
-        'Wild Earth Brand Hub',
-        'Clean & Hit Brand Hub',
-        'Drain Buddy Brand Hub',
-        // Platform training pages
-        'Training Hub Index',
-        'Canva Training',
-        'Claude Training',
-        'Figma Training',
-        'Google Workspace Training',
-        'Gorgias Training',
-        'Meta Ads Account Training',
-        'Meta Business Manager Training',
-        'Recharge Training',
-        'ShipStation Training',
-        'Shopify Training',
-        'Triple Whale Training',
-    ];
+    if ( ! is_page() || is_user_logged_in() ) {
+        return;
+    }
 
-    if ( is_page() ) {
-        $template = get_post_meta( get_the_ID(), '_wp_page_template', true );
-        $template_file = get_theme_file_path( $template );
-        $template_name = '';
-        if ( $template && file_exists( $template_file ) ) {
-            $data = get_file_data( $template_file, [ 'Template Name' => 'Template Name' ] );
-            $template_name = $data['Template Name'] ?? '';
-        }
+    $template = basename( get_post_meta( get_the_ID(), '_wp_page_template', true ) );
 
-        if ( in_array( $template_name, $protected_templates ) && ! is_user_logged_in() ) {
-            $login_page = bh_template_url('page-brand-hub-login.php');
-            if ( $login_page ) {
-                // Remember where they were headed so we can return them after login.
-                $login_page = add_query_arg(
-                    'redirect_to',
-                    rawurlencode( home_url( add_query_arg( [] ) ) ),
-                    $login_page
-                );
-                wp_redirect( $login_page );
-                exit;
-            }
+    // Protect every custom page template except the login page itself.
+    if ( $template && $template !== 'page-brand-hub-login.php' && strpos( $template, 'page-' ) === 0 ) {
+        $login_page = bh_template_url( 'page-brand-hub-login.php' );
+        if ( $login_page ) {
+            $login_page = add_query_arg(
+                'redirect_to',
+                rawurlencode( home_url( add_query_arg( [] ) ) ),
+                $login_page
+            );
+            wp_redirect( $login_page );
+            exit;
         }
     }
 });
