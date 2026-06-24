@@ -1,4 +1,6 @@
-<?php /* Template Name: Recharge Training */ ?>
+﻿<?php /* Template Name: Recharge Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,6 @@
-<?php /* Template Name: Triple Whale Training */ ?>
+﻿<?php /* Template Name: Triple Whale Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

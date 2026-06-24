@@ -1,4 +1,6 @@
-<?php /* Template Name: Wild Earth Brand Hub */ ?>
+﻿<?php /* Template Name: Wild Earth Brand Hub */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

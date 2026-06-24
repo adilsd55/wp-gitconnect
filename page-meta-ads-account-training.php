@@ -1,4 +1,6 @@
-<?php /* Template Name: Meta Ads Account Training */ ?>
+﻿<?php /* Template Name: Meta Ads Account Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

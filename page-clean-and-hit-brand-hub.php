@@ -1,4 +1,6 @@
-<?php /* Template Name: Clean & Hit Brand Hub */ ?>
+﻿<?php /* Template Name: Clean & Hit Brand Hub */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

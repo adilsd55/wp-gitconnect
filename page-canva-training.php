@@ -1,4 +1,6 @@
-<?php /* Template Name: Canva Training */ ?>
+﻿<?php /* Template Name: Canva Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

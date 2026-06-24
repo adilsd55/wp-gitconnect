@@ -1,4 +1,6 @@
-<?php /* Template Name: Meta Business Manager Training */ ?>
+﻿<?php /* Template Name: Meta Business Manager Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,6 @@
 ﻿<?php /* Template Name: Company Policy Hub */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

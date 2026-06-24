@@ -1,4 +1,6 @@
-<?php /* Template Name: Google Workspace Training */ ?>
+﻿<?php /* Template Name: Google Workspace Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

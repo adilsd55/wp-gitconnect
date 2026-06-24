@@ -1,4 +1,13 @@
 <?php /* Template Name: Brand Hub Index */ ?>
+<?php
+if ( ! is_user_logged_in() ) {
+    $__l = get_posts(['post_type'=>'page','post_status'=>'publish','numberposts'=>1,'fields'=>'ids','meta_key'=>'_wp_page_template','meta_value'=>'page-brand-hub-login.php']);
+    if ( $__l ) { wp_redirect( add_query_arg('redirect_to', rawurlencode(home_url(add_query_arg([]))), get_permalink($__l[0])), 302 ); exit; }
+    $__f = get_theme_file_path('page-brand-hub-login.php');
+    if ( file_exists($__f) ) { include $__f; exit; }
+    wp_die('Access restricted.', 'Login Required', ['response' => 403]);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

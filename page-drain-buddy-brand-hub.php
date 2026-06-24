@@ -1,4 +1,6 @@
-<?php /* Template Name: Drain Buddy Brand Hub */ ?>
+﻿<?php /* Template Name: Drain Buddy Brand Hub */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

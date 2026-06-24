@@ -1,4 +1,6 @@
-<?php /* Template Name: Shopify Training */ ?>
+﻿<?php /* Template Name: Shopify Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,4 +1,6 @@
-<?php /* Template Name: Figma Training */ ?>
+﻿<?php /* Template Name: Figma Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

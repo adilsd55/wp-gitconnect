@@ -1,4 +1,6 @@
-<?php /* Template Name: SugarMD Brand Hub */ ?>
+﻿<?php /* Template Name: SugarMD Brand Hub */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

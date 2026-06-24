@@ -1,4 +1,6 @@
-<?php /* Template Name: Pizza Pack Brand Hub */ ?>
+﻿<?php /* Template Name: Pizza Pack Brand Hub */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

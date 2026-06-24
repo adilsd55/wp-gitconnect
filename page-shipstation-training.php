@@ -1,4 +1,6 @@
-<?php /* Template Name: ShipStation Training */ ?>
+﻿<?php /* Template Name: ShipStation Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

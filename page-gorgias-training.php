@@ -1,4 +1,6 @@
-<?php /* Template Name: Gorgias Training */ ?>
+﻿<?php /* Template Name: Gorgias Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>

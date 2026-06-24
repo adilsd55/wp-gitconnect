@@ -1,4 +1,6 @@
-<?php /* Template Name: Claude Training */ ?>
+﻿<?php /* Template Name: Claude Training */ ?>
+<?php
+>
 <!DOCTYPE html>
 <html lang="en">
 <head>
