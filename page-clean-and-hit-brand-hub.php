@@ -1,6 +1,5 @@
 ﻿<?php /* Template Name: Clean & Hit Brand Hub */ ?>
-<?php
->
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

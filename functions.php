@@ -43,6 +43,26 @@ function bh_template_url( $template_file, $fallback = '' ) {
     return $fallback !== '' ? $fallback : home_url( '/' );
 }
 
+// AUTH GUARD — called at the top of every protected template before any HTML output.
+function bh_require_login() {
+    if ( is_user_logged_in() ) return;
+    $bhlids = get_posts( [
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1,
+        'fields'      => 'ids',
+        'meta_key'    => '_wp_page_template',
+        'meta_value'  => 'page-brand-hub-login.php',
+    ] );
+    if ( $bhlids ) {
+        wp_redirect( add_query_arg( 'redirect_to', rawurlencode( home_url( add_query_arg( [] ) ) ), get_permalink( $bhlids[0] ) ), 302 );
+        exit;
+    }
+    $bhlfile = get_theme_file_path( 'page-brand-hub-login.php' );
+    if ( file_exists( $bhlfile ) ) { include $bhlfile; exit; }
+    wp_die( 'Access restricted.', 'Login Required', [ 'response' => 403 ] );
+}
+
 // FAVICON
 // These templates don't call wp_head(), so the favicon must be printed manually.
 // Call bh_favicon_tags() right before </head> in each template.
