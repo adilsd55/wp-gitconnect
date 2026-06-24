@@ -120,28 +120,39 @@ function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All 
 }
 
 // BRAND HUB PROTECTION
-// Redirect non-logged-in visitors away from brand hub pages to the login page.
-add_action('template_redirect', function() {
+// Intercept the actual template file WordPress is about to load and redirect
+// unauthenticated users to the login page before any output is sent.
+add_filter('template_include', function( $template ) {
 
-    if ( ! is_page() || is_user_logged_in() ) {
-        return;
+    if ( is_user_logged_in() ) {
+        return $template;
     }
 
-    $template = basename( get_post_meta( get_the_ID(), '_wp_page_template', true ) );
+    $basename = basename( $template );
 
     // Protect every custom page template except the login page itself.
-    if ( $template && $template !== 'page-brand-hub-login.php' && strpos( $template, 'page-' ) === 0 ) {
-        $login_page = bh_template_url( 'page-brand-hub-login.php' );
-        if ( $login_page ) {
-            $login_page = add_query_arg(
+    if ( $basename && $basename !== 'page-brand-hub-login.php' && strpos( $basename, 'page-' ) === 0 ) {
+        $login_url = bh_template_url( 'page-brand-hub-login.php' );
+
+        // Guard against infinite redirect when the login page URL isn't configured yet.
+        if ( $login_url && $login_url !== home_url( '/' ) ) {
+            $login_url = add_query_arg(
                 'redirect_to',
                 rawurlencode( home_url( add_query_arg( [] ) ) ),
-                $login_page
+                $login_url
             );
-            wp_redirect( $login_page );
+            wp_redirect( $login_url );
             exit;
         }
+
+        // Fallback: serve the login template directly so the user still sees a login form.
+        $login_template = get_theme_file_path( 'page-brand-hub-login.php' );
+        if ( file_exists( $login_template ) ) {
+            return $login_template;
+        }
     }
+
+    return $template;
 });
 
 // CUSTOM LOGIN HANDLER
