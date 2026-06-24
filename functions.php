@@ -12,8 +12,12 @@
  */
 if ( ! defined( 'BH_GOOGLE_CLIENT_ID' ) )     define( 'BH_GOOGLE_CLIENT_ID', '' );
 if ( ! defined( 'BH_GOOGLE_CLIENT_SECRET' ) ) define( 'BH_GOOGLE_CLIENT_SECRET', '' );
-// Only Google accounts on this domain may sign in.
-if ( ! defined( 'BH_ALLOWED_DOMAIN' ) )       define( 'BH_ALLOWED_DOMAIN', 'inventel.net' );
+// Comma-separated list of allowed Google Workspace / email domains.
+if ( ! defined( 'BH_ALLOWED_DOMAINS' ) ) define( 'BH_ALLOWED_DOMAINS', 'inventel.net,inventel.com,wildearth.com' );
+
+function bh_allowed_domains() {
+    return array_map( 'trim', explode( ',', BH_ALLOWED_DOMAINS ) );
+}
 
 add_action('after_setup_theme', function() {
     add_theme_support('title-tag');
@@ -177,8 +181,9 @@ add_action('init', function() {
             exit;
         }
 
-        // Restrict access to @inventel.net email addresses only
-        if ( ! str_ends_with( strtolower( $user->user_email ), '@inventel.net' ) ) {
+        // Restrict access to allowed domains only.
+        $email_domain = substr( strtolower( $user->user_email ), strrpos( $user->user_email, '@' ) + 1 );
+        if ( ! in_array( $email_domain, bh_allowed_domains(), true ) ) {
             wp_logout();
             wp_redirect( add_query_arg( 'login', 'unauthorized', $login_page ) );
             exit;
@@ -246,7 +251,6 @@ add_action('init', function() {
         'response_type' => 'code',
         'scope'         => 'openid email profile',
         'state'         => $state,
-        'hd'            => BH_ALLOWED_DOMAIN, // hint Google to the Workspace domain
         'prompt'        => 'select_account',
         'access_type'   => 'online',
     ] );
@@ -319,12 +323,13 @@ add_action('init', function() {
     $email_verified = ! empty( $claims['email_verified'] ) &&
                       ( $claims['email_verified'] === true || $claims['email_verified'] === 'true' );
     $hd             = strtolower( $claims['hd'] ?? '' );
-    $domain         = strtolower( BH_ALLOWED_DOMAIN );
+    $allowed        = bh_allowed_domains();
+    $email_domain   = substr( $email, strrpos( $email, '@' ) + 1 );
 
-    // Enforce the allowed Google Workspace domain.
+    // Enforce the allowed domains.
     $domain_ok = $email_verified
-        && substr( $email, -strlen( '@' . $domain ) ) === '@' . $domain
-        && ( $hd === '' || $hd === $domain );
+        && in_array( $email_domain, $allowed, true )
+        && ( $hd === '' || in_array( $hd, $allowed, true ) );
 
     if ( ! $email || ! $domain_ok ) {
         wp_redirect( bh_login_page_url( 'unauthorized' ) );
