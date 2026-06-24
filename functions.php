@@ -120,45 +120,66 @@ function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All 
 }
 
 // BRAND HUB PROTECTION
-// Every WordPress page requires login except the login page itself.
-// Uses template_redirect (fires before output) + template_include (belt-and-suspenders).
+// Every WordPress page requires login — no exceptions except the login page itself.
 
 add_action('template_redirect', function() {
     if ( is_user_logged_in() ) return;
     if ( ! is_singular('page') ) return;
 
-    // Allow the login page through
+    // Allow only the login page through
     $tmpl = get_post_meta( get_the_ID(), '_wp_page_template', true );
     if ( $tmpl === 'page-brand-hub-login.php' ) return;
 
-    $login_url = bh_template_url('page-brand-hub-login.php');
-    if ( ! $login_url || $login_url === home_url('/') ) return;
+    // Always block — find the login page URL or serve the login template directly.
+    $login_ids = get_posts([
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1,
+        'fields'      => 'ids',
+        'meta_key'    => '_wp_page_template',
+        'meta_value'  => 'page-brand-hub-login.php',
+    ]);
 
-    wp_redirect(
-        add_query_arg('redirect_to', rawurlencode(home_url(add_query_arg([]))), $login_url),
-        302
-    );
-    exit;
+    if ( ! empty( $login_ids ) ) {
+        $login_url = add_query_arg('redirect_to', rawurlencode(home_url(add_query_arg([]))), get_permalink($login_ids[0]));
+        wp_redirect( $login_url, 302 );
+        exit;
+    }
+
+    // Login page not yet assigned in WP Admin — serve the login template file directly.
+    $login_file = get_theme_file_path('page-brand-hub-login.php');
+    if ( file_exists( $login_file ) ) {
+        include $login_file;
+        exit;
+    }
+
+    wp_die('Access restricted. Please contact your administrator.', 'Login Required', ['response' => 403]);
 }, 1);
 
 add_filter('template_include', function( $template ) {
     if ( is_user_logged_in() ) return $template;
 
-    $basename = basename($template);
+    $basename = basename( $template );
     if ( ! $basename || $basename === 'page-brand-hub-login.php' ) return $template;
-    if ( strpos($basename, 'page-') !== 0 ) return $template;
+    if ( strpos( $basename, 'page-') !== 0 ) return $template;
 
-    $login_url = bh_template_url('page-brand-hub-login.php');
-    if ( $login_url && $login_url !== home_url('/') ) {
-        wp_redirect(
-            add_query_arg('redirect_to', rawurlencode(home_url(add_query_arg([]))), $login_url),
-            302
-        );
+    $login_ids = get_posts([
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1,
+        'fields'      => 'ids',
+        'meta_key'    => '_wp_page_template',
+        'meta_value'  => 'page-brand-hub-login.php',
+    ]);
+
+    if ( ! empty( $login_ids ) ) {
+        $login_url = add_query_arg('redirect_to', rawurlencode(home_url(add_query_arg([]))), get_permalink($login_ids[0]));
+        wp_redirect( $login_url, 302 );
         exit;
     }
 
-    $login_template = get_theme_file_path('page-brand-hub-login.php');
-    if ( file_exists($login_template) ) return $login_template;
+    $login_file = get_theme_file_path('page-brand-hub-login.php');
+    if ( file_exists( $login_file ) ) return $login_file;
 
     return $template;
 });
