@@ -121,7 +121,6 @@ function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All 
 
 
 // BRAND HUB PROTECTION
-<<<<<<< Updated upstream
 // Intercept the actual template file WordPress is about to load and redirect
 // unauthenticated users to the login page before any output is sent.
 add_filter('template_include', function( $template ) {
@@ -136,7 +135,6 @@ add_filter('template_include', function( $template ) {
     if ( $basename && $basename !== 'page-brand-hub-login.php' && strpos( $basename, 'page-' ) === 0 ) {
         $login_url = bh_template_url( 'page-brand-hub-login.php' );
 
-        // Guard against infinite redirect when the login page URL isn't configured yet.
         if ( $login_url && $login_url !== home_url( '/' ) ) {
             $login_url = add_query_arg(
                 'redirect_to',
@@ -152,26 +150,6 @@ add_filter('template_include', function( $template ) {
         if ( file_exists( $login_template ) ) {
             return $login_template;
         }
-=======
-// All pages require login. Only the login page itself is exempt.
-add_action('template_redirect', function() {
-    if ( ! is_page() ) return;
-    if ( is_user_logged_in() ) return;
-
-    // Allow the login page through - everything else requires authentication.
-    \ = get_post_meta( get_the_ID(), '_wp_page_template', true );
-    if ( \ === 'page-brand-hub-login.php' ) return;
-
-    \ = bh_template_url('page-brand-hub-login.php');
-    if ( \ ) {
-        $login_page = add_query_arg(
-            'redirect_to',
-            rawurlencode( home_url( add_query_arg( [] ) ) ),
-            $login_page
-        );
-        wp_redirect( $login_page );
-        exit;
->>>>>>> Stashed changes
     }
 
     return $template;
