@@ -1,4 +1,5 @@
-<?php /* Template Name: ShipStation Training */ ?>
+﻿<?php /* Template Name: ShipStation Training */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -346,7 +346,7 @@ body::before{
       </span>
       <span>Inventel  Internal</span>
     </div>
-    <h1>Brand<br><span class="ital">Hubs.</span></h1>
+    <h1>InvenTel<br><span class="ital">University.</span></h1>
     <p>Team access only. Sign in to continue.</p>
   </div>
 

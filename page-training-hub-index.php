@@ -1,4 +1,5 @@
-<?php /* Template Name: Training Hub Index */ ?>
+﻿<?php /* Template Name: Training Hub Index */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

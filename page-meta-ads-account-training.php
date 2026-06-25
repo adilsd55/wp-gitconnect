@@ -1,4 +1,5 @@
-<?php /* Template Name: Meta Ads Account Training */ ?>
+﻿<?php /* Template Name: Meta Ads Account Training */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

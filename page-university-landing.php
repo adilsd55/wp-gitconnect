@@ -1,4 +1,5 @@
 ﻿<?php /* Template Name: University Landing */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

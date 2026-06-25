@@ -1,4 +1,5 @@
-<?php /* Template Name: Claude Training */ ?>
+﻿<?php /* Template Name: Claude Training */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

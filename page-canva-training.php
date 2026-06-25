@@ -1,4 +1,5 @@
-<?php /* Template Name: Canva Training */ ?>
+﻿<?php /* Template Name: Canva Training */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

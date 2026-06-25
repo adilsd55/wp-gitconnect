@@ -1,4 +1,5 @@
-<?php /* Template Name: Google Workspace Training */ ?>
+﻿<?php /* Template Name: Google Workspace Training */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

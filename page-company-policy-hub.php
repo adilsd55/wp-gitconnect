@@ -1,4 +1,5 @@
 ﻿<?php /* Template Name: Company Policy Hub */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

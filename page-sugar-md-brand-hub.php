@@ -1,4 +1,5 @@
-<?php /* Template Name: SugarMD Brand Hub */ ?>
+﻿<?php /* Template Name: SugarMD Brand Hub */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

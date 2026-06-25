@@ -1,4 +1,5 @@
-<?php /* Template Name: Triple Whale Training */ ?>
+﻿<?php /* Template Name: Triple Whale Training */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

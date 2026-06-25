@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
  * GOOGLE SIGN-IN CONFIG
@@ -45,6 +45,26 @@ function bh_template_url( $template_file, $fallback = '' ) {
         return get_permalink( $ids[0] );
     }
     return $fallback !== '' ? $fallback : home_url( '/' );
+}
+
+// AUTH GUARD — called at the top of every protected template before any HTML output.
+function bh_require_login() {
+    if ( is_user_logged_in() ) return;
+    $bhlids = get_posts( [
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1,
+        'fields'      => 'ids',
+        'meta_key'    => '_wp_page_template',
+        'meta_value'  => 'page-brand-hub-login.php',
+    ] );
+    if ( $bhlids ) {
+        wp_redirect( add_query_arg( 'redirect_to', rawurlencode( home_url( add_query_arg( [] ) ) ), get_permalink( $bhlids[0] ) ), 302 );
+        exit;
+    }
+    $bhlfile = get_theme_file_path( 'page-brand-hub-login.php' );
+    if ( file_exists( $bhlfile ) ) { include $bhlfile; exit; }
+    wp_die( 'Access restricted.', 'Login Required', [ 'response' => 403 ] );
 }
 
 // FAVICON
@@ -124,37 +144,66 @@ function bh_back_to_index_button( $target = 'training-hub-index', $label = 'All 
 }
 
 // BRAND HUB PROTECTION
-// Intercept the actual template file WordPress is about to load and redirect
-// unauthenticated users to the login page before any output is sent.
-add_filter('template_include', function( $template ) {
+// Every WordPress page requires login — no exceptions except the login page itself.
 
-    if ( is_user_logged_in() ) {
-        return $template;
+add_action('template_redirect', function() {
+    if ( is_user_logged_in() ) return;
+    if ( ! is_singular('page') ) return;
+
+    // Allow only the login page through
+    $tmpl = get_post_meta( get_the_ID(), '_wp_page_template', true );
+    if ( $tmpl === 'page-brand-hub-login.php' ) return;
+
+    // Always block — find the login page URL or serve the login template directly.
+    $login_ids = get_posts([
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1,
+        'fields'      => 'ids',
+        'meta_key'    => '_wp_page_template',
+        'meta_value'  => 'page-brand-hub-login.php',
+    ]);
+
+    if ( ! empty( $login_ids ) ) {
+        $login_url = add_query_arg('redirect_to', rawurlencode(home_url(add_query_arg([]))), get_permalink($login_ids[0]));
+        wp_redirect( $login_url, 302 );
+        exit;
     }
+
+    // Login page not yet assigned in WP Admin — serve the login template file directly.
+    $login_file = get_theme_file_path('page-brand-hub-login.php');
+    if ( file_exists( $login_file ) ) {
+        include $login_file;
+        exit;
+    }
+
+    wp_die('Access restricted. Please contact your administrator.', 'Login Required', ['response' => 403]);
+}, 1);
+
+add_filter('template_include', function( $template ) {
+    if ( is_user_logged_in() ) return $template;
 
     $basename = basename( $template );
+    if ( ! $basename || $basename === 'page-brand-hub-login.php' ) return $template;
+    if ( strpos( $basename, 'page-') !== 0 ) return $template;
 
-    // Protect every custom page template except the login page itself.
-    if ( $basename && $basename !== 'page-brand-hub-login.php' && strpos( $basename, 'page-' ) === 0 ) {
-        $login_url = bh_template_url( 'page-brand-hub-login.php' );
+    $login_ids = get_posts([
+        'post_type'   => 'page',
+        'post_status' => 'publish',
+        'numberposts' => 1,
+        'fields'      => 'ids',
+        'meta_key'    => '_wp_page_template',
+        'meta_value'  => 'page-brand-hub-login.php',
+    ]);
 
-        // Guard against infinite redirect when the login page URL isn't configured yet.
-        if ( $login_url && $login_url !== home_url( '/' ) ) {
-            $login_url = add_query_arg(
-                'redirect_to',
-                rawurlencode( home_url( add_query_arg( [] ) ) ),
-                $login_url
-            );
-            wp_redirect( $login_url );
-            exit;
-        }
-
-        // Fallback: serve the login template directly so the user still sees a login form.
-        $login_template = get_theme_file_path( 'page-brand-hub-login.php' );
-        if ( file_exists( $login_template ) ) {
-            return $login_template;
-        }
+    if ( ! empty( $login_ids ) ) {
+        $login_url = add_query_arg('redirect_to', rawurlencode(home_url(add_query_arg([]))), get_permalink($login_ids[0]));
+        wp_redirect( $login_url, 302 );
+        exit;
     }
+
+    $login_file = get_theme_file_path('page-brand-hub-login.php');
+    if ( file_exists( $login_file ) ) return $login_file;
 
     return $template;
 });

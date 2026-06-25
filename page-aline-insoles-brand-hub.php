@@ -1,4 +1,5 @@
-<?php /* Template Name: Aline Insoles Brand Hub */ ?>
+﻿<?php /* Template Name: Aline Insoles Brand Hub */ ?>
+<?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
