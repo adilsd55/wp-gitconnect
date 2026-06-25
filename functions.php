@@ -23,6 +23,18 @@ add_action('after_setup_theme', function() {
     add_theme_support('title-tag');
 });
 
+// Redirect subscriber-level users away from wp-admin and hide the admin bar.
+add_action('admin_init', function() {
+    if ( defined('DOING_AJAX') ) return;
+    if ( current_user_can('edit_posts') ) return;
+    wp_redirect( bh_template_url('page-university-landing.php') ?: home_url('/') );
+    exit;
+});
+
+add_filter('show_admin_bar', function( $show ) {
+    return current_user_can('edit_posts') ? $show : false;
+});
+
 // NOTE: The admin toolbar is intentionally NOT injected into these self-contained
 // templates. They don't call wp_head()/wp_footer(), and attempting to splice the
 // toolbar in via output buffering proved unreliable on some hosts (blank pages).
