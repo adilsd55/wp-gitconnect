@@ -150,9 +150,10 @@ add_action('template_redirect', function() {
     if ( is_user_logged_in() ) return;
     if ( ! is_singular('page') ) return;
 
-    // Allow only the login page through
+    // Allow public pages through (login page, privacy policy).
+    $public_templates = [ 'page-brand-hub-login.php', 'page-privacy-policy.php' ];
     $tmpl = get_post_meta( get_the_ID(), '_wp_page_template', true );
-    if ( $tmpl === 'page-brand-hub-login.php' ) return;
+    if ( in_array( $tmpl, $public_templates, true ) ) return;
 
     // Always block — find the login page URL or serve the login template directly.
     $login_ids = get_posts([
@@ -184,8 +185,9 @@ add_filter('template_include', function( $template ) {
     if ( is_user_logged_in() ) return $template;
 
     $basename = basename( $template );
-    if ( ! $basename || $basename === 'page-brand-hub-login.php' ) return $template;
-    if ( strpos( $basename, 'page-') !== 0 ) return $template;
+    $public_templates = [ 'page-brand-hub-login.php', 'page-privacy-policy.php' ];
+    if ( ! $basename || in_array( $basename, $public_templates, true ) ) return $template;
+    if ( strpos( $basename, 'page-' ) !== 0 ) return $template;
 
     $login_ids = get_posts([
         'post_type'   => 'page',
