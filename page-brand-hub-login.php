@@ -287,6 +287,49 @@ body::before{
   color:var(--ink-faint);
 }
 
+/* APP INFO — required for Google OAuth verification */
+.login-info{
+  margin-top:40px;
+  padding:24px;
+  border-top:1px solid var(--rule);
+  font-size:12.5px;
+  color:var(--ink-mute);
+  line-height:1.6;
+}
+
+.login-info-title{
+  font-family:'DM Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  margin-bottom:12px;
+}
+
+.login-info p + p{
+  margin-top:10px;
+}
+
+.login-info-links{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--paper-edge);
+  font-family:'DM Mono',monospace;
+  font-size:10px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+}
+
+.login-info-links a{
+  color:var(--ink-mute);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.login-info-links a:hover{
+  color:var(--ink);
+}
+
 ::selection{background:var(--ink);color:var(--paper);}
 </style>
 <?php bh_favicon_tags(); ?>
@@ -318,7 +361,7 @@ body::before{
       </div>
     <?php elseif ( $login_status === 'unauthorized' ) : ?>
       <div class="login-alert error">
-        Access is restricted to Inventel team members. Please sign in with your <strong>@inventel.net</strong> Google account.
+        Access is restricted to Inventel team members. Please sign in with a <strong>@inventel.net</strong>, <strong>@inventel.com</strong>, or <strong>@wildearth.com</strong> Google account.
       </div>
     <?php elseif ( $login_status === 'oauth_failed' ) : ?>
       <div class="login-alert error">
@@ -382,7 +425,20 @@ body::before{
   </div>
 
   <div class="login-footer">
-    Brand Knowledge Hubs  <?php echo date('Y'); ?>
+    Brand Knowledge Hubs &copy; <?php echo date('Y'); ?>
+  </div>
+
+  <div class="login-info">
+    <p class="login-info-title">About this application</p>
+    <p>
+      <strong>Inventel Brand Knowledge Hubs</strong> is a private internal portal for team members across Inventel's brand portfolio — including Pizza Pack, Spark, SugarMD, Wild Earth, Clean &amp; Hit, Drain Buddy, and Aline Insoles. It provides brand guidelines, training materials, platform resources, and company policies exclusively for authorised staff.
+    </p>
+    <p>
+      <strong>Why we request your Google account data:</strong> when you choose Sign in with Google, we access your email address and display name solely to verify you are an authorised team member (from an <em>@inventel.net</em>, <em>@inventel.com</em>, or <em>@wildearth.com</em> account) and to personalise your session. We do not store, share, or use your information for any marketing or third-party purpose.
+    </p>
+    <div class="login-info-links">
+      <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>
+    </div>
   </div>
 
 </div>
