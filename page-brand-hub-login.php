@@ -456,7 +456,7 @@ body::before{
   <div class="login-info">
     <p class="login-info-title">About this application</p>
     <p>
-      <strong>Inventel Brand Knowledge Hubs</strong> is a private internal portal for team members across Inventel's brand portfolio — including Pizza Pack, Spark, SugarMD, Wild Earth, Clean &amp; Hit, Drain Buddy, and Aline Insoles. It provides brand guidelines, training materials, platform resources, and company policies exclusively for authorised staff.
+      <strong>Inventel Brand Knowledge Hubs</strong> is a private internal portal for team members across Inventel's brand portfolio. It provides brand guidelines, training materials, platform resources, and company policies exclusively for authorised staff.
     </p>
     <p>
       <strong>Why we request your Google account data:</strong> when you choose Sign in with Google, we access your email address and display name solely to verify you are an authorised team member (<?php

@@ -266,11 +266,12 @@ body::before{
 
     <div class="page-highlight">
       This Privacy Policy applies to <strong>Inventel Brand Knowledge Hubs</strong> — a private internal portal operated by Inventel for use by authorised team members only. It explains what information we collect, how we use it, and your rights regarding that information.
+
     </div>
 
     <h2>1. Who We Are</h2>
     <p>
-      Inventel Brand Knowledge Hubs is operated by <strong>Inventel</strong>. The platform provides brand guidelines, training materials, platform resources, and company policies exclusively to authorised staff across Inventel's brand portfolio, including Pizza Pack, Spark, SugarMD, Wild Earth, Clean &amp; Hit, Drain Buddy, and Aline Insoles.
+      Inventel Brand Knowledge Hubs is operated by <strong>Inventel</strong>. The platform provides brand guidelines, training materials, platform resources, and company policies exclusively to authorised staff across Inventel's brand portfolio.
     </p>
     <p>
       For privacy enquiries, contact us at: <a href="mailto:dev@inventel.net">dev@inventel.net</a>
