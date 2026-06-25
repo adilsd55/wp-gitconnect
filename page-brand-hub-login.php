@@ -376,7 +376,13 @@ body::before{
       </div>
     <?php elseif ( $login_status === 'unauthorized' ) : ?>
       <div class="login-alert error">
-        Access is restricted to authorised team members. Please sign in with a Google account from one of the allowed domains: <strong>@inventel.net</strong>, <strong>@inventel.com</strong>, <strong>@wildearth.com</strong>, <strong>@homeinspotv.com</strong>, <strong>@meati.com</strong>, or <strong>@amzolute.com</strong>.
+        <?php
+        $domains = bh_allowed_domains();
+        $tagged  = array_map( fn($d) => '<strong>@' . esc_html($d) . '</strong>', $domains );
+        $last    = array_pop( $tagged );
+        $list    = $tagged ? implode( ', ', $tagged ) . ', or ' . $last : $last;
+        echo 'Access is restricted to authorised team members. Please sign in with a Google account from one of the allowed domains: ' . $list . '.';
+        ?>
       </div>
     <?php elseif ( $login_status === 'oauth_failed' ) : ?>
       <div class="login-alert error">
@@ -453,7 +459,12 @@ body::before{
       <strong>Inventel Brand Knowledge Hubs</strong> is a private internal portal for team members across Inventel's brand portfolio — including Pizza Pack, Spark, SugarMD, Wild Earth, Clean &amp; Hit, Drain Buddy, and Aline Insoles. It provides brand guidelines, training materials, platform resources, and company policies exclusively for authorised staff.
     </p>
     <p>
-      <strong>Why we request your Google account data:</strong> when you choose Sign in with Google, we access your email address and display name solely to verify you are an authorised team member (from an <em>@inventel.net</em>, <em>@inventel.com</em>, <em>@wildearth.com</em>, <em>@homeinspotv.com</em>, <em>@meati.com</em>, or <em>@amzolute.com</em> account) and to personalise your session. We do not store, share, or use your information for any marketing or third-party purpose.
+      <strong>Why we request your Google account data:</strong> when you choose Sign in with Google, we access your email address and display name solely to verify you are an authorised team member (<?php
+        $domains = bh_allowed_domains();
+        $tagged  = array_map( fn($d) => '<em>@' . esc_html($d) . '</em>', $domains );
+        $last    = array_pop( $tagged );
+        echo ( $tagged ? implode( ', ', $tagged ) . ', or ' . $last : $last );
+        ?> account) and to personalise your session. We do not store, share, or use your information for any marketing or third-party purpose.
     </p>
     <div class="login-info-links">
       <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>
