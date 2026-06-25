@@ -279,7 +279,7 @@ body::before{
     <h2>2. What Information We Collect</h2>
     <p>When you sign in using Google, we receive the following information from your Google account:</p>
     <ul>
-      <li><strong>Email address</strong> — used to verify you are an authorised team member (from an @inventel.net, @inventel.com, or @wildearth.com account)</li>
+      <li><strong>Email address</strong> — used to verify you are an authorised team member (from an @inventel.net, @inventel.com, @wildearth.com, @homeinspotv.com, @meati.com, or @amzolute.com account)</li>
       <li><strong>Display name</strong> — used to identify you within the platform</li>
     </ul>
     <p>

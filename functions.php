@@ -13,7 +13,7 @@
 if ( ! defined( 'BH_GOOGLE_CLIENT_ID' ) )     define( 'BH_GOOGLE_CLIENT_ID', '' );
 if ( ! defined( 'BH_GOOGLE_CLIENT_SECRET' ) ) define( 'BH_GOOGLE_CLIENT_SECRET', '' );
 // Comma-separated list of allowed Google Workspace / email domains.
-if ( ! defined( 'BH_ALLOWED_DOMAINS' ) ) define( 'BH_ALLOWED_DOMAINS', 'inventel.net,inventel.com,wildearth.com' );
+if ( ! defined( 'BH_ALLOWED_DOMAINS' ) ) define( 'BH_ALLOWED_DOMAINS', 'inventel.net,inventel.com,wildearth.com,homeinspotv.com,meati.com,amzolute.com' );
 
 function bh_allowed_domains() {
     return array_map( 'trim', explode( ',', BH_ALLOWED_DOMAINS ) );
