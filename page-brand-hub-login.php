@@ -276,10 +276,25 @@ body::before{
   white-space:nowrap;
 }
 
+/* POLICY LINK — prominent, directly below the card */
+.login-policy{
+  text-align:center;
+  margin-top:20px;
+  font-size:13px;
+  color:var(--ink-mute);
+}
+.login-policy a{
+  color:var(--ink-mute);
+  text-decoration:underline;
+  text-underline-offset:3px;
+  font-weight:500;
+}
+.login-policy a:hover{color:var(--ink);}
+
 /* FOOTER */
 .login-footer{
   text-align:center;
-  margin-top:28px;
+  margin-top:20px;
   font-family:'DM Mono',monospace;
   font-size:10.5px;
   letter-spacing:0.14em;
@@ -423,6 +438,10 @@ body::before{
     </form>
 
   </div>
+
+  <p class="login-policy">
+    <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>
+  </p>
 
   <div class="login-footer">
     Brand Knowledge Hubs &copy; <?php echo date('Y'); ?>
