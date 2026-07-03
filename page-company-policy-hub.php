@@ -37,7 +37,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--iv-paper);color:var(--iv-text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:var(--iv-paper);color:var(--iv-text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:80px}
 
 /* TOP NAV */
 #top-nav{position:sticky;top:0;z-index:1000;background:var(--iv-ink);box-shadow:0 2px 14px rgba(14,27,42,.35)}
