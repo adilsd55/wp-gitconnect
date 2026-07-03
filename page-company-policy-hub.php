@@ -367,7 +367,7 @@ body.printing .name-printed{display:block !important}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
-footer{background:var(--iv-ink);color:var(--iv-sky);text-align:center;padding:30px 20px 90px;font-size:12.5px;font-family:'DM Mono',monospace;letter-spacing:.04em;margin-top:60px}
+footer{background:var(--iv-ink);color:var(--iv-sky);text-align:center;padding:48px 20px;font-size:12.5px;font-family:'DM Mono',monospace;letter-spacing:.04em;margin-top:60px}
 footer .fbrand{color:var(--iv-amber);font-weight:700}
 </style>
 <meta name="robots" content="noindex, nofollow">
