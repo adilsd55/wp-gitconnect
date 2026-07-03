@@ -26,7 +26,7 @@ a:hover{text-decoration:underline;color:#1340b0}
 .stat-val{display:block;font-size:18px;font-weight:800;color:#fcd9b6}
 .stat-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:#fff;opacity:.85}
 .mandatory-bar{background:#2d0000;color:#fcd9b6;text-align:center;padding:10px 20px;font-size:13px;font-weight:600}
-.slide{background:#fff;border-radius:10px;margin:20px auto;max-width:960px;overflow:hidden;border:1px solid #e5e5e0;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.slide{background:#fff;border-radius:10px;margin:20px auto;max-width:960px;overflow-x:auto;overflow-y:visible;border:1px solid #e5e5e0;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 .slide-header{padding:20px 24px 12px;border-bottom:1px solid #e5e5e0;cursor:pointer;user-select:none;position:relative}
 .slide-header:hover{background:#fafaf8}
 .slide-header h2{font-size:19px;font-weight:700;color:#8B0000;margin-bottom:2px;padding-right:30px}
@@ -58,8 +58,8 @@ a:hover{text-decoration:underline;color:#1340b0}
 .card-title{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
 .card-desc{font-size:13px;color:#5c5c5c;margin-bottom:6px}
 .card-meta{font-size:11px;color:#777;margin-bottom:4px}
-.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-@media(max-width:800px){.three-col{grid-template-columns:1fr}}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;min-width:660px}
+@media(max-width:800px){.three-col{grid-template-columns:1fr;min-width:unset}}
 .level-block{border-radius:6px;padding:14px;border:1px solid #e5e5e0}
 .level-block.beg{border-top:3px solid #16a34a;background:#f0fdf4}
 .level-block.int{border-top:3px solid #ca8a04;background:#fefce8}
