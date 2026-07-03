@@ -58,7 +58,7 @@ a:hover{text-decoration:underline;color:#1340b0}
 .card-title{font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px}
 .card-desc{font-size:13px;color:#5c5c5c;margin-bottom:6px}
 .card-meta{font-size:11px;color:#777;margin-bottom:4px}
-.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;min-width:820px}
+.three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;min-width:820px}
 @media(max-width:800px){.three-col{grid-template-columns:1fr;min-width:unset}}
 .level-block{border-radius:6px;padding:14px;border:1px solid #e5e5e0}
 .level-block.beg{border-top:3px solid #16a34a;background:#f0fdf4}
@@ -66,7 +66,7 @@ a:hover{text-decoration:underline;color:#1340b0}
 .level-block.adv{border-top:3px solid #991b1b;background:#fef2f2}
 .level-block h3{font-size:13px;font-weight:700;margin-bottom:8px;color:#166534}
 .level-block.int h3{color:#854d0e}.level-block.adv h3{color:#991b1b}
-.sub-card{background:#fff;border-radius:4px;padding:10px 12px;margin-bottom:8px;border-left:3px solid #16a34a;font-size:12px;min-height:90px}
+.sub-card{background:#fff;border-radius:4px;padding:10px 12px;margin-bottom:8px;border-left:3px solid #16a34a;font-size:12px;min-height:90px;word-break:break-word;overflow-wrap:break-word}
 .level-block.int .sub-card{border-left-color:#ca8a04}
 .level-block.adv .sub-card{border-left-color:#991b1b}
 .sub-card strong{display:block;font-size:12px;font-weight:700;margin-bottom:2px;color:#1a1a1a}
