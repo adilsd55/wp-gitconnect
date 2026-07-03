@@ -4,32 +4,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InvenTel — Company Policy &amp; Onboarding Hub</title>
-<?php bh_favicon_tags(); ?>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* INVENTEL PALETTE — corporate DRTV identity, est. 1992. Deep ink navy + signal blue + warm amber for "broadcast" warmth */
-  --iv-ink:#0E1B2A;            /* deepest navy — hero base, headers */
-  --iv-ink-soft:#13263A;      /* softer navy */
-  --iv-navy:#1C3A57;          /* primary brand navy */
-  --iv-navy-deep:#14293E;     /* darker navy, hover */
-  --iv-navy-light:#2C5176;    /* lighter navy, secondary surface */
-  --iv-signal:#2E7DD1;        /* signal blue — primary accent, links-as-brand */
-  --iv-signal-deep:#1F5DA0;   /* deep signal, hover */
-  --iv-signal-bright:#4A97E6; /* bright signal, glow */
-  --iv-sky:#CFE2F3;           /* pale sky — type on navy */
-  --iv-sky-soft:#E8F1FA;      /* lightest sky — page background panels */
-  --iv-paper:#F4F7FB;         /* page background — cool paper */
-  --iv-amber:#E8A33D;         /* broadcast amber — warm accent, certificate gold */
-  --iv-amber-deep:#C8842A;    /* deep amber */
-  --iv-slate:#5A6B7D;         /* muted slate — secondary type */
-  --iv-text:#15212E;          /* body type */
-  --iv-text-muted:#54616E;    /* muted body */
-  --iv-line:#D5DEE8;          /* hairlines */
-  --iv-link:#0055CC;          /* external links (per spec — blue + underline) */
+  /* INVENTEL PALETTE — corporate DRTV identity, est. 1992. Brand red + charcoal black + white, tuned for readability */
+  --iv-ink:#1A1416;            /* deepest charcoal-black — hero base, headers */
+  --iv-ink-soft:#241A1C;      /* softer charcoal */
+  --iv-navy:#3A2225;          /* primary brand deep — warm charcoal-maroon */
+  --iv-navy-deep:#2A1719;     /* darker, hover */
+  --iv-navy-light:#5A363A;    /* lighter secondary surface */
+  --iv-signal:#C8202A;        /* brand red — primary accent, links-as-brand */
+  --iv-signal-deep:#9E1620;   /* deep red, hover */
+  --iv-signal-bright:#E24049; /* bright red, glow */
+  --iv-sky:#F3D9DB;           /* pale rose — type on dark */
+  --iv-sky-soft:#FBEEEF;      /* lightest rose — page background panels */
+  --iv-paper:#FAF7F7;         /* page background — warm off-white */
+  --iv-amber:#E0A32E;         /* broadcast gold — warm accent, certificate gold */
+  --iv-amber-deep:#BC841F;    /* deep gold */
+  --iv-slate:#6E5F61;         /* muted warm slate — secondary type */
+  --iv-text:#20181A;          /* body type — near-black warm */
+  --iv-text-muted:#645557;    /* muted body */
+  --iv-line:#E7DCDD;          /* hairlines */
+  --iv-link:#B01820;          /* external links — brand red + underline */
   --iv-white:#FFFFFF;
   --iv-danger:#C0392B;
   --iv-danger-deep:#8E2A1F;
@@ -46,8 +44,8 @@ body{font-family:'Inter',sans-serif;background:var(--iv-paper);color:var(--iv-te
 .nav-inner{display:flex;align-items:center;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
 .nav-brand{font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;color:#fff;white-space:nowrap;letter-spacing:.04em;flex-shrink:0;display:flex;align-items:center;gap:9px}
 .nav-brand .nav-dot{width:9px;height:9px;border-radius:50%;background:var(--iv-amber);box-shadow:0 0 0 3px rgba(232,163,61,.25);flex-shrink:0}
-.nav-search-wrap{flex:1;position:relative}
-.nav-search{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(46,125,209,.35);color:#fff;padding:7px 12px 7px 32px;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:all .15s}
+.nav-search-wrap{flex:1;position:relative;max-width:440px}
+.nav-search{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(200,32,42,.35);color:#fff;padding:7px 12px 7px 32px;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:all .15s}
 .nav-search::placeholder{color:rgba(207,226,243,.55)}
 .nav-search:focus{border-color:var(--iv-signal);background:rgba(255,255,255,.11)}
 .nav-search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--iv-signal-bright);fill:none;stroke-width:2;pointer-events:none}
@@ -70,8 +68,8 @@ body{font-family:'Inter',sans-serif;background:var(--iv-paper);color:var(--iv-te
 @keyframes flashAmber{0%{background:rgba(232,163,61,.45);box-shadow:0 0 0 4px rgba(232,163,61,.5)}100%{background:transparent;box-shadow:none}}
 
 /* FLOATING TOC BUTTON */
-#floating-toc-btn{position:fixed;bottom:24px;right:24px;z-index:998;background:var(--iv-signal);color:#fff;border:2px solid var(--iv-ink);width:56px;height:56px;border-radius:50%;cursor:pointer;box-shadow:0 6px 22px rgba(46,125,209,.5);display:flex;align-items:center;justify-content:center;transition:all .2s}
-#floating-toc-btn:hover{background:var(--iv-signal-deep);transform:translateY(-2px);box-shadow:0 8px 26px rgba(46,125,209,.65)}
+#floating-toc-btn{position:fixed;bottom:24px;right:24px;z-index:998;background:var(--iv-signal);color:#fff;border:2px solid var(--iv-ink);width:56px;height:56px;border-radius:50%;cursor:pointer;box-shadow:0 6px 22px rgba(200,32,42,.5);display:flex;align-items:center;justify-content:center;transition:all .2s}
+#floating-toc-btn:hover{background:var(--iv-signal-deep);transform:translateY(-2px);box-shadow:0 8px 26px rgba(200,32,42,.65)}
 #floating-toc-btn svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* TOC DRAWER */
@@ -81,26 +79,26 @@ body{font-family:'Inter',sans-serif;background:var(--iv-paper);color:var(--iv-te
 #toc-drawer.open{transform:translateX(0)}
 .toc-drawer-header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--iv-ink);color:#fff;border-bottom:3px solid var(--iv-signal);position:sticky;top:0;z-index:2}
 .toc-drawer-title{font-family:'Archivo',sans-serif;font-weight:800;color:var(--iv-signal-bright);font-size:1.2rem;letter-spacing:.02em}
-.toc-drawer-close{background:rgba(255,255,255,.12);border:1px solid rgba(46,125,209,.4);color:#fff;font-size:20px;cursor:pointer;line-height:1;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.toc-drawer-close{background:rgba(255,255,255,.12);border:1px solid rgba(200,32,42,.4);color:#fff;font-size:20px;cursor:pointer;line-height:1;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .15s}
 .toc-drawer-close:hover{background:var(--iv-signal);color:#fff;border-color:var(--iv-signal)}
 #toc-drawer-nav{padding:10px 12px 14px;display:flex;flex-direction:column;gap:3px}
-#toc-drawer-nav a{display:flex;align-items:center;gap:10px;background:#fff;color:var(--iv-ink);text-decoration:none;padding:7px 12px;border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;font-weight:600;border:1px solid rgba(46,125,209,.16);border-left:4px solid var(--iv-signal);transition:all .15s;line-height:1.2}
-#toc-drawer-nav a:hover{background:var(--iv-signal);color:#fff;border-color:var(--iv-signal);border-left-color:var(--iv-amber);transform:translateX(3px);opacity:1;box-shadow:0 2px 8px rgba(46,125,209,.3)}
+#toc-drawer-nav a{display:flex;align-items:center;gap:10px;background:#fff;color:var(--iv-ink);text-decoration:none;padding:7px 12px;border-radius:7px;font-size:13px;font-family:'Inter',sans-serif;font-weight:600;border:1px solid rgba(200,32,42,.16);border-left:4px solid var(--iv-signal);transition:all .15s;line-height:1.2}
+#toc-drawer-nav a:hover{background:var(--iv-signal);color:#fff;border-color:var(--iv-signal);border-left-color:var(--iv-amber);transform:translateX(3px);opacity:1;box-shadow:0 2px 8px rgba(200,32,42,.3)}
 #toc-drawer-nav a:hover .toc-drawer-num{background:var(--iv-amber);color:var(--iv-ink)}
 .toc-drawer-num{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:20px;padding:0 6px;background:var(--iv-signal);color:#fff;border-radius:4px;font-family:'DM Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.02em;flex-shrink:0;transition:all .15s}
 .toc-drawer-label{flex:1;min-width:0}
 
 /* TOC SECTION (in-page) */
 #toc-section .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:10px}
-.toc-tile{background:#fff;border:1px solid rgba(46,125,209,.16);border-left:4px solid var(--iv-signal);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--iv-text);display:flex;align-items:center;gap:12px;transition:all .2s;cursor:pointer}
+.toc-tile{background:#fff;border:1px solid rgba(200,32,42,.16);border-left:4px solid var(--iv-signal);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--iv-text);display:flex;align-items:center;gap:12px;transition:all .2s;cursor:pointer}
 .toc-tile:hover{background:var(--iv-sky-soft);border-left-color:var(--iv-amber);transform:translateX(3px);opacity:1;text-decoration:none}
 .toc-tile-num{font-family:'DM Mono',monospace;color:var(--iv-signal-deep);font-size:12px;font-weight:700;min-width:24px}
 .toc-tile-label{font-size:14px;font-weight:600;color:var(--iv-ink)}
 
 /* COLLAPSIBLES */
 .card.collapsible{padding:0;overflow:hidden;transition:all .3s ease}
-.section-header-bar{display:flex;align-items:center;justify-content:space-between;padding:22px 30px;cursor:pointer;user-select:none;background:linear-gradient(135deg,var(--iv-white) 0%,rgba(46,125,209,.08) 100%);transition:background .2s;border-bottom:1px solid transparent}
-.section-header-bar:hover{background:linear-gradient(135deg,var(--iv-sky-soft) 0%,rgba(46,125,209,.16) 100%)}
+.section-header-bar{display:flex;align-items:center;justify-content:space-between;padding:22px 30px;cursor:pointer;user-select:none;background:linear-gradient(135deg,var(--iv-white) 0%,rgba(200,32,42,.08) 100%);transition:background .2s;border-bottom:1px solid transparent}
+.section-header-bar:hover{background:linear-gradient(135deg,var(--iv-sky-soft) 0%,rgba(200,32,42,.16) 100%)}
 .section-header-bar .section-header-left{flex:1;min-width:0}
 .section-header-bar .eyebrow{margin-bottom:4px}
 .section-header-bar h2{margin:0;padding:0;border-bottom:none;font-size:1.5rem}
@@ -122,14 +120,14 @@ p{margin-bottom:14px;color:var(--iv-text)}
 a{color:var(--iv-link);text-decoration:underline}
 a:hover{opacity:.75}
 .eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--iv-signal-deep);margin-bottom:8px;display:block;font-weight:600}
-.card{background:var(--iv-white);border-radius:16px;padding:36px;margin-bottom:20px;box-shadow:0 2px 20px rgba(14,27,42,.07);border:1px solid rgba(46,125,209,.12)}
+.card{background:var(--iv-white);border-radius:16px;padding:36px;margin-bottom:20px;box-shadow:0 2px 20px rgba(14,27,42,.07);border:1px solid rgba(200,32,42,.12)}
 ul,ol{margin:0 0 14px 20px}
 li{margin-bottom:6px}
 strong{color:var(--iv-ink)}
 
 /* HERO */
 #hero{max-width:100%;padding:0;margin:0;background:linear-gradient(140deg,var(--iv-ink) 0%,var(--iv-navy) 55%,var(--iv-navy-deep) 100%);position:relative;overflow:hidden}
-#hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 18% 25%,rgba(46,125,209,.28) 0%,transparent 48%),radial-gradient(circle at 82% 80%,rgba(232,163,61,.18) 0%,transparent 52%),radial-gradient(circle at 60% 0%,rgba(74,151,230,.2) 0%,transparent 55%);pointer-events:none}
+#hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 18% 25%,rgba(200,32,42,.28) 0%,transparent 48%),radial-gradient(circle at 82% 80%,rgba(232,163,61,.18) 0%,transparent 52%),radial-gradient(circle at 60% 0%,rgba(226,64,73,.2) 0%,transparent 55%);pointer-events:none}
 /* faint broadcast scanlines — nods to DRTV heritage */
 #hero::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0px,rgba(255,255,255,.025) 1px,transparent 1px,transparent 4px);pointer-events:none;opacity:.6}
 .hero-inner{max-width:1000px;margin:0 auto;padding:60px 20px 52px;position:relative;z-index:1}
@@ -159,7 +157,7 @@ table{width:100%;border-collapse:collapse;background:#fff;font-size:14px;min-wid
 th{background:var(--iv-ink);color:var(--iv-sky);padding:12px 14px;text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;font-weight:700}
 td{padding:12px 14px;border-bottom:1px solid rgba(14,27,42,.08);vertical-align:top}
 tr:last-child td{border-bottom:none}
-tr:nth-child(even) td{background:rgba(46,125,209,.05)}
+tr:nth-child(even) td{background:rgba(200,32,42,.05)}
 .badge{display:inline-block;padding:3px 9px;border-radius:8px;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
 .badge-core{background:var(--iv-signal);color:#fff}
 .badge-must{background:var(--iv-danger);color:#fff}
@@ -167,14 +165,14 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 
 /* PILLARS / GRID CARDS */
 .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
-.pillar{background:linear-gradient(135deg,var(--iv-white) 0%,rgba(46,125,209,.10) 100%);padding:22px;border-radius:12px;border-left:4px solid var(--iv-signal);transition:transform .2s}
+.pillar{background:linear-gradient(135deg,var(--iv-white) 0%,rgba(200,32,42,.10) 100%);padding:22px;border-radius:12px;border-left:4px solid var(--iv-signal);transition:transform .2s}
 .pillar:hover{transform:translateY(-3px)}
 .pillar-icon{font-size:1.7rem;margin-bottom:10px;display:block}
 .pillar h4{color:var(--iv-ink);margin-bottom:6px;font-size:1rem}
 .pillar p{font-size:13px;color:var(--iv-text-muted);margin-bottom:0;line-height:1.5}
 
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0 8px}
-.feature-tile{background:linear-gradient(135deg,#fff 0%,var(--iv-sky-soft) 100%);border:1px solid rgba(46,125,209,.16);border-left:4px solid var(--iv-signal);border-radius:10px;padding:14px 16px}
+.feature-tile{background:linear-gradient(135deg,#fff 0%,var(--iv-sky-soft) 100%);border:1px solid rgba(200,32,42,.16);border-left:4px solid var(--iv-signal);border-radius:10px;padding:14px 16px}
 .feature-tile-icon{font-size:1.4rem;margin-bottom:6px;display:block;line-height:1}
 .feature-tile h4{margin-bottom:4px;font-size:13.5px;color:var(--iv-ink)}
 .feature-tile p{margin:0;font-size:12.5px;color:var(--iv-text-muted);line-height:1.5}
@@ -191,7 +189,7 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 @media (max-width:640px){.do-dont{grid-template-columns:1fr}}
 
 /* SPEC / DEFINITION TABLE */
-.spec-table{background:#fff;border:1px solid rgba(46,125,209,.18);border-radius:10px;padding:18px 22px;margin:14px 0;font-size:13.5px;line-height:1.6}
+.spec-table{background:#fff;border:1px solid rgba(200,32,42,.18);border-radius:10px;padding:18px 22px;margin:14px 0;font-size:13.5px;line-height:1.6}
 .spec-table dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 18px}
 .spec-table dt{font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--iv-signal-deep);font-weight:700;padding-top:2px}
 .spec-table dd{color:var(--iv-text);margin:0}
@@ -215,7 +213,7 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 .exec-stat b{display:block;font-family:'Archivo',sans-serif;font-weight:900;font-size:1.3rem;color:#fff;line-height:1}
 .exec-stat span{font-size:10.5px;color:var(--iv-sky);line-height:1.3;display:block;margin-top:4px}
 .evp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
-.evp-card{background:linear-gradient(160deg,#fff,var(--iv-sky-soft));border:1px solid rgba(46,125,209,.18);border-top:4px solid var(--iv-amber);border-radius:12px;padding:20px}
+.evp-card{background:linear-gradient(160deg,#fff,var(--iv-sky-soft));border:1px solid rgba(200,32,42,.18);border-top:4px solid var(--iv-amber);border-radius:12px;padding:20px}
 .evp-card .evp-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.1rem;color:var(--iv-ink)}
 .evp-card .evp-role{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--iv-signal-deep);font-weight:700;margin-top:2px}
 .evp-card p{font-size:13px;color:var(--iv-text-muted);margin:10px 0 0;line-height:1.5}
@@ -223,7 +221,7 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 
 /* HR TEAM CARDS */
 .hr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
-.hr-card{background:linear-gradient(160deg,#fff 0%,var(--iv-sky-soft) 100%);border:1px solid rgba(46,125,209,.18);border-top:4px solid var(--iv-signal);border-radius:12px;padding:20px}
+.hr-card{background:linear-gradient(160deg,#fff 0%,var(--iv-sky-soft) 100%);border:1px solid rgba(200,32,42,.18);border-top:4px solid var(--iv-signal);border-radius:12px;padding:20px}
 .hr-card.feature{border-top-color:var(--iv-amber)}
 .hr-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.05rem;color:var(--iv-ink);margin-bottom:2px}
 .hr-role{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--iv-signal-deep);font-weight:700;margin-bottom:4px}
@@ -232,13 +230,13 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 .hr-card li{font-size:12.5px;color:var(--iv-text);margin-bottom:4px;line-height:1.45}
 
 /* GLOSSARY */
-.glossary{background:#fff;padding:24px;border-radius:10px;border:1px solid rgba(46,125,209,.15)}
+.glossary{background:#fff;padding:24px;border-radius:10px;border:1px solid rgba(200,32,42,.15)}
 .glossary dt{font-weight:700;color:var(--iv-signal-deep);font-family:'DM Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin-top:16px}
 .glossary dt:first-child{margin-top:0}
 .glossary dd{margin-left:0;margin-top:4px;font-size:14px;color:var(--iv-text);line-height:1.55}
 
 /* FAQ */
-.faq-item{background:#fff;border:1px solid rgba(46,125,209,.14);border-radius:10px;padding:18px 20px;margin-bottom:10px}
+.faq-item{background:#fff;border:1px solid rgba(200,32,42,.14);border-radius:10px;padding:18px 20px;margin-bottom:10px}
 .faq-q{font-weight:700;color:var(--iv-ink);margin-bottom:10px;padding-left:30px;position:relative;font-size:14px}
 .faq-q::before{content:"Q";position:absolute;left:0;top:-2px;width:22px;height:22px;background:var(--iv-signal);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Mono',monospace}
 .faq-a{color:var(--iv-text-muted);padding-left:30px;font-size:14px;line-height:1.6;margin:0}
@@ -250,10 +248,10 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 .team-callout.cx{background:rgba(46,125,82,.06);border-left-color:var(--iv-success)}
 .team-callout.cx .team-tag{background:var(--iv-success);color:#fff}
 .team-callout.cx .team-tag::before{content:"📞 "}
-.team-callout.newhire{background:rgba(46,125,209,.06);border-left-color:var(--iv-signal)}
+.team-callout.newhire{background:rgba(200,32,42,.06);border-left-color:var(--iv-signal)}
 .team-callout.newhire .team-tag{background:var(--iv-signal);color:#fff}
 .team-callout.newhire .team-tag::before{content:"👋 "}
-.team-callout.lead{background:rgba(28,58,87,.06);border-left-color:var(--iv-navy)}
+.team-callout.lead{background:rgba(58,34,37,.06);border-left-color:var(--iv-navy)}
 .team-callout.lead .team-tag{background:var(--iv-navy);color:var(--iv-amber)}
 .team-callout.lead .team-tag::before{content:"🧭 "}
 .team-callout.finance{background:rgba(232,163,61,.09);border-left-color:var(--iv-amber-deep)}
@@ -270,7 +268,7 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 
 /* DETAIL / DASHBOARD MINI-CARDS */
 .mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
-.mini{background:#fff;border:1px solid rgba(46,125,209,.16);border-radius:10px;padding:16px 18px}
+.mini{background:#fff;border:1px solid rgba(200,32,42,.16);border-radius:10px;padding:16px 18px}
 .mini .mini-k{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--iv-signal-deep);font-weight:700;margin-bottom:6px}
 .mini .mini-v{font-size:13.5px;color:var(--iv-text);line-height:1.5}
 .mini .mini-v strong{color:var(--iv-ink)}
@@ -282,28 +280,39 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 
 /* NUMBERED FLOW */
 .flow{counter-reset:flow;margin-top:16px;display:flex;flex-direction:column;gap:10px}
-.flow-step{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid rgba(46,125,209,.14);border-radius:10px;padding:14px 18px}
+.flow-step{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid rgba(200,32,42,.14);border-radius:10px;padding:14px 18px}
 .flow-step::before{counter-increment:flow;content:counter(flow);flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--iv-signal);color:#fff;font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
 .flow-step-body{font-size:13.5px;line-height:1.55}
 .flow-step-body strong{color:var(--iv-ink)}
 
 /* QUIZ */
-#quiz-section{background:linear-gradient(140deg,var(--iv-ink) 0%,var(--iv-navy) 100%);color:#fff;border-radius:20px;padding:0;margin-top:40px;overflow:hidden;box-shadow:0 8px 32px rgba(14,27,42,.3)}
+#quiz-section{position:relative;background:linear-gradient(140deg,var(--iv-ink) 0%,var(--iv-navy) 55%,var(--iv-navy-deep) 100%);color:#fff;border-radius:20px;padding:0;margin-top:40px;overflow:hidden;box-shadow:0 8px 32px rgba(26,20,22,.3)}
+#quiz-section::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 18% 20%,rgba(200,32,42,.28) 0%,transparent 48%),radial-gradient(circle at 85% 85%,rgba(224,163,46,.16) 0%,transparent 52%),radial-gradient(circle at 60% 0%,rgba(226,64,73,.2) 0%,transparent 55%);pointer-events:none;z-index:0}
+#quiz-section>*{position:relative;z-index:1}
 #quiz-section h2{color:#fff;border:none;margin:0;padding:0}
-#quiz-section .section-header-bar{background:transparent;padding:32px 30px 20px;border-bottom:1px solid rgba(46,125,209,.25)}
+#quiz-section .section-header-bar{background:transparent;padding:32px 30px 20px;border-bottom:1px solid rgba(200,32,42,.25)}
 #quiz-section .section-header-bar:hover{background:rgba(255,255,255,.04)}
 #quiz-section .section-toggle{border-color:var(--iv-signal-bright);color:var(--iv-signal-bright)}
 #quiz-section .section-toggle:hover{background:var(--iv-signal);color:#fff}
 #quiz-section .section-body{padding:20px 30px 40px}
+#quiz-section .section-body p,#quiz-section .section-body li,#quiz-section .section-body em{color:#F7EAEB}
+#quiz-section .section-body p strong,#quiz-section .section-body li strong,#quiz-section .section-body h4 strong{color:#fff}
+#quiz-section .section-body ul li,#quiz-section .section-body ul li strong{color:#F7EAEB}
+/* keep interactive answer/feedback text dark on their light backgrounds */
+#quiz-section .quiz-option,#quiz-section .quiz-option strong,#quiz-section .quiz-option em{color:#fff}
+#quiz-section .quiz-option.correct,#quiz-section .quiz-option.correct strong,#quiz-section .quiz-option.show-correct,#quiz-section .quiz-option.show-correct strong{color:var(--iv-ink)}
+#quiz-section .quiz-feedback.right,#quiz-section .quiz-feedback.right strong,#quiz-section .quiz-feedback.right em{color:var(--iv-ink)}
+#quiz-section .quiz-feedback.wrong,#quiz-section .quiz-feedback.wrong strong,#quiz-section .quiz-feedback.wrong em{color:var(--iv-danger)}
+#quiz-section .quiz-feedback .quiz-explain{color:var(--iv-ink)}
 #quiz-section.collapsed .section-header-bar{border-bottom:none}
-.quiz-container{background:rgba(255,255,255,.06);border-radius:14px;padding:28px;margin-top:20px;border:1px solid rgba(46,125,209,.3)}
+.quiz-container{background:rgba(255,255,255,.06);border-radius:14px;padding:28px;margin-top:20px;border:1px solid rgba(200,32,42,.3)}
 .quiz-progress{font-family:'DM Mono',monospace;font-size:12px;color:var(--iv-amber);letter-spacing:.1em;margin-bottom:16px;text-transform:uppercase}
 .quiz-progress-bar{height:6px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden;margin-bottom:22px}
 .quiz-progress-fill{height:100%;background:var(--iv-signal);transition:width .4s cubic-bezier(.4,0,.2,1);border-radius:3px}
 .quiz-question{font-family:'Archivo',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:22px;line-height:1.35;color:#fff}
 .quiz-options{display:flex;flex-direction:column;gap:10px}
-.quiz-option{background:rgba(255,255,255,.06);border:2px solid rgba(46,125,209,.3);color:#fff;padding:14px 18px;border-radius:10px;text-align:left;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit;display:flex;align-items:center;gap:12px}
-.quiz-option:hover{background:rgba(46,125,209,.18);border-color:var(--iv-signal);transform:translateX(4px)}
+.quiz-option{background:rgba(255,255,255,.06);border:2px solid rgba(200,32,42,.3);color:#fff;padding:14px 18px;border-radius:10px;text-align:left;font-size:14px;cursor:pointer;transition:all .2s;font-family:inherit;display:flex;align-items:center;gap:12px}
+.quiz-option:hover{background:rgba(200,32,42,.18);border-color:var(--iv-signal);transform:translateX(4px)}
 .quiz-option.correct{background:#FEF6E3;border-color:var(--iv-amber);color:var(--iv-ink);font-weight:700;box-shadow:0 0 0 3px rgba(232,163,61,.4);position:relative}
 .quiz-option.correct::after{content:"✓ CORRECT";position:absolute;right:14px;top:50%;transform:translateY(-50%);background:var(--iv-success);color:#fff;font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:20px}
 .quiz-option.incorrect{background:rgba(192,57,43,.85);border-color:#fff;color:#fff;font-weight:700;position:relative}
@@ -320,21 +329,21 @@ tr:nth-child(even) td{background:rgba(46,125,209,.05)}
 .quiz-explain{margin-top:10px;padding:12px 14px;background:rgba(0,0,0,.04);border-radius:8px;font-size:13.5px;font-weight:400;line-height:1.6;color:var(--iv-ink)}
 
 /* INTERACTIVE CHECKLIST */
-.cl-progress-wrap{position:sticky;top:calc(var(--nav-h) + 4px);z-index:5;background:var(--iv-sky-soft);border:1px solid rgba(46,125,209,.2);border-radius:12px;padding:14px 18px;margin:6px 0 18px}
+.cl-progress-wrap{position:sticky;top:calc(var(--nav-h) + 4px);z-index:5;background:var(--iv-sky-soft);border:1px solid rgba(200,32,42,.2);border-radius:12px;padding:14px 18px;margin:6px 0 18px}
 .cl-progress-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
 .cl-progress-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--iv-signal-deep);font-weight:700}
 .cl-progress-count{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--iv-ink)}
-.cl-progress-bar{height:8px;background:rgba(28,58,87,.12);border-radius:5px;overflow:hidden}
+.cl-progress-bar{height:8px;background:rgba(58,34,37,.12);border-radius:5px;overflow:hidden}
 .cl-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--iv-signal),var(--iv-signal-bright));border-radius:5px;transition:width .35s cubic-bezier(.4,0,.2,1)}
 .cl-progress-fill.done{background:linear-gradient(90deg,var(--iv-success),#3FA873)}
 .cl-actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
-.cl-reset-btn{background:transparent;border:1px solid rgba(46,125,209,.4);color:var(--iv-signal-deep);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:5px 12px;border-radius:7px;cursor:pointer;transition:all .15s}
+.cl-reset-btn{background:transparent;border:1px solid rgba(200,32,42,.4);color:var(--iv-signal-deep);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:5px 12px;border-radius:7px;cursor:pointer;transition:all .15s}
 .cl-reset-btn:hover{background:var(--iv-signal);color:#fff;border-color:var(--iv-signal)}
 .cl-group{margin-top:18px}
 .cl-group-title{font-family:'Archivo',sans-serif;font-size:1.05rem;font-weight:700;color:var(--iv-signal-deep);margin-bottom:8px;display:flex;align-items:center;gap:8px}
 ul.cl-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
 ul.cl-list li{margin:0}
-.cl-item{display:flex;align-items:flex-start;gap:12px;background:#fff;border:1px solid rgba(46,125,209,.16);border-left:3px solid var(--iv-line);border-radius:9px;padding:12px 14px;cursor:pointer;transition:all .15s;user-select:none;text-align:left;width:100%;font-family:inherit;font-size:13.5px;line-height:1.5;color:var(--iv-text)}
+.cl-item{display:flex;align-items:flex-start;gap:12px;background:#fff;border:1px solid rgba(200,32,42,.16);border-left:3px solid var(--iv-line);border-radius:9px;padding:12px 14px;cursor:pointer;transition:all .15s;user-select:none;text-align:left;width:100%;font-family:inherit;font-size:13.5px;line-height:1.5;color:var(--iv-text)}
 .cl-item:hover{background:var(--iv-sky-soft);border-left-color:var(--iv-signal)}
 .cl-checkbox{flex-shrink:0;width:20px;height:20px;border:2px solid var(--iv-signal);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s;background:#fff}
 .cl-checkbox svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .15s}
@@ -361,6 +370,8 @@ body.printing .name-printed{display:block !important}
 footer{background:var(--iv-ink);color:var(--iv-sky);text-align:center;padding:30px 20px;font-size:12.5px;font-family:'DM Mono',monospace;letter-spacing:.04em}
 footer .fbrand{color:var(--iv-amber);font-weight:700}
 </style>
+<meta name="robots" content="noindex, nofollow">
+<?php bh_favicon_tags(); ?>
 </head>
 <body>
 <?php bh_back_to_index_button( 'university-landing', 'University' ); ?>
@@ -402,20 +413,22 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
     <a href="#status"><span class="toc-drawer-num">14</span><span class="toc-drawer-label">Google Chat Status &amp; Availability</span></a>
     <a href="#meetings"><span class="toc-drawer-num">15</span><span class="toc-drawer-label">Meetings &amp; Camera Policy</span></a>
     <a href="#scheduling"><span class="toc-drawer-num">16</span><span class="toc-drawer-label">Scheduling &amp; Meeting Etiquette</span></a>
-    <a href="#pmtool"><span class="toc-drawer-num">17</span><span class="toc-drawer-label">The InvenTel PM Tool</span></a>
-    <a href="#brand"><span class="toc-drawer-num">18</span><span class="toc-drawer-label">Brand Knowledge &amp; University</span></a>
-    <a href="#channels"><span class="toc-drawer-num">19</span><span class="toc-drawer-label">Company-Wide Channels</span></a>
-    <a href="#social"><span class="toc-drawer-num">20</span><span class="toc-drawer-label">Social Media Engagement</span></a>
+    <a href="#access"><span class="toc-drawer-num">17</span><span class="toc-drawer-label">Requesting Access to Platforms &amp; Accounts</span></a>
+    <a href="#pmtool"><span class="toc-drawer-num">18</span><span class="toc-drawer-label">The InvenTel PM Tool</span></a>
+    <a href="#brand"><span class="toc-drawer-num">19</span><span class="toc-drawer-label">Brand Knowledge &amp; University</span></a>
+    <a href="#channels"><span class="toc-drawer-num">20</span><span class="toc-drawer-label">Company-Wide Channels</span></a>
     <a href="#mbr"><span class="toc-drawer-num">21</span><span class="toc-drawer-label">Company-Wide Meetings</span></a>
-    <a href="#equipment"><span class="toc-drawer-num">22</span><span class="toc-drawer-label">Equipment &amp; Connectivity</span></a>
-    <a href="#ip"><span class="toc-drawer-num">23</span><span class="toc-drawer-label">Freelancing &amp; IP</span></a>
-    <a href="#security"><span class="toc-drawer-num">24</span><span class="toc-drawer-label">Data Security &amp; Acceptable Use</span></a>
-    <a href="#conduct"><span class="toc-drawer-num">25</span><span class="toc-drawer-label">Code of Conduct &amp; Grievances</span></a>
-    <a href="#agreements"><span class="toc-drawer-num">26</span><span class="toc-drawer-label">Your Contract &amp; Handbook</span></a>
-    <a href="#glossary"><span class="toc-drawer-num">27</span><span class="toc-drawer-label">Glossary</span></a>
-    <a href="#faq"><span class="toc-drawer-num">28</span><span class="toc-drawer-label">FAQ</span></a>
-    <a href="#checklist"><span class="toc-drawer-num">29</span><span class="toc-drawer-label">New-Hire Setup Checklist</span></a>
-    <a href="#quiz-section"><span class="toc-drawer-num">30</span><span class="toc-drawer-label">Knowledge Check Quiz</span></a>
+    <a href="#social"><span class="toc-drawer-num">22</span><span class="toc-drawer-label">Social Media Engagement</span></a>
+    <a href="#equipment"><span class="toc-drawer-num">23</span><span class="toc-drawer-label">Equipment &amp; Connectivity</span></a>
+    <a href="#disciplinary"><span class="toc-drawer-num">24</span><span class="toc-drawer-label">Contractor Disciplinary Policy</span></a>
+    <a href="#ip"><span class="toc-drawer-num">25</span><span class="toc-drawer-label">Freelancing &amp; IP</span></a>
+    <a href="#security"><span class="toc-drawer-num">26</span><span class="toc-drawer-label">Data Security &amp; Acceptable Use</span></a>
+    <a href="#conduct"><span class="toc-drawer-num">27</span><span class="toc-drawer-label">Code of Conduct &amp; Grievances</span></a>
+    <a href="#agreements"><span class="toc-drawer-num">28</span><span class="toc-drawer-label">Your Contract &amp; Handbook</span></a>
+    <a href="#glossary"><span class="toc-drawer-num">29</span><span class="toc-drawer-label">Glossary</span></a>
+    <a href="#faq"><span class="toc-drawer-num">30</span><span class="toc-drawer-label">FAQ</span></a>
+    <a href="#checklist"><span class="toc-drawer-num">31</span><span class="toc-drawer-label">New-Hire Setup Checklist</span></a>
+    <a href="#quiz-section"><span class="toc-drawer-num">32</span><span class="toc-drawer-label">Knowledge Check Quiz</span></a>
   </nav>
 </aside>
 
@@ -425,9 +438,9 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
     <div class="hero-kicker"><span class="line"></span>Est. 1992 · Direct Response Television</div>
     <h1>Company Policy &amp;<br><span class="accent">Onboarding Hub</span></h1>
     <p class="hero-tagline">Every standard, process, and expectation that keeps our remote, global team running — in one place, for new hires and current team members alike.</p>
-    <p class="hero-meta">HQ in New Jersey, USA · The whole company runs on Eastern Time · Working hours 8:30 AM – 5:30 PM EST · This hub does not constitute a contractor agreement</p>
+    <p class="hero-meta">HQ in New Jersey, USA · The whole company runs on Eastern Time · Working hours 8:30 AM – 5:30 PM ET · This hub does not constitute a contractor agreement</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num amber">8:30–5:30</div><div class="hero-stat-lbl">Standard working hours, EST — wherever you are</div></div>
+      <div class="hero-stat"><div class="hero-stat-num amber">8:30–5:30</div><div class="hero-stat-lbl">Standard working hours, ET — wherever you are</div></div>
       <div class="hero-stat"><div class="hero-stat-num">ET</div><div class="hero-stat-lbl">One clock — always communicate &amp; schedule in Eastern Time</div></div>
       <div class="hero-stat"><div class="hero-stat-num">10 min</div><div class="hero-stat-lbl">Reply or react to chats within 10 minutes during office hours</div></div>
       <div class="hero-stat"><div class="hero-stat-num">16 days</div><div class="hero-stat-lbl">Annual paid leave: 5 PTO + 5 sick + 6 floating holidays</div></div>
@@ -471,20 +484,22 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <a class="toc-tile" href="#status"><span class="toc-tile-num">14</span><span class="toc-tile-label">Google Chat Status &amp; Availability</span></a>
         <a class="toc-tile" href="#meetings"><span class="toc-tile-num">15</span><span class="toc-tile-label">Meetings &amp; Camera Policy</span></a>
         <a class="toc-tile" href="#scheduling"><span class="toc-tile-num">16</span><span class="toc-tile-label">Scheduling &amp; Meeting Etiquette</span></a>
-        <a class="toc-tile" href="#pmtool"><span class="toc-tile-num">17</span><span class="toc-tile-label">The InvenTel PM Tool</span></a>
-        <a class="toc-tile" href="#brand"><span class="toc-tile-num">18</span><span class="toc-tile-label">Brand Knowledge &amp; University</span></a>
-        <a class="toc-tile" href="#channels"><span class="toc-tile-num">19</span><span class="toc-tile-label">Company-Wide Channels</span></a>
-        <a class="toc-tile" href="#social"><span class="toc-tile-num">20</span><span class="toc-tile-label">Social Media Engagement</span></a>
+        <a class="toc-tile" href="#access"><span class="toc-tile-num">17</span><span class="toc-tile-label">Requesting Access to Platforms &amp; Accounts</span></a>
+        <a class="toc-tile" href="#pmtool"><span class="toc-tile-num">18</span><span class="toc-tile-label">The InvenTel PM Tool</span></a>
+        <a class="toc-tile" href="#brand"><span class="toc-tile-num">19</span><span class="toc-tile-label">Brand Knowledge &amp; University</span></a>
+        <a class="toc-tile" href="#channels"><span class="toc-tile-num">20</span><span class="toc-tile-label">Company-Wide Channels</span></a>
         <a class="toc-tile" href="#mbr"><span class="toc-tile-num">21</span><span class="toc-tile-label">Company-Wide Meetings</span></a>
-        <a class="toc-tile" href="#equipment"><span class="toc-tile-num">22</span><span class="toc-tile-label">Equipment &amp; Connectivity</span></a>
-        <a class="toc-tile" href="#ip"><span class="toc-tile-num">23</span><span class="toc-tile-label">Freelancing &amp; IP</span></a>
-        <a class="toc-tile" href="#security"><span class="toc-tile-num">24</span><span class="toc-tile-label">Data Security &amp; Acceptable Use</span></a>
-        <a class="toc-tile" href="#conduct"><span class="toc-tile-num">25</span><span class="toc-tile-label">Code of Conduct &amp; Grievances</span></a>
-        <a class="toc-tile" href="#agreements"><span class="toc-tile-num">26</span><span class="toc-tile-label">Your Contract &amp; Handbook</span></a>
-        <a class="toc-tile" href="#glossary"><span class="toc-tile-num">27</span><span class="toc-tile-label">Glossary</span></a>
-        <a class="toc-tile" href="#faq"><span class="toc-tile-num">28</span><span class="toc-tile-label">FAQ</span></a>
-        <a class="toc-tile" href="#checklist"><span class="toc-tile-num">29</span><span class="toc-tile-label">New-Hire Setup Checklist</span></a>
-        <a class="toc-tile" href="#quiz-section"><span class="toc-tile-num">30</span><span class="toc-tile-label">Knowledge Check Quiz</span></a>
+        <a class="toc-tile" href="#social"><span class="toc-tile-num">22</span><span class="toc-tile-label">Social Media Engagement</span></a>
+        <a class="toc-tile" href="#equipment"><span class="toc-tile-num">23</span><span class="toc-tile-label">Equipment &amp; Connectivity</span></a>
+        <a class="toc-tile" href="#disciplinary"><span class="toc-tile-num">24</span><span class="toc-tile-label">Contractor Disciplinary Policy</span></a>
+        <a class="toc-tile" href="#ip"><span class="toc-tile-num">25</span><span class="toc-tile-label">Freelancing &amp; IP</span></a>
+        <a class="toc-tile" href="#security"><span class="toc-tile-num">26</span><span class="toc-tile-label">Data Security &amp; Acceptable Use</span></a>
+        <a class="toc-tile" href="#conduct"><span class="toc-tile-num">27</span><span class="toc-tile-label">Code of Conduct &amp; Grievances</span></a>
+        <a class="toc-tile" href="#agreements"><span class="toc-tile-num">28</span><span class="toc-tile-label">Your Contract &amp; Handbook</span></a>
+        <a class="toc-tile" href="#glossary"><span class="toc-tile-num">29</span><span class="toc-tile-label">Glossary</span></a>
+        <a class="toc-tile" href="#faq"><span class="toc-tile-num">30</span><span class="toc-tile-label">FAQ</span></a>
+        <a class="toc-tile" href="#checklist"><span class="toc-tile-num">31</span><span class="toc-tile-label">New-Hire Setup Checklist</span></a>
+        <a class="toc-tile" href="#quiz-section"><span class="toc-tile-num">32</span><span class="toc-tile-label">Knowledge Check Quiz</span></a>
       </div>
     </div>
   </div>
@@ -495,7 +510,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">01 · Start Here</span>
+        <span class="eyebrow">1 · Start Here</span>
         <h2>Welcome &amp; How to Use This Hub</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -517,7 +532,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="feature-tile"><span class="feature-tile-icon">▾</span><h4>Collapsible sections</h4><p>Click any section header to fold it away and scan the structure faster.</p></div>
       </div>
 
-      <p style="margin-top:18px;font-size:13.5px;color:var(--iv-text-muted)"><em>This handbook does not constitute a contractor agreement. Policy content amended August 4, 2025 (v5); onboarding content current as of June 2026. Employees are notified of any material changes.</em></p>
+      <p style="margin-top:18px;font-size:13.5px;color:var(--iv-text-muted)"><em>This policy hub does not constitute a contractor agreement. Policy content amended August 4, 2025 (v5); onboarding content current as of June 2026. Employees are notified of any material changes.</em></p>
     </div>
   </div>
 </section>
@@ -527,19 +542,18 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">02 · The Company</span>
+        <span class="eyebrow">2 · The Company</span>
         <h2>About InvenTel &amp; TelNet</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
     <div class="section-body">
-      <p><strong>InvenTel</strong> was established in 1992 in the United States and has led the Direct Response Television (DRTV) sector from the start, building creative marketing strategies that forge strong bonds between brands and their audiences. You'll see two names in your work — <strong>InvenTel</strong> (the brand portfolio and DRTV side) and <strong>TelNet</strong> (the data-fueled, expert-led marketing agency side). They operate together; the policies in this hub apply across both.</p>
+      <p><strong>InvenTel</strong> was established in 1992 in the United States and has led the Direct Response Television (DRTV) sector from the start, building creative marketing strategies that forge strong bonds between brands and their audiences. Two names anchor most of the work: <strong>InvenTel</strong> (the brand portfolio and DRTV side) and <strong>TelNet</strong> (the data-fueled, expert-led marketing agency side). They operate together, and the policies in this hub apply across both. Beyond those two, you'll also see the company referred to by other names across email domains, documents, and tools — that's expected, and you don't need to track which is which. Names you may encounter include <strong>InvenTel.TV</strong>, <strong>InvenTel.net</strong>, <strong>InvenTel Innovations</strong>, and <strong>AsSeenOnTV LLC</strong>, and our agency work is sometimes presented under <strong>TelNet</strong>. You may also come across brands and ventures such as <strong>Home Inspo</strong> and <strong>Beyond Patents</strong>, with others in the portfolio and more in development.</p>
+      <p style="font-size:13px;color:var(--iv-text-muted)"><em>This list isn't exhaustive and will grow over time. If you're ever unsure which name applies to something, just ask your Direct Report or HR — it's a common question.</em></p>
 
       <div class="pillars" style="margin-top:18px">
         <div class="pillar"><span class="pillar-icon">📺</span><h4>InvenTel · Mission</h4><p>Elevate holistic brand performance — increasing revenue, market share, and brand awareness across the InvenTel portfolio while building scalable marketing processes to grow the company through an agency model.</p></div>
         <div class="pillar"><span class="pillar-icon">💡</span><h4>InvenTel · Vision</h4><p>Develop solutions that solve real problems and bring value to people's lives — from the first spark of an idea to seeing products in stores worldwide.</p></div>
-        <div class="pillar"><span class="pillar-icon">📈</span><h4>TelNet · Mission</h4><p>Empower businesses to thrive and innovate — fueling growth with data-driven brand and marketing strategies, grounded in authenticity and a merchant mindset.</p></div>
-        <div class="pillar"><span class="pillar-icon">🚀</span><h4>TelNet · Vision</h4><p>Diverge. Disrupt. Thrive. — a future where businesses grow through innovative, data-driven strategies that set new standards of success.</p></div>
       </div>
 
       <h3 style="margin-top:24px">Who you connect with &amp; how we work together</h3>
@@ -551,21 +565,21 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
 
       <h3 style="margin-top:24px">The Drive HR Resources Folder</h3>
-      <p>All key forms and information live in the <strong>Drive HR Resources Folder</strong>. It's split into two kinds of material:</p>
+      <p>All key forms and information live in the <a href="https://drive.google.com/drive/folders/15MAcljeNEcmY7O3jr6onZMk4egGme3lk?usp=sharing" target="_blank" rel="noopener"><strong>Drive HR Resources Folder</strong></a>. It's split into two kinds of material:</p>
       <div class="do-dont">
         <div class="do">
           <h4>📚 Reference &amp; information</h4>
           <ul>
-            <li><strong>Onboarding Deck &amp; FAQs</strong> — policy explanations, company history, key logistics</li>
+            <li><strong>Policy &amp; company reference</strong> — policy explanations, company history, and key logistics (kept current in this hub)</li>
             <li><strong>Team Structures</strong> — the visual guide to hierarchy and reporting lines for the company and your department</li>
           </ul>
         </div>
-        <div class="do" style="background:rgba(46,125,209,.06);border-color:var(--iv-signal)">
+        <div class="do" style="background:rgba(200,32,42,.06);border-color:var(--iv-signal)">
           <h4 style="color:var(--iv-signal-deep)">📝 Forms &amp; templates</h4>
           <ul>
-            <li><strong>Scrum Sheet</strong> — your daily standup</li>
+            <li><strong>Daily standup</strong> — submitted in the PM tool (Daily Scrum), no longer a Drive sheet</li>
             <li><strong>Leave requests</strong> — submitted in the PM tool (Leave Management), no longer a Drive form</li>
-            <li><strong>Invoice Template</strong> — the required format for billing</li>
+            <li><strong>Invoice Template</strong> — the required format for billing (see <a href="#accounting">Accounting &amp; Invoicing</a>)</li>
           </ul>
         </div>
       </div>
@@ -578,7 +592,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">03 · Leadership</span>
+        <span class="eyebrow">3 · Leadership</span>
         <h2>Executive Leadership</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -626,7 +640,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">04 · Org Structure</span>
+        <span class="eyebrow">4 · Org Structure</span>
         <h2>Organizational Structure</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -670,10 +684,10 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <!-- EVPs -->
         <rect x="165" y="140" width="210" height="56" rx="8" fill="#14304A" stroke="#14304A" stroke-width="1.5"/>
         <text x="270" y="164" text-anchor="middle" font-size="13.5" font-weight="800" fill="#fff" font-family="'Archivo',sans-serif">EVP Business Dev.</text>
-        <text x="270" y="183" text-anchor="middle" font-size="12.5" fill="#CFE2F3">Faiz S.</text>
+        <text x="270" y="183" text-anchor="middle" font-size="12.5" fill="#F3D9DB">Faiz S.</text>
         <rect x="625" y="140" width="210" height="56" rx="8" fill="#14304A" stroke="#14304A" stroke-width="1.5"/>
         <text x="730" y="164" text-anchor="middle" font-size="13.5" font-weight="800" fill="#fff" font-family="'Archivo',sans-serif">Exec. VP</text>
-        <text x="730" y="183" text-anchor="middle" font-size="12.5" fill="#CFE2F3">Priscilla H.</text>
+        <text x="730" y="183" text-anchor="middle" font-size="12.5" fill="#F3D9DB">Priscilla H.</text>
 
         <!-- spine from CEO down to the department bus, then a clean horizontal bus with drops to each column -->
         <path d="M500,102 L500,210" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
@@ -756,7 +770,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">05 · Who Assigns Your Work</span>
+        <span class="eyebrow">5 · Who Assigns Your Work</span>
         <h2>Agency Structure &amp; Task Flow</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -769,29 +783,29 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <div style="overflow-x:auto;margin:14px 0">
       <svg viewBox="0 0 980 760" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;min-width:680px;aspect-ratio:980/760;height:auto;font-family:'Inter',sans-serif" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Agency work assignment flow diagram: Agency Lead, Brand Lead, and Project Managers sit at the top; work flows down into three departments — Paid Media, Owned and Earned Media, and Digital Ops and UX — each with Department Leads and Team Members; Shared Creative Resources support all departments.">
         <defs>
-          <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#1C3A57"/></marker>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#3A2225"/></marker>
         </defs>
         <!-- TIER 1: leadership -->
         <g>
           <rect x="40" y="20" width="270" height="74" rx="10" fill="#F4F7FB" stroke="#5A6B7D" stroke-width="1.5" stroke-dasharray="5 4"/>
-          <text x="175" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#0E1B2A" font-family="'Archivo',sans-serif">Agency Lead</text>
+          <text x="175" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#1A1416" font-family="'Archivo',sans-serif">Agency Lead</text>
           <text x="175" y="66" text-anchor="middle" font-size="11" fill="#54616E">Oversees &amp; supports the agency</text>
           <text x="175" y="82" text-anchor="middle" font-size="11" fill="#54616E">Keeps depts &amp; leads on track</text>
 
-          <rect x="355" y="20" width="270" height="74" rx="10" fill="#1C3A57" stroke="#14293E" stroke-width="1.5"/>
+          <rect x="355" y="20" width="270" height="74" rx="10" fill="#3A2225" stroke="#2A1719" stroke-width="1.5"/>
           <text x="490" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF" font-family="'Archivo',sans-serif">Brand Lead</text>
-          <text x="490" y="66" text-anchor="middle" font-size="11" fill="#CFE2F3">Sets strategy</text>
-          <text x="490" y="82" text-anchor="middle" font-size="11" fill="#CFE2F3">Owns brand direction</text>
+          <text x="490" y="66" text-anchor="middle" font-size="11" fill="#F3D9DB">Sets strategy</text>
+          <text x="490" y="82" text-anchor="middle" font-size="11" fill="#F3D9DB">Owns brand direction</text>
 
           <rect x="670" y="20" width="270" height="74" rx="10" fill="#F4F7FB" stroke="#5A6B7D" stroke-width="1.5" stroke-dasharray="5 4"/>
-          <text x="805" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#0E1B2A" font-family="'Archivo',sans-serif">Project Managers</text>
+          <text x="805" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#1A1416" font-family="'Archivo',sans-serif">Project Managers</text>
           <text x="805" y="66" text-anchor="middle" font-size="11" fill="#54616E">Assign &amp; follow up on tasks</text>
           <text x="805" y="82" text-anchor="middle" font-size="11" fill="#54616E">Support Brand &amp; Dept Leads</text>
         </g>
         <!-- connectors: Brand Lead fans out to all three departments (Agency Lead & PMs are support, no arrows) -->
-        <path d="M490,94 L490,120 L175,120 L175,150" stroke="#1C3A57" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
-        <path d="M490,94 L490,150" stroke="#1C3A57" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
-        <path d="M490,94 L490,120 L805,120 L805,150" stroke="#1C3A57" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M490,94 L490,120 L175,120 L175,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M490,94 L490,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M490,94 L490,120 L805,120 L805,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
         <!-- TIER 2: department leads -->
         <g>
           <rect x="40" y="152" width="270" height="86" rx="10" fill="#C0392B" stroke="#8E2A1F" stroke-width="1.5"/>
@@ -811,9 +825,9 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <text x="805" y="222" text-anchor="middle" font-size="11" fill="#FBE9D2">SEO · Web Design · CRO</text>
         </g>
         <!-- connectors dept -> team -->
-        <path d="M175,238 L175,272" stroke="#1C3A57" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
-        <path d="M490,238 L490,272" stroke="#1C3A57" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
-        <path d="M805,238 L805,272" stroke="#1C3A57" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M175,238 L175,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M490,238 L490,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M805,238 L805,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
         <!-- TIER 3: team members -->
         <g>
           <rect x="40" y="274" width="270" height="62" rx="10" fill="#FBEAEA" stroke="#C0392B" stroke-width="1.5"/>
@@ -829,16 +843,16 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <text x="805" y="320" text-anchor="middle" font-size="11" fill="#A32D2D">Digital Ops &amp; UX</text>
         </g>
         <!-- connectors team -> shared -->
-        <path d="M175,336 L175,360 L490,360 L490,386" stroke="#1C3A57" stroke-width="1.5" fill="none"/>
-        <path d="M805,336 L805,360 L490,360" stroke="#1C3A57" stroke-width="1.5" fill="none"/>
-        <path d="M490,336 L490,386" stroke="#1C3A57" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M175,336 L175,360 L490,360 L490,386" stroke="#3A2225" stroke-width="1.5" fill="none"/>
+        <path d="M805,336 L805,360 L490,360" stroke="#3A2225" stroke-width="1.5" fill="none"/>
+        <path d="M490,336 L490,386" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
         <!-- TIER 4: shared creative resources -->
         <rect x="40" y="388" width="900" height="96" rx="10" fill="#0F6E56" stroke="#085041" stroke-width="1.5"/>
         <text x="490" y="416" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF" font-family="'Archivo',sans-serif">Shared Creative Resources — Department Lead(s)</text>
         <text x="490" y="440" text-anchor="middle" font-size="11.5" fill="#E1F5EE">AI · Designers &amp; Editors · 3D Animations · Copywriting</text>
         <text x="490" y="462" text-anchor="middle" font-size="11.5" fill="#E1F5EE">Assigned by Brand Lead or any Dept Lead · Works cross-functionally with all departments</text>
         <!-- connector shared -> team -->
-        <path d="M490,484 L490,512" stroke="#1C3A57" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M490,484 L490,512" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
         <!-- TIER 5: shared team members -->
         <rect x="40" y="514" width="900" height="66" rx="10" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/>
         <text x="490" y="542" text-anchor="middle" font-size="14" font-weight="700" fill="#085041" font-family="'Archivo',sans-serif">Team Members</text>
@@ -887,7 +901,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">06 · Who to Ask</span>
+        <span class="eyebrow">6 · Who to Ask</span>
         <h2>HR Department, Key Contacts &amp; Escalation</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -983,7 +997,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">07 · Getting Paid</span>
+        <span class="eyebrow">7 · Getting Paid</span>
         <h2>Accounting &amp; Invoicing</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1000,7 +1014,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <dt>Due date</dt><dd>By the <strong>25th</strong> of each month</dd>
           <dt>Send to</dt><dd>Email to the shared accounting inbox <a href="mailto:ap@inventel.net">ap@inventel.net</a>. Invoices sent elsewhere may delay payment.</dd>
           <dt>File name</dt><dd><strong>FirstName LastName_Invoice_MMYYYY.pdf</strong> — e.g. John Doe_Invoice_APR2026.pdf</dd>
-          <dt>Template</dt><dd>Use the official Invoice Template only</dd>
+          <dt>Template</dt><dd>Use the official <a href="https://docs.google.com/spreadsheets/d/19-Pz8S94sMH517xMDBJXHctIIFJB_U1d/edit?usp=drive_link&ouid=102281127488077371367&rtpof=true&sd=true" target="_blank" rel="noopener">Invoice Template — Inventel.xlsx</a> only</dd>
           <dt>Payment</dt><dd>Processed by the <strong>10th</strong> of the following month</dd>
           <dt>Amount</dt><dd>Use the agreed monthly rate from your contract</dd>
           <dt>Paid for</dt><dd>The <strong>previous</strong> month's work — e.g. work done Jan 1–31 is paid in early February</dd>
@@ -1032,13 +1046,13 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">08 · Availability</span>
+        <span class="eyebrow">8 · Availability</span>
         <h2>Working Hours, Time Zone &amp; Lunch</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
     <div class="section-body">
-      <p>InvenTel's headquarters is in New Jersey, USA, and <strong>the entire company runs on one clock: Eastern Time (ET / EST)</strong>. Standard working hours are <strong>8:30 AM – 5:30 PM EST</strong>. This is true for everyone — our teams in <strong>Egypt, India, Pakistan, the Philippines, Indonesia, Argentina, and Colombia</strong>, and our teams inside the United States. Wherever you sit, your working day, your meetings, your deadlines, and your messages all follow Eastern Time.</p>
+      <p>InvenTel's headquarters is in New Jersey, USA, and <strong>the entire company runs on one clock: Eastern Time (ET)</strong>. Standard working hours are <strong>8:30 AM – 5:30 PM ET</strong>. This is true for everyone — our teams in <strong>Egypt, India, Pakistan, the Philippines, Indonesia, Argentina, and Colombia</strong>, and our teams inside the United States. Wherever you sit, your working day, your meetings, your deadlines, and your messages all follow Eastern Time.</p>
 
       <h3 style="margin-top:6px">Why everyone uses ET — including when you talk to each other</h3>
       <p>When you communicate, schedule a meeting, or set a deadline, <strong>always state the time in ET — never in your own local time.</strong> This is the single rule that keeps a team spread across five countries and multiple US time zones aligned. If everyone speaks in ET, there's exactly one conversion for each person to make, in their head, instantly — and no one is ever confused about whether "3 PM" means your afternoon or someone else's. The moment people start mixing local times into messages and invites, missed meetings and blown deadlines follow.</p>
@@ -1114,7 +1128,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">09 · Time Off</span>
+        <span class="eyebrow">9 · Time Off</span>
         <h2>Leave &amp; Time Off</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1143,7 +1157,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="flow-step"><div class="flow-step-body">Fill in the form: email, full name, job title, direct report/manager, <strong>request type</strong> (Planned Leave or Emergency / Day-Of call-out), <strong>leave type</strong>, leave duration, start date, end date, and reason.</div></div>
         <div class="flow-step"><div class="flow-step-body">Read and accept the <strong>acknowledgement</strong>, add your signature and today's date, then click <strong>Submit</strong> for approval.</div></div>
       </div>
-      <p style="font-size:13px;color:var(--iv-text-muted)"><strong>Half day or early leave?</strong> You must state the exact time in EST — e.g. a half day as "8:30 AM EST – 1:30 PM EST", or an early leave as "Leaving at 3:00 PM EST". Requests missing the time details may be delayed or returned for clarification.</p>
+      <p style="font-size:13px;color:var(--iv-text-muted)"><strong>Half day or early leave?</strong> You must state the exact time in ET — e.g. a half day as "8:30 AM ET – 1:30 PM ET", or an early leave as "Leaving at 3:00 PM ET". Requests missing the time details may be delayed or returned for clarification.</p>
 
       <h3 style="margin-top:20px">Advance notice required</h3>
       <p>Submit planned time off with the required advance notice. Approval or denial comes within 24 hours — do not assume approval until it's confirmed in writing.</p>
@@ -1180,7 +1194,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>⏰ Log any deviation from standard hours the SAME day</h4>
-          <p>Any deviation from standard hours — a late arrival, an early departure, or a lunch break over one hour — <strong>must be documented the same day</strong> in the PM tool's Leave Management (log it as an incomplete workday / early leave with the exact EST time). <strong>Failure to report may result in disciplinary action.</strong></p>
+          <p>Any deviation from standard hours — a late arrival, an early departure, or a lunch break over one hour — <strong>must be documented the same day</strong> in the PM tool's Leave Management (log it as an incomplete workday / early leave with the exact ET time). <strong>Failure to report may result in disciplinary action.</strong></p>
         </div>
       </div>
 
@@ -1342,7 +1356,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>⏱️ Reply or react to chats in UNDER 10 minutes — during all working hours</h4>
-          <p>Every Google Chat message during the 8:30 AM – 5:30 PM EST window gets a reply <strong>or</strong> a reaction in <strong>less than 10 minutes</strong>. This is the standard, and it is not optional. <strong>If you take longer than 10 minutes, we will assume you are offline or deliberately ignoring the person who messaged you</strong> — there is no in-between. A one-second 👍 or ✓ is enough to show you've seen it; even a quick "On it" or "Calling you back shortly" counts. What's never acceptable is leaving a chat sitting with no response and no reaction.</p>
+          <p>Every Google Chat message during the 8:30 AM – 5:30 PM ET window gets a reply <strong>or</strong> a reaction in <strong>less than 10 minutes</strong>. This is the standard, and it is not optional. <strong>If you take longer than 10 minutes, we will assume you are offline or deliberately ignoring the person who messaged you</strong> — there is no in-between. A one-second 👍 or ✓ is enough to show you've seen it; even a quick "On it" or "Calling you back shortly" counts. What's never acceptable is leaving a chat sitting with no response and no reaction.</p>
         </div>
       </div>
 
@@ -1444,14 +1458,6 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
 
       <p style="font-size:13.5px"><strong>If your connection struggles with video on:</strong> always <strong>start with your camera on</strong>. If keeping it on is clearly hurting your internet connection during the call, it's fine to turn it off — just <strong>let the group know right away</strong> that you're having connection issues and that's why your camera is off. The goal is a stable, present conversation, so lead with video and only drop it when the connection genuinely requires it.</p>
 
-      <div class="hazard">
-        <div class="hazard-bar"></div>
-        <div class="hazard-body">
-          <h4>🎥 Be professional on camera — no eating, smoking, or vaping</h4>
-          <p>When your camera is on, present yourself professionally. <strong>Do not eat, smoke, or vape on camera</strong> during any meeting. This applies <strong>especially on client calls</strong>, where you're representing InvenTel — there are no exceptions on a client-facing call. If you need to eat or step away, do it off camera and outside the meeting.</p>
-        </div>
-      </div>
-
       <h3 style="margin-top:20px">Professionalism standards</h3>
       <div class="do-dont">
         <div class="do">
@@ -1459,14 +1465,14 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <ul>
             <li>Join on time and prepared — review materials beforehand</li>
             <li>Collared or business-casual attire for client meetings</li>
-            <li>A professional background; blur non-wall backgrounds, or use the company virtual background</li>
+            <li>A professional background; blur non-wall backgrounds, or use the <a href="https://drive.google.com/file/d/18p9on296VJaU8C8l_tGwRekvbEVd-i0I/view?usp=drive_link" target="_blank" rel="noopener">company virtual background</a></li>
             <li>Stay muted when not speaking; participate actively and respect speaking turns</li>
           </ul>
         </div>
         <div class="dont">
           <h4>✗ Avoid</h4>
           <ul>
-            <li>Eating meals, smoking, vaping, or visible distractions on camera — especially on client calls</li>
+            <li>Eating meals, smoking, or visible distractions on camera</li>
             <li>Multitasking or passive, partial presence</li>
             <li>Last-minute cancellations or reschedules except in emergencies (give 24 hrs notice when possible)</li>
             <li>Joining late without notifying the organizer as soon as possible</li>
@@ -1509,13 +1515,13 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <p>On a remote team spread across time zones, putting an event on someone's calendar reaches into their day. A little courtesy before and after scheduling prevents surprises, double-bookings, and disrupted days. The principle underneath all of it: <strong>respect other people's time, and communicate before and after you touch their calendar.</strong> (As always, schedule everything in <a href="#hours">Eastern Time</a>.)</p>
 
       <h3 style="margin-top:20px">Before you schedule — connect first</h3>
-      <p>Before you put a meeting on someone's calendar, <strong>reach out to them first</strong> — every time, unless it's a large group (see below). A quick Chat message that:</p>
-      <ul>
-        <li>Lets them know a meeting is going to happen,</li>
-        <li>Tells them you'll add the event to their calendar based on their <strong>open availability</strong>, and</li>
-        <li>Asks whether there's a <strong>date or time that works best</strong> for them.</li>
-      </ul>
-      <p>This one message turns a surprise invite into an expected one, and usually surfaces the best slot faster than guessing.</p>
+      <div class="hazard">
+        <div class="hazard-bar"></div>
+        <div class="hazard-body">
+          <h4>🗓️ Before you put a meeting on someone's calendar, message them first</h4>
+          <p>Before scheduling on someone's calendar, <strong>reach out to them in Chat first — every time</strong>, unless it's a large group (see below). One quick message that lets them know a meeting is going to happen, tells them you'll add the event based on their <strong>open availability</strong>, and asks whether there's a <strong>date or time that works best</strong> for them. This turns a surprise invite into an expected one — and usually surfaces the best slot faster than guessing.</p>
+        </div>
+      </div>
 
       <h3 style="margin-top:20px">After you schedule — follow up</h3>
       <p>Once the event is on the calendar, <strong>follow up with that person to confirm it's been scheduled.</strong> Don't assume they saw the invite — closing the loop is part of the task (the same <a href="#communication">"follow through"</a> standard as everywhere else).</p>
@@ -1568,12 +1574,53 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   </div>
 </section>
 
-<!-- ============ 17 · PM TOOL ============ -->
+<!-- ============ 17 · REQUESTING ACCESS ============ -->
+<section id="access">
+  <div class="card collapsible">
+    <div class="section-header-bar" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <span class="eyebrow">17 · Getting Set Up</span>
+        <h2>Requesting Access to Platforms &amp; Accounts</h2>
+      </div>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
+    <div class="section-body">
+      <p>InvenTel uses a mix of shared and individual credentials, with different permission levels, access tiers, and brand assignments depending on your role. Getting the right access in place is a <strong>shared effort</strong>: the <strong>Performance Team works with your Team Lead</strong> during onboarding to line up the accesses your role needs — and you play an active part by confirming what's landed and flagging what hasn't.</p>
+
+      <h3 style="margin-top:20px">How it works — and your part in it</h3>
+      <div class="mini-grid">
+        <div class="mini"><div class="mini-k">Set up with your Team Lead</div><div class="mini-v">During onboarding, the <strong>Performance Team and your Team Lead</strong> work together to request the accesses your role and brand assignments require.</div></div>
+        <div class="mini"><div class="mini-k">Check what you've got</div><div class="mini-v">As access comes through, confirm you can actually get into the tools and accounts you need. You know your day-to-day better than anyone — you're the first to spot a gap.</div></div>
+        <div class="mini"><div class="mini-k">Accept invites right away</div><div class="mini-v">When you receive an access or account invite, <strong>accept it as soon as you can</strong> — most are time-sensitive and can expire.</div></div>
+        <div class="mini"><div class="mini-k">2FA on a shared account?</div><div class="mini-v">If access to a shared account involves a two-factor code, request it in your <strong>department channel</strong> or directly with the <strong>Performance Team</strong> — never work around it.</div></div>
+      </div>
+
+      <div class="team-callout newhire">
+        <span class="team-tag">Follow Up — It's Expected, Not Rude</span>
+        <p>If you're <strong>missing access</strong>, <strong>lose access</strong>, or notice your <strong>permissions changed</strong>, reach out to the <strong>Performance Team</strong> and follow up as needed (see <a href="#contacts">HR Department &amp; Key Contacts</a>). Without that heads-up, the team has no way to know what to fix — so following up isn't a bother, it's how the system works. Treat it like any other <a href="#ownership">outstanding task you own</a>: check in until it's resolved. It's genuinely appreciated.</p>
+      </div>
+
+      <div class="hazard">
+        <div class="hazard-bar"></div>
+        <div class="hazard-body">
+          <h4>🔑 Already on the team &amp; need more access?</h4>
+          <p>Access needs change as your work does. If you need a <strong>new platform or tool</strong>, <strong>additional brand access</strong>, or <strong>different permissions</strong>, connect with the <strong>Performance Team</strong> to request it (see <a href="#contacts">HR Department &amp; Key Contacts</a>) — the same way onboarding access is handled. Don't wait or work around a gap; request it and follow up until it's in place.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:24px">Keeping access secure</h3>
+      <p><strong>Never share account information without company approval.</strong> Don't hand your logins to another team member, and don't share access to any account without explicit company approval. Access is assigned per person on purpose (see <a href="#security">Data Security &amp; Acceptable Use</a>). If someone needs access, route the request through the <strong>Performance Team</strong> — never solve it by passing credentials around.</p>
+      <p><strong>Never request or share access through personal email.</strong> All access is tied to your <strong>company account and approved company channels only.</strong> Never request or share logins, invites, or credentials using a personal email account — personal inboxes are off-limits for anything access-related, with no exceptions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 18 · PM TOOL ============ -->
 <section id="pmtool">
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">17 · Daily Operations</span>
+        <span class="eyebrow">18 · Daily Operations</span>
         <h2>The InvenTel PM Tool</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1583,14 +1630,25 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
 
       <div class="team-callout newhire">
         <span class="team-tag">New Hire · Get Your Account</span>
-        <p>Create your account through the tool link: <a href="https://inventelpm.automindlabinventel.com/" target="_blank" rel="noopener">inventelpm.automindlabinventel.com</a>. The <strong>Performance Team</strong> will help you get set up and make sure your <strong>department and role are assigned correctly</strong>. Complete the platform walkthrough (Loom link on the Onboarding Deck), and ask the Performance Team if anything looks off.</p>
+        <p>Create your account through the tool link: <a href="https://inventelpm.automindlabinventel.com/" target="_blank" rel="noopener">inventelpm.automindlabinventel.com</a>. The <strong>Performance Team</strong> will help you get set up and make sure your <strong>department and role are assigned correctly</strong>. Complete the platform walkthroughs below, and ask the Performance Team if anything looks off.</p>
+      </div>
+
+      <h3 style="margin-top:22px">Platform walkthroughs</h3>
+      <p>Watch these short walkthroughs to learn your way around the PM tool:</p>
+      <div class="mini-grid">
+        <div class="mini"><div class="mini-k">Walkthrough · Part 1</div><div class="mini-v"><a href="https://www.loom.com/share/66c7ded5149740ba8a56a6e982250e7f" target="_blank" rel="noopener">PM Tool walkthrough (Loom)</a></div></div>
+        <div class="mini"><div class="mini-k">Walkthrough · Part 2</div><div class="mini-v"><a href="https://www.loom.com/share/5cfb4836899f4323b9ed1dc70aadd8ce" target="_blank" rel="noopener">PM Tool walkthrough (Loom)</a></div></div>
+      </div>
+      <div class="team-callout newhire">
+        <span class="team-tag">PM Tool Resource Hub</span>
+        <p>The <a href="https://drive.google.com/drive/folders/1ST2jUR54nmCynkkL_eNRp6SyP4B2JUVU?usp=drive_link" target="_blank" rel="noopener"><strong>InvenTel PM Dashboard folder</strong></a> holds the full Walkthrough Library and the Errors Sheet in one place. Found a bug or have feedback on the tool? Log it in the <a href="https://docs.google.com/spreadsheets/d/136ZCsJ3UROX090frY3JDfaGEs_QyDSGlFaef_AxqSUY/edit?usp=drive_link" target="_blank" rel="noopener"><strong>InvenTel Dashboard — Bugs &amp; Errors Sheet</strong></a>.</p>
       </div>
 
       <h3 style="margin-top:20px">What you'll use it for</h3>
       <div class="feature-grid">
         <div class="feature-tile"><span class="feature-tile-icon">📋</span><h4>Daily Scrum</h4><p>Your standup every workday — active tasks, status (In-Progress / Completed / Blocked), and any blockers.</p></div>
         <div class="feature-tile"><span class="feature-tile-icon">⏱️</span><h4>Time Tracker</h4><p>Per-task timer (Est vs Logged). Start it on the task you're working, stop when done.</p></div>
-        <div class="feature-tile"><span class="feature-tile-icon">🗓️</span><h4>Leave Management</h4><p>Submit leave requests and check your balances — all in the tool (see <a href="#leave">Leave &amp; Time Off</a>).</p></div>
+        <div class="feature-tile"><span class="feature-tile-icon">🗓️</span><h4>Leave Management</h4><p>Submit leave requests and check your balances — all in the tool (see <a href="#leave">Leave &amp; Time Off</a>). New to it? Follow the <a href="https://drive.google.com/file/d/1L0lCjEv8kHsCrDuFAVt6LZRhg0pKoVtz/view?usp=drive_link" target="_blank" rel="noopener">Leave Request Guide</a>.</p></div>
         <div class="feature-tile"><span class="feature-tile-icon">📊</span><h4>Tasks &amp; Projects</h4><p>Your assigned work, projects, channels, and dashboards — the hub for everything you do.</p></div>
       </div>
 
@@ -1602,7 +1660,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>⏱️ Turn the tracker ON for every task — no exceptions</h4>
-          <p>Using the time tracker is <strong>mandatory</strong>. Start the timer on the specific task you're working on and stop it when you're done — the task view shows <strong>"Timer running — click Stop when done."</strong> Some team members have <em>not</em> been activating the tracker per task and later reported missing or inaccurate time logs. To avoid this, it's <strong>your responsibility</strong> to make sure the tracker is running correctly at all times while you work. Make sure you've installed the tracker and are actively using it. Please also review the time-tracker training video and follow it carefully.</p>
+          <p>Using the time tracker is <strong>mandatory</strong>. Start the timer on the specific task you're working on and stop it when you're done — the task view shows <strong>"Timer running — click Stop when done."</strong> Some team members have <em>not</em> been activating the tracker per task and later reported missing or inaccurate time logs. To avoid this, it's <strong>your responsibility</strong> to make sure the tracker is running correctly at all times while you work. Make sure you've installed the tracker and are actively using it. Please also review the <a href="https://www.loom.com/share/cb0ffa5db01c40c5aa50cf8edaf56fef" target="_blank" rel="noopener">time-tracker training video</a> and follow it carefully, and see the <a href="https://drive.google.com/file/d/1TKmNfBr12UqMDapY5vU8CVNQKh5drlWr/view?usp=drive_link" target="_blank" rel="noopener">Time Tracker FAQ &amp; Video Guide</a> for common questions.</p>
         </div>
       </div>
       <div class="mini-grid">
@@ -1617,6 +1675,12 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="team-tag">Update Your App</span>
         <p>A <strong>notifications</strong> feature rolled out with the latest version of the PM tool. If your notifications aren't working, <strong>uninstall the old app and download the latest version.</strong> Make sure it's installed and that you're actively using it while working. If you hit <strong>any</strong> issue with installation, login, setup, or usage, contact the <strong>Workforce Analyst Team</strong> right away so they can help you get it resolved.</p>
       </div>
+
+      <h3 style="margin-top:22px">Work faster — the AI Prompt Library</h3>
+      <div class="team-callout newhire">
+        <span class="team-tag">Work Faster · AI Prompt Library</span>
+        <p>Use the <a href="https://inventelpm.automindlabinventel.com/prompt-library" target="_blank" rel="noopener"><strong>InvenTel AI Prompt Library</strong></a> — a growing, shared collection of vetted prompts for the tools and workflows you use day to day. Check it before writing prompts from scratch, and reuse what already works.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1626,7 +1690,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">18 · Know the Portfolio</span>
+        <span class="eyebrow">19 · Know the Portfolio</span>
         <h2>Brand Knowledge &amp; InvenTel University</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1640,7 +1704,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <tbody>
             <tr><td><strong>Brand Knowledge Hubs</strong><br><span style="font-size:12px;color:var(--iv-text-muted)">What we sell</span></td><td>A complete knowledge hub for every brand in the portfolio — products, positioning, brand voice, audience, offers &amp; policies.</td><td>The shared source of truth before you start work on a brand, ending in a mandatory quiz.</td></tr>
             <tr><td><strong>Resource Library</strong><br><span style="font-size:12px;color:var(--iv-text-muted)">Tools we use</span></td><td>A complete training guide for every platform and tool the company puts in your hands.</td><td>Step-by-step tutorials at beginner, intermediate &amp; advanced levels — self-contained, each ending in a mandatory quiz.</td></tr>
-            <tr><td><strong>Company Policy Hub</strong><br><span style="font-size:12px;color:var(--iv-text-muted)">How we work</span></td><td>This handbook — the policies, processes, and expectations that apply across every team.</td><td>The single reference for how InvenTel operates, kept current as policies change.</td></tr>
+            <tr><td><strong>Company Policy Hub</strong><br><span style="font-size:12px;color:var(--iv-text-muted)">How we work</span></td><td>This policy hub — the policies, processes, and expectations that apply across every team.</td><td>The single reference for how InvenTel operates, kept current as policies change.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1670,7 +1734,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">19 · Stay Informed</span>
+        <span class="eyebrow">20 · Stay Informed</span>
         <h2>Company-Wide Channels</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1681,15 +1745,42 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <table>
           <thead><tr><th>Channel</th><th>What it's for</th><th>Your obligation</th></tr></thead>
           <tbody>
-            <tr><td><strong>Company Announcements</strong></td><td>Official company-wide updates, policy changes, critical info — <strong>only HR and company execs can post here</strong></td><td>Your <strong>most important channel to follow.</strong> Enable <strong>All</strong> notifications and read every post. Posting is restricted to HR and execs</td></tr>
-            <tr><td><strong>InvenTel Team</strong></td><td>Open to all team members to share thoughts, ideas, and raise issues</td><td>Stay active and participate respectfully — this is the space for team-wide discussion</td></tr>
+            <tr><td><strong>InvenTel Team</strong></td><td>Official company-wide announcements, policy changes, critical info</td><td>Enable <strong>All</strong> notifications and read every post. Read-only — never post chatter, questions, or 1-on-1s here</td></tr>
             <tr><td><strong>Social Media Callouts</strong></td><td>Brand posts that need a reach boost</td><td>Like and engage <strong>immediately</strong> when a callout appears — mandatory, not optional (see <a href="#social">Social Media Engagement</a>)</td></tr>
             <tr><td><strong>Education Channel</strong></td><td>Webinars, tutorials, tool guides, role learning</td><td>Check <strong>weekly</strong> as part of your development</td></tr>
+            <tr><td><strong>Company Announcements</strong></td><td>Leave policies, holidays, operational changes</td><td>Check <strong>daily</strong></td></tr>
             <tr><td><strong>Financial Updates</strong></td><td>Salaries, invoicing timelines, payment info</td><td>Check <strong>regularly</strong></td></tr>
           </tbody>
         </table>
       </div>
-      <p style="font-size:13px;color:var(--iv-text-muted)">To enable notifications on a channel: click the channel name in Google Chat → Notifications → All. Missing these channels can mean missed deadlines or policy violations. Make sure notifications are on for <strong>Company Announcements</strong> — it's the channel for official updates, and only HR and execs can post there.</p>
+      <p style="font-size:13px;color:var(--iv-text-muted)">To enable notifications on a channel: click the channel name in Google Chat → Notifications → All. Missing these channels can mean missed deadlines or policy violations. Keep all discussions and questions in DMs or your department's Project Space — not the InvenTel Team hub.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 21 · COMPANY MEETINGS ============ -->
+<section id="mbr">
+  <div class="card collapsible">
+    <div class="section-header-bar" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <span class="eyebrow">21 · All-Hands</span>
+        <h2>Company-Wide Meetings</h2>
+      </div>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
+    <div class="section-body">
+      <p>InvenTel schedules <strong>company-wide meetings</strong> — all-hands sessions for executive updates, department highlights, and company alignment. These come up regularly, and the <strong>notice varies</strong>: some are announced well in advance, and others land on your calendar the <strong>day before</strong>. Keep an eye on your Google Calendar and the company announcements channel so one doesn't slip past you.</p>
+
+      <h3 style="margin-top:20px">If you're double-booked</h3>
+      <p>Company-wide meetings are a priority. If one lands on top of another meeting you can move, <strong>reschedule the other meeting</strong> so you can attend the all-hands. If the conflict genuinely can't be moved, the session is <strong>recorded and shared</strong> in the <a href="https://drive.google.com/drive/folders/1p1WIKvKOInTIg61h5t-sY-kZ_Y4YXNdw?usp=drive_link" target="_blank" rel="noopener"><strong>Company-Wide Meeting Records</strong></a> folder — watch the recording as soon as you can to stay caught up.</p>
+
+      <div class="hazard">
+        <div class="hazard-bar"></div>
+        <div class="hazard-body">
+          <h4>🗓️ Attendance is tracked — don't make a habit of missing them</h4>
+          <p>Treat company-wide meetings as <strong>required — cameras on, full attendance</strong>, the same as any other mandatory meeting. <strong>Attendance is tracked.</strong> Missing one for a genuine, unavoidable conflict (and catching up on the recording) is fine — but a <strong>pattern of missed company-wide meetings will be flagged by the Performance Team.</strong></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1699,7 +1790,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">20 · Show Up for the Brands</span>
+        <span class="eyebrow">22 · Show Up for the Brands</span>
         <h2>Social Media Engagement</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1717,11 +1808,15 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
 
       <h3 style="margin-top:20px">How it works</h3>
       <div class="flow">
-        <div class="flow-step"><div class="flow-step-body"><strong>Share your handles.</strong> The Performance Team will share a form asking for all your social media handles. Complete and return it so we know which accounts are engaging.</div></div>
+        <div class="flow-step"><div class="flow-step-body"><strong>Share your handles.</strong> Complete the <a href="https://docs.google.com/forms/d/e/1FAIpQLSchAssQJjEkcDAPV66ExPgDJx3gncg8lVMDVpI5T7rLcuvaAg/viewform" target="_blank" rel="noopener">Social Media Handles form</a> with all your social media handles so we know which accounts are engaging.</div></div>
         <div class="flow-step"><div class="flow-step-body"><strong>Follow the brand pages.</strong> Follow InvenTel's social pages and the brand accounts across platforms.</div></div>
         <div class="flow-step"><div class="flow-step-body"><strong>Watch the Social Media Callouts channel.</strong> When a post needs engagement, it's shared in the <strong>Social Media Callouts</strong> Google Chat channel (see <a href="#channels">Company-Wide Channels</a>).</div></div>
         <div class="flow-step"><div class="flow-step-body"><strong>Engage right away.</strong> When a callout appears, like, comment, and react <strong>immediately</strong> — the boost matters most while a post is fresh.</div></div>
       </div>
+
+      <h3 style="margin-top:22px">Shortform video — watch it all the way through</h3>
+      <p>One important thing to keep in mind with <strong>shortform content</strong>: when you interact with the videos, it's crucial to <strong>watch them all the way through</strong>. Retention is what the algorithm rewards — just opening a video to drop a quick comment and leaving actually <strong>hurts the reach</strong>, because the algorithm reads it as people clicking away instantly.</p>
+      <p>So if you're going to comment to help drive engagement, <strong>watch the full video first</strong>, then leave comments people will actually reply to or like. Funny jokes, relatable memes, or even slightly controversial or negative takes work well — they get the comment section moving, which is exactly the kind of activity that boosts a post.</p>
 
       <div class="do-dont">
         <div class="do">
@@ -1729,39 +1824,18 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <ul>
             <li>Following the company and brand pages.</li>
             <li>Likes, reactions, and genuine comments on posts.</li>
+            <li>Watching shortform videos all the way through before commenting.</li>
             <li>Jumping on Social Media Callouts as soon as they're posted.</li>
           </ul>
         </div>
         <div class="dont">
           <h4>✗ What to avoid</h4>
           <ul>
+            <li>Opening a video, dropping a comment, and clicking away — it hurts reach.</li>
             <li>Ignoring callouts or engaging days later.</li>
             <li>Skipping the handles form, so your engagement can't be counted.</li>
             <li>Posting anything that conflicts with the <a href="#conduct">Code of Conduct</a> or shares confidential info (see <a href="#security">Data Security</a>).</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 21 · COMPANY MEETINGS ============ -->
-<section id="mbr">
-  <div class="card collapsible">
-    <div class="section-header-bar" onclick="toggleSection(this)">
-      <div class="section-header-left">
-        <span class="eyebrow">21 · All-Hands</span>
-        <h2>Company-Wide Meetings</h2>
-      </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-    </div>
-    <div class="section-body">
-      <p>From time to time, InvenTel schedules a <strong>company-wide meeting</strong> — an all-hands for executive updates, department highlights, and company alignment. If a company-wide meeting is scheduled, make sure you attend.</p>
-      <div class="hazard">
-        <div class="hazard-bar"></div>
-        <div class="hazard-body">
-          <h4>🗓️ If a company-wide meeting appears on your calendar, attending is mandatory</h4>
-          <p>When a company-wide meeting <em>is</em> scheduled, it will show up on your Google Calendar. Treat any such meeting as <strong>required — cameras on, full attendance, no exceptions</strong>, the same as any other mandatory meeting. Watch your calendar and the company announcements channel so you don't miss one.</p>
         </div>
       </div>
     </div>
@@ -1773,7 +1847,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">22 · Your Setup</span>
+        <span class="eyebrow">23 · Your Setup</span>
         <h2>Equipment &amp; Connectivity</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1803,12 +1877,102 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   </div>
 </section>
 
+<!-- ============ 26 · CONTRACTOR DISCIPLINARY POLICY ============ -->
+<section id="disciplinary">
+  <div class="card collapsible">
+    <div class="section-header-bar" onclick="toggleSection(this)">
+      <div class="section-header-left">
+        <span class="eyebrow">24 · Important · Corrective Action</span>
+        <h2>Contractor Disciplinary Policy</h2>
+      </div>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+    </div>
+    <div class="section-body">
+      <div class="hazard">
+        <div class="hazard-bar"></div>
+        <div class="hazard-body">
+          <h4>⚠️ Important — this policy applies to everyone</h4>
+          <p>The <strong>Contractor Disciplinary Policy</strong> sets out how performance and conduct issues are addressed, the steps of the corrective-action process, and the standards every contractor is held to — regardless of role or tenure. It works alongside the standards in <a href="#conduct">Code of Conduct &amp; Grievances</a> and the terms in <a href="#agreements">Your Contract &amp; Handbook</a>. Where this policy and your signed agreements ever differ, <strong>your signed agreements control.</strong></p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:22px">Progressive warning process</h3>
+      <p>Most issues are handled through a progressive series of warnings, giving you a clear opportunity to correct course at each stage:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Stage</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1st Warning</strong></td><td>Verbal / documented warning</td></tr>
+            <tr><td><strong>2nd Warning</strong></td><td>Written warning</td></tr>
+            <tr><td><strong>3rd Warning</strong></td><td>Final written warning</td></tr>
+            <tr><td><strong>Further violation</strong></td><td>May result in termination</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mini-grid">
+        <div class="mini"><div class="mini-k">Warnings stay active for 6 months</div><div class="mini-v">Each warning remains active for <strong>6 months</strong> from the date it's issued.</div></div>
+        <div class="mini"><div class="mini-k">Probation — first 90 days</div><div class="mini-v">During probation you may receive a <strong>maximum of 2 active warnings</strong>. A third disciplinary issue may result in termination if sufficient improvement isn't demonstrated.</div></div>
+      </div>
+
+      <h3 style="margin-top:22px">Warning-level violations</h3>
+      <p>These are the kinds of issues that typically move through the progressive warning process:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Communication</strong></td><td>Unprofessional or disrespectful communication; ignoring reasonable instructions from your manager; repeated failure to attend required meetings without prior notice.</td></tr>
+            <tr><td><strong>Attendance &amp; reliability</strong></td><td>Repeated lateness; repeated unapproved absences.</td></tr>
+            <tr><td><strong>PM Tool &amp; company processes</strong></td><td>Repeated failure to update tasks in the <a href="#pmtool">PM Tool</a>; failure to follow the required ticket structure or workflows; failure to submit leave requests through the PM Tool; failure to accurately use the Time Tracker after coaching.</td></tr>
+            <tr><td><strong>Performance</strong></td><td>Repeated missed deadlines due to negligence; failure to complete assigned work without communication; repeated disregard for company processes after coaching.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:22px">Immediate termination</h3>
+      <div class="hazard">
+        <div class="hazard-bar"></div>
+        <div class="hazard-body">
+          <h4>🚫 Serious violations can skip the warning process entirely</h4>
+          <p>The following may result in <strong>immediate termination</strong>, depending on the severity of the incident and the outcome of any investigation.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th>Examples</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Confidentiality &amp; security</strong></td><td>Sharing confidential company or client information; unauthorized access to company systems, accounts, or data; misuse of company credentials or sensitive information. (See <a href="#security">Data Security</a>.)</td></tr>
+            <tr><td><strong>Workplace conduct</strong></td><td>Harassment, discrimination, bullying, or threatening behavior; serious violations of the company's <a href="#conduct">Code of Conduct</a>.</td></tr>
+            <tr><td><strong>Company property</strong></td><td>Intentional destruction or misuse of company systems, equipment, or property.</td></tr>
+            <tr><td><strong>Conflict of interest &amp; outside employment</strong></td><td>Working for any other company or client (full-time, part-time, freelance, consulting, or contract) in violation of the Employment Agreement; operating or participating in an outside business that violates the agreement; serious undisclosed conflicts of interest. (See <a href="#agreements">Full-time commitment</a>.)</td></tr>
+            <tr><td><strong>Legal &amp; compliance</strong></td><td>Any illegal activity affecting the company, its contractors, or its clients; serious violations of applicable laws or regulatory requirements.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px;color:var(--iv-text-muted);margin-top:8px"><em>Immediate-termination decisions are subject to management review and, where applicable, an internal investigation.</em></p>
+
+      <h3 style="margin-top:22px">Management discretion</h3>
+      <p>Depending on the nature and severity of the violation, management may:</p>
+      <ul>
+        <li>Provide <strong>coaching</strong> instead of issuing a warning;</li>
+        <li><strong>Skip warning levels</strong> for serious misconduct; or</li>
+        <li>Proceed <strong>directly to termination</strong> when warranted.</li>
+      </ul>
+      <p>All disciplinary actions are documented by the contractor's manager and HR.</p>
+
+      <div class="team-callout newhire">
+        <span class="team-tag">Read the Full Policy</span>
+        <p>See the complete <a href="https://docs.google.com/document/d/1e2M6MdYcMRYXyx1ygVyVZw8rXWF5n-edKaRCICvuGKc/edit?usp=sharing" target="_blank" rel="noopener"><strong>Contractor Disciplinary Policy</strong></a> for the authoritative version. Questions about how it applies to you? Reach out to the <strong>Performance Team</strong> (see <a href="#contacts">HR Department &amp; Key Contacts</a>).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 23 · IP ============ -->
 <section id="ip">
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">23 · Ownership</span>
+        <span class="eyebrow">25 · Ownership</span>
         <h2>Freelancing &amp; Intellectual Property</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1829,7 +1993,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">24 · Protect the Company</span>
+        <span class="eyebrow">26 · Protect the Company</span>
         <h2>Data Security &amp; Acceptable Use</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1870,12 +2034,12 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   </div>
 </section>
 
-<!-- ============ 25 · CODE OF CONDUCT ============ -->
+<!-- ============ 26 · CODE OF CONDUCT ============ -->
 <section id="conduct">
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">25 · How We Treat Each Other</span>
+        <span class="eyebrow">27 · How We Treat Each Other</span>
         <h2>Code of Conduct &amp; Grievances</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1923,12 +2087,12 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   </div>
 </section>
 
-<!-- ============ 26 · CONTRACT & HANDBOOK ============ -->
+<!-- ============ 27 · CONTRACT & HANDBOOK ============ -->
 <section id="agreements">
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">26 · The Governing Documents</span>
+        <span class="eyebrow">28 · The Governing Documents</span>
         <h2>Your Contract &amp; Handbook</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1971,7 +2135,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">27 · Reference</span>
+        <span class="eyebrow">29 · Reference</span>
         <h2>Glossary</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -1985,10 +2149,10 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <dt>The 10-Minute Rule</dt><dd>The chat responsiveness standard: react to or reply to every Google Chat message in <strong>under 10 minutes</strong> during working hours. Exceed it and you're assumed offline or ignoring the sender. A 👍 reaction counts; set your Chat status when you can't respond.</dd>
         <dt>Following Through</dt><dd>Completing a task to standard <em>and</em> proactively telling the assigner it's done — without being asked. Closing the loop is part of the task.</dd>
         <dt>Scheduling Etiquette</dt><dd>Connect with people before putting a meeting on their calendar, follow up after, watch Google Calendar's conflict warnings, give notice (and a Chat heads-up) before any reschedule, respond to every invite, and keep recurring invite lists current. See Scheduling &amp; Meeting Etiquette.</dd>
-        <dt>Company-Wide Meeting</dt><dd>An all-hands for company updates and alignment. If any company-wide meeting appears on your calendar, attending is mandatory (cameras on).</dd>
+        <dt>Company-Wide Meeting</dt><dd>An all-hands for company updates and alignment, scheduled with varying notice (sometimes the day before). Attendance is mandatory (cameras on) and tracked; if you're double-booked and can't reschedule, the session is recorded and shared.</dd>
         <dt>Busy Season</dt><dd>The recurring high-volume period (currently the Friday after Thanksgiving through December 20) when time off is limited — max 2 PTO days, with at least 20 days' notice. See <a href="#agreements">Your Contract &amp; Handbook</a>.</dd>
         <dt>Floating Holiday</dt><dd>A holiday day you choose for yourself rather than a fixed company-observed date. InvenTel has no mandatory holidays; all are floating and requested in the PM tool.</dd>
-        <dt>Incomplete Workday</dt><dd>A deviation from standard hours (late start, early finish, or a lunch over one hour). Documented the same day in the PM tool's Leave Management, with the exact EST time.</dd>
+        <dt>Incomplete Workday</dt><dd>A deviation from standard hours (late start, early finish, or a lunch over one hour). Documented the same day in the PM tool's Leave Management, with the exact ET time.</dd>
         <dt>Probation Period</dt><dd>Your first 90 days. Any days off during this period are unpaid regardless of reason; leave accrual doesn't apply yet.</dd>
         <dt>Daily Scrum / Standup</dt><dd>Your everyday update in the PM tool's Daily Scrum — active tasks, status, and blockers. Required every workday.</dd>
         <dt>InvenTel PM Tool</dt><dd>InvenTel's in-house project-management platform (its own ClickUp) — the single source of truth for tasks, the daily scrum, the time tracker, leave requests and balances, channels, and dashboards.</dd>
@@ -2008,13 +2172,13 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">28 · Quick Answers</span>
+        <span class="eyebrow">30 · Quick Answers</span>
         <h2>Frequently Asked Questions</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
     </div>
     <div class="section-body">
-      <div class="faq-item"><p class="faq-q">What time zone do I work in if I'm in Egypt, India, Pakistan, the Philippines, or Argentina?</p><p class="faq-a">Eastern Time, always — the same as everyone, including the US teams and HQ in New Jersey. Hours are 8:30 AM – 5:30 PM EST and every meeting and deadline follows ET no matter where you live. Set your Google Calendar primary zone to Eastern Time and add your local zone only as a secondary clock.</p></div>
+      <div class="faq-item"><p class="faq-q">What time zone do I work in if I'm in Egypt, India, Pakistan, the Philippines, or Argentina?</p><p class="faq-a">Eastern Time, always — the same as everyone, including the US teams and HQ in New Jersey. Hours are 8:30 AM – 5:30 PM ET and every meeting and deadline follows ET no matter where you live. Set your Google Calendar primary zone to Eastern Time and add your local zone only as a secondary clock.</p></div>
       <div class="faq-item"><p class="faq-q">When I message or schedule with a teammate, whose time zone do I use?</p><p class="faq-a">Always Eastern Time — never your local time, even when messaging someone in another country to be helpful. One shared clock means everyone makes a single quick conversion and nobody is confused. Mixing local times into chats and invites is what causes missed meetings.</p></div>
       <div class="faq-item"><p class="faq-q">The US just changed its clocks but my country didn't. What do I do?</p><p class="faq-a">Company time always follows the current time in New Jersey, so it shifts with the US change. Your local-to-ET gap moves by an hour for a while — that's expected, and accommodating it is on you. Your calendar handles the meetings automatically because your primary zone is ET; just notice that your start time now lands at a different local hour. If unsure, check the current time in NJ — that's the company time.</p></div>
       <div class="faq-item"><p class="faq-q">How fast do I need to reply to chats?</p><p class="faq-a">React or reply to Google Chat messages in under 10 minutes during working hours — even a one-second 👍 counts. Go longer and we'll assume you're offline or ignoring the person. If you're heads-down (meeting, focused work, break), set your Chat status first so the silence is understood, and respond as soon as you reasonably can.</p></div>
@@ -2040,7 +2204,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="card collapsible">
     <div class="section-header-bar" onclick="toggleSection(this)">
       <div class="section-header-left">
-        <span class="eyebrow">29 · First Week</span>
+        <span class="eyebrow">31 · First Week</span>
         <h2>New-Hire Setup Checklist</h2>
       </div>
       <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -2064,7 +2228,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <div class="cl-group-title">🔐 Google account</div>
           <ul class="cl-list">
             <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text"><strong>Enable 2FA first</strong> — you'll be locked out without it.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Set your <strong>primary</strong> Google Workspace time zone to EST; add your <strong>local</strong> zone as a secondary clock.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Set your <strong>primary</strong> Google Workspace time zone to ET; add your <strong>local</strong> zone as a secondary clock.</span></button></li>
             <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Subscribe to the <strong>Remote Leave Tracker</strong> calendar and keep it permanently visible.</span></button></li>
           </ul>
         </div>
@@ -2144,15 +2308,15 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
 <section id="quiz-section" class="collapsible">
   <div class="section-header-bar" onclick="toggleSection(this)">
     <div class="section-header-left">
-      <span class="eyebrow" style="color:var(--iv-amber)">30 · Knowledge Check Quiz</span>
+      <span class="eyebrow" style="color:var(--iv-amber)">32 · Knowledge Check Quiz</span>
       <h2>Prove It · 45 Questions · 70% to Pass</h2>
     </div>
     <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
   </div>
   <div class="section-body">
     <div id="quiz-intro">
-      <p style="color:var(--iv-sky);max-width:660px">Read everything above first, then take this quiz to confirm you've internalized the policies and processes that matter most day to day. <strong style="color:#fff">Pass: 32 of 45 correct (70%).</strong> One question at a time, immediate feedback, correct answers shown when you miss. Retake as many times as you need — no penalty.</p>
-      <p style="color:var(--iv-sky);max-width:660px">When you pass, enter your name and title, then print or save a certificate to send to your HR onboarding trainer (new hires) or team lead (existing employees) as proof of completion.</p>
+      <p style="color:#F7EAEB;max-width:660px;font-size:15px;line-height:1.65">Read everything above first, then take this quiz to confirm you've internalized the policies and processes that matter most day to day. <strong style="color:#fff">Pass: 32 of 45 correct (70%).</strong> One question at a time, immediate feedback, correct answers shown when you miss. Retake as many times as you need — no penalty.</p>
+      <p style="color:#F7EAEB;max-width:660px;font-size:15px;line-height:1.65">When you pass, enter your name and title, then print or save your certificate and <strong>upload it to the <a href="https://drive.google.com/drive/folders/19vsre-bLq4zDgwEAYGcSX22SpJ7hNvIM?usp=drive_link" target="_blank" rel="noopener" style="color:var(--iv-amber)">InvenTel University Quiz Results</a> folder</strong> as proof of completion — then notify your HR onboarding trainer (new hires) or team lead (existing employees).</p>
       <button class="quiz-start-btn" onclick="startQuiz()" style="background:var(--iv-signal);color:#fff;border:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:18px;transition:transform .15s,box-shadow .15s;letter-spacing:.02em">Start the quiz →</button>
     </div>
     <div class="quiz-container" id="quiz-container" style="display:none">
@@ -2170,14 +2334,14 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <div style="font-size:3rem;margin-bottom:8px">🎉</div>
           <h3 style="color:#fff;font-family:'Archivo',sans-serif;font-size:1.7rem;margin:0">Congratulations — You Passed!</h3>
         </div>
-        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:24px;border:1px solid rgba(46,125,209,.3)">
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:24px;border:1px solid rgba(200,32,42,.3)">
           <div style="text-align:center;margin-bottom:18px">
             <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:1.8rem;color:var(--iv-amber);letter-spacing:.02em;line-height:1">INVENTEL</div>
             <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--iv-sky);text-transform:uppercase;margin-top:4px">InvenTel Innovations · Policy &amp; Onboarding Certificate</div>
           </div>
           <div style="margin-bottom:14px">
             <label style="display:block;font-family:'DM Mono',monospace;font-size:11px;color:var(--iv-amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;font-weight:700">Name · Title</label>
-            <input type="text" id="cert-name" placeholder="Jane Smith · Paid Social" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(46,125,209,.4);color:#fff;padding:10px 14px;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
+            <input type="text" id="cert-name" placeholder="Jane Smith · Paid Social" style="width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(200,32,42,.4);color:#fff;padding:10px 14px;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
           </div>
           <div style="text-align:center;margin:18px 0">
             <span style="display:inline-block;background:var(--iv-success);color:#fff;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.12em;padding:6px 14px;border-radius:14px">✓ PASSED</span>
@@ -2200,16 +2364,16 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
               <div style="font-family:'DM Mono',monospace;font-size:9.5px;color:var(--iv-sky);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Result</div>
             </div>
           </div>
-          <div style="font-family:'DM Mono',monospace;font-size:10.5px;color:var(--iv-sky);letter-spacing:.08em;text-transform:uppercase;text-align:center;border-top:1px solid rgba(46,125,209,.25);padding-top:12px;opacity:.85">Training Track · Company Policy &amp; Onboarding · InvenTel Innovations</div>
+          <div style="font-family:'DM Mono',monospace;font-size:10.5px;color:var(--iv-sky);letter-spacing:.08em;text-transform:uppercase;text-align:center;border-top:1px solid rgba(200,32,42,.25);padding-top:12px;opacity:.85">Training Track · Company Policy &amp; Onboarding · InvenTel Innovations</div>
           <div class="name-printed" style="display:none;text-align:center;margin-top:14px;font-family:'Archivo',sans-serif;font-weight:700;font-size:1.2rem;color:var(--iv-amber)"></div>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px" class="completion-actions">
           <button style="background:rgba(255,255,255,.08);border:none;color:#fff;padding:12px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px" onclick="resetQuiz()">↩ Retake Quiz</button>
           <button style="background:var(--iv-signal);border:none;color:#fff;padding:12px 22px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px" onclick="printCertificate()">🖨️ Print Certificate</button>
         </div>
-        <div style="max-width:540px;margin:18px auto 0;padding:14px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(232,163,61,.3);border-radius:10px;color:var(--iv-sky);font-size:13px;line-height:1.6;text-align:center">
-          <strong style="color:#fff">📨 Send this to your HR onboarding trainer (new hires) or team lead (existing employees) as proof of completion.</strong><br>
-          Use <strong>🖨️ Print Certificate</strong> above — in the print dialog, send to a printer <em>or</em> choose <strong>"Save as PDF"</strong>. A clean screenshot of this card is also accepted.
+        <div style="max-width:560px;margin:18px auto 0;padding:16px 20px;background:rgba(255,255,255,.10);border:1px solid rgba(224,163,46,.45);border-radius:10px;color:#F7EAEB;font-size:14px;line-height:1.7;text-align:center">
+          <strong style="color:#fff;font-size:15px">📨 Submit this as proof of completion.</strong><br>
+          Use <strong style="color:#fff">🖨️ Print Certificate</strong> above — in the print dialog, send to a printer <em>or</em> choose <strong style="color:#fff">"Save as PDF"</strong> (a clean screenshot of this card is also accepted). Then <strong style="color:#fff">upload it to the <a href="https://drive.google.com/drive/folders/19vsre-bLq4zDgwEAYGcSX22SpJ7hNvIM?usp=drive_link" target="_blank" rel="noopener" style="color:var(--iv-amber)">InvenTel University Quiz Results</a> folder</strong>, and notify your HR onboarding trainer (new hires) or team lead (existing employees).
         </div>
       </div>
 
@@ -2219,7 +2383,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <h3 style="color:#fff;font-family:'Archivo',sans-serif;font-size:1.5rem;margin:0">Not Quite There Yet</h3>
           <p style="color:#fff;margin-top:10px;margin-bottom:0;font-size:14px">You scored <strong id="fail-score">—</strong>. You need 32/45 (70%) to pass.</p>
         </div>
-        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:22px;border:1px solid rgba(46,125,209,.3)">
+        <div style="background:rgba(255,255,255,.06);border-radius:12px;padding:22px;border:1px solid rgba(200,32,42,.3)">
           <h4 style="color:var(--iv-amber);margin-bottom:10px">Where to Focus Before You Retake</h4>
           <p style="color:var(--iv-sky);font-size:13.5px;line-height:1.65">Most retakes pass after a focused 20–30 minute review of these sections:</p>
           <ul style="color:var(--iv-sky);font-size:13.5px;line-height:1.85;margin-left:20px">
@@ -2240,7 +2404,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
 
 <footer>
   <span class="fbrand">InvenTel Innovations</span> · Est. 1992 · Direct Response Television<br>
-  Company Policy &amp; Onboarding Hub · Internal use only · This handbook does not constitute a contractor agreement.
+  Company Policy &amp; Onboarding Hub · Internal use only · This policy hub does not constitute a contractor agreement.
 </footer>
 
 <!-- ============ FLOATING TOC BUTTON ============ -->
@@ -2398,8 +2562,8 @@ const quizQuestions = [
   {q:"InvenTel was established in 1992 in the US and leads which sector?", o:["Software-as-a-Service","Direct Response Television (DRTV)","Logistics and freight","Retail banking"], a:1, e:"InvenTel has led the Direct Response Television (DRTV) sector since 1992. You'll also see TelNet — the data-driven marketing agency side of the company; the two operate together and these policies apply across both."},
   {q:"You're in Pakistan scheduling a call with a teammate in Argentina. Which time zone do you use in the invite and message?", o:["Your own local time","The teammate's local time","Eastern Time (ET) — always","UTC"], a:2, e:"Always communicate and schedule in Eastern Time, never your local time. With the whole company (HQ in NJ, plus Egypt, India, Pakistan, the Philippines, Indonesia, Argentina, Colombia, and the US) speaking one clock, everyone makes a single easy conversion and no one is confused. Mixing in local times is what causes missed meetings."},
   {q:"The US has just changed its clocks for Daylight Saving Time. Your country does not observe DST. What happens to company time?", o:["Company time stays where it was; NJ adjusts to you","All company time shifts to match the new time in NJ — you accommodate the change","Working hours are cancelled that week","You switch to your local time until it resyncs"], a:1, e:"InvenTel always follows the current Eastern Time in New Jersey. When NJ's clock changes, all company time moves with it. If your country doesn't observe DST, your local-to-ET gap shifts by an hour — that's expected, and it's on you to accommodate. Because your calendar's primary zone is ET, meetings stay correct automatically; they just land at a new local hour."},
-  {q:"What are the standard working hours?", o:["9:00 AM – 6:00 PM EST","8:30 AM – 5:30 PM EST","8:00 AM – 4:00 PM EST","Flexible, no set hours"], a:1, e:"Standard working hours are 8:30 AM – 5:30 PM EST. You're expected to be available and engaged during these hours unless on approved leave, in a meeting, or on a reasonable break."},
-  {q:"When is the company-wide lunch break?", o:["Whenever you like, as long as it's an hour","12:30 PM – 1:30 PM EST, taken by everyone at the same time","1:00 PM in your own local time","There is no set lunch break"], a:1, e:"Everyone takes a one-hour lunch from 12:30–1:30 PM EST. It lands at a different local hour by country (e.g. 7:30 PM in Egypt, 9:30 PM in Pakistan, 10:00 PM in India) but it's always the same Eastern Time window so the whole company breaks together. A lunch over one hour is logged as an Incomplete Workday."},
+  {q:"What are the standard working hours?", o:["9:00 AM – 6:00 PM ET","8:30 AM – 5:30 PM ET","8:00 AM – 4:00 PM ET","Flexible, no set hours"], a:1, e:"Standard working hours are 8:30 AM – 5:30 PM ET. You're expected to be available and engaged during these hours unless on approved leave, in a meeting, or on a reasonable break."},
+  {q:"When is the company-wide lunch break?", o:["Whenever you like, as long as it's an hour","12:30 PM – 1:30 PM ET, taken by everyone at the same time","1:00 PM in your own local time","There is no set lunch break"], a:1, e:"Everyone takes a one-hour lunch from 12:30–1:30 PM ET. It lands at a different local hour by country (e.g. 7:30 PM in Egypt, 9:30 PM in Pakistan, 10:00 PM in India) but it's always the same Eastern Time window so the whole company breaks together. A lunch over one hour is logged as an Incomplete Workday."},
   {q:"A task or request comes to you. What does taking ownership mean?", o:["Pass it along quickly so it's off your plate","Take time to understand the ask before completing or handing it off, and follow up on what you need","Wait for someone to explain it fully","Only act once reminded"], a:1, e:"Ownership means engaging with the work, not just routing it. Understand the request first (ask questions if it's unclear), follow up on anything you're waiting on or have handed off, and close the loop. Passing info or tasks through without understanding them isn't ownership."},
   {q:"A teammate sends you feedback or a correction that feels blunt. What's the right response?", o:["Take offense and defend yourself","Assume good intent, stay respectful, and ask for clarification if needed — it's about the work, not personal","Ignore it","Reply with the same tone"], a:1, e:"It's work, not personal. Tone gets lost over text, so assume good intent and stay respectful even if a message upsets you. Feedback is meant to help us all connect and grow. If something lands wrong, a quick 'did you mean X?' clears it up."},
   {q:"You get a Google Chat message during working hours but can't fully reply right now. What's the standard?", o:["Reply whenever you're free, even hours later","React or reply in under 10 minutes — a 👍 counts","Wait until end of day","Turn off notifications and focus"], a:1, e:"Every chat during working hours gets a reply or at least a reaction in UNDER 10 minutes — a one-second 👍 or ✓ is enough. Take longer and we assume you're offline or deliberately ignoring the person. If you're going heads-down, set your Chat status first so your silence is understood."},
@@ -2410,7 +2574,7 @@ const quizQuestions = [
   {q:"You're about to schedule a meeting on a teammate's calendar. What should you do first?", o:["Just add it — it's on their calendar anyway","Message them first that a meeting is coming, that you'll use their open availability, and ask what time works","Wait for them to ask for a meeting","Only tell them after it's scheduled"], a:1, e:"Connect first, every time (unless it's a large group). Let them know a meeting will happen, that you'll add it based on their open availability, and ask if a date/time works best. Then after scheduling, follow up to confirm it's booked. For last-minute or very large meetings, find an open slot from calendars and prioritize the executive team's availability."},
   {q:"You receive a meeting invite. What's expected of you?", o:["Ignore it unless you plan to attend","Accept, decline, or mark 'maybe' so the organizer knows who's coming","Only respond if you're declining","Forward it to your Dept Lead"], a:1, e:"Always respond to invites — accept, decline, or '?'. Leaving it blank makes people wait on attendees who were never coming. If you accept and later can't make it, update your response and tell the organizer."},
   {q:"You have to reschedule a meeting you organized. What's the right way?", o:["Just move it; the calendar update is enough","Move it with as much notice as possible AND message attendees in Chat before the original start time","Cancel it silently and rebook later","Wait until the meeting time to decide"], a:1, e:"Give as much notice as possible and always message invited people in Chat before the original start time. People plan their days around their schedule; minimize reschedules and never let a meeting be silently cancelled."},
-  {q:"What's the rule on company-wide meetings?", o:["There are no more company meetings","If a company-wide meeting appears on your calendar, attending is mandatory (cameras on)","They're optional unless you're a manager","Only the first Friday counts"], a:1, e:"Whenever a company-wide meeting is scheduled and shows on your calendar, it's mandatory — cameras on, full attendance."},
+  {q:"How do company-wide meetings work, and what's expected of you?", o:["They're optional unless you're a manager","They only happen on the first Friday of the month","They're scheduled with varying notice; attend when you can, and attendance is tracked","There are no company-wide meetings anymore"], a:2, e:"Company-wide meetings come up regularly with varying notice — sometimes well ahead, sometimes the day before. Treat them as mandatory (cameras on). If you're double-booked and can move the other meeting, reschedule it; if not, the session is recorded and shared. Attendance is tracked, and a pattern of missed company-wide meetings will be flagged by the Performance Team."},
   {q:"How much advance notice is required to request 3 or more consecutive days off?", o:["7 days","14 days","21 days","30 days"], a:2, e:"Notice scales with length: 7 days for 1 day off, 14 days for 2 consecutive days, and 21 days for 3 or more consecutive days. Submit in the PM tool (Leave Management)."},
   {q:"What is the total annual paid leave allowance?", o:["10 days","16 days","20 days","Unlimited"], a:1, e:"16 paid days a year: 5 PTO + 5 sick + 6 floating holidays. Anything beyond 16 days is unpaid."},
   {q:"How is the 16-day paid leave allowance broken down?", o:["10 PTO + 6 sick","5 PTO + 5 sick + 6 floating holidays","8 PTO + 8 sick","6 PTO + 5 sick + 5 floating holidays"], a:1, e:"5 PTO + 5 sick + 6 floating holidays = 16. Days can be combined and taken as half-days, and you track your own balance."},
@@ -2420,26 +2584,26 @@ const quizQuestions = [
   {q:"On your first day, who do you contact to set up banking, and is it deferrable?", o:["HR; can wait until month-end","The Accountant at tanvir@inventel.net; do it immediately","Your team lead; deferrable","No action needed until first invoice"], a:1, e:"Email tanvir@inventel.net on day one — it can't be deferred. A bank letter may be required, and delays cause payment-processing delays."},
   {q:"When are monthly invoices due, and when is payment processed?", o:["Due the 1st; paid the 15th","Due the 25th; paid by the 10th of the following month","Due end of month; paid same day","Due the 10th; paid the 25th"], a:1, e:"Invoices are due by the 25th (sent to the shared accounting inbox ap@inventel.net using the official template) and payment is processed by the 10th of the following month."},
   {q:"What's the correct invoice file-naming format?", o:["Invoice_FirstName.pdf","FirstName LastName_Invoice_MMYYYY.pdf","MMYYYY_Invoice.pdf","Your choice"], a:1, e:"Use FirstName LastName_Invoice_MMYYYY.pdf — e.g. John Doe_Invoice_APR2026.pdf. List any missed workdays in the Notes section."},
+  {q:"Are you allowed to take freelance or consulting work while employed at InvenTel?", o:["Yes, as long as it's unrelated","Yes, with manager approval","No — no secondary income-generating work of any kind","Only on weekends"], a:2, e:"No freelance, part-time, consulting, advisory, or any secondary income-generating work is permitted. Full professional commitment is required."},
   {q:"Who owns the creative, strategy, and other work you produce at InvenTel?", o:["You keep personal rights","The company — all work product is assigned to InvenTel","Shared 50/50","Whoever assigned the task"], a:1, e:"All creative, strategic, technical, and operational work you produce belongs to the company. Brand assets also can't go in personal portfolios without written permission, even after you leave."},
   {q:"What's the minimum internet speed you must maintain during working hours?", o:["5 Mbps","10 Mbps","15 Mbps up and down","50 Mbps"], a:2, e:"At least 15 Mbps upload and download at all times during working hours. You're personally responsible for your connection's quality and reliability."},
   {q:"Under the connectivity policy, what happens if an equipment/internet issue isn't resolved by Day 2?", o:["Nothing","Unpaid leave until resolved","Immediate termination","A written warning only"], a:1, e:"Day 1 is a grace period. Day 2+ is unpaid leave until resolved. Day 3+ or recurring issues can lead to suspension or termination — which is why a backup plan is required."},
   {q:"How often must you update your Daily Scrum in the PM tool?", o:["Weekly","Every single workday","Only when something changes","At the end of each project"], a:1, e:"Update your standup every workday in the PM tool's Daily Scrum — active tasks, status (In-Progress/Completed/Blocked), and blockers. The PM tool is the team's single source of truth."},
   {q:"What's the rule for the PM tool's time tracker?", o:["Run it once a day is fine","Turn it on for every task you work, without exception","Only track client work","It's optional if you log hours manually"], a:1, e:"Using the tracker is mandatory and per task — start the timer on the task you're working and stop when done. Tracking once a day or skipping it leads to missing/inaccurate logs, and it's your responsibility to keep it running correctly. If notifications or the app aren't working, uninstall the old version, install the latest, and contact the Workforce Analyst Team for any setup/login/usage issue."},
-  {q:"Leave requests and balances now live where?", o:["A Google Form in the HR Drive folder","The PM tool Tracker","Inside the InvenTel PM tool (Leave Management)","Email to your manager"], a:2, e:"Leave is no longer a Google Form — all requests go through Leave Management in the PM tool, and your balances are tracked there too. For a half day or early leave, state the exact EST time or the request may be returned."},
+  {q:"Leave requests and balances now live where?", o:["A Google Form in the HR Drive folder","Monitask","Inside the InvenTel PM tool (Leave Management)","Email to your manager"], a:2, e:"Leave is no longer a Google Form — all requests go through Leave Management in the PM tool, and your balances are tracked there too. For a half day or early leave, state the exact ET time or the request may be returned."},
   {q:"After you submit a leave request, what happens?", o:["It's automatically approved","The HR leave team reviews it; multi-day requests loop in your Direct Report, and longer ones go to the executive team","Your Accountant approves it","Nothing until you remind them"], a:1, e:"The PM tool notifies the HR leave team (Workforce Analyst Team), who review and approve or deny. If there's an error — e.g. paid leave requested before you've completed 90 days — they deny it and ask you to resubmit. More than one day loops in your Direct Report; longer stretches also need executive-team approval. Once approved, the calendar updates, you're added to the leave event, your balance updates, and your Direct Report is notified."},
   {q:"What's the rule on time off during Busy Season (Fri after Thanksgiving – Dec 20)?", o:["Take as much as you want","Maximum 2 PTO days, with at least 20 days' notice","No time off at all","Only the executive team can take leave"], a:1, e:"Because of the As-Seen-On-TV high-volume period, time off in the Busy Season is capped at 2 PTO days and needs at least 20 days' notice. Plan year-end time off early. Full details are in your contract and handbook (see Your Contract & Handbook)."},
+  {q:"The hub and your signed contract say slightly different things about a policy. Which one governs?", o:["The hub — it's newer","Your signed Services Agreement and Contractor Handbook","Whichever is stricter","Neither — ask a teammate"], a:1, e:"The hub is your operational guide and does not constitute a contractor agreement. Your signed Services Agreement and Contractor Handbook are the governing documents — where they differ from the hub, the signed agreements control. They also cover conduct, confidentiality/NDA, IP, non-compete, non-solicitation, and termination in full."},
   {q:"You delete a screenshot from the Time Tracker. What else happens?", o:["Nothing else","The time linked to that screenshot is also removed from your log","Your whole day is deleted","HR is notified"], a:1, e:"Deleting a screenshot also removes the time associated with that period from your log. Screenshots add context to logged time; review yours at the end of each day."},
   {q:"Someone more senior DMs you a task directly. What's the correct action?", o:["Just do it — they're senior","Move it to the correct PM channel and notify your Department Lead","Ignore it","Forward it to HR"], a:1, e:"All task requests go through the proper channel, never a private DM — even from someone senior. Move it to the channel and notify your Dept Lead so your workload stays visible and trackable."},
-  {q:"Which channel is for official company-wide announcements, and how should you use it?", o:["Education Channel; post questions there","Company Announcements; enable All notifications and read every post — only HR and execs can post there","InvenTel Team; it's read-only for execs","Social Media Callouts; discuss freely"], a:1, e:"Company Announcements is the official updates channel and your most important one to follow — only HR and company execs can post there, so enable All notifications and read every post. The InvenTel Team channel is the open space where any team member can share thoughts or raise issues."},
+  {q:"Which channel is for official company-wide announcements, and how should you use it?", o:["Education Channel; post questions there","InvenTel Team; enable All notifications, read every post, never post chatter","Social Media Callouts; discuss freely","Financial Updates; reply to announcements"], a:1, e:"The InvenTel Team channel is the read-only announcements hub. Enable All notifications, read every post, and keep discussions/questions in DMs or your department's Project Space."},
   {q:"What's expected of every team member on InvenTel's social media?", o:["Nothing — that's the social team's job","Full participation: follow the pages and like, comment, and react — engaging on Social Media Callouts right away","Only follow, don't interact","Just submit your handles once"], a:1, e:"The CEO has asked for full team participation — follow the company and brand pages and like, comment, and react on posts. Submit your handles via the Performance Team's form, watch the Social Media Callouts channel, and engage immediately when a post is shared. Interacting with our social presence is a required part of the job."},
   {q:"When a new brand is assigned to you, what must you do before starting work on it?", o:["Just skim the product page","Review that brand's hub completely top to bottom, then pass the quiz and send your result to the Brand Lead","Watch one Loom video","Ask the Brand Lead to summarize it"], a:1, e:"Review the full brand hub in InvenTel University — every section, no skimming — then complete the quiz and submit your result to that Brand Lead. This restarts every time a new brand enters your scope."},
   {q:"You have a leave-balance question and a separate PM tracker time-entry issue. Which HR team handles both?", o:["Talent Acquisition Team","Workforce Analyst Team","Performance Team","Neither — ask your manager"], a:1, e:"The Workforce Analyst Team handles leave requests, balances, and time-off questions as well as PM tracker issues and manual time entries. Onboarding, access, and performance go to the Performance Team; hiring goes to the Talent Acquisition Team. (This HR routing is for international team members, not US W2/1099.)"},
   {q:"Who founded InvenTel and serves as its CEO?", o:["Faiz Shaikh","Priscilla H.","Yasir Abdul","The Performance Team"], a:2, e:"Yasir Abdul is the Founder and CEO, with 30+ years in product innovation and direct-response TV. Faiz Shaikh and Priscilla H. are the company's Executive Vice Presidents."},
   {q:"How do you keep the company-wide Remote Leave Tracker permanently in view?", o:["You can't — you look it up each time","Subscribe to it once in Google Calendar (Other calendars → + → Subscribe → search 'Remote Leave Tracker')","HR mails it to you weekly","It only shows on the PM dashboard"], a:1, e:"It's a public InvenTel calendar, so you subscribe once in Google Calendar via Other calendars → + → Subscribe to calendar → search 'Remote Leave Tracker'. After that it stays visible. Separately, when your own leave is approved you're auto-invited to that event, so it appears on your calendar and the shared tracker."},
   {q:"You think you clicked a phishing link or your account may be compromised. What do you do?", o:["Wait and see if anything happens","Report it to the Performance Team immediately","Only mention it if asked","Delete the email and move on"], a:1, e:"Report it to the Performance Team right away — speed limits the damage, and you're never in trouble for reporting a genuine mistake. Also keep 2FA on, use strong unique passwords, never share logins, and keep company data in company tools. Verify any payment/banking request directly with Accounting."},
-  {q:"Where does a harassment concern or a conflict with a teammate or lead go?", o:["You handle it yourself","The Performance Team — confidentially, with no retaliation","Post it in the InvenTel Team channel","Your Accountant"], a:1, e:"Raise it with the Performance Team. Concerns are handled confidentially, good-faith reports are never held against you, and retaliation is not tolerated. InvenTel expects respectful, inclusive, professional conduct from everyone."},
-  {q:"Which of these does the Performance Team handle?", o:["Leave requests, balances, and PM tracker time entries","New-hire onboarding, platform access, performance reviews & coaching, and people concerns","Salaries, invoicing, and payment processing","Hiring, referrals, and open positions"], a:1, e:"The Performance Team covers onboarding and new-hire support, platform/system access, performance reviews, coaching and SOPs, and any people concern (a conflict with a teammate or lead, or a situation you're unsure about) — handled confidentially. Leave and PM tracker issues go to the Workforce Analyst Team; hiring goes to the Talent Acquisition Team."},
-  {q:"It's Week 1 and you can't access a platform you need for your work. Who do you contact?", o:["Wait until someone notices","The Performance Team — they handle platform access","Your Accountant","Post about it in the InvenTel Team channel"], a:1, e:"Platform access is handled by the Performance Team, who coordinate with your manager. Test access to every platform you need before the end of Week 1 and flag anything missing right away — missing access blocks your work. If you're ever unsure who to ask in HR, start with the Performance Team and they'll point you the right way."}
+  {q:"Where does a harassment concern or a conflict with a teammate or lead go?", o:["You handle it yourself","The Performance Team — confidentially, with no retaliation","Post it in the InvenTel Team channel","Your Accountant"], a:1, e:"Raise it with the Performance Team. Concerns are handled confidentially, good-faith reports are never held against you, and retaliation is not tolerated. InvenTel expects respectful, inclusive, professional conduct from everyone."}
 ];
 
 let quizState = {idx:0, correct:0, answered:false};
