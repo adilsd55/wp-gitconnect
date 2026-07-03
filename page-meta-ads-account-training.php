@@ -76,9 +76,9 @@ a:hover{text-decoration:underline;color:#1340b0}
 .step{display:flex;gap:10px;margin-bottom:8px;align-items:flex-start}
 .step-num{min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;margin-top:1px;color:#fff}
 .step-num.green{background:#166534}.step-num.amber{background:#854d0e}.step-num.red{background:#991b1b}
-.step-text{font-size:12.5px;color:#1a1a1a;line-height:1.55}
+.step-text{font-size:12.5px;color:#1a1a1a;line-height:1.55;word-break:break-word;overflow-wrap:break-word}
 .step-text code{background:#f0f0ee;padding:1px 5px;border-radius:3px;font-size:11.5px;font-family:'Consolas','Courier New',monospace;color:#8B0000}
-.step-nav{display:inline-block;background:#f0f0ee;padding:1px 7px;border-radius:4px;font-size:11px;font-weight:600;color:#3a3a3a;white-space:nowrap}
+.step-nav{display:inline;background:#f0f0ee;padding:1px 7px;border-radius:4px;font-size:11px;font-weight:600;color:#3a3a3a;white-space:normal;word-break:break-word}
 .step-tip{background:#fffbeb;border-left:3px solid #ca8a04;border-radius:4px;padding:8px 12px;margin:6px 0 8px;font-size:11.5px;color:#854d0e;line-height:1.5}
 .step-warning{background:#fef2f2;border-left:3px solid #991b1b;border-radius:4px;padding:8px 12px;margin:6px 0 8px;font-size:11.5px;color:#991b1b;line-height:1.5}
 .kbd{display:inline-block;background:#f7f7f5;border:1px solid #d0d0d0;border-radius:3px;padding:0 5px;font-size:11px;font-family:'Consolas','Courier New',monospace;color:#3a3a3a;box-shadow:0 1px 0 #b0b0b0;line-height:1.6}
