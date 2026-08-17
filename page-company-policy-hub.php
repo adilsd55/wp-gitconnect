@@ -1,12 +1,11 @@
-﻿<?php /* Template Name: Company Policy Hub */ ?>
+<?php /* Template Name: Company Policy Hub */ ?>
 <?php bh_require_login(); ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InvenTel — Company Policy &amp; Onboarding Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=DM+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
 <style>
 :root{
   /* INVENTEL PALETTE — corporate DRTV identity, est. 1992. Brand red + charcoal black + white, tuned for readability */
@@ -369,11 +368,56 @@ body.printing .name-printed{display:block !important}
 
 footer{background:var(--iv-ink);color:var(--iv-sky);text-align:center;padding:48px 20px;font-size:12.5px;font-family:'DM Mono',monospace;letter-spacing:.04em;margin-top:60px}
 footer .fbrand{color:var(--iv-amber);font-weight:700}
+
+/* ============ ADMIN: LOGIN OVERLAY ============ */
+#iv-login-overlay{position:fixed;inset:0;background:rgba(26,20,22,.72);backdrop-filter:blur(4px);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px}
+#iv-login-overlay.open{display:flex}
+#iv-login-modal{position:relative;background:var(--iv-white);border-radius:16px;padding:36px 32px;width:100%;max-width:360px;box-shadow:0 24px 60px rgba(14,27,42,.4);border:1px solid rgba(200,32,42,.18)}
+#iv-login-close{position:absolute;top:14px;right:14px;background:transparent;border:none;font-size:22px;line-height:1;cursor:pointer;color:var(--iv-slate);width:28px;height:28px;border-radius:50%;transition:all .15s}
+#iv-login-close:hover{background:var(--iv-sky-soft);color:var(--iv-signal)}
+.iv-login-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--iv-signal-deep);margin-bottom:8px;font-weight:600}
+.iv-login-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.3rem;color:var(--iv-ink);margin-bottom:6px}
+.iv-login-sub{font-size:12.5px;color:var(--iv-text-muted);margin-bottom:20px;line-height:1.5}
+.iv-login-label{display:block;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--iv-slate);margin-bottom:5px;margin-top:14px;font-weight:700}
+.iv-login-input{width:100%;padding:9px 12px;border:1.5px solid var(--iv-line);border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;color:var(--iv-text);outline:none;transition:border-color .15s}
+.iv-login-input:focus{border-color:var(--iv-signal)}
+#iv-login-error{display:none;color:var(--iv-danger);font-size:12.5px;margin-top:12px;font-weight:600}
+#iv-login-error.show{display:block}
+.iv-login-submit{width:100%;margin-top:20px;background:var(--iv-signal);color:#fff;border:none;padding:11px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
+.iv-login-submit:hover{background:var(--iv-signal-deep)}
+
+/* ============ ADMIN: EDIT TOOLBAR ============ */
+#iv-edit-toolbar{display:none;position:fixed;top:0;left:0;right:0;z-index:2000;background:var(--iv-ink);border-bottom:3px solid var(--iv-amber);padding:10px 20px;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;box-shadow:0 4px 18px rgba(14,27,42,.4)}
+body.iv-edit-mode #iv-edit-toolbar{display:flex}
+body.iv-edit-mode{padding-top:52px}
+body.iv-edit-mode #top-nav{top:52px}
+.iv-toolbar-label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.04em;color:var(--iv-amber);font-weight:700;white-space:nowrap}
+.iv-toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}
+.iv-toolbar-btn{border-radius:7px;padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;border:1px solid transparent;transition:all .15s}
+.iv-btn-save{background:var(--iv-success);color:#fff}
+.iv-btn-save:hover{background:var(--iv-success-deep)}
+.iv-btn-reset{background:transparent;border-color:rgba(255,255,255,.3);color:#fff}
+.iv-btn-reset:hover{background:rgba(255,255,255,.12)}
+.iv-btn-exit{background:var(--iv-signal);color:#fff}
+.iv-btn-exit:hover{background:var(--iv-signal-deep)}
+
+/* ============ ADMIN: EDITABLE CONTENT INDICATORS ============ */
+body.iv-edit-mode [data-iv-editable="true"]{outline:1px dashed rgba(200,32,42,.35);outline-offset:3px;border-radius:3px;cursor:text;transition:outline-color .12s,background-color .12s}
+body.iv-edit-mode [data-iv-editable="true"]:hover{outline:1px dashed var(--iv-signal);background-color:rgba(200,32,42,.06)}
+body.iv-edit-mode [data-iv-editable="true"]:focus{outline:2px solid var(--iv-amber);background-color:rgba(232,163,61,.09)}
+#iv-admin-btn{margin-left:2px}
+body.iv-edit-mode #iv-admin-btn{display:none}
+</style>
+<style id="__web-inspector-hide-shortcut-style__">
+.__web-inspector-hide-shortcut__, .__web-inspector-hide-shortcut__ *
+{
+    visibility: hidden !important;
+}
 </style>
 <meta name="robots" content="noindex, nofollow">
 <?php bh_favicon_tags(); ?>
 </head>
-<body>
+<body class="">
 <?php bh_back_to_index_button( 'university-landing', 'University' ); ?>
 
 <!-- ============ TOP NAV ============ -->
@@ -381,17 +425,24 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
   <div class="nav-inner">
     <div class="nav-brand"><span class="nav-dot"></span>InvenTel<span class="nav-brand-full"> · Policy Hub</span></div>
     <div class="nav-search-wrap">
-      <svg class="nav-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <svg class="nav-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       <input type="text" id="hub-search" class="nav-search" placeholder="Search policies, rules, forms…  ( / )" autocomplete="off">
       <div id="search-results"></div>
     </div>
     <button class="nav-top-toc-btn" onclick="openTOCDrawer()">☰ Contents</button>
+    <button class="nav-top-toc-btn" id="iv-admin-btn" onclick="ivOpenLogin()" title="Admin editing">🔒 Admin</button>
   </div>
 </nav>
 
+<!-- ============ ADMIN: LOGIN OVERLAY ============ -->
+
+
+<!-- ============ ADMIN: EDIT MODE TOOLBAR ============ -->
+
+
 <!-- ============ TOC DRAWER ============ -->
-<div id="toc-drawer-overlay" onclick="closeTOCDrawer()"></div>
-<aside id="toc-drawer">
+<div id="toc-drawer-overlay" onclick="closeTOCDrawer()" class=""></div>
+<aside id="toc-drawer" class="">
   <div class="toc-drawer-header">
     <span class="toc-drawer-title">Jump to Section</span>
     <button class="toc-drawer-close" onclick="closeTOCDrawer()" aria-label="Close">×</button>
@@ -463,7 +514,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">Table of Contents</span>
         <h2>Everything in This Hub</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p style="color:var(--iv-text-muted);font-size:14px;margin-bottom:4px">Tap any tile to jump. Use the search bar up top or the floating ☰ button (bottom-right) from anywhere on the page.</p>
@@ -513,14 +564,14 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">1 · Start Here</span>
         <h2>Welcome &amp; How to Use This Hub</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>This is the single home for how we work at InvenTel — a remote, global, fast-moving direct-response team with headquarters in New Jersey, USA and teammates across <strong>Egypt, India, Pakistan, the Philippines, Indonesia, Argentina, Colombia, and the United States</strong>. It pulls together the <strong>Communication, Collaboration &amp; Meeting Standards Policy</strong>, the <strong>Employee Onboarding Deck</strong>, and the <strong>New-Hire Onboarding Checklist</strong> into one searchable place. New hires read it top to bottom in week one; current team members use it as the reference whenever a question comes up.</p>
 
       <p style="font-size:14px;color:var(--iv-text-muted)">Two things hold a team this spread-out together, and they run through everything below: <strong>everyone works and communicates on one clock — Eastern Time</strong> — and <strong>everyone stays fast and reachable on chat.</strong> Get those two right and the rest follows.</p>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-0">
         <span class="team-tag">New Hire · Start Here</span>
         <p><strong>Your first-week path:</strong> (1) Read this hub top to bottom. (2) Work through the <a href="#checklist">New-Hire Setup Checklist</a> — 2FA, time zone, banking, PM tool, camera test. (3) Take the <a href="#quiz-section">Knowledge Check Quiz</a> at the bottom, then follow the standard submission process — upload your result to the Quiz Results folder and notify the person who assigned it (for onboarding, that's the Performance Team). (4) Ask your Team Lead anything the hub doesn't answer.</p>
       </div>
@@ -545,7 +596,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">2 · The Company</span>
         <h2>About InvenTel &amp; TelNet</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p><strong>InvenTel</strong> was established in 1992 in the United States and has led the Direct Response Television (DRTV) sector from the start, building creative marketing strategies that forge strong bonds between brands and their audiences. Two names anchor most of the work: <strong>InvenTel</strong> (the brand portfolio and DRTV side) and <strong>TelNet</strong> (the data-fueled, expert-led marketing agency side). They operate together, and the policies in this hub apply across both. Beyond those two, you'll also see the company referred to by other names across email domains, documents, and tools — that's expected, and you don't need to track which is which. Names you may encounter include <strong>InvenTel.TV</strong>, <strong>InvenTel.net</strong>, <strong>InvenTel Innovations</strong>, and <strong>AsSeenOnTV LLC</strong>, and our agency work is sometimes presented under <strong>TelNet</strong>. You may also come across brands and ventures such as <strong>Home Inspo</strong> and <strong>Beyond Patents</strong>, with others in the portfolio and more in development.</p>
@@ -595,7 +646,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">3 · Leadership</span>
         <h2>Executive Leadership</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel is led by its founder and a small executive team. (These are the only individuals named by name in this hub — everywhere else, people are referred to by title so the document stays accurate as the team grows and changes.)</p>
@@ -643,7 +694,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">4 · Org Structure</span>
         <h2>Organizational Structure</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <h3>How the organization fits together</h3>
@@ -654,106 +705,106 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <div style="overflow-x:auto;margin:14px 0">
       <svg viewBox="-18 0 1018 612" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;min-width:760px;aspect-ratio:1018/612;height:auto;font-family:'Inter',sans-serif" preserveAspectRatio="xMidYMid meet" role="img" aria-label="InvenTel organization chart. CEO/President Yasir Abdul leads, with EVP Business Development Faiz S. and Executive VP Priscilla H. below. Thirteen Business Functions: Biz Dev and Growth, Legal, Accounting and Finance, Production, Executive Assistants, IT, Artificial Intelligence, Customer Experience, Order Management, Warehouse, Brand Management, Agency Management, HR / Performance Team. The Digital Agency Team comprises fifteen teams: Project Managers, Paid Media, Paid Search, Email/SMS, Organic Social, UGC/Affiliate, Marketplace, SEO, CRO, Web Dev, Data and Analytics, Designers and Editors, Animation, Copywriting, Quality Assurance.">
         <defs>
-          <marker id="oc-ah" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L5,3 L0,6 Z" fill="#8A97A6"/></marker>
+          <marker id="oc-ah" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L5,3 L0,6 Z" fill="#8A97A6"></path></marker>
         </defs>
         <!-- legend -->
-        <rect x="404" y="14" width="16" height="16" rx="3" fill="#14304A" stroke="#14304A" stroke-width="1.2"/>
+        <rect x="404" y="14" width="16" height="16" rx="3" fill="#14304A" stroke="#14304A" stroke-width="1.2"></rect>
         <text x="426" y="26" font-size="12" fill="#54616E">Leadership</text>
-        <rect x="516" y="14" width="16" height="16" rx="3" fill="#D8584A" stroke="#7A1F16" stroke-width="1.2"/>
+        <rect x="516" y="14" width="16" height="16" rx="3" fill="#D8584A" stroke="#7A1F16" stroke-width="1.2"></rect>
         <text x="538" y="26" font-size="12" fill="#54616E">Business Functions</text>
-        <rect x="674" y="14" width="16" height="16" rx="3" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.2"/>
+        <rect x="674" y="14" width="16" height="16" rx="3" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.2"></rect>
         <text x="696" y="26" font-size="12" fill="#54616E">Digital Agency Team</text>
 
         <!-- CEO -->
-        <rect x="395" y="46" width="210" height="56" rx="8" fill="#14304A" stroke="#14304A" stroke-width="1.5"/>
+        <rect x="395" y="46" width="210" height="56" rx="8" fill="#14304A" stroke="#14304A" stroke-width="1.5"></rect>
         <text x="500" y="70" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" font-family="'Archivo',sans-serif">CEO / President</text>
         <text x="500" y="89" text-anchor="middle" font-size="13" fill="#F4D9DE">Yasir Abdul</text>
 
         <!-- connector CEO -> EVP row -->
-        <path d="M500,102 L500,124" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M270,124 L730,124" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M270,124 L270,140" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M730,124 L730,140" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
+        <path d="M500,102 L500,124" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M270,124 L730,124" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M270,124 L270,140" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M730,124 L730,140" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
 
         <!-- EVPs -->
-        <rect x="165" y="140" width="210" height="56" rx="8" fill="#14304A" stroke="#14304A" stroke-width="1.5"/>
+        <rect x="165" y="140" width="210" height="56" rx="8" fill="#14304A" stroke="#14304A" stroke-width="1.5"></rect>
         <text x="270" y="164" text-anchor="middle" font-size="13.5" font-weight="800" fill="#fff" font-family="'Archivo',sans-serif">EVP Business Dev.</text>
         <text x="270" y="183" text-anchor="middle" font-size="13" fill="#F3D9DB">Faiz S.</text>
-        <rect x="625" y="140" width="210" height="56" rx="8" fill="#14304A" stroke="#14304A" stroke-width="1.5"/>
+        <rect x="625" y="140" width="210" height="56" rx="8" fill="#14304A" stroke="#14304A" stroke-width="1.5"></rect>
         <text x="730" y="164" text-anchor="middle" font-size="13.5" font-weight="800" fill="#fff" font-family="'Archivo',sans-serif">Exec. VP</text>
         <text x="730" y="183" text-anchor="middle" font-size="13" fill="#F3D9DB">Priscilla H.</text>
 
         <!-- spine from CEO down to the department bus -->
-        <path d="M500,102 L500,210" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M141,210 L841,210" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M141,210 L141,238" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M281,210 L281,238" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M421,210 L421,238" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M561,210 L561,238" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M701,210 L701,238" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
-        <path d="M841,210 L841,238" stroke="#8A97A6" stroke-width="1.4" fill="none"/>
+        <path d="M500,102 L500,210" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M141,210 L841,210" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M141,210 L141,238" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M281,210 L281,238" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M421,210 L421,238" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M561,210 L561,238" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M701,210 L701,238" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
+        <path d="M841,210 L841,238" stroke="#8A97A6" stroke-width="1.4" fill="none"></path>
 
         <!-- BUSINESS FUNCTIONS (red): row 1 = 6 centered, row 2 = 7 centered. box w=128, gap=12, canvas center=491 -->
         <g font-family="'Archivo',sans-serif">
         <!-- Row 1: 6 boxes centered. lefts 77,217,357,497,637,777 -> centers 141,281,421,561,701,841 -->
         <g>
-          <rect x="77" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="141" y="262" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Biz Dev</text><text x="141" y="278" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">&amp; Growth</text>
+          <rect x="77" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="141" y="262" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Biz Dev</text><text x="141" y="278" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">&amp; Growth</text>
         </g>
         <g>
-          <rect x="217" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="281" y="269" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Legal</text>
+          <rect x="217" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="281" y="269" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Legal</text>
         </g>
         <g>
-          <rect x="357" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="421" y="262" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Accounting</text><text x="421" y="278" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">&amp; Finance</text>
+          <rect x="357" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="421" y="262" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Accounting</text><text x="421" y="278" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">&amp; Finance</text>
         </g>
         <g>
-          <rect x="497" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="561" y="269" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Production</text>
+          <rect x="497" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="561" y="269" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Production</text>
         </g>
         <g>
-          <rect x="637" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="701" y="262" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Executive</text><text x="701" y="278" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Assistants</text>
+          <rect x="637" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="701" y="262" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Executive</text><text x="701" y="278" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Assistants</text>
         </g>
         <g>
-          <rect x="777" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="841" y="262" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Information</text><text x="841" y="278" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Technology</text>
+          <rect x="777" y="238" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="841" y="262" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Information</text><text x="841" y="278" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Technology</text>
         </g>
         <!-- Row 2: 7 boxes centered. lefts 7,147,287,427,567,707,847 -> centers 71,211,351,491,631,771,911. Order: AI, HR, BM, AM, CX, OM, Warehouse -->
-        <rect x="7" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="71" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Artificial</text><text x="71" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Intelligence</text>
-        <rect x="147" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="211" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">HR /</text><text x="211" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Performance</text>
-        <rect x="287" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="351" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Brand</text><text x="351" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Management</text>
-        <rect x="427" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="491" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Agency</text><text x="491" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Management</text>
-        <rect x="567" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="631" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Customer</text><text x="631" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Experience</text>
-        <rect x="707" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="771" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Order</text><text x="771" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Management</text>
-        <rect x="847" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"/><text x="911" y="331" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Warehouse</text>
+        <rect x="7" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="71" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Artificial</text><text x="71" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Intelligence</text>
+        <rect x="147" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="211" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">HR /</text><text x="211" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Performance</text>
+        <rect x="287" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="351" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Brand</text><text x="351" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Management</text>
+        <rect x="427" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="491" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Agency</text><text x="491" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Management</text>
+        <rect x="567" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="631" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Customer</text><text x="631" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Experience</text>
+        <rect x="707" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="771" y="324" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Order</text><text x="771" y="340" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Management</text>
+        <rect x="847" y="300" width="128" height="52" rx="7" fill="#D8584A" stroke="#7A1F16" stroke-width="1.6"></rect><text x="911" y="331" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">Warehouse</text>
         </g>
 
         <!-- divider -->
-        <line x1="20" y1="384" x2="940" y2="384" stroke="#9E1B32" stroke-width="2"/>
+        <line x1="20" y1="384" x2="940" y2="384" stroke="#9E1B32" stroke-width="2"></line>
 
         <!-- DIGITAL AGENCY TEAM (blue): row 1 = 7 centered, row 2 = 8 centered. box w=116, gap=11, canvas center=491 -->
         <g font-family="'Archivo',sans-serif">
         <!-- Row 1: 7 boxes centered. lefts 52,179,306,433,560,687,814 -> centers 110,237,364,491,618,745,872. Order: Project, Data, QA, Web Dev, SEO, CRO, Marketplace -->
-        <rect x="52" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="110" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Project</text><text x="110" y="446" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Managers</text>
-        <rect x="179" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="237" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Data &amp;</text><text x="237" y="446" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Analytics</text>
-        <rect x="306" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="364" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Quality</text><text x="364" y="446" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Assurance</text>
-        <rect x="433" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="491" y="437" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Web Dev</text>
-        <rect x="560" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="618" y="437" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">SEO</text>
-        <rect x="687" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="745" y="437" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">CRO</text>
-        <rect x="814" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="872" y="437" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Marketplace</text>
+        <rect x="52" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="110" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Project</text><text x="110" y="446" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Managers</text>
+        <rect x="179" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="237" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Data &amp;</text><text x="237" y="446" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Analytics</text>
+        <rect x="306" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="364" y="430" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Quality</text><text x="364" y="446" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Assurance</text>
+        <rect x="433" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="491" y="437" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Web Dev</text>
+        <rect x="560" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="618" y="437" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">SEO</text>
+        <rect x="687" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="745" y="437" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">CRO</text>
+        <rect x="814" y="406" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="872" y="437" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Marketplace</text>
         <!-- Row 2: 8 boxes centered. lefts -12,116,242,370,496,624,750,878 -> centers 46,174,300,428,554,682,808,936. Order: Paid Media, Paid Search, Organic Social, UGC, Email, Designers&Editors, Animation, Copywriting -->
-        <rect x="-12" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="46" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Paid Media</text>
-        <rect x="116" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="174" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Paid Search</text>
-        <rect x="242" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="300" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Organic Social</text>
-        <rect x="370" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="428" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">UGC / Affiliate</text>
-        <rect x="496" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="554" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Email / SMS</text>
-        <rect x="624" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="682" y="492" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Designers</text><text x="682" y="508" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">&amp; Editors</text>
-        <rect x="750" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="808" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Animation</text>
-        <rect x="878" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"/><text x="936" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Copywriting</text>
+        <rect x="-12" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="46" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Paid Media</text>
+        <rect x="116" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="174" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Paid Search</text>
+        <rect x="242" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="300" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Organic Social</text>
+        <rect x="370" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="428" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">UGC / Affiliate</text>
+        <rect x="496" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="554" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Email / SMS</text>
+        <rect x="624" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="682" y="492" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Designers</text><text x="682" y="508" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">&amp; Editors</text>
+        <rect x="750" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="808" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Animation</text>
+        <rect x="878" y="468" width="116" height="52" rx="7" fill="#2E5A82" stroke="#0C1A28" stroke-width="1.6"></rect><text x="936" y="499" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Copywriting</text>
         </g>
 
-        <line x1="20" y1="558" x2="940" y2="558" stroke="#E1E7EE" stroke-width="1"/>
+        <line x1="20" y1="558" x2="940" y2="558" stroke="#E1E7EE" stroke-width="1"></line>
         <text x="20" y="582" font-size="11.5" fill="#54616E"><tspan font-weight="700" fill="#15212E">Structure only.</tspan> Individual team members are maintained in the separate People Roster.</text>
       </svg>
       </div>
 
-      <div class="team-callout lead">
+      <div class="team-callout lead" id="callout-1">
         <span class="team-tag">Org Charts · Always Current</span>
         <p>The chart above shows the current high-level structure. Because reporting lines and team shapes change often, the <strong>detailed, always-current org charts</strong> live in a shared Google Drive rather than being pasted here. Find both the <strong>company-wide org chart</strong> and the <strong>detailed department org charts</strong> in the <a href="https://drive.google.com/drive/folders/1hzSKJ2sRkX-R_y_cHWAPwM0YxhqkWIjJ?usp=sharing" target="_blank" rel="noopener">Department Structures folder</a>. Department Leads keep their charts updated there and share revisions with the Performance Team. Check that folder for the latest detail rather than relying on a snapshot.</p>
         <p style="margin-top:10px"><strong>Other companies we've acquired that still operate separately</strong> have their own org charts, kept in the same shared Drive. The chart above covers InvenTel's structure — if you work with or across one of those companies, look for its individual org chart in the folder.</p>
@@ -770,7 +821,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">5 · Who Assigns Your Work</span>
         <h2>Agency Structure &amp; Task Flow</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>Your primary direction comes from your <strong>Department Lead</strong>. But on an agency team, work can also legitimately come from a Brand Lead, another Department Lead, a Project Manager, or — on rare occasions — another team member. That's normal. The one rule that holds it all together is <strong>visibility</strong>.</p>
@@ -780,90 +831,90 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <div style="overflow-x:auto;margin:14px 0">
       <svg viewBox="0 0 980 760" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;min-width:680px;aspect-ratio:980/760;height:auto;font-family:'Inter',sans-serif" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Agency work assignment flow diagram: Agency Lead, Brand Lead, and Project Managers sit at the top; work flows down into three departments — Paid Media, Owned and Earned Media, and Digital Ops and UX — each with Department Leads and Team Members; Shared Creative Resources support all departments.">
         <defs>
-          <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#3A2225"/></marker>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#3A2225"></path></marker>
         </defs>
         <!-- TIER 1: leadership -->
         <g>
-          <rect x="40" y="20" width="270" height="74" rx="10" fill="#F4F7FB" stroke="#5A6B7D" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <rect x="40" y="20" width="270" height="74" rx="10" fill="#F4F7FB" stroke="#5A6B7D" stroke-width="1.5" stroke-dasharray="5 4"></rect>
           <text x="175" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#1A1416" font-family="'Archivo',sans-serif">Agency Lead</text>
           <text x="175" y="66" text-anchor="middle" font-size="11" fill="#54616E">Oversees &amp; supports the agency</text>
           <text x="175" y="82" text-anchor="middle" font-size="11" fill="#54616E">Keeps depts &amp; leads on track</text>
 
-          <rect x="355" y="20" width="270" height="74" rx="10" fill="#3A2225" stroke="#2A1719" stroke-width="1.5"/>
+          <rect x="355" y="20" width="270" height="74" rx="10" fill="#3A2225" stroke="#2A1719" stroke-width="1.5"></rect>
           <text x="490" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF" font-family="'Archivo',sans-serif">Brand Lead</text>
           <text x="490" y="66" text-anchor="middle" font-size="11" fill="#F3D9DB">Sets strategy</text>
           <text x="490" y="82" text-anchor="middle" font-size="11" fill="#F3D9DB">Owns brand direction</text>
 
-          <rect x="670" y="20" width="270" height="74" rx="10" fill="#F4F7FB" stroke="#5A6B7D" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <rect x="670" y="20" width="270" height="74" rx="10" fill="#F4F7FB" stroke="#5A6B7D" stroke-width="1.5" stroke-dasharray="5 4"></rect>
           <text x="805" y="46" text-anchor="middle" font-size="16" font-weight="800" fill="#1A1416" font-family="'Archivo',sans-serif">Project Managers</text>
           <text x="805" y="66" text-anchor="middle" font-size="11" fill="#54616E">Assign &amp; follow up on tasks</text>
           <text x="805" y="82" text-anchor="middle" font-size="11" fill="#54616E">Support Brand &amp; Dept Leads</text>
         </g>
         <!-- connectors: Brand Lead fans out to all three departments (Agency Lead & PMs are support, no arrows) -->
-        <path d="M490,94 L490,120 L175,120 L175,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
-        <path d="M490,94 L490,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
-        <path d="M490,94 L490,120 L805,120 L805,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M490,94 L490,120 L175,120 L175,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"></path>
+        <path d="M490,94 L490,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"></path>
+        <path d="M490,94 L490,120 L805,120 L805,150" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"></path>
         <!-- TIER 2: department leads -->
         <g>
-          <rect x="40" y="152" width="270" height="86" rx="10" fill="#C0392B" stroke="#8E2A1F" stroke-width="1.5"/>
+          <rect x="40" y="152" width="270" height="86" rx="10" fill="#C0392B" stroke="#8E2A1F" stroke-width="1.5"></rect>
           <text x="175" y="178" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF" font-family="'Archivo',sans-serif">Paid Media</text>
           <text x="175" y="200" text-anchor="middle" font-size="11.5" fill="#FBE9D2" font-weight="700">Department Lead(s)</text>
           <text x="175" y="222" text-anchor="middle" font-size="11" fill="#FBE9D2">Paid Social · Paid Search</text>
 
-          <rect x="355" y="152" width="270" height="86" rx="10" fill="#C0392B" stroke="#8E2A1F" stroke-width="1.5"/>
+          <rect x="355" y="152" width="270" height="86" rx="10" fill="#C0392B" stroke="#8E2A1F" stroke-width="1.5"></rect>
           <text x="490" y="174" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF" font-family="'Archivo',sans-serif">Owned / Earned Media</text>
           <text x="490" y="194" text-anchor="middle" font-size="11.5" fill="#FBE9D2" font-weight="700">Department Lead(s)</text>
           <text x="490" y="212" text-anchor="middle" font-size="10.5" fill="#FBE9D2">Email/SMS · Organic Social</text>
           <text x="490" y="228" text-anchor="middle" font-size="10.5" fill="#FBE9D2">Social Commerce · Marketplace</text>
 
-          <rect x="670" y="152" width="270" height="86" rx="10" fill="#C0392B" stroke="#8E2A1F" stroke-width="1.5"/>
+          <rect x="670" y="152" width="270" height="86" rx="10" fill="#C0392B" stroke="#8E2A1F" stroke-width="1.5"></rect>
           <text x="805" y="178" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF" font-family="'Archivo',sans-serif">Digital Ops &amp; UX</text>
           <text x="805" y="200" text-anchor="middle" font-size="11.5" fill="#FBE9D2" font-weight="700">Department Lead(s)</text>
           <text x="805" y="222" text-anchor="middle" font-size="11" fill="#FBE9D2">SEO · Web Design · CRO</text>
         </g>
         <!-- connectors dept -> team -->
-        <path d="M175,238 L175,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
-        <path d="M490,238 L490,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
-        <path d="M805,238 L805,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M175,238 L175,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"></path>
+        <path d="M490,238 L490,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"></path>
+        <path d="M805,238 L805,272" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"></path>
         <!-- TIER 3: team members -->
         <g>
-          <rect x="40" y="274" width="270" height="62" rx="10" fill="#FBEAEA" stroke="#C0392B" stroke-width="1.5"/>
+          <rect x="40" y="274" width="270" height="62" rx="10" fill="#FBEAEA" stroke="#C0392B" stroke-width="1.5"></rect>
           <text x="175" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#8E2A1F" font-family="'Archivo',sans-serif">Team Members</text>
           <text x="175" y="320" text-anchor="middle" font-size="11" fill="#A32D2D">Paid Media</text>
 
-          <rect x="355" y="274" width="270" height="62" rx="10" fill="#FBEAEA" stroke="#C0392B" stroke-width="1.5"/>
+          <rect x="355" y="274" width="270" height="62" rx="10" fill="#FBEAEA" stroke="#C0392B" stroke-width="1.5"></rect>
           <text x="490" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#8E2A1F" font-family="'Archivo',sans-serif">Team Members</text>
           <text x="490" y="320" text-anchor="middle" font-size="11" fill="#A32D2D">Owned / Earned Media</text>
 
-          <rect x="670" y="274" width="270" height="62" rx="10" fill="#FBEAEA" stroke="#C0392B" stroke-width="1.5"/>
+          <rect x="670" y="274" width="270" height="62" rx="10" fill="#FBEAEA" stroke="#C0392B" stroke-width="1.5"></rect>
           <text x="805" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="#8E2A1F" font-family="'Archivo',sans-serif">Team Members</text>
           <text x="805" y="320" text-anchor="middle" font-size="11" fill="#A32D2D">Digital Ops &amp; UX</text>
         </g>
         <!-- connectors team -> shared -->
-        <path d="M175,336 L175,360 L490,360 L490,386" stroke="#3A2225" stroke-width="1.5" fill="none"/>
-        <path d="M805,336 L805,360 L490,360" stroke="#3A2225" stroke-width="1.5" fill="none"/>
-        <path d="M490,336 L490,386" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M175,336 L175,360 L490,360 L490,386" stroke="#3A2225" stroke-width="1.5" fill="none"></path>
+        <path d="M805,336 L805,360 L490,360" stroke="#3A2225" stroke-width="1.5" fill="none"></path>
+        <path d="M490,336 L490,386" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"></path>
         <!-- TIER 4: shared creative resources -->
-        <rect x="40" y="388" width="900" height="96" rx="10" fill="#0F6E56" stroke="#085041" stroke-width="1.5"/>
+        <rect x="40" y="388" width="900" height="96" rx="10" fill="#0F6E56" stroke="#085041" stroke-width="1.5"></rect>
         <text x="490" y="416" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF" font-family="'Archivo',sans-serif">Shared Creative Resources — Department Lead(s)</text>
         <text x="490" y="440" text-anchor="middle" font-size="11.5" fill="#E1F5EE">AI · Designers &amp; Editors · 3D Animations · Copywriting</text>
         <text x="490" y="462" text-anchor="middle" font-size="11.5" fill="#E1F5EE">Assigned by Brand Lead or any Dept Lead · Works cross-functionally with all departments</text>
         <!-- connector shared -> team -->
-        <path d="M490,484 L490,512" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"/>
+        <path d="M490,484 L490,512" stroke="#3A2225" stroke-width="1.5" fill="none" marker-end="url(#ah)"></path>
         <!-- TIER 5: shared team members -->
-        <rect x="40" y="514" width="900" height="66" rx="10" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/>
+        <rect x="40" y="514" width="900" height="66" rx="10" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"></rect>
         <text x="490" y="542" text-anchor="middle" font-size="14" font-weight="700" fill="#085041" font-family="'Archivo',sans-serif">Team Members</text>
         <text x="490" y="562" text-anchor="middle" font-size="11" fill="#0F6E56">Shared Creative Resources · Includes overseas team members across multiple time zones</text>
         <!-- footnote rules -->
         <g>
-          <rect x="40" y="606" width="440" height="130" rx="10" fill="#E6F1FB" stroke="#378ADD" stroke-width="1.5"/>
+          <rect x="40" y="606" width="440" height="130" rx="10" fill="#E6F1FB" stroke="#378ADD" stroke-width="1.5"></rect>
           <text x="62" y="632" font-size="12.5" font-weight="800" fill="#0C447C" font-family="'DM Mono',monospace">★ ASSIGNMENT RULE</text>
           <text x="62" y="656" font-size="11" fill="#15212E">Work may come from the Agency Lead, Brand Lead, Dept Leads,</text>
           <text x="62" y="672" font-size="11" fill="#15212E">PMs, or (rarely) another team member.</text>
           <text x="62" y="694" font-size="11" fill="#15212E">Team members may create their own tasks — but always</text>
           <text x="62" y="710" font-size="11" fill="#15212E">update your Dept Lead so it stays visible.</text>
 
-          <rect x="500" y="606" width="440" height="130" rx="10" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.5"/>
+          <rect x="500" y="606" width="440" height="130" rx="10" fill="#FAEEDA" stroke="#BA7517" stroke-width="1.5"></rect>
           <text x="522" y="632" font-size="12.5" font-weight="800" fill="#854F0B" font-family="'DM Mono',monospace">⚠ CHANNEL RULE</text>
           <text x="522" y="656" font-size="11" fill="#15212E">All task requests go through the proper PM channel —</text>
           <text x="522" y="672" font-size="11" fill="#15212E">NOT a private DM.</text>
@@ -882,7 +933,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
       <p style="margin-top:14px">Your Dept Lead owns your full workload, quality, deadlines, and capacity. They may re-prioritize, push back on a task, or redirect it entirely — but only if they can see it. This applies even to tasks you create for yourself: self-assigned work is encouraged, but always make it visible.</p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-0">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>📥 No task assignments via private DM — no exceptions</h4>
@@ -901,10 +952,10 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">6 · Who to Ask</span>
         <h2>HR Department, Key Contacts &amp; Escalation</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-2">
         <span class="team-tag">Who this is for</span>
         <p>The HR routing below is for <strong>international team members only</strong> — it does not apply to US W2 or 1099 employees. HR is here to support you, so don't hesitate to reach out; that's what they're here for.</p>
       </div>
@@ -961,14 +1012,14 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           </tbody>
         </table>
       </div>
-      <div class="team-callout cx">
+      <div class="team-callout cx" id="callout-3">
         <span class="team-tag">Confidential · Performance Team</span>
         <p>For anything involving a team member or a lead — concerns, conflicts, or a situation you're unsure how to handle — reach out to the <strong>Performance Team</strong>. Everything is handled with care and confidentiality.</p>
       </div>
 
-      <div class="team-callout finance">
+      <div class="team-callout finance" id="callout-4">
         <span class="team-tag">HR Does Not Handle Money</span>
-        <p>HR does <strong>not</strong> handle anything money-related — pay, invoices, banking, deductions, or payment timing. All of that goes to the <strong>Accounting team</strong>. If you contact HR about a money question or issue, they'll simply point you back here: use the shared accounting inbox <a href="mailto:ap@inventel.net">ap@inventel.net</a>, or message any member of the Accounting team directly in Chat. You'll find the Accounting team members on the <strong>Accounting department org chart</strong> — see <a href="#orgstructure">Organizational Structure</a> for the link to the org-chart folder.</p>
+        <p>HR does <strong>not</strong> handle anything money-related — pay, invoices, banking, deductions, or payment timing. All of that goes to the <strong>Accounting team</strong>. If you contact HR about a money question or issue, they'll simply point you back here: use the shared accounting inbox <a href="mailto:payroll@inventel.net">payroll@inventel.net</a>, or message any member of the Accounting team directly in Chat. You'll find the Accounting team members on the <strong>Accounting department org chart</strong> — see <a href="#orgstructure">Organizational Structure</a> for the link to the org-chart folder.</p>
       </div>
 
       <h3 style="margin-top:22px">Other key contacts &amp; escalation</h3>
@@ -976,7 +1027,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <table>
           <thead><tr><th>Topic</th><th>Who / Where</th></tr></thead>
           <tbody>
-            <tr><td>Money — pay, invoices, banking, deductions</td><td>Accounting team — shared inbox <a href="mailto:ap@inventel.net">ap@inventel.net</a>, or a team member's Chat (see the Accounting org chart). Banking setup &amp; pay questions: <a href="mailto:tanvir@inventel.net">tanvir@inventel.net</a> by private Chat.</td></tr>
+            <tr><td>Money — pay, invoices, banking, deductions</td><td>Accounting team — shared inbox <a href="mailto:payroll@inventel.net">payroll@inventel.net</a>, or a team member's Chat (see the Accounting org chart). Banking setup &amp; pay questions: <a href="mailto:tanvir@inventel.net">tanvir@inventel.net</a> by private Chat.</td></tr>
             <tr><td>Day-to-day work, priorities &amp; capacity</td><td>Your Department Lead</td></tr>
             <tr><td>Brand or product questions &amp; hub quizzes</td><td>The relevant Brand Lead</td></tr>
             <tr><td>Profile image &amp; email signature</td><td>Performance Team (they request it from the Workforce Analyst Team)</td></tr>
@@ -997,10 +1048,10 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">7 · Getting Paid</span>
         <h2>Accounting &amp; Invoicing</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
-      <div class="team-callout finance">
+      <div class="team-callout finance" id="callout-5">
         <span class="team-tag">Day One · Don't Defer</span>
         <p>Email <a href="mailto:tanvir@inventel.net">tanvir@inventel.net</a> on your <strong>first day</strong> to set up banking details — this cannot wait until month-end. A bank letter verifying account ownership may be required, and delaying setup can cause payment-processing delays.</p>
       </div>
@@ -1009,25 +1060,25 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <div class="spec-table">
         <dl>
           <dt>Due date</dt><dd>By the <strong>25th</strong> of each month</dd>
-          <dt>Send to</dt><dd>Email to the shared accounting inbox <a href="mailto:ap@inventel.net">ap@inventel.net</a>. Invoices sent elsewhere may delay payment.</dd>
+          <dt>Send to</dt><dd>Email to the shared accounting inbox <a href="mailto:payroll@inventel.net">payroll@inventel.net</a>. Invoices sent elsewhere may delay payment.</dd>
           <dt>File name</dt><dd><strong>FirstName LastName_Invoice_MMYYYY.pdf</strong> — e.g. John Doe_Invoice_APR2026.pdf</dd>
-          <dt>Template</dt><dd>Use the official <a href="https://docs.google.com/spreadsheets/d/19-Pz8S94sMH517xMDBJXHctIIFJB_U1d/edit?usp=drive_link&ouid=102281127488077371367&rtpof=true&sd=true" target="_blank" rel="noopener">Invoice Template — Inventel.xlsx</a> only</dd>
+          <dt>Template</dt><dd>Use the official <a href="https://docs.google.com/spreadsheets/d/19-Pz8S94sMH517xMDBJXHctIIFJB_U1d/edit?usp=drive_link&amp;ouid=102281127488077371367&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Invoice Template — Inventel.xlsx</a> only</dd>
           <dt>Payment</dt><dd>Processed by the <strong>10th</strong> of the following month</dd>
           <dt>Amount</dt><dd>Use the agreed monthly rate from your contract</dd>
           <dt>Paid for</dt><dd>The <strong>previous</strong> month's work — e.g. work done Jan 1–31 is paid in early February</dd>
           <dt>Missed days</dt><dd>List any missed workdays in the invoice <strong>Notes</strong> section — accounting cross-references attendance and will deduct them either way, so accuracy is your responsibility</dd>
         </dl>
       </div>
-      <div class="hazard">
+      <div class="hazard" id="hazard-1">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🧾 Submit by the 25th, named correctly, or payment is delayed</h4>
-          <p>Get your invoice to <a href="mailto:ap@inventel.net">ap@inventel.net</a> <strong>by the 25th</strong>, using the official template and the exact file name <strong>FirstName LastName_Invoice_MMYYYY.pdf</strong>. Late, misnamed, or misdirected invoices can miss the cycle, and on-time correct ones are paid by the <strong>10th</strong> of the following month.</p>
+          <p>Get your invoice to&nbsp;<font color="#b01820"><u>payroll@inventel.net</u></font><b> by the 25th</b>, using the official template and the exact file name <strong>FirstName LastName_Invoice_MMYYYY.pdf</strong>. Late, misnamed, or misdirected invoices can miss the cycle, and on-time correct ones are paid by the <strong>10th</strong> of the following month.</p>
         </div>
       </div>
       <p style="font-size:13px;color:var(--iv-text-muted);margin-top:8px"><em>Banking setup is a private chat with the Accountant on day one — never share invoice or bank details with anyone except the company accountant, and only by direct email or private chat.</em></p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-2">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🔒 Your pay is confidential — an NDA obligation</h4>
@@ -1046,7 +1097,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">8 · Availability</span>
         <h2>Working Hours, Time Zone &amp; Lunch</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel's headquarters is in New Jersey, USA, and <strong>the entire company runs on one clock: Eastern Time (ET)</strong>. Standard working hours are <strong>8:30 AM – 5:30 PM ET</strong>. This is true for everyone — our teams in <strong>Egypt, India, Pakistan, the Philippines, Indonesia, Argentina, and Colombia</strong>, and our teams inside the United States. Wherever you sit, your working day, your meetings, your deadlines, and your messages all follow Eastern Time.</p>
@@ -1054,7 +1105,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <h3 style="margin-top:6px">Why everyone uses ET — including when you talk to each other</h3>
       <p>When you communicate, schedule a meeting, or set a deadline, <strong>always state the time in ET — never in your own local time.</strong> This is the single rule that keeps a team spread across five countries and multiple US time zones aligned. If everyone speaks in ET, there's exactly one conversion for each person to make, in their head, instantly — and no one is ever confused about whether "3 PM" means your afternoon or someone else's. The moment people start mixing local times into messages and invites, missed meetings and blown deadlines follow.</p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-3">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🕐 One clock, no exceptions — always communicate in ET</h4>
@@ -1062,7 +1113,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         </div>
       </div>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-6">
         <span class="team-tag">New Hire · Setup</span>
         <p>In Google Calendar: <strong>Settings → Time zone → primary = Eastern Time (US &amp; Canada)</strong>. Then <strong>Settings → World clock → add your local time zone</strong> as a secondary display so you can see both side by side. Your primary stays ET permanently — that's what every invite you receive and send is anchored to.</p>
       </div>
@@ -1128,7 +1179,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">9 · Time Off</span>
         <h2>Leave &amp; Time Off</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>Your total annual paid leave allowance is <strong>16 days</strong>, made up of three buckets. Everything beyond 16 days in a year is unpaid. Days can be combined and taken as half-days, and your <strong>balance is tracked in the PM tool</strong>.</p>
@@ -1138,7 +1189,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="stat-box"><div class="stat-big">6</div><div class="stat-lbl">Floating holidays</div></div>
       </div>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-4">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>📋 All leave is requested in the PM tool — effective immediately</h4>
@@ -1177,7 +1228,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="flow-step"><div class="flow-step-body"><strong>More than one day?</strong> HR loops in your <strong>Direct Report</strong> to approve it.</div></div>
         <div class="flow-step"><div class="flow-step-body"><strong>A longer stretch?</strong> Beyond a certain number of days, it also goes to the <strong>executive team</strong> for approval.</div></div>
       </div>
-      <div class="team-callout finance">
+      <div class="team-callout finance" id="callout-7">
         <span class="team-tag">When It's Approved</span>
         <p>Once your request is approved, the system handles the rest: the <strong>calendar is updated</strong>, <strong>you're added to the leave event</strong> on the calendar, your <strong>balance updates</strong>, and your <strong>Direct Report is notified.</strong> (See <a href="#tracker">Remote Leave Tracker</a> for how the event appears for you and the whole team.)</p>
       </div>
@@ -1187,7 +1238,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <p>For an emergency or unexpected issue (illness, hardware failure, an internet outage), notify <strong>both HR and your Direct Report</strong> as soon as you can — don't wait until you're back online. Submit the request in the PM tool (choose <strong>Emergency / Day-Of call-out</strong> as the request type) as soon as you're able.</p>
 
       <h3 style="margin-top:20px">Incomplete Workday Form</h3>
-      <div class="hazard">
+      <div class="hazard" id="hazard-5">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>⏰ Log any deviation from standard hours the SAME day</h4>
@@ -1196,7 +1247,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
 
       <h3 style="margin-top:20px">There are NO company holidays — every day off is requested</h3>
-      <div class="hazard">
+      <div class="hazard" id="hazard-6">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🚫 No automatic holidays — not one, anywhere</h4>
@@ -1205,7 +1256,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
       <p>Every holiday is a <strong>floating</strong> day: you choose which dates are meaningful to you, then request them. Submit those requests in the PM tool as soon as you know your dates (honoring the same notice windows above) rather than waiting until the date is close — the earlier you ask, the more likely it's approved without conflict.</p>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-8">
         <span class="team-tag">New Hire · Probation</span>
         <p><strong>Heads up on your first 90 days:</strong> any days taken off during the probation period are <strong>unpaid, regardless of reason</strong> — leave accrual doesn't apply yet. Plan your first three months carefully. For any leave-balance questions, contact the Workforce Analyst Team in HR.</p>
       </div>
@@ -1221,7 +1272,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">10 · Visibility</span>
         <h2>Remote Leave Tracker Calendar</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>The <strong>Remote Leave Tracker</strong> is a company-wide calendar, open and visible to everyone at InvenTel. It shows every approved leave across the company, so anyone can see who's out at a glance. It works in two directions — leave you're granted shows up on it automatically, and you keep the whole calendar in view by subscribing to it once.</p>
@@ -1256,7 +1307,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">11 · Foundations</span>
         <h2>Core Principles &amp; Scope</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>The Communication, Collaboration &amp; Meeting Standards Policy exists to create a consistent, professional working environment, improve communication across departments, and keep collaboration effective on a distributed team. Five principles sit underneath everything in this hub:</p>
@@ -1285,12 +1336,12 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">12 · Own It · Communicate · Grow</span>
         <h2>Ownership, Accountability &amp; Working Together</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>This is one of the most important sections in the hub. We're a remote team across many time zones — what holds us together isn't sitting in the same room, it's <strong>ownership, accountability, and communication.</strong> When everyone takes real responsibility for their work and communicates openly, the whole team moves faster and trusts each other more. Please read this carefully and take it to heart.</p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-7">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🎯 Take real ownership — don't just pass it along</h4>
@@ -1325,7 +1376,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <li><strong>Stay respectful — always.</strong> Even if a message upsets you, respond with respect. That's how we keep this a place where feedback flows freely and everyone can connect and grow.</li>
         <li><strong>When in doubt, ask.</strong> If a message lands wrong, a quick "did you mean X?" clears it up faster than assuming the worst.</li>
       </ul>
-      <div class="team-callout cx">
+      <div class="team-callout cx" id="callout-9">
         <span class="team-tag">We're All on the Same Team</span>
         <p>Messages and feedback are meant to help us all connect and grow together. Treat every exchange as a teammate trying to make the work — and each other — better.</p>
       </div>
@@ -1344,12 +1395,12 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">13 · Responsiveness</span>
         <h2>Communication Standards</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>Monitor Google Chat and company channels throughout working hours. On a remote team spread across five countries, your responsiveness on chat is the main signal that you're present and engaged — so we hold it to a firm standard.</p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-8">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>⏱️ Reply or react to chats in UNDER 10 minutes — during all working hours</h4>
@@ -1386,12 +1437,12 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">14 · Signal Your Availability</span>
         <h2>Google Chat Status &amp; Availability</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>This is a small habit that makes a big difference — and one a lot of people skip. A quick Google Chat status tells the whole team, at a glance, whether you're around, heads-down, or out, so no one's left guessing during the <a href="#communication">under-10-minute</a> response window. It takes seconds to set, and <strong>an emoji makes it read instantly.</strong> Please make this part of your daily routine.</p>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-10">
         <span class="team-tag">Quick &amp; Easy · Do This</span>
         <p>Updating your status is fast. Keep it current as your day changes — stepping away, going into focus time, or taking time off — and add an emoji so teammates can read it at a glance.</p>
       </div>
@@ -1440,16 +1491,19 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">15 · On Camera</span>
         <h2>Meetings &amp; Camera Policy</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>Attendance at all team meetings, department syncs, and 1-on-1s is mandatory. If an unavoidable conflict arises, notify your Team Lead <strong>in advance</strong>, not after. Consistent unexplained absences are reported to HR.</p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-9">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>📹 Camera ON — every meeting, no exceptions</h4>
-          <p>Cameras stay on for internal team meetings, external client calls, and 1-on-1s. The rule is simple: <strong>if your camera cannot be on, do not join the call.</strong> If you genuinely can't (bandwidth, traveling, not camera-ready), update your Google Chat status with a brief note <strong>before</strong> the meeting starts — not after.</p>
+          <p>Cameras stay on for internal team meetings, external client calls, and 1-on-1s. The rule is simple: <strong>if your camera cannot be on, do not join the call.</strong> If you genuinely can't (bandwidth, traveling, not camera-ready), update your Google Chat status with a brief note <strong>before</strong> the meeting starts — not after.<div><p data-start="181" data-end="492" class="PDq2pG_selectionAnchorContainer"><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></p>
+<p data-start="494" data-end="691" class=""><strong data-start="494" data-end="526">For your meeting background:</strong>&nbsp;Use an <strong data-start="132" data-end="171">InvenTel company virtual background</strong> when joining meetings. <span data-start="195" data-end="252">You can find the approved backgrounds here:&nbsp;</span><a href="https://drive.google.com/drive/folders/1K39EBPpd8u_hxemtkD1GfFdfyrHu-PWP?usp=sharing">Inventel - Meetings Background Folder</a>​</p>
+<p data-start="254" data-end="317"></p>
+<p data-start="693" data-end="789" data-is-last-node="" data-is-only-node=""></p></div></p>
         </div>
       </div>
 
@@ -1462,7 +1516,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <ul>
             <li>Join on time and prepared — review materials beforehand</li>
             <li>Collared or business-casual attire for client meetings</li>
-            <li>A professional background; blur non-wall backgrounds, or use the <a href="https://drive.google.com/file/d/18p9on296VJaU8C8l_tGwRekvbEVd-i0I/view?usp=drive_link" target="_blank" rel="noopener">company virtual background</a></li>
+            <li>A professional background; blur non-wall backgrounds, or use the&nbsp;​<a href="https://drive.google.com/drive/folders/1K39EBPpd8u_hxemtkD1GfFdfyrHu-PWP?usp=sharing" data-is-inline-chip-link="true" data-display-name="Inventel - Meetings Background" data-inline-chip-type="1" data-dlb="true" data-fdlb="true" data-mimetype="application/vnd.google-apps.folder">Inventel - Meetings Background</a>​</li>
             <li>Stay muted when not speaking; participate actively and respect speaking turns</li>
           </ul>
         </div>
@@ -1480,14 +1534,14 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <h3 style="margin-top:20px">Google Calendar expectations</h3>
       <p>Keep your calendar accurate. Promptly accept, decline, or respond to invitations and keep your availability current. When you're out or away, set an <strong>Out of Office</strong> event in Google Calendar <em>and</em> update your Chat status to OOO — the OOO event syncs your status across Gmail and Chat automatically.</p>
 
-      <div class="team-callout lead">
+      <div class="team-callout lead" id="callout-11">
         <span class="team-tag">For Team Directors</span>
         <p>Directors model these standards, encourage participation, communicate expectations clearly, and address recurring issues within their teams. Directors also own keeping their department org charts accurate (update when people join/leave, reporting changes, or responsibilities shift) and share revised charts with the Performance Team so master records stay current. The <a href="https://drive.google.com/drive/folders/1hzSKJ2sRkX-R_y_cHWAPwM0YxhqkWIjJ?usp=sharing" target="_blank" rel="noopener">Department Structures folder</a> holds the latest templates.</p>
       </div>
 
       <h3 style="margin-top:20px">Gemini &amp; AI notetakers</h3>
       <p>The company already has <strong>Gemini AI notes turned on</strong> for meetings. Gemini runs <strong>quietly in the background</strong> — it captures notes without joining as a participant or taking up a tile on screen. Treat anything captured as internal and handle it with the same confidentiality as any other company material.</p>
-      <div class="hazard">
+      <div class="hazard" id="hazard-10">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🚫 No external AI notetakers in company meetings</h4>
@@ -1506,16 +1560,16 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">16 · Respect People's Time</span>
         <h2>Scheduling &amp; Meeting Etiquette</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>On a remote team spread across time zones, putting an event on someone's calendar reaches into their day. A little courtesy before and after scheduling prevents surprises, double-bookings, and disrupted days. The principle underneath all of it: <strong>respect other people's time, and communicate before and after you touch their calendar.</strong> (As always, schedule everything in <a href="#hours">Eastern Time</a>.)</p>
 
       <h3 style="margin-top:20px">Before you schedule — connect first</h3>
-      <div class="hazard">
+      <div class="hazard" id="hazard-11">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
-          <h4>🗓️ Before you put a meeting on someone's calendar, message them first</h4>
+          <h4>🗓️ Before you put a meeting on someone's calendar, check with them first</h4>
           <p>Before scheduling on someone's calendar, <strong>reach out to them in Chat first — every time</strong>, unless it's a large group (see below). One quick message that lets them know a meeting is going to happen, tells them you'll add the event based on their <strong>open availability</strong>, and asks whether there's a <strong>date or time that works best</strong> for them. This turns a surprise invite into an expected one — and usually surfaces the best slot faster than guessing.</p>
         </div>
       </div>
@@ -1523,7 +1577,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <h3 style="margin-top:20px">After you schedule — follow up</h3>
       <p>Once the event is on the calendar, <strong>follow up with that person to confirm it's been scheduled.</strong> Don't assume they saw the invite — closing the loop is part of the task (the same <a href="#communication">"follow through"</a> standard as everywhere else).</p>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-12">
         <span class="team-tag">Large or Last-Minute Meetings</span>
         <p>Sometimes you can't reach everyone first — a <strong>last-minute meeting</strong>, or simply <strong>too many attendees</strong> to message individually. In that case, look at everyone's calendars and find a time that's genuinely open for the group. <strong>Prioritize the executive team's availability and time requests</strong> when there's a conflict to resolve.</p>
       </div>
@@ -1538,19 +1592,32 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
 
       <h3 style="margin-top:20px">Rescheduling &amp; cancelling</h3>
-      <div class="hazard">
+      <div class="hazard" id="hazard-12">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🔔 If you must move a meeting, give notice and tell people directly</h4>
-          <p>If you need to push or reschedule, do it with <strong>as much notice as possible</strong>, and <strong>always message the invited people in Chat before the meeting's original start time</strong> with the update. People plan their days around their schedule, and last-minute changes are disruptive. We understand some are unavoidable — but <strong>minimize reschedules, and never let a meeting be silently cancelled</strong> with no heads-up.</p>
+          <p><p data-start="1391" data-end="1431" class="PDq2pG_selectionAnchorContainer"><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></p>
+<blockquote data-start="1433" data-end="1838">
+<p data-start="101" data-end="178" class="PDq2pG_selectionAnchorContainer"><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></p><p data-start="1435" data-end="1838">
+
+<p data-start="919" data-end="992"></p></p><blockquote data-start="180" data-end="917">
+<p data-start="182" data-end="439">If you need to reschedule or cancel a meeting, do it with <strong data-start="240" data-end="270">as much notice as possible</strong>, and <strong data-start="276" data-end="351">always&nbsp;</strong></p><strong data-start="492" data-end="587">cancel the calendar event and&nbsp;</strong><strong data-start="276" data-end="351">communicate the change directly before the original meeting time</strong>.&nbsp;</blockquote><blockquote data-start="180" data-end="917"><p data-start="677" data-end="917">A meeting should not be considered cancelled simply because the organizer, Team Lead, or Director is unavailable. If the meeting is still showing on the calendar, <strong data-start="840" data-end="872">assume it is still happening</strong> unless you receive an official cancellation.</p>
+</blockquote></blockquote></p>
         </div>
       </div>
 
       <h3 style="margin-top:20px">If you're invited — respond to the invite</h3>
-      <p>When you receive a meeting invite, <strong>accept, decline, or mark "maybe" (?)</strong> so the organizer knows who's actually attending. Leaving an invite unanswered makes people wait on attendees who were never coming. (If you accept and later can't make it, update your response and give the organizer a heads-up — see camera and attendance rules in <a href="#meetings">Meetings &amp; Camera Policy</a>.)</p>
+      <p>When you receive a meeting invite, <strong>accept, decline, or mark "maybe" (?)</strong> so the organizer knows who's actually attending. Leaving an invite unanswered makes people wait on attendees who were never coming. If the usual Team Lead, Director, or organizer is unavailable, do not assume the meeting is cancelled. <b>If the meeting remains on your calendar, assume it is still happening</b> unless an official cancellation has been communicated. (If you accept and later can't make it, update your response and give the organizer a heads-up — see camera and attendance rules in <a href="#meetings">Meetings &amp; Camera Policy</a>.)</p>
 
-      <h3 style="margin-top:20px">If you host a recurring meeting — keep the invite list clean</h3>
-      <p>Owning a recurring team meeting means <strong>owning its invite list.</strong> Check it periodically and keep it current:</p>
+      <h3 style="margin-top:20px">If you host a meeting — Keep the guest list of any meeting public</h3>
+      <p><div><p data-start="255" data-end="272" class="PDq2pG_selectionAnchorContainer"><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></p>
+<blockquote data-start="274" data-end="441">
+<p data-start="276" data-end="441" class="">Keep the guest list of every meeting public so attendees can clearly see who has been invited and who is expected to participate.</p></blockquote><h3 style="margin-top:20px"><span style="font-size: 1.15rem;">If you host a meeting — share the meeting notes with everyone</span></h3></div><p><p data-start="255" data-end="272" class="PDq2pG_selectionAnchorContainer"><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></p>
+<blockquote data-start="274" data-end="441">
+<p data-start="1347" data-end="1388" class="PDq2pG_selectionAnchorContainer"><strong data-start="1347" data-end="1386"></strong><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></p></blockquote></p><p data-start="276" data-end="441" class="">
+
+<p data-start="1615" data-end="1704"></p></p><blockquote data-start="1389" data-end="1613">
+<p data-start="1391" data-end="1613">Meeting organizers should share the meeting notes with everyone on the guest list, not only the organizer and co-organizer. This ensures everyone who was invited has visibility on the discussion, decisions, and next steps.</p></blockquote><h3 style="margin-top:20px"><span style="font-size: 1.15rem;">If you host a recurring meeting — keep the invite list clean</span></h3><div>Owning a recurring team meeting means <span style="color: rgb(26, 20, 22);">owning its invite list.</span> Check it periodically and keep it current:<span style="font-size: 1.15rem;"></span></div></p>
       <div class="do-dont">
         <div class="do">
           <h4>✓ Keep the list accurate</h4>
@@ -1579,7 +1646,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">17 · Getting Set Up</span>
         <h2>Requesting Access to Platforms &amp; Accounts</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel uses a mix of shared and individual credentials, with different permission levels, access tiers, and brand assignments depending on your role. Getting the right access in place is a <strong>shared effort</strong>: the <strong>Performance Team works with your Team Lead</strong> during onboarding to line up the accesses your role needs — and you play an active part by confirming what's landed and flagging what hasn't.</p>
@@ -1592,12 +1659,12 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="mini"><div class="mini-k">2FA on a shared account?</div><div class="mini-v">If access to a shared account involves a two-factor code, request it in your <strong>department channel</strong> or directly with the <strong>Performance Team</strong> — never work around it.</div></div>
       </div>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-13">
         <span class="team-tag">Follow Up — It's Expected, Not Rude</span>
         <p>If you're <strong>missing access</strong>, <strong>lose access</strong>, or notice your <strong>permissions changed</strong>, reach out to the <strong>Performance Team</strong> and follow up as needed (see <a href="#contacts">HR Department &amp; Key Contacts</a>). Without that heads-up, the team has no way to know what to fix — so following up isn't a bother, it's how the system works. Treat it like any other <a href="#ownership">outstanding task you own</a>: check in until it's resolved. It's genuinely appreciated.</p>
       </div>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-13">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🔑 Already on the team &amp; need more access?</h4>
@@ -1620,14 +1687,14 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">18 · Daily Operations</span>
         <h2>The InvenTel PM Tool</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel built its <strong>own</strong> project-management platform — think of it as our in-house version of ClickUp. It's the team's single source of truth: tasks and projects, your daily scrum, the time tracker, leave requests and balances, channels, and dashboards all live in one place. Keeping it accurate is a core part of your job; an empty or stale view creates blind spots and reflects poorly on your work.</p>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-14">
         <span class="team-tag">New Hire · Get Your Account</span>
-        <p>Create your account through the tool link: <a href="https://inventelpm.automindlabinventel.com/" target="_blank" rel="noopener">inventelpm.automindlabinventel.com</a>. The <strong>Performance Team</strong> will help you get set up and make sure your <strong>department and role are assigned correctly</strong>. Complete the platform walkthroughs below, and ask the Performance Team if anything looks off.</p>
+        <p><h4 data-start="609" data-end="641" class="PDq2pG_selectionAnchorContainer"><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></h4>&nbsp;Sign in to the PM Tool:&nbsp;<a href="https://inventelpm.automindlabinventel.com/" target="_blank" rel="noopener" style="color: rgb(176, 24, 32);">inventelpm.automindlabinventel.com</a>&nbsp;using <strong data-start="672" data-end="690" style="color: rgb(26, 20, 22);">Google Sign-In&nbsp;</strong>with your InvenTel company email (<code data-start="725" data-end="740">@inventel.net</code>) or another approved company domain. Your account will be created automatically the first time you sign in.<p data-start="850" data-end="1015"></p>The <strong>Performance Team</strong> will help you get set up and make sure your <strong>department and role are assigned correctly</strong>. Complete the platform walkthroughs below, and ask the Performance Team if anything looks off.</p>
       </div>
 
       <h3 style="margin-top:22px">Platform walkthroughs</h3>
@@ -1636,28 +1703,33 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="mini"><div class="mini-k">Walkthrough · Part 1</div><div class="mini-v"><a href="https://www.loom.com/share/66c7ded5149740ba8a56a6e982250e7f" target="_blank" rel="noopener">PM Tool walkthrough (Loom)</a></div></div>
         <div class="mini"><div class="mini-k">Walkthrough · Part 2</div><div class="mini-v"><a href="https://www.loom.com/share/5cfb4836899f4323b9ed1dc70aadd8ce" target="_blank" rel="noopener">PM Tool walkthrough (Loom)</a></div></div>
       </div>
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-15">
         <span class="team-tag">PM Tool Resource Hub</span>
         <p>The <a href="https://drive.google.com/drive/folders/1ST2jUR54nmCynkkL_eNRp6SyP4B2JUVU?usp=drive_link" target="_blank" rel="noopener"><strong>InvenTel PM Dashboard folder</strong></a> holds the full Walkthrough Library and the Errors Sheet in one place. Found a bug or have feedback on the tool? Log it in the <a href="https://docs.google.com/spreadsheets/d/136ZCsJ3UROX090frY3JDfaGEs_QyDSGlFaef_AxqSUY/edit?usp=drive_link" target="_blank" rel="noopener"><strong>InvenTel Dashboard — Bugs &amp; Errors Sheet</strong></a>.</p>
       </div>
 
       <h3 style="margin-top:20px">What you'll use it for</h3>
       <div class="feature-grid">
-        <div class="feature-tile"><span class="feature-tile-icon">📋</span><h4>Daily Scrum</h4><p>Your standup every workday — active tasks, status (In-Progress / Completed / Blocked), and any blockers.</p></div>
-        <div class="feature-tile"><span class="feature-tile-icon">⏱️</span><h4>Time Tracker</h4><p>Per-task timer (Est vs Logged). Start it on the task you're working, stop when done.</p></div>
-        <div class="feature-tile"><span class="feature-tile-icon">🗓️</span><h4>Leave Management</h4><p>Submit leave requests and check your balances — all in the tool (see <a href="#leave">Leave &amp; Time Off</a>). New to it? Follow the <a href="https://drive.google.com/file/d/1L0lCjEv8kHsCrDuFAVt6LZRhg0pKoVtz/view?usp=drive_link" target="_blank" rel="noopener">Leave Request Guide</a>.</p></div>
-        <div class="feature-tile"><span class="feature-tile-icon">📊</span><h4>Tasks &amp; Projects</h4><p>Your assigned work, projects, channels, and dashboards — the hub for everything you do.</p></div>
+        <div class="feature-tile"><span class="feature-tile-icon">📋</span><h4>Daily Scrum</h4><p>Your standup every workday — active tasks, status (In-Progress / Completed / Blocked), and any blockers.<div><br></div></p></div>
+        <div class="feature-tile"><span class="feature-tile-icon">⏱️</span><h4>Time Tracker</h4><p>Per-task timer (Est vs Logged). Start it on the task you're working, stop when done. check the:&nbsp;<a href="https://drive.google.com/file/d/1TKmNfBr12UqMDapY5vU8CVNQKh5drlWr/view?usp=sharing">InvenTel Time Tracker Video Guide</a></p></div>
+        <div class="feature-tile"><span class="feature-tile-icon">🗓️</span><h4>Leave Management</h4><p>Submit leave requests and check your balances — all in the tool (see <a href="#leave">Leave &amp; Time Off</a>). New to it? Follow the <a href="https://drive.google.com/file/d/1L0lCjEv8kHsCrDuFAVt6LZRhg0pKoVtz/view?usp=drive_link" target="_blank" rel="noopener">Leave Request Guide</a>.<div><br></div></p></div>
+        <div class="feature-tile"><span class="feature-tile-icon">📊</span><h4>Tasks &amp; Projects</h4><p>Your assigned work, projects, channels, and dashboards — the hub for everything you do.<div><br></div><div><br></div></p></div>
       </div>
 
       <h3 style="margin-top:22px">Daily Scrum — every workday</h3>
       <p>Update your standup every single workday in the <strong>Daily Scrum</strong> area: add all active tasks with current status and any blockers or risks. No exceptions. Department Leads and PMs rely on these updates to manage workload, timelines, and priorities.</p>
 
       <h3 style="margin-top:22px">Time Tracker — mandatory, per task</h3>
-      <div class="hazard">
+      <div class="hazard" id="hazard-14">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>⏱️ Turn the tracker ON for every task — no exceptions</h4>
-          <p>Using the time tracker is <strong>mandatory</strong>. Start the timer on the specific task you're working on and stop it when you're done — the task view shows <strong>"Timer running — click Stop when done."</strong> Some team members have <em>not</em> been activating the tracker per task and later reported missing or inaccurate time logs. To avoid this, it's <strong>your responsibility</strong> to make sure the tracker is running correctly at all times while you work. Make sure you've installed the tracker and are actively using it. Please also review the <a href="https://www.loom.com/share/cb0ffa5db01c40c5aa50cf8edaf56fef" target="_blank" rel="noopener">time-tracker training video</a> and follow it carefully, and see the <a href="https://drive.google.com/file/d/1TKmNfBr12UqMDapY5vU8CVNQKh5drlWr/view?usp=drive_link" target="_blank" rel="noopener">Time Tracker FAQ &amp; Video Guide</a> for common questions.</p>
+          <p><p data-start="2429" data-end="2483" class="PDq2pG_selectionAnchorContainer"><strong data-start="2429" data-end="2483"></strong><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></p>
+<p data-start="2485" data-end="2579">Using the time tracker is <strong>mandatory</strong>. The <strong data-start="2489" data-end="2539">Time Tracker is a separate desktop application</strong> and is not part of the PM Tool web app.</p>
+<p data-start="2581" data-end="2612">Download the Time Tracker here:&nbsp;<a target="_blank" class="decorated-link" rel="noopener" href="https://inventelpm.automindlabinventel.com/time-tracking?utm_source=chatgpt.com">Download the Time Tracker</a></p>
+<p data-start="2653" data-end="2720"></p>Start the timer on the specific task you're working on and stop it when you're done Switch the timer as you move between tasks so each task logs correctly&nbsp;— the task view shows <strong>"Timer running — click Stop when done."</strong><div>The Time Tracker will <strong data-start="2899" data-end="2963">automatically pause or stop when user inactivity is detected</strong>. Please review the&nbsp;<a href="https://drive.google.com/file/d/1TKmNfBr12UqMDapY5vU8CVNQKh5drlWr/view?usp=drive_link">Time Tracker Guide</a>&nbsp;for more details about how inactivity is handled.</div><div><p data-start="2722" data-end="2875" class="PDq2pG_selectionAnchorContainer"><span aria-hidden="true" class="PDq2pG_selectionAnchor"></span></p>
+
+<p data-start="3057" data-end="3149"></p>Some team members have <em>not</em> been activating the tracker per task and later reported missing or inaccurate time logs. To avoid this, it's <strong>your responsibility</strong> to make sure the tracker is running correctly at all times while you work. Make sure you've installed the tracker and are actively using it. Please also review the <a href="https://www.loom.com/share/cb0ffa5db01c40c5aa50cf8edaf56fef" target="_blank" rel="noopener">time-tracker training video</a> and follow it carefully.</div></p>
         </div>
       </div>
       <div class="mini-grid">
@@ -1668,13 +1740,13 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
 
       <h3 style="margin-top:22px">Notifications &amp; the latest version</h3>
-      <div class="team-callout finance">
+      <div class="team-callout finance" id="callout-16">
         <span class="team-tag">Update Your App</span>
         <p>A <strong>notifications</strong> feature rolled out with the latest version of the PM tool. If your notifications aren't working, <strong>uninstall the old app and download the latest version.</strong> Make sure it's installed and that you're actively using it while working. If you hit <strong>any</strong> issue with installation, login, setup, or usage, contact the <strong>Workforce Analyst Team</strong> right away so they can help you get it resolved.</p>
       </div>
 
       <h3 style="margin-top:22px">Work faster — the AI Prompt Library</h3>
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-17">
         <span class="team-tag">Work Faster · AI Prompt Library</span>
         <p>Use the <a href="https://inventelpm.automindlabinventel.com/prompt-library" target="_blank" rel="noopener"><strong>InvenTel AI Prompt Library</strong></a> — a growing, shared collection of vetted prompts for the tools and workflows you use day to day. Check it before writing prompts from scratch, and reuse what already works.</p>
       </div>
@@ -1690,7 +1762,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">19 · Know the Portfolio</span>
         <h2>Brand Knowledge &amp; InvenTel University</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel University is your primary self-serve learning home — the place you go to get up to speed and to look things up while you work. It's organized into <strong>three sections</strong>:</p>
@@ -1707,7 +1779,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
       <p style="font-size:13px;color:var(--iv-text-muted);margin-top:10px">Bookmark it and make it part of your regular workflow — it's built as an everyday reference, not just onboarding. When a question comes up while you work, go back and look it up.</p>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-18">
         <span class="team-tag">New Hire · Every New Brand or Platform</span>
         <p><strong>When a brand or platform is assigned to you:</strong> work through its hub or guide <strong>completely, top to bottom</strong> — every section, no skimming or skipping ahead — <em>before</em> starting any work on it. Then take the quiz at the bottom (it's based on the full hub) and follow the <a href="#quiz-section">standard quiz submission process</a>: save and name your result, upload it to the Quiz Results folder, and notify the person who assigned it (your <strong>Brand Lead</strong> or <strong>Department Lead</strong>). This restarts every time a new brand or platform enters your scope. After that, the hub or guide is your first point of reference for any question on it — check it before reaching out.</p>
       </div>
@@ -1715,7 +1787,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <p style="font-size:13px;color:var(--iv-text-muted)"><em>All quizzes follow the same <a href="#quiz-section">submission process</a> — upload to the Quiz Results folder, then notify whoever assigned it. InvenTel University's intermediate and advanced courses are optional, strongly encouraged, and done in your own time.</em></p>
 
       <h3 style="margin-top:24px">Product knowledge is on everyone</h3>
-      <div class="hazard">
+      <div class="hazard" id="hazard-15">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>⚠️ "Not knowing a brand" isn't acceptable</h4>
@@ -1734,7 +1806,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">20 · Stay Informed</span>
         <h2>Company-Wide Channels</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel runs on a set of Google Chat channels. Each has a job — using them correctly keeps the whole team aligned.</p>
@@ -1744,10 +1816,10 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
           <tbody>
             <tr><td><strong>InvenTel Team</strong></td><td>Official company-wide announcements, policy changes, critical info</td><td>Enable <strong>All</strong> notifications and read every post. Read-only — never post chatter, questions, or 1-on-1s here</td></tr>
             <tr><td><strong>Social Media Callouts</strong></td><td>Brand posts that need a reach boost</td><td>Like and engage <strong>immediately</strong> when a callout appears — mandatory, not optional (see <a href="#social">Social Media Engagement</a>)</td></tr>
-            <tr><td><strong>Education Channel</strong></td><td>Webinars, tutorials, tool guides, role learning</td><td>Check <strong>weekly</strong> as part of your development</td></tr>
+            <tr><td><b>Creative Inspirations</b></td><td>Creative ideas, social media trends, and inspiring content that teams can use to test, adapt, and implement across brands</td><td>Check <b>regularly</b> and &nbsp;share creative ideas, social media trends&nbsp;, and inspiring content. Teams can use relevant ideas as inspiration for Their team's work</td></tr>
             <tr><td><strong>Company Announcements</strong></td><td>Leave policies, holidays, operational changes</td><td>Check <strong>daily</strong></td></tr>
-            <tr><td><strong>Financial Updates</strong></td><td>Salaries, invoicing timelines, payment info</td><td>Check <strong>regularly</strong></td></tr>
-          </tbody>
+            <tr><td><strong style="color: rgb(26, 20, 22);">Financial Updates</strong></td><td>Salaries, invoicing timelines, payment info</td><td>Check <strong>regularly</strong></td></tr>
+          <tr><td><strong style="color: rgb(26, 20, 22);">Education Channel</strong></td><td>Webinars, tutorials, tool guides, role learning</td><td>Check <strong style="color: rgb(26, 20, 22);">weekly</strong> as part of your development</td></tr></tbody>
         </table>
       </div>
       <p style="font-size:13px;color:var(--iv-text-muted)">To enable notifications on a channel: click the channel name in Google Chat → Notifications → All. Missing these channels can mean missed deadlines or policy violations. Keep all discussions and questions in DMs or your department's Project Space — not the InvenTel Team hub.</p>
@@ -1763,7 +1835,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">21 · All-Hands</span>
         <h2>Company-Wide Meetings</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel schedules <strong>company-wide meetings</strong> — all-hands sessions for executive updates, department highlights, and company alignment. These come up regularly, and the <strong>notice varies</strong>: some are announced well in advance, and others land on your calendar the <strong>day before</strong>. Keep an eye on your Google Calendar and the company announcements channel so one doesn't slip past you.</p>
@@ -1771,7 +1843,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <h3 style="margin-top:20px">If you're double-booked</h3>
       <p>Company-wide meetings are a priority. If one lands on top of another meeting you can move, <strong>reschedule the other meeting</strong> so you can attend the all-hands. If the conflict genuinely can't be moved, the session is <strong>recorded and shared</strong> in the <a href="https://drive.google.com/drive/folders/1p1WIKvKOInTIg61h5t-sY-kZ_Y4YXNdw?usp=drive_link" target="_blank" rel="noopener"><strong>Company-Wide Meeting Records</strong></a> folder — watch the recording as soon as you can to stay caught up.</p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-16">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🗓️ Attendance is tracked — don't make a habit of missing them</h4>
@@ -1790,12 +1862,12 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">22 · Show Up for the Brands</span>
         <h2>Social Media Engagement</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>We're a marketing agency — our own social presence matters, and every team member is part of it. <strong>Interacting with InvenTel's social pages and brand accounts is a required part of the job</strong>, not an optional extra.</p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-17">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>📣 Full team participation — straight from the CEO</h4>
@@ -1847,7 +1919,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">23 · Your Setup</span>
         <h2>Equipment &amp; Connectivity</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel does not provide equipment. You are personally responsible for a working setup and a stable connection throughout working hours.</p>
@@ -1882,10 +1954,10 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">24 · Important · Corrective Action</span>
         <h2>Contractor Disciplinary Policy</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
-      <div class="hazard">
+      <div class="hazard" id="hazard-18">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>⚠️ Important — this policy applies to everyone</h4>
@@ -1926,7 +1998,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
 
       <h3 style="margin-top:22px">Immediate termination</h3>
-      <div class="hazard">
+      <div class="hazard" id="hazard-19">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🚫 Serious violations can skip the warning process entirely</h4>
@@ -1956,7 +2028,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </ul>
       <p>All disciplinary actions are documented by the contractor's manager and HR.</p>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-19">
         <span class="team-tag">Read the Full Policy</span>
         <p>See the complete <a href="https://docs.google.com/document/d/1e2M6MdYcMRYXyx1ygVyVZw8rXWF5n-edKaRCICvuGKc/edit?usp=sharing" target="_blank" rel="noopener"><strong>Contractor Disciplinary Policy</strong></a> for the authoritative version. Questions about how it applies to you? Reach out to the <strong>Performance Team</strong> (see <a href="#contacts">HR Department &amp; Key Contacts</a>).</p>
       </div>
@@ -1972,7 +2044,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">25 · Ownership</span>
         <h2>Freelancing &amp; Intellectual Property</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>Three rules from your employment agreement, in plain terms:</p>
@@ -1993,7 +2065,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">26 · Protect the Company</span>
         <h2>Data Security &amp; Acceptable Use</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>Working remotely means you're responsible for the security of the company accounts, tools, and data you touch every day. These are the baseline expectations for everyone — they protect you, your teammates, the brands, and our customers.</p>
@@ -2017,7 +2089,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <h3 style="margin-top:20px">Phishing &amp; suspicious activity</h3>
       <p>Be skeptical of unexpected links, login pages, payment-change requests, and urgent "do this now" messages — even if they appear to come from someone senior. Verify through a known channel before acting. <strong>Money and banking requests are a common scam target</strong>: confirm anything payment-related directly with the Accounting team (see <a href="#accounting">Accounting &amp; Invoicing</a>).</p>
 
-      <div class="hazard">
+      <div class="hazard" id="hazard-20">
         <div class="hazard-bar"></div>
         <div class="hazard-body">
           <h4>🔐 If something looks compromised, report it immediately</h4>
@@ -2039,7 +2111,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">27 · How We Treat Each Other</span>
         <h2>Code of Conduct &amp; Grievances</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>InvenTel is a global, remote team, and how we treat one another is what makes that work. The standard is simple: <strong>be professional, respectful, and inclusive in every interaction</strong> — in meetings, in Chat, in comments, and in DMs.</p>
@@ -2074,7 +2146,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="flow-step"><div class="flow-step-body"><strong>The Performance Team reviews it discreetly</strong> and works with you on the right resolution. Concerns raised in good faith are never held against you.</div></div>
       </div>
 
-      <div class="team-callout cx">
+      <div class="team-callout cx" id="callout-20">
         <span class="team-tag">Confidential · No Retaliation</span>
         <p>You can raise a concern without fear. Good-faith reports are kept confidential and <strong>retaliation of any kind is not tolerated.</strong> If you're ever unsure whether something is worth raising — raise it. The Performance Team would rather hear it early.</p>
       </div>
@@ -2092,7 +2164,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">28 · The Governing Documents</span>
         <h2>Your Contract &amp; Handbook</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>This hub is your <strong>operational guide</strong> — how we work day to day. The formal terms of your engagement live in two documents you signed when you joined: your <strong>Services Agreement (contract)</strong> and the <strong>Contractor Handbook</strong>. Those are the governing documents. Where this hub and your signed agreements ever differ, <strong>your signed agreements control.</strong> This hub does not constitute a contractor agreement.</p>
@@ -2119,7 +2191,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <h3 style="margin-top:18px">Full-time commitment</h3>
       <p>The work at InvenTel is complex and treated as a <strong>full-time commitment.</strong> Per your agreement, while engaged with InvenTel you're expected <strong>not to take on other paid work</strong> — as an employee, contractor, or otherwise — that would compete for that commitment. If your situation changes, talk to your Direct Report or HR rather than assuming.</p>
 
-      <div class="team-callout newhire">
+      <div class="team-callout newhire" id="callout-21">
         <span class="team-tag">Where to Find Them</span>
         <p>Don't have your signed contract or the Contractor Handbook handy? Ask the <strong>Performance Team</strong> for a copy. For any question about what a specific clause means, HR can point you to the right section — when the hub and your agreement differ, the signed agreement is the final word.</p>
       </div>
@@ -2135,30 +2207,30 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">29 · Reference</span>
         <h2>Glossary</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <dl class="glossary">
-        <dt>InvenTel / TelNet</dt><dd>The two sides of the company: InvenTel (the DRTV brand portfolio, est. 1992) and TelNet (the data-driven marketing agency). They operate together, and these policies apply across both.</dd>
-        <dt>Company Lunch Break</dt><dd>A single company-wide one-hour break, 12:30–1:30 PM ET, that everyone takes at the same time. Its local hour differs by location and shifts by an hour between US summer and winter for the locations that don't observe Daylight Saving — see the by-location tables in Working Hours.</dd>
-        <dt>Leave Management</dt><dd>The area inside the InvenTel PM tool where all leave — planned and emergency/day-of — is requested, and where your leave balances are tracked. It replaced the old Google Leave Form.</dd>
-        <dt>Drive HR Resources Folder</dt><dd>The shared Drive folder holding all key forms and reference material — the Onboarding Deck &amp; FAQs, Team Structures, and Invoice Template. (Leave is now requested in the PM tool, not here.)</dd>
-        <dt>The 10-Minute Rule</dt><dd>The chat responsiveness standard: react to or reply to every Google Chat message in <strong>under 10 minutes</strong> during working hours. Exceed it and you're assumed offline or ignoring the sender. A 👍 reaction counts; set your Chat status when you can't respond.</dd>
-        <dt>Following Through</dt><dd>Completing a task to standard <em>and</em> proactively telling the assigner it's done — without being asked. Closing the loop is part of the task.</dd>
-        <dt>Scheduling Etiquette</dt><dd>Connect with people before putting a meeting on their calendar, follow up after, watch Google Calendar's conflict warnings, give notice (and a Chat heads-up) before any reschedule, respond to every invite, and keep recurring invite lists current. See Scheduling &amp; Meeting Etiquette.</dd>
-        <dt>Company-Wide Meeting</dt><dd>An all-hands for company updates and alignment, scheduled with varying notice (sometimes the day before). Attendance is mandatory (cameras on) and tracked; if you're double-booked and can't reschedule, the session is recorded and shared.</dd>
-        <dt>Busy Season</dt><dd>The recurring high-volume period (currently the Friday after Thanksgiving through December 20) when time off is limited — max 2 PTO days, with at least 20 days' notice. See <a href="#agreements">Your Contract &amp; Handbook</a>.</dd>
-        <dt>Floating Holiday</dt><dd>A holiday day you choose for yourself rather than a fixed company-observed date. InvenTel has no mandatory holidays; all are floating and requested in the PM tool.</dd>
-        <dt>Incomplete Workday</dt><dd>A deviation from standard hours (late start, early finish, or a lunch over one hour). Documented the same day in the PM tool's Leave Management, with the exact ET time.</dd>
-        <dt>Probation Period</dt><dd>Your first 90 days. Any days off during this period are unpaid regardless of reason; leave accrual doesn't apply yet.</dd>
-        <dt>Daily Scrum / Standup</dt><dd>Your everyday update in the PM tool's Daily Scrum — active tasks, status, and blockers. Required every workday.</dd>
-        <dt>InvenTel PM Tool</dt><dd>InvenTel's in-house project-management platform (its own ClickUp) — the single source of truth for tasks, the daily scrum, the time tracker, leave requests and balances, channels, and dashboards.</dd>
-        <dt>Time Tracker</dt><dd>The per-task timer inside the PM tool, with periodic screenshots. Turning it on for every task is mandatory; pause it for breaks; deleting a screenshot also deletes the linked time.</dd>
-        <dt>Department Lead (Dept Lead)</dt><dd>Your primary point of direction, responsible for your full workload, quality, deadlines, and capacity. Keep them informed of every task you receive, whoever sent it.</dd>
-        <dt>Channel Rule</dt><dd>All task assignments go through the proper PM channel, never a private DM. DM'd tasks get moved to the channel and flagged to your Dept Lead.</dd>
-        <dt>Brand Hub</dt><dd>A standalone knowledge page in InvenTel University for a single brand, ending in a quiz. Review the full hub and pass the quiz before working on a newly assigned brand.</dd>
-        <dt>Remote Leave Tracker</dt><dd>The company-wide calendar of all approved leave. Subscribe to it, verify your own approved leave appears, and check it before scheduling.</dd>
-        <dt>OOO — Out of Office</dt><dd>Set an OOO event in Google Calendar and it syncs your Away status across Gmail and Chat automatically.</dd>
+        <dt id="gloss-0">InvenTel / TelNet</dt><dd>The two sides of the company: InvenTel (the DRTV brand portfolio, est. 1992) and TelNet (the data-driven marketing agency). They operate together, and these policies apply across both.</dd>
+        <dt id="gloss-1">Company Lunch Break</dt><dd>A single company-wide one-hour break, 12:30–1:30 PM ET, that everyone takes at the same time. Its local hour differs by location and shifts by an hour between US summer and winter for the locations that don't observe Daylight Saving — see the by-location tables in Working Hours.</dd>
+        <dt id="gloss-2">Leave Management</dt><dd>The area inside the InvenTel PM tool where all leave — planned and emergency/day-of — is requested, and where your leave balances are tracked. It replaced the old Google Leave Form.</dd>
+        <dt id="gloss-3">Drive HR Resources Folder</dt><dd>The shared Drive folder holding all key forms and reference material — the Onboarding Deck &amp; FAQs, Team Structures, and Invoice Template. (Leave is now requested in the PM tool, not here.)</dd>
+        <dt id="gloss-4">The 10-Minute Rule</dt><dd>The chat responsiveness standard: react to or reply to every Google Chat message in <strong>under 10 minutes</strong> during working hours. Exceed it and you're assumed offline or ignoring the sender. A 👍 reaction counts; set your Chat status when you can't respond.</dd>
+        <dt id="gloss-5">Following Through</dt><dd>Completing a task to standard <em>and</em> proactively telling the assigner it's done — without being asked. Closing the loop is part of the task.</dd>
+        <dt id="gloss-6">Scheduling Etiquette</dt><dd>Connect with people before putting a meeting on their calendar, follow up after, watch Google Calendar's conflict warnings, give notice (and a Chat heads-up) before any reschedule, respond to every invite, and keep recurring invite lists current. See Scheduling &amp; Meeting Etiquette.</dd>
+        <dt id="gloss-7">Company-Wide Meeting</dt><dd>An all-hands for company updates and alignment, scheduled with varying notice (sometimes the day before). Attendance is mandatory (cameras on) and tracked; if you're double-booked and can't reschedule, the session is recorded and shared.</dd>
+        <dt id="gloss-8">Busy Season</dt><dd>The recurring high-volume period (currently the Friday after Thanksgiving through December 20) when time off is limited — max 2 PTO days, with at least 20 days' notice. See <a href="#agreements">Your Contract &amp; Handbook</a>.</dd>
+        <dt id="gloss-9">Floating Holiday</dt><dd>A holiday day you choose for yourself rather than a fixed company-observed date. InvenTel has no mandatory holidays; all are floating and requested in the PM tool.</dd>
+        <dt id="gloss-10">Incomplete Workday</dt><dd>A deviation from standard hours (late start, early finish, or a lunch over one hour). Documented the same day in the PM tool's Leave Management, with the exact ET time.</dd>
+        <dt id="gloss-11">Probation Period</dt><dd>Your first 90 days. Any days off during this period are unpaid regardless of reason; leave accrual doesn't apply yet.</dd>
+        <dt id="gloss-12">Daily Scrum / Standup</dt><dd>Your everyday update in the PM tool's Daily Scrum — active tasks, status, and blockers. Required every workday.</dd>
+        <dt id="gloss-13">InvenTel PM Tool</dt><dd>InvenTel's in-house project-management platform (its own ClickUp) — the single source of truth for tasks, the daily scrum, the time tracker, leave requests and balances, channels, and dashboards.</dd>
+        <dt id="gloss-14">Time Tracker</dt><dd>The per-task timer inside the PM tool, with periodic screenshots. Turning it on for every task is mandatory; pause it for breaks; deleting a screenshot also deletes the linked time.</dd>
+        <dt id="gloss-15">Department Lead (Dept Lead)</dt><dd>Your primary point of direction, responsible for your full workload, quality, deadlines, and capacity. Keep them informed of every task you receive, whoever sent it.</dd>
+        <dt id="gloss-16">Channel Rule</dt><dd>All task assignments go through the proper PM channel, never a private DM. DM'd tasks get moved to the channel and flagged to your Dept Lead.</dd>
+        <dt id="gloss-17">Brand Hub</dt><dd>A standalone knowledge page in InvenTel University for a single brand, ending in a quiz. Review the full hub and pass the quiz before working on a newly assigned brand.</dd>
+        <dt id="gloss-18">Remote Leave Tracker</dt><dd>The company-wide calendar of all approved leave. Subscribe to it, verify your own approved leave appears, and check it before scheduling.</dd>
+        <dt id="gloss-19">OOO — Out of Office</dt><dd>Set an OOO event in Google Calendar and it syncs your Away status across Gmail and Chat automatically.</dd>
       </dl>
     </div>
   </div>
@@ -2172,26 +2244,26 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">30 · Quick Answers</span>
         <h2>Frequently Asked Questions</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
-      <div class="faq-item"><p class="faq-q">What time zone do I work in if I'm in Egypt, India, Pakistan, the Philippines, or Argentina?</p><p class="faq-a">Eastern Time, always — the same as everyone, including the US teams and HQ in New Jersey. Hours are 8:30 AM – 5:30 PM ET and every meeting and deadline follows ET no matter where you live. Set your Google Calendar primary zone to Eastern Time and add your local zone only as a secondary clock.</p></div>
-      <div class="faq-item"><p class="faq-q">When I message or schedule with a teammate, whose time zone do I use?</p><p class="faq-a">Always Eastern Time — never your local time, even when messaging someone in another country to be helpful. One shared clock means everyone makes a single quick conversion and nobody is confused. Mixing local times into chats and invites is what causes missed meetings.</p></div>
-      <div class="faq-item"><p class="faq-q">The US just changed its clocks but my country didn't. What do I do?</p><p class="faq-a">Company time always follows the current time in New Jersey, so it shifts with the US change. Your local-to-ET gap moves by an hour for a while — that's expected, and accommodating it is on you. Your calendar handles the meetings automatically because your primary zone is ET; just notice that your start time now lands at a different local hour. If unsure, check the current time in NJ — that's the company time.</p></div>
-      <div class="faq-item"><p class="faq-q">How fast do I need to reply to chats?</p><p class="faq-a">React or reply to Google Chat messages in under 10 minutes during working hours — even a one-second 👍 counts. Go longer and we'll assume you're offline or ignoring the person. If you're heads-down (meeting, focused work, break), set your Chat status first so the silence is understood, and respond as soon as you reasonably can.</p></div>
-      <div class="faq-item"><p class="faq-q">Do I really have to keep my camera on?</p><p class="faq-a">Yes — for every meeting, internal or client-facing, including 1-on-1s. If you genuinely can't, post a brief Chat status (e.g. "Bandwidth issues") before the meeting. The rule: if your camera can't be on, don't join.</p></div>
-      <div class="faq-item"><p class="faq-q">How much notice do I need to request time off?</p><p class="faq-a">7 days for 1 day, 14 days for 2 consecutive days, 21 days for 3 or more. Submit in the PM tool (Leave Management); approval or denial comes within 24 hours. Don't assume approval until it's in writing.</p></div>
-      <div class="faq-item"><p class="faq-q">How much paid leave do I get?</p><p class="faq-a">16 paid days a year: 5 PTO + 5 sick + 6 floating holidays. Anything beyond that is unpaid. Days can be split into half-days, and you track your own balance (questions → the Workforce Analyst Team in HR).</p></div>
-      <div class="faq-item"><p class="faq-q">Is a US holiday (or a holiday in my country) automatically a day off?</p><p class="faq-a">No. InvenTel has zero company holidays — no date is off by default, including US public holidays and your local holidays. Every holiday is floating: if you want it off, request it in the PM tool and wait for written approval. Don't assume a day is off and skip work — that's an unapproved absence.</p></div>
-      <div class="faq-item"><p class="faq-q">What if I get sick or my internet dies unexpectedly?</p><p class="faq-a">Immediately contact both HR and your Direct Lead — don't wait until you're back. Submit the request in the PM tool (Emergency / Day-Of call-out) as soon as you can. For connectivity issues: Day 1 is a grace period, Day 2+ is unpaid leave until resolved, and Day 3+/recurring can mean suspension or termination — so keep a backup plan ready.</p></div>
-      <div class="faq-item"><p class="faq-q">When are invoices due and when do I get paid?</p><p class="faq-a">Invoices are due by the 25th, sent to the shared accounting inbox ap@inventel.net using the official template, named FirstName LastName_Invoice_MMYYYY.pdf. Payment is processed by the 10th of the following month. List any missed days in the Notes section.</p></div>
-      <div class="faq-item"><p class="faq-q">Someone DM'd me a task. What do I do?</p><p class="faq-a">Move it to the correct PM channel and notify your Department Lead — even if the sender is senior. Tasks never get assigned by private DM, because DMs are invisible to leadership and can't be tracked or reassigned.</p></div>
-      <div class="faq-item"><p class="faq-q">Can I take freelance or side work?</p><p class="faq-a">No. While employed at InvenTel you can't take freelance, part-time, consulting, advisory, or any secondary income-generating work. Full professional commitment is required.</p></div>
-      <div class="faq-item"><p class="faq-q">Can I put InvenTel ads or creative in my portfolio?</p><p class="faq-a">Not without explicit written permission from management — even after you leave. All brand assets and the work you produce belong to the company.</p></div>
-      <div class="faq-item"><p class="faq-q">A new brand was just assigned to me. What's expected before I start?</p><p class="faq-a">Review that brand's hub in InvenTel University completely, top to bottom, then pass the quiz at the bottom and follow the standard submission process — upload your named result to the Quiz Results folder and notify the person who assigned it (your Brand Lead). After that, the hub is your first reference for any question on that brand.</p></div>
-      <div class="faq-item"><p class="faq-q">What's the very first thing to do on day one?</p><p class="faq-a">Enable 2FA on your Google account (you'll be locked out without it), then email tanvir@inventel.net to start banking setup. From there, work down the New-Hire Setup Checklist.</p></div>
-      <div class="faq-item"><p class="faq-q">Who in HR do I go to for leave, onboarding, or hiring?</p><p class="faq-a">HR has three teams. Leave requests, balances, and PM tracker / time-entry issues → the Workforce Analyst Team. Onboarding, platform access, and performance reviews → the Performance Team. Hiring, referrals, or an open position → the Talent Acquisition Team. For a sensitive issue with a teammate or your lead, or if you're unsure who to ask → the Performance Team (handled confidentially). Note this HR routing is for international team members only, not US W2/1099 employees.</p></div>
-      <div class="faq-item"><p class="faq-q">I have a conflict with a teammate or my lead and don't know how to handle it. Who do I talk to?</p><p class="faq-a">Reach out to the Performance Team. Concerns, conflicts, and situations you're unsure about are all handled with care and confidentiality.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-0">What time zone do I work in if I'm in Egypt, India, Pakistan, the Philippines, or Argentina?</p><p class="faq-a">Eastern Time, always — the same as everyone, including the US teams and HQ in New Jersey. Hours are 8:30 AM – 5:30 PM ET and every meeting and deadline follows ET no matter where you live. Set your Google Calendar primary zone to Eastern Time and add your local zone only as a secondary clock.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-1">When I message or schedule with a teammate, whose time zone do I use?</p><p class="faq-a">Always Eastern Time — never your local time, even when messaging someone in another country to be helpful. One shared clock means everyone makes a single quick conversion and nobody is confused. Mixing local times into chats and invites is what causes missed meetings.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-2">The US just changed its clocks but my country didn't. What do I do?</p><p class="faq-a">Company time always follows the current time in New Jersey, so it shifts with the US change. Your local-to-ET gap moves by an hour for a while — that's expected, and accommodating it is on you. Your calendar handles the meetings automatically because your primary zone is ET; just notice that your start time now lands at a different local hour. If unsure, check the current time in NJ — that's the company time.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-3">How fast do I need to reply to chats?</p><p class="faq-a">React or reply to Google Chat messages in under 10 minutes during working hours — even a one-second 👍 counts. Go longer and we'll assume you're offline or ignoring the person. If you're heads-down (meeting, focused work, break), set your Chat status first so the silence is understood, and respond as soon as you reasonably can.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-4">Do I really have to keep my camera on?</p><p class="faq-a">Yes — for every meeting, internal or client-facing, including 1-on-1s. If you genuinely can't, post a brief Chat status (e.g. "Bandwidth issues") before the meeting. The rule: if your camera can't be on, don't join.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-5">How much notice do I need to request time off?</p><p class="faq-a">7 days for 1 day, 14 days for 2 consecutive days, 21 days for 3 or more. Submit in the PM tool (Leave Management); approval or denial comes within 24 hours. Don't assume approval until it's in writing.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-6">How much paid leave do I get?</p><p class="faq-a">16 paid days a year: 5 PTO + 5 sick + 6 floating holidays. Anything beyond that is unpaid. Days can be split into half-days, and you track your own balance (questions → the Workforce Analyst Team in HR).</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-7">Is a US holiday (or a holiday in my country) automatically a day off?</p><p class="faq-a">No. InvenTel has zero company holidays — no date is off by default, including US public holidays and your local holidays. Every holiday is floating: if you want it off, request it in the PM tool and wait for written approval. Don't assume a day is off and skip work — that's an unapproved absence.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-8">What if I get sick or my internet dies unexpectedly?</p><p class="faq-a">Immediately contact both HR and your Direct Lead — don't wait until you're back. Submit the request in the PM tool (Emergency / Day-Of call-out) as soon as you can. For connectivity issues: Day 1 is a grace period, Day 2+ is unpaid leave until resolved, and Day 3+/recurring can mean suspension or termination — so keep a backup plan ready.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-9">When are invoices due and when do I get paid?</p><p class="faq-a">Invoices are due by the 25th, sent to the shared accounting inbox payroll@inventel.net using the official template, named FirstName LastName_Invoice_MMYYYY.pdf. Payment is processed by the 10th of the following month. List any missed days in the Notes section.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-10">Someone DM'd me a task. What do I do?</p><p class="faq-a">Move it to the correct PM channel and notify your Department Lead — even if the sender is senior. Tasks never get assigned by private DM, because DMs are invisible to leadership and can't be tracked or reassigned.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-11">Can I take freelance or side work?</p><p class="faq-a">No. While employed at InvenTel you can't take freelance, part-time, consulting, advisory, or any secondary income-generating work. Full professional commitment is required.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-12">Can I put InvenTel ads or creative in my portfolio?</p><p class="faq-a">Not without explicit written permission from management — even after you leave. All brand assets and the work you produce belong to the company.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-13">A new brand was just assigned to me. What's expected before I start?</p><p class="faq-a">Review that brand's hub in InvenTel University completely, top to bottom, then pass the quiz at the bottom and follow the standard submission process — upload your named result to the Quiz Results folder and notify the person who assigned it (your Brand Lead). After that, the hub is your first reference for any question on that brand.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-14">What's the very first thing to do on day one?</p><p class="faq-a">Enable 2FA on your Google account (you'll be locked out without it), then email tanvir@inventel.net to start banking setup. From there, work down the New-Hire Setup Checklist.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-15">Who in HR do I go to for leave, onboarding, or hiring?</p><p class="faq-a">HR has three teams. Leave requests, balances, and PM tracker / time-entry issues → the Workforce Analyst Team. Onboarding, platform access, and performance reviews → the Performance Team. Hiring, referrals, or an open position → the Talent Acquisition Team. For a sensitive issue with a teammate or your lead, or if you're unsure who to ask → the Performance Team (handled confidentially). Note this HR routing is for international team members only, not US W2/1099 employees.</p></div>
+      <div class="faq-item"><p class="faq-q" id="faq-q-16">I have a conflict with a teammate or my lead and don't know how to handle it. Who do I talk to?</p><p class="faq-a">Reach out to the Performance Team. Concerns, conflicts, and situations you're unsure about are all handled with care and confidentiality.</p></div>
     </div>
   </div>
 </section>
@@ -2204,7 +2276,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <span class="eyebrow">31 · First Week</span>
         <h2>New-Hire Setup Checklist</h2>
       </div>
-      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
     </div>
     <div class="section-body">
       <p>Work through these during your first days — tap each item to check it off as you go. <strong>Aim to have everything done by the end of Week 1.</strong></p>
@@ -2212,9 +2284,9 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <div class="cl-progress-wrap">
         <div class="cl-progress-top">
           <span class="cl-progress-label">Setup Progress</span>
-          <span class="cl-progress-count" id="cl-count">0 of 0 done</span>
+          <span class="cl-progress-count" id="cl-count">0 of 17 done</span>
         </div>
-        <div class="cl-progress-bar"><div class="cl-progress-fill" id="cl-fill"></div></div>
+        <div class="cl-progress-bar"><div class="cl-progress-fill" id="cl-fill" style="width: 0%;"></div></div>
         <div class="cl-actions">
           <button class="cl-reset-btn" onclick="resetChecklist()">↺ Reset checklist</button>
         </div>
@@ -2224,53 +2296,53 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
         <div class="cl-group">
           <div class="cl-group-title">🔐 Google account</div>
           <ul class="cl-list">
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text"><strong>Enable 2FA first</strong> — you'll be locked out without it.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Set your <strong>primary</strong> Google Workspace time zone to ET; add your <strong>local</strong> zone as a secondary clock.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Subscribe to the <strong>Remote Leave Tracker</strong> calendar and keep it permanently visible.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text"><strong>Enable 2FA first</strong> — you'll be locked out without it.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Set your <strong>primary</strong> Google Workspace time zone to ET; add your <strong>local</strong> zone as a secondary clock.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Subscribe to the <strong>Remote Leave Tracker</strong> calendar and keep it permanently visible.</span></button></li>
           </ul>
         </div>
 
         <div class="cl-group">
           <div class="cl-group-title">📸 Profile, signature &amp; camera</div>
           <ul class="cl-list">
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Send HR a professional photo; they return a branded image (Canva template) — set it as your Google profile photo.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Add your email signature once HR sends it (HR creates it — don't build it manually).</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Set the company Google Meet virtual background; blur any non-wall real background.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Test your camera and microphone on a <a href="https://meet.google.com" target="_blank" rel="noopener">meet.google.com</a> call — camera ON is mandatory for all meetings.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Send HR a professional photo; they return a branded image (Canva template) — set it as your Google profile photo.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Add your email signature once HR sends it (HR creates it — don't build it manually).</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Set the company Google Meet virtual background; blur any non-wall real background.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Test your camera and microphone on a <a href="https://meet.google.com" target="_blank" rel="noopener">meet.google.com</a> call — camera ON is mandatory for all meetings.</span></button></li>
           </ul>
         </div>
 
         <div class="cl-group">
           <div class="cl-group-title">💰 Banking &amp; invoicing</div>
           <ul class="cl-list">
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Contact <a href="mailto:tanvir@inventel.net">tanvir@inventel.net</a> by private chat to set up banking — do it immediately, a bank letter may be required.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Review the Invoice Template and submission process (due the 25th; paid by the 10th of the next month).</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Contact <a href="mailto:tanvir@inventel.net">tanvir@inventel.net</a> by private chat to set up banking — do it immediately, a bank letter may be required.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Review the Invoice Template and submission process (due the 25th; paid by the 10th of the next month).</span></button></li>
           </ul>
         </div>
 
         <div class="cl-group">
           <div class="cl-group-title">🛠️ PM tool, social &amp; team</div>
           <ul class="cl-list">
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Create your <a href="https://inventelpm.automindlabinventel.com/" target="_blank" rel="noopener">InvenTel PM Tool</a> account (the Performance Team helps with setup and assigns your department/role), complete the Loom walkthrough, and confirm the time tracker is installed and running.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Complete and return the Social Media Handles Sheet from your HR Performance Manager.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Review your training plan, task/deadline processes, communication norms, and the daily-scrum sheet with your Team Lead.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Complete Week-1 daily 1:1 check-ins (Week 1 daily → Weeks 2–4 weekly → Months 2–3 bi-weekly → post-probation monthly).</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Create your <a href="https://inventelpm.automindlabinventel.com/" target="_blank" rel="noopener">InvenTel PM Tool</a> account (the Performance Team helps with setup and assigns your department/role), complete the Loom walkthrough, and confirm the time tracker is installed and running.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Complete and return the Social Media Handles Sheet from your HR Performance Manager.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Review your training plan, task/deadline processes, communication norms, and the daily-scrum sheet with your Team Lead.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Complete Week-1 daily 1:1 check-ins (Week 1 daily → Weeks 2–4 weekly → Months 2–3 bi-weekly → post-probation monthly).</span></button></li>
           </ul>
         </div>
 
         <div class="cl-group">
           <div class="cl-group-title">🔑 Platform access</div>
           <ul class="cl-list">
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Confirm all required platform access is granted (coordinated by the Performance Team and your manager).</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Test access to every platform you need before end of Week 1; platform access is handled by the Performance Team, so flag anything missing right away — missing access blocks your work.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Confirm all required platform access is granted (coordinated by the Performance Team and your manager).</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Test access to every platform you need before end of Week 1; platform access is handled by the Performance Team, so flag anything missing right away — missing access blocks your work.</span></button></li>
           </ul>
         </div>
 
         <div class="cl-group">
           <div class="cl-group-title">🎓 Finish line</div>
           <ul class="cl-list">
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Review the full Employee Onboarding Deck end to end and note your questions.</span></button></li>
-            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span><span class="cl-item-text">Take the <a href="#quiz-section">Knowledge Check Quiz</a>, then follow the standard submission process — upload your named result to the Quiz Results folder and notify the Performance Team (onboarding).</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Review the full Employee Onboarding Deck end to end and note your questions.</span></button></li>
+            <li><button class="cl-item" onclick="toggleCheck(this)"><span class="cl-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="cl-item-text">Take the <a href="#quiz-section">Knowledge Check Quiz</a>, then follow the standard submission process — upload your named result to the Quiz Results folder and notify the Performance Team (onboarding).</span></button></li>
           </ul>
         </div>
       </div>
@@ -2308,10 +2380,10 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       <span class="eyebrow" style="color:var(--iv-amber)">32 · Knowledge Check Quiz</span>
       <h2>Prove It · 45 Questions · 70% to Pass</h2>
     </div>
-    <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <button class="section-toggle" aria-label="Toggle section"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
   </div>
   <div class="section-body">
-    <div id="quiz-intro">
+    <div id="quiz-intro" style="display: none;">
       <p style="color:#F7EAEB;max-width:660px;font-size:15px;line-height:1.65">Read everything above first, then take this quiz to confirm you've internalized the policies and processes that matter most day to day. <strong style="color:#fff">Pass: 32 of 45 correct (70%).</strong> One question at a time, immediate feedback, correct answers shown when you miss. Retake as many times as you need — no penalty.</p>
       <p style="color:#F7EAEB;max-width:660px;font-size:15px;line-height:1.65">When you pass, enter your name and title, then capture your result — a <strong style="color:#fff">screenshot of your score card is the easiest option</strong>, or you can print or save the certificate. <strong style="color:#fff">Every quiz — this one and every brand or platform quiz — follows the same submission process:</strong></p>
       <ol style="color:#F7EAEB;max-width:660px;font-size:15px;line-height:1.7;padding-left:22px;margin:10px 0">
@@ -2327,14 +2399,14 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
       </div>
       <button class="quiz-start-btn" onclick="startQuiz()" style="background:var(--iv-signal);color:#fff;border:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:18px;transition:transform .15s,box-shadow .15s;letter-spacing:.02em">Start the quiz →</button>
     </div>
-    <div class="quiz-container" id="quiz-container" style="display:none">
-      <div id="quiz-active" style="display:none">
-        <div class="quiz-progress" id="quiz-progress-text">Question 1 of 45</div>
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div></div>
-        <div class="quiz-question" id="quiz-question-text"></div>
-        <div class="quiz-options" id="quiz-options-list"></div>
-        <div id="quiz-feedback" style="display:none"></div>
-        <button id="quiz-next-btn" class="quiz-option" style="margin-top:18px;background:var(--iv-signal);border-color:var(--iv-signal);color:#fff;font-weight:700;justify-content:center;display:none" onclick="nextQuestion()">Next Question →</button>
+    <div class="quiz-container" id="quiz-container" style="display: block;">
+      <div id="quiz-active" style="display: block;">
+        <div class="quiz-progress" id="quiz-progress-text">Question 43 of 45</div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 93.3333%;"></div></div>
+        <div class="quiz-question" id="quiz-question-text">How do you keep the company-wide Remote Leave Tracker permanently in view?</div>
+        <div class="quiz-options" id="quiz-options-list"><button class="quiz-option"><span class="quiz-option-letter" style="font-family:'DM Mono',monospace;font-weight:700;color:var(--iv-amber);min-width:18px">A.</span><span>Subscribe to it once in Google Calendar so it stays in view</span></button><button class="quiz-option"><span class="quiz-option-letter" style="font-family:'DM Mono',monospace;font-weight:700;color:var(--iv-amber);min-width:18px">B.</span><span>You can't — you have to look it up each time</span></button><button class="quiz-option"><span class="quiz-option-letter" style="font-family:'DM Mono',monospace;font-weight:700;color:var(--iv-amber);min-width:18px">C.</span><span>HR emails the tracker to you every week</span></button><button class="quiz-option"><span class="quiz-option-letter" style="font-family:'DM Mono',monospace;font-weight:700;color:var(--iv-amber);min-width:18px">D.</span><span>It only ever shows on the PM dashboard</span></button></div>
+        <div id="quiz-feedback" style="display: none;" class="quiz-feedback wrong"></div>
+        <button id="quiz-next-btn" class="quiz-option" style="margin-top: 18px; background: var(--iv-signal); border-color: var(--iv-signal); color: rgb(255, 255, 255); font-weight: 700; justify-content: center; display: none;" onclick="nextQuestion()">Next Question →</button>
       </div>
 
       <div id="quiz-pass" style="display:none">
@@ -2417,7 +2489,7 @@ footer .fbrand{color:var(--iv-amber);font-weight:700}
 
 <!-- ============ FLOATING TOC BUTTON ============ -->
 <button id="floating-toc-btn" onclick="openTOCDrawer()" aria-label="Open contents">
-  <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
 </button>
 
 <script>
@@ -2732,5 +2804,125 @@ function printCertificate(){
 }
 </script>
 
-</body>
-</html>
+<!-- ============ ADMIN: EDIT MODE ============ -->
+<script>
+(function(){
+  /* Hardcoded admin credentials — client-side gate only, NOT real security.
+     Meant to stop casual/accidental edits, not to protect sensitive data. */
+  const IV_ADMIN_USER = 'admin';
+  const IV_ADMIN_PASS = 'inventel2026';
+  const IV_SESSION_KEY = 'iv_admin_logged_in';
+
+  /* Selectors for human-readable text content that should become editable.
+     Deliberately excludes nav chrome, buttons, svg icons, and quiz logic. */
+  const IV_EDITABLE_SELECTOR = [
+    'h1','h2','h3','h4','p','li','td','th','dt','dd',
+    '.eyebrow','.toc-tile-label','.toc-drawer-label',
+    '.hero-stat-num','.hero-stat-lbl','.stat-big','.stat-lbl','.exec-role'
+  ].join(', ');
+
+  function ivOpenLogin(){
+    document.getElementById('iv-login-overlay').classList.add('open');
+    document.getElementById('iv-login-error').classList.remove('show');
+    setTimeout(()=>{ const u=document.getElementById('iv-login-user'); if(u) u.focus(); }, 50);
+  }
+  function ivCloseLogin(){
+    document.getElementById('iv-login-overlay').classList.remove('open');
+    document.getElementById('iv-login-form').reset();
+  }
+  function ivAttemptLogin(e){
+    e.preventDefault();
+    const u = document.getElementById('iv-login-user').value.trim();
+    const p = document.getElementById('iv-login-pass').value;
+    if(u === IV_ADMIN_USER && p === IV_ADMIN_PASS){
+      sessionStorage.setItem(IV_SESSION_KEY, 'true');
+      ivCloseLogin();
+      ivEnterEditMode();
+    } else {
+      document.getElementById('iv-login-error').classList.add('show');
+    }
+    return false;
+  }
+
+  function ivEnterEditMode(){
+    document.body.classList.add('iv-edit-mode');
+    document.querySelectorAll(IV_EDITABLE_SELECTOR).forEach(el=>{
+      el.setAttribute('contenteditable','true');
+      el.setAttribute('data-iv-editable','true');
+      el.setAttribute('spellcheck','false');
+    });
+  }
+
+  function ivExitEditMode(){
+    sessionStorage.removeItem(IV_SESSION_KEY);
+    document.body.classList.remove('iv-edit-mode');
+    document.querySelectorAll('[data-iv-editable="true"]').forEach(el=>{
+      el.removeAttribute('contenteditable');
+      el.removeAttribute('data-iv-editable');
+      el.removeAttribute('spellcheck');
+    });
+  }
+
+  function ivDiscardChanges(){
+    if(confirm('Discard all unsaved changes and reload the original content?')){
+      location.reload();
+    }
+  }
+
+  function ivSaveChanges(){
+    const clone = document.documentElement.cloneNode(true);
+    const q = sel => clone.querySelector(sel);
+    const loginOverlay = q('#iv-login-overlay'); if(loginOverlay) loginOverlay.remove();
+    const toolbar = q('#iv-edit-toolbar'); if(toolbar) toolbar.remove();
+    const cloneBody = clone.querySelector('body');
+    if(cloneBody) cloneBody.classList.remove('iv-edit-mode');
+    clone.querySelectorAll('[data-iv-editable="true"]').forEach(el=>{
+      el.removeAttribute('contenteditable');
+      el.removeAttribute('data-iv-editable');
+      el.removeAttribute('spellcheck');
+    });
+    const drawer = q('#toc-drawer'); if(drawer) drawer.classList.remove('open');
+    const overlay = q('#toc-drawer-overlay'); if(overlay) overlay.classList.remove('open');
+    const searchResults = q('#search-results'); if(searchResults){ searchResults.classList.remove('open'); searchResults.innerHTML=''; }
+
+    const htmlStr = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([htmlStr], {type:'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'inventel-company-policy-hub-updated.html';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  /* Prevent edit-mode clicks on editable text from triggering link navigation
+     or collapsing/expanding the section it lives in — without blocking normal
+     caret placement / typing. */
+  document.addEventListener('click', function(e){
+    if(!document.body.classList.contains('iv-edit-mode')) return;
+    const editable = e.target.closest('[data-iv-editable="true"]');
+    if(!editable) return;
+    if(editable.closest('a')) e.preventDefault();
+    if(editable.closest('.section-header-bar')) e.stopPropagation();
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function(){
+    if(sessionStorage.getItem(IV_SESSION_KEY) === 'true'){
+      ivEnterEditMode();
+    }
+  });
+
+  window.ivOpenLogin = ivOpenLogin;
+  window.ivCloseLogin = ivCloseLogin;
+  window.ivAttemptLogin = ivAttemptLogin;
+  window.ivExitEditMode = ivExitEditMode;
+  window.ivDiscardChanges = ivDiscardChanges;
+  window.ivSaveChanges = ivSaveChanges;
+})();
+</script>
+
+
+
+</body></html>
