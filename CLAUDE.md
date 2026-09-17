@@ -45,6 +45,7 @@ Key conventions:
 - **Pages are addressed by template, not slug.** `bh_template_url( $template_file, $fallback )` in `functions.php` looks up the published page whose `_wp_page_template` meta equals the given filename and returns its permalink. This is how index pages link to hub/training pages and how login/logout redirects find their targets — slugs can be anything.
 - **Auth is per-template, not per-page-type.** `bh_require_login()` must be the first line of executable PHP in any new protected template. The global `template_redirect` / `template_include` hooks in `functions.php` also enforce this site-wide as a backstop, with `page-brand-hub-login.php` and `page-privacy-policy.php` hardcoded as the only public templates — update that allowlist in both places if you add another public page.
 - **Brand theming** is done via a `:root { --xx-color: ...; }` block with a short brand-specific variable prefix (e.g. `--al-*` for Aline Insoles) — match the existing brand's palette when editing a hub, don't introduce a global palette.
+- **Adding a new brand hub template does not surface it anywhere by itself.** `page-brand-hub-index.php` has a hand-maintained grid of `<a class="card">` entries (one per brand, each linking via `bh_template_url('page-xxx-brand-hub.php')`), populated from real per-brand `--bp`/`--bp2` colors and a live logo URL from that brand's own site/CDN. Adding a template also means adding its card there — the index is not generated from the list of `page-*.php` files.
 
 ## Access control (functions.php)
 
