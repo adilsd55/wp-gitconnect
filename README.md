@@ -20,6 +20,7 @@ Create these pages in **Pages  Add New**:
 | Wild Earth Brand Hub | `wild-earth-brand-hub` | Wild Earth Brand Hub |
 | Clean & Hit Brand Hub | `clean-and-hit-brand-hub` | Clean & Hit Brand Hub |
 | Drain Buddy Brand Hub | `drain-buddy-brand-hub` | Drain Buddy Brand Hub |
+| Life Watch Brand Hub | `life-watch-brand-hub` | Life Watch Brand Hub |
 
 ### Step 3: Assign Templates
 For each page, in the **Page Attributes** panel on the right, set the **Template** dropdown to the matching template listed above.

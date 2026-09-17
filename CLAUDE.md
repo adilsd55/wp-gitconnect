@@ -13,7 +13,7 @@ There's no build tooling (no package.json, composer.json, webpack) and no test s
 - `functions.php` — all real logic: auth guard, access control hooks, Google OAuth 2.0 (hand-rolled, no plugin), shared helper functions used by every template.
 - `header.php` / `footer.php` — intentionally empty. Templates do NOT call `get_header()`/`wp_head()`/`wp_footer()`; each `page-*.php` is a fully self-contained `<html>` document with its own inline `<style>` and `<script>`.
 - `index.php` — fallback template shown only if a page has no template assigned.
-- `page-*.php` — ~23 page templates: brand hubs (Aline Insoles, Pizza Pack, Spark, SugarMD, Wild Earth, Clean & Hit, Drain Buddy), training pages (Canva, Claude, Figma, Google Workspace, Gorgias, Meta Ads/Business Manager, Recharge, ShipStation, Shopify, Triple Whale), the Company Policy Hub, index/landing pages, login, and privacy policy.
+- `page-*.php` — ~24 page templates: brand hubs (Aline Insoles, Pizza Pack, Spark, SugarMD, Wild Earth, Clean & Hit, Drain Buddy, Life Watch), training pages (Canva, Claude, Figma, Google Workspace, Gorgias, Meta Ads/Business Manager, Recharge, ShipStation, Shopify, Triple Whale), the Company Policy Hub, index/landing pages, login, and privacy policy.
 - `README.md` — the WP-admin setup steps (page creation, slug→template assignment, Google OAuth Cloud Console setup). Read it before changing auth-related behavior.
 - `assets/favicon.png` — the only shared static asset, injected manually via `bh_favicon_tags()`.
 
