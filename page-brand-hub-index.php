@@ -415,6 +415,23 @@ body::before{
         </div>
       </a>
 
+      <!-- LIFE WATCH -->
+      <a class="card" href="<?php echo esc_url( bh_template_url('page-life-watch-brand-hub.php') ); ?>" style="--bp:#1E2328;--bp2:#F94515">
+        <div class="thumb" style="background:linear-gradient(155deg,#F94515,#1E2328)">
+          <img src="https://getlifewatch.com/cdn/shop/files/lifewatch_logo_190x@2x.svg?v=1689840208" alt="Life Watch" class="logo-rev" loading="lazy"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'Life Watch'}))">
+        </div>
+        <div class="card-body">
+          <div class="card-name">Life Watch</div>
+          <div class="card-tag">Your health, simplified</div>
+          <p class="card-desc">A health &amp; fitness smartwatch that works with any phone — activity tracking, health monitoring, and long battery life without being locked to a single ecosystem.</p>
+          <div class="card-foot">
+            <span class="chip">Wearables</span>
+            <span class="go">Open hub <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
