@@ -785,14 +785,63 @@ body.printing .submit-box{display:none !important}
     <p style="background:rgba(194,54,11,.06);border-left:4px solid var(--lw-orange-deep);padding:12px 16px;border-radius:6px;margin-top:14px;font-size:14px"><strong>📌 Note on pricing:</strong> Pricing is set and updated on the Shopify storefront and changes regularly with promotions and seasonal offers. <strong>Always pull the current price from the live product page</strong> before quoting it to a customer — never quote from memory or from this hub. Click the "View product page" link on any row below to jump straight to the live page. Browse the full live catalog at <a href="https://getlifewatch.com/collections/all" target="_blank" rel="noopener">getlifewatch.com/collections/all</a>.</p>
 
     <h3 style="margin-top:24px">⌚ Watches — One Watch on Every Order</h3>
-    <p>The store has two listings, but <strong>both ship the same unit: the Life Watch Deluxe</strong>, in a box with the Deluxe title. Every customer gets every feature, whichever listing they bought. The store's product pages still show a Standard vs. Deluxe comparison chart; that chart doesn't reflect what ships.</p>
+    <p>The store has two main listings plus add-on and two-pack listings, and <strong>every one ships the same unit: the Life Watch Deluxe</strong>, in a box with the Deluxe title. Every customer gets every feature, whichever listing they bought. The store's product pages still show a Standard vs. Deluxe comparison chart; that chart doesn't reflect what ships.</p>
     <table>
       <thead><tr><th>Store Listing</th><th>What Ships</th><th>Highlights</th><th>Category</th></tr></thead>
       <tbody>
         <tr><td><strong>Life Watch Smartwatch</strong> (Standard listing)<br><span style="font-size:12px;color:var(--lw-text-muted)"><a href="https://getlifewatch.com/products/life-watch" target="_blank" rel="noopener">View product page for current pricing →</a></span></td><td>The Life Watch Deluxe</td><td>All health, fitness, calling, and texting features · 56 watch faces · The TV offer listing</td><td><span class="badge badge-watch">Watch</span></td></tr>
         <tr><td><strong>Life Watch – Deluxe</strong> (Deluxe listing)<br><span style="font-size:12px;color:var(--lw-text-muted)"><a href="https://getlifewatch.com/products/life-watch-deluxe" target="_blank" rel="noopener">View product page for current pricing →</a></span></td><td>The Life Watch Deluxe</td><td>All health, fitness, calling, and texting features · 56 watch faces</td><td><span class="badge badge-watch">Watch</span></td></tr>
+        <tr><td><strong>Additional Life Watch</strong><br><span style="font-size:12px;color:var(--lw-text-muted)"><a href="https://getlifewatch.com/products/additional-life-watch" target="_blank" rel="noopener">View product page for current pricing →</a></span></td><td>The Life Watch Deluxe</td><td>Add-on listing for a second watch</td><td><span class="badge badge-watch">Watch</span></td></tr>
+        <tr><td><strong>Additional Discounted Deluxe Life Watch</strong><br><span style="font-size:12px;color:var(--lw-text-muted)"><a href="https://getlifewatch.com/products/additional-discounted-deluxe-life-watch" target="_blank" rel="noopener">View product page for current pricing →</a></span></td><td>The Life Watch Deluxe</td><td>Discounted add-on listing</td><td><span class="badge badge-watch">Watch</span></td></tr>
+        <tr><td><strong>2 Deluxe Life Watches</strong><br><span style="font-size:12px;color:var(--lw-text-muted)"><a href="https://getlifewatch.com/products/2-deluxe-life-watches" target="_blank" rel="noopener">View product page for current pricing →</a></span></td><td>Two Life Watch Deluxe watches</td><td>Two-pack listing</td><td><span class="badge badge-watch">Watch</span></td></tr>
       </tbody>
     </table>
+
+    <h3 style="margin-top:28px">📐 Technical Specifications</h3>
+    <p>Hardware specs come from the <strong>Product Specifications</strong> panel in the <a href="https://cdn.shopify.com/s/files/1/0780/8247/4279/files/Life_Watch_Manual.pdf" target="_blank" rel="noopener">Life Watch user manual</a> and the <a href="https://getlifewatch.com/products/life-watch" target="_blank" rel="noopener">Life Watch product page</a>. The Deluxe product page describes the display, charging, and battery only in general terms ("Premium HD display," "Magnetic Fast Charging," "Enhanced Battery Performance").</p>
+    <p style="background:rgba(194,54,11,.06);border-left:4px solid var(--lw-orange-deep);padding:12px 16px;border-radius:6px;font-size:14px"><strong>📌 Note:</strong> The published manual is dated 2020 and describes the original Life Watch (6 watch faces, no calling). Every order now ships the Life Watch Deluxe, so confirm these numbers match the Deluxe unit before quoting a spec that a customer is relying on. <span class="verify">Verify for Deluxe unit</span></p>
+    <table>
+      <thead><tr><th>Spec</th><th>Value</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Display</strong></td><td>1.54" IPS color touchscreen</td><td>Manual</td></tr>
+        <tr><td><strong>Resolution</strong></td><td>240 × 240</td><td>Manual</td></tr>
+        <tr><td><strong>Watch faces</strong></td><td>56 designs (Deluxe); the manual lists 6 for the original model</td><td>Deluxe page · Manual</td></tr>
+        <tr><td><strong>Battery</strong></td><td>250 mAh, 3.7 V</td><td>Manual · Product page</td></tr>
+        <tr><td><strong>Battery life</strong></td><td>Up to 168 hours (5–7 days, depending on use)</td><td>Product pages · Manual</td></tr>
+        <tr><td><strong>Charge time</strong></td><td>About 3 hours for a full charge</td><td>Manual</td></tr>
+        <tr><td><strong>Charging</strong></td><td>Magnetic USB cable, 42 cm; polarized magnets connect one way only</td><td>Product page · FAQ</td></tr>
+        <tr><td><strong>Bluetooth</strong></td><td>5.0</td><td>Manual</td></tr>
+        <tr><td><strong>Phone compatibility</strong></td><td>iPhone and Android (manual lists iOS 8.4+ and Android 4.4+) <span class="verify">Check current app store minimums</span></td><td>Manual · Product pages</td></tr>
+        <tr><td><strong>Internal storage</strong></td><td>64 MB</td><td>Product page</td></tr>
+        <tr><td><strong>Chipset</strong></td><td>RTK8762C</td><td>Manual</td></tr>
+        <tr><td><strong>Heart rate sensor chip</strong></td><td>HX3300</td><td>Manual</td></tr>
+        <tr><td><strong>Motion sensor</strong></td><td>STK8321</td><td>Manual</td></tr>
+        <tr><td><strong>Water / dust rating</strong></td><td>IP67</td><td>Manual · Product pages</td></tr>
+        <tr><td><strong>Operating temperature</strong></td><td>14°F to 120°F (manual precautions also say to keep it under 110°F and away from direct heat)</td><td>Manual</td></tr>
+        <tr><td><strong>Strap material</strong></td><td>TPU (2-piece black rubber band in the box)</td><td>Manual · Product pages</td></tr>
+        <tr><td><strong>Controls</strong></td><td>Touchscreen plus one power button; LED flashlight on the case</td><td>Manual</td></tr>
+        <tr><td><strong>Watch languages</strong></td><td>English, Spanish, Chinese, German, Italian, Russian, Japanese, Portuguese, Polish, French</td><td>Manual</td></tr>
+        <tr><td><strong>Settings</strong></td><td>12- or 24-hour time; miles or kilometers; 3 vibration levels; screen brightness and screen time</td><td>Manual</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:22px">Using the Watch — Manual Basics</h3>
+    <ul style="margin-left:20px">
+      <li><strong>Power:</strong> press and hold the power button for 5 seconds to turn it on or off. A quick press wakes the screen.</li>
+      <li><strong>Swipes:</strong> left = next menu · right = quick menu or back · up = call and text notifications · down = flashlight, brightness, Find Phone, and body temperature.</li>
+      <li><strong>Body temperature:</strong> wear the watch for 5 minutes before the first reading, and measure in a room between 65°F and 85°F.</li>
+      <li><strong>Cleaning:</strong> tap water and a soft cloth only — no chemicals. Keep it away from strong magnets and electrical equipment.</li>
+      <li><strong>Don't</strong> disassemble or repair the watch, or hit the face with sharp or hard objects.</li>
+    </ul>
+    <div class="team-callout cx" style="margin-top:16px">
+      <span class="team-tag">CX — The Manual Is Out of Date in Places</span>
+      <p style="margin:0">The online manual (2020) still lists an old support line (973-531-4421) and email (CustomerService@InvenTel.tv), tells customers to download the <strong>FitCloudPro</strong> app, and says not to wear the watch while bathing. <strong>Always give customers the current contacts from section 27 and the "Official LifeWatch" / "Life Watch" app links</strong>, and use the water guidance in this hub. Flag the manual to the Brand Lead for an update.</p>
+    </div>
+    <div class="team-callout marketing" style="margin-top:10px">
+      <span class="team-tag">Marketing — Don't Pull Specs From the Blog</span>
+      <p style="margin:0">Some getlifewatch.com blog posts describe a round display, a stainless steel case, a sapphire crystal screen, and a wireless charging dock. <strong>None of that matches the product.</strong> Use this table for specs, and review those posts for correction.</p>
+    </div>
+
 
     <h3 style="margin-top:24px">📦 In the Box</h3>
     <ul style="margin-left:20px">
@@ -1428,11 +1477,9 @@ body.printing .submit-box{display:none !important}
 
     <h3 style="margin-top:28px">Life Watch — Top-Performing Examples</h3>
     <p style="font-size:13.5px;color:var(--lw-text-muted);margin-top:6px">Use these as reference for the patterns above when briefing new ad concepts, briefing influencers, or judging variants in testing rounds.</p>
-    <!-- UPDATE: replace href="#creatives" with the winning-creatives link, then add target="_blank" rel="noopener" -->
     <div class="creatives-link-card">
-      <p style="margin:0">Our current winning Life Watch ads are kept in one place so they stay up to date.</p>
-      <a id="creatives-link" class="creatives-link" href="#creatives">Open Life Watch winning creatives →</a>
-      <span class="verify">Verify link</span>
+      <p style="margin:0">Our current winning Life Watch ads are shared in the team's Google Chat space so they stay up to date. You'll need to be signed in to your Inventel Google account to open it.</p>
+      <a id="creatives-link" class="creatives-link" href="https://chat.google.com/room/AAQAyhmFXBc?cls=7" target="_blank" rel="noopener">Open Life Watch winning creatives (Google Chat) →</a>
     </div>
     <div class="team-callout creative" style="margin-top:22px">
       <span class="team-tag">Creative — Use these as briefs, not blueprints</span>
@@ -2024,6 +2071,7 @@ body.printing .submit-box{display:none !important}
     <div class="faq-item"><div class="faq-q">I pressed Find Phone and see a "no Bluetooth" symbol. What's wrong?</div><div class="faq-a">Find Phone doesn't connect the watch. It makes an already-paired phone vibrate so you can find it. Pair the watch through the app first.</div></div>
     <div class="faq-item"><div class="faq-q">There's no wall charger in the box. How do I charge it?</div><div class="faq-a">The cable plugs into any USB port — a computer, a USB wall cube, or a car charger.</div></div>
     <div class="faq-item"><div class="faq-q">Which way does the charging cable attach?</div><div class="faq-a">The magnets only connect one way. Turn the connector until it snaps into place.</div></div>
+    <div class="faq-item"><div class="faq-q">How long does it take to charge?</div><div class="faq-a">About 3 hours for a full charge, using the magnetic cable and any USB port.</div></div>
     <div class="faq-item"><div class="faq-q">How long does the battery last?</div><div class="faq-a">Up to 168 hours (about a week) per charge, depending on use. Keeping the screen lit longer uses more battery.</div></div>
     <div class="faq-item"><div class="faq-q">I lost my charging cable.</div><div class="faq-a">A replacement <a href="https://getlifewatch.com/products/watch-charging-cable" target="_blank" rel="noopener">Watch Charging Cable</a> is available on the store.</div></div>
     <div class="faq-item"><div class="faq-q">Why does the screen turn off after a few seconds?</div><div class="faq-a">It's sleeping to save battery. Raise and turn your wrist or press the power button to wake it. To keep it lit longer: Settings → Screen Display → Screen Time.</div></div>
@@ -2650,6 +2698,7 @@ const quizBank = [
   {t:'Test Orders', q:'What MUST go in the First Name field of a test order?', o:['Your first name','TEST','Test Order','Do Not Ship'], correct:2, x:'Without "Test Order," the warehouse will ship it like a real order.'},
   {t:'Test Orders', q:'You just placed a test order. What do you do next?', o:['Nothing; it cancels itself','Email the Brand Lead next week','Notify the CX Fulfillment Lead on Google Chat immediately','Refund it yourself'], correct:2, x:'Include the order #, what was tested, and when it can be cancelled.'},
   {t:'Shopify', q:'A customer asks CX to update the card number on their order. What\'s correct?', o:['Take the card number over the phone','Email them a form for the card','CX never handles payment info; the customer re-enters their own card','Ask for the last 4 digits and update it'], correct:2, x:'CX never handles passwords or payment info. Anything else is an escalation.'}
+  ,{t:'Products · Specs', q:'About how long does a Life Watch take to fully charge?', o:['30 minutes','About 3 hours','About 8 hours','24 hours'], correct:1, x:'The manual says to charge for about 3 hours. A full charge lasts up to 168 hours.'}
 ];
 const quizQuestions = quizBank.map(x => ({q: x.q, options: x.o, correct: x.correct, x: x.x}));
 
