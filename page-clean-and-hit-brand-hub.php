@@ -1,4 +1,4 @@
-﻿<?php /* Template Name: Clean & Hit Brand Hub */ ?>
+<?php /* Template Name: Clean & Hit Brand Hub */ ?>
 <?php bh_require_login(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@ body{font-family:'Inter',sans-serif;background:var(--ch-cream-light);color:var(-
 
 /* TOP NAV */
 #top-nav{position:sticky;top:0;z-index:1000;background:var(--ch-fairway-deep);box-shadow:0 2px 12px rgba(0,0,0,.25)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
+.nav-inner{display:flex;align-items:center;gap:14px;height:var(--nav-h);padding:0 20px;max-width:1200px;margin:0 auto}
 .nav-brand{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--ch-cream);white-space:nowrap;letter-spacing:.08em;flex-shrink:0}
 .nav-search-wrap{flex:1;position:relative;max-width:420px}
 .nav-search{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(201,162,78,.3);color:#fff;padding:7px 12px 7px 32px;border-radius:18px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:all .15s}
@@ -437,6 +437,23 @@ li{margin-bottom:6px;line-height:1.55}
 hr.divider{border:none;border-top:2px dashed rgba(201,162,78,.5);margin:28px 0}
 .callout-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
 .note{background:var(--ch-cream-light);border:1px dashed var(--ch-fairway-light);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--ch-text-muted);font-style:italic;margin:10px 0}
+</style>
+<style>
+/* ===== STANDARD QUIZ SUBMISSION BLOCK (matches Life Watch hub) ===== */
+#quiz .submit-steps{color:#E9DBB5;font-size:14px;line-height:1.7;padding-left:22px;margin:10px 0}
+#quiz .submit-steps li{color:#E9DBB5;margin-bottom:4px}
+#quiz .submit-steps strong{color:#fff}
+#quiz .submit-steps a,#quiz .naming-box a{color:var(--ch-gold-bright);font-weight:600}
+#quiz .naming-box{max-width:660px;margin:14px 0 0;padding:14px 18px;background:rgba(255,255,255,.10);border:1px solid rgba(201,162,78,.45);border-radius:10px;color:#E9DBB5;font-size:14px;line-height:1.7}
+#quiz .naming-box strong{color:#fff}
+#quiz .naming-box code{color:var(--ch-gold-bright);font-family:'DM Mono',monospace;font-size:13px;word-break:break-word}
+</style>
+<style>
+/* ===== WINNING CREATIVES · GOOGLE CHAT LINK CARD ===== */
+#creatives .creatives-link-card{border:2px dashed rgba(201,162,78,.6);border-radius:12px;padding:18px 20px;margin:14px 0;display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:#fff}
+#creatives .creatives-link-card p{flex-basis:100%;margin:0}
+#creatives .creatives-link{display:inline-block;background:#fff;border:2px solid var(--ch-link);border-radius:10px;padding:9px 16px;font-weight:700;color:var(--ch-link);text-decoration:underline}
+#creatives .creatives-link:hover{background:#EEF4FF;opacity:1}
 </style>
 <?php bh_favicon_tags(); ?>
 </head>
@@ -1340,153 +1357,16 @@ hr.divider{border:none;border-top:2px dashed rgba(201,162,78,.5);margin:28px 0}
         <p>Your winning ads find a customer who already has a problem, show them someone like them who solved it, and make the product feel like the obvious next step — not a hard sell.</p>
       </div>
 
-      <h3>Brand-specific gallery — coming soon</h3>
+      <h3>Clean &amp; Hit — Winning Creatives</h3>
 
       <div class="alert-callout critical">
-        <span class="alert-callout-title">🏷️ Coming Soon · Real Ad Gallery</span>
-        <p>Inventel partnered with Clean &amp; Hit in <strong>2026</strong>, and as of the writing of this hub <strong>we have not yet run, tested, or scaled any of our own paid creative for this brand</strong>. There are no in-market winners to feature here yet. The three concept mockups below are illustrative only — they show how the six universal patterns above translate into a Clean &amp; Hit ad. They are <strong>not real ads</strong> and have <strong>not been performance-tested</strong>. As soon as the first batch of paid concepts is in market and we have data, this section will be replaced with screenshots of the actual top performers, their creative meta, and the specific patterns that drove the win.</p>
+        <span class="alert-callout-title">🏷️ Coming Soon · Real Ad Winners</span>
+        <p>Inventel partnered with Clean &amp; Hit in <strong>2026</strong>, and as of the writing of this hub <strong>we have not yet run, tested, or scaled any of our own paid creative for this brand</strong>. There are no in-market winners to feature here yet. As concepts go into market and we have data, the top performers will be posted in the team's Google Chat space linked below — that space is the live source, so check it rather than relying on anything pasted into this hub. Until then, brief against the six universal patterns above.</p>
       </div>
 
-      <div class="creative-gallery">
-        <!-- Concept 1: performance / contrast -->
-        <div class="creative-card">
-          <div class="creative-img">
-            <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#1F4E2C"/>
-                  <stop offset="1" stop-color="#163820"/>
-                </linearGradient>
-              </defs>
-              <rect width="200" height="250" fill="url(#bg1)"/>
-              <!-- top half: dirty club -->
-              <rect x="20" y="20" width="160" height="90" rx="6" fill="#2C2C2C"/>
-              <text x="100" y="38" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="11" fill="#C9A24E" letter-spacing="1">DIRTY GROOVES</text>
-              <!-- club face dirty -->
-              <rect x="60" y="48" width="80" height="50" rx="3" fill="#888"/>
-              <line x1="65" y1="58" x2="135" y2="58" stroke="#3a3a3a" stroke-width="1"/>
-              <line x1="65" y1="66" x2="135" y2="66" stroke="#3a3a3a" stroke-width="1"/>
-              <line x1="65" y1="74" x2="135" y2="74" stroke="#3a3a3a" stroke-width="1"/>
-              <line x1="65" y1="82" x2="135" y2="82" stroke="#3a3a3a" stroke-width="1"/>
-              <line x1="65" y1="90" x2="135" y2="90" stroke="#3a3a3a" stroke-width="1"/>
-              <!-- mud splatter -->
-              <circle cx="80" cy="64" r="4" fill="#5C4A38"/>
-              <circle cx="115" cy="78" r="3" fill="#5C4A38"/>
-              <circle cx="98" cy="86" r="2.5" fill="#5C4A38"/>
-              <text x="100" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#fff">–32% spin · –12 yds carry</text>
-              <!-- bottom half: clean club -->
-              <rect x="20" y="125" width="160" height="90" rx="6" fill="#FAF6E9"/>
-              <text x="100" y="143" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="11" fill="#1F4E2C" letter-spacing="1">5 SECONDS LATER</text>
-              <rect x="60" y="153" width="80" height="50" rx="3" fill="#D4D4D4"/>
-              <line x1="65" y1="163" x2="135" y2="163" stroke="#666" stroke-width="1"/>
-              <line x1="65" y1="171" x2="135" y2="171" stroke="#666" stroke-width="1"/>
-              <line x1="65" y1="179" x2="135" y2="179" stroke="#666" stroke-width="1"/>
-              <line x1="65" y1="187" x2="135" y2="187" stroke="#666" stroke-width="1"/>
-              <line x1="65" y1="195" x2="135" y2="195" stroke="#666" stroke-width="1"/>
-              <text x="100" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#1F4E2C" font-weight="700">Spin restored. Distance back.</text>
-              <!-- cta strip -->
-              <rect x="0" y="222" width="200" height="28" fill="#C9A24E"/>
-              <text x="100" y="240" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="13" fill="#163820" letter-spacing="1.5">CLEAN &amp; HIT</text>
-            </svg>
-          </div>
-          <div class="creative-meta">⚠ Concept Mockup · Not Yet Tested</div>
-          <div class="creative-caption">
-            <strong>Dirty grooves are costing you strokes.</strong>
-            Top/bottom contrast on the same club face — the &quot;switch&quot; happens in the customer's eye before they even read the copy. Format: Meta static, 4:5, performance angle.
-          </div>
-          <div class="creative-tags">
-            <span class="creative-tag">Pattern 01</span>
-            <span class="creative-tag">Pattern 04</span>
-            <span class="creative-tag">Pattern 05</span>
-          </div>
-        </div>
-
-        <!-- Concept 2: native cart-mounted -->
-        <div class="creative-card">
-          <div class="creative-img">
-            <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#A4C8A8"/>
-                  <stop offset="1" stop-color="#5A9966"/>
-                </linearGradient>
-              </defs>
-              <rect width="200" height="250" fill="url(#sky1)"/>
-              <!-- fairway ground -->
-              <rect x="0" y="155" width="200" height="95" fill="#1F4E2C"/>
-              <!-- cart silhouette -->
-              <rect x="40" y="105" width="120" height="60" rx="6" fill="#FAF6E9"/>
-              <rect x="48" y="115" width="20" height="28" rx="2" fill="#1A2332"/>
-              <rect x="132" y="115" width="20" height="28" rx="2" fill="#1A2332"/>
-              <rect x="40" y="95" width="120" height="14" rx="2" fill="#2C2C2C"/>
-              <!-- cart wheels -->
-              <circle cx="58" cy="170" r="10" fill="#2C2C2C"/>
-              <circle cx="142" cy="170" r="10" fill="#2C2C2C"/>
-              <!-- mounted clean & hit on back -->
-              <rect x="155" y="125" width="14" height="32" rx="2" fill="#2C2C2C" stroke="#C9A24E" stroke-width="1"/>
-              <rect x="153" y="118" width="18" height="6" fill="#C9A24E"/>
-              <!-- top text -->
-              <rect x="0" y="0" width="200" height="40" fill="rgba(22,56,32,.9)"/>
-              <text x="100" y="18" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="13" fill="#C9A24E" letter-spacing="1">MOUNTED ON THE CART</text>
-              <text x="100" y="32" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#FAF6E9">Ready every hole. No towel. No bending.</text>
-              <!-- bottom CTA -->
-              <rect x="0" y="218" width="200" height="32" fill="#C9A24E"/>
-              <text x="100" y="232" text-anchor="middle" font-family="Bebas Neue, sans-serif" font-size="11" fill="#163820" letter-spacing="1">CLEAN &amp; HIT</text>
-              <text x="100" y="244" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#163820">cleanandhit.com</text>
-            </svg>
-          </div>
-          <div class="creative-meta">⚠ Concept Mockup · Not Yet Tested</div>
-          <div class="creative-caption">
-            <strong>Mounted on the cart, ready every hole.</strong>
-            Native, on-course feel. The product is in context — not floating against white. Customer pictures it on their cart immediately. Format: TikTok/Reels native, 4:5, pace-of-play angle.
-          </div>
-          <div class="creative-tags">
-            <span class="creative-tag">Pattern 02</span>
-            <span class="creative-tag">Pattern 03</span>
-            <span class="creative-tag">Pattern 06</span>
-          </div>
-        </div>
-
-        <!-- Concept 3: founder + made in USA -->
-        <div class="creative-card">
-          <div class="creative-img">
-            <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#F2EAD3"/>
-                  <stop offset="1" stop-color="#E5D9B8"/>
-                </linearGradient>
-              </defs>
-              <rect width="200" height="250" fill="url(#bg3)"/>
-              <!-- portrait silhouette -->
-              <circle cx="100" cy="80" r="34" fill="#1F4E2C"/>
-              <ellipse cx="100" cy="125" rx="44" ry="22" fill="#1F4E2C"/>
-              <!-- name plaque -->
-              <rect x="35" y="155" width="130" height="24" fill="#1A2332"/>
-              <text x="100" y="170" text-anchor="middle" font-family="Fraunces, serif" font-size="10" fill="#C9A24E" font-weight="700">DARRIN VAUGHAN · FOUNDER</text>
-              <text x="100" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="7" fill="#FAF6E9">Scratch golfer · NJ · 2 years prototyping</text>
-              <!-- quote -->
-              <text x="100" y="198" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="#1F4E2C" font-style="italic">"I built this because nothing</text>
-              <text x="100" y="210" text-anchor="middle" font-family="Fraunces, serif" font-size="9" fill="#1F4E2C" font-style="italic">on the market actually worked."</text>
-              <!-- USA tag -->
-              <rect x="65" y="216" width="70" height="14" rx="7" fill="#1F4E2C"/>
-              <text x="100" y="226" text-anchor="middle" font-family="DM Mono, monospace" font-size="7" fill="#C9A24E" font-weight="700">🇺🇸 MADE IN USA</text>
-              <!-- gold bar -->
-              <rect x="0" y="0" width="200" height="6" fill="#C9A24E"/>
-              <rect x="0" y="244" width="200" height="6" fill="#C9A24E"/>
-            </svg>
-          </div>
-          <div class="creative-meta">⚠ Concept Mockup · Not Yet Tested</div>
-          <div class="creative-caption">
-            <strong>Designed by a scratch golfer. Built for every golfer.</strong>
-            Founder voice + Made in USA tag + a real quote. Best for editorial, PR, and email nurture — not paid social cold-traffic. Format: email hero static, 4:5, founder angle.
-          </div>
-          <div class="creative-tags">
-            <span class="creative-tag">Pattern 02</span>
-            <span class="creative-tag">Pattern 04</span>
-            <span class="creative-tag">Heritage</span>
-          </div>
-        </div>
+      <div class="creatives-link-card">
+        <p>Our current winning Clean &amp; Hit ads are shared in the team's Google Chat space, alongside the rest of the Inventel portfolio, so they stay up to date. You'll need to be signed in to your Inventel Google account to open it.</p>
+        <a id="creatives-link" class="creatives-link" href="https://chat.google.com/room/AAQAyhmFXBc?cls=7" target="_blank" rel="noopener">Open winning creatives (Google Chat) &rarr;</a>
       </div>
 
       <div class="team-callout creative">
@@ -2343,8 +2223,20 @@ hr.divider{border:none;border-top:2px dashed rgba(201,162,78,.5);margin:28px 0}
     <div class="section-body">
 
       <div id="quiz-intro">
-        <p>Read everything above first. Then take this quiz to confirm you've internalized what matters most for handling Clean &amp; Hit customer interactions and brand decisions. <strong>Pass: 25 of 35 correct (70%).</strong> One question at a time, immediate feedback, correct answers shown when you miss. You can retake as many times as you need — no penalty.</p>
-        <p>When you pass, you'll be able to enter your name and title, then print or save a certificate to send to your HR onboarding trainer as proof of completion.</p>
+        <h3 style="color:#fff;margin:0 0 10px">Ready to test what you've learned?</h3>
+        <p style="color:#E9DBB5;font-size:14px;max-width:660px">Read everything above first. You'll get a multiple-choice question one at a time, drawn from the whole hub. Select an answer and you'll see immediately whether you got it right, then click Next to continue. <strong style="color:#fff">Pass: 25 of 35 correct (70%).</strong> Retake as many times as you need — no penalty.</p>
+        <p style="color:#E9DBB5;font-size:14px;max-width:660px">When you pass, enter your name and title, then capture your result — a <strong style="color:#fff">screenshot of your score card is the easiest option</strong>, or you can print or save the certificate. <strong style="color:#fff">Every quiz — this one and every brand or platform quiz — follows the same submission process:</strong></p>
+        <ol class="submit-steps">
+          <li><strong>Capture your result</strong> — a screenshot of your score card is easiest, or save it as a PDF.</li>
+          <li><strong>Name the file</strong> using the standard convention (below) so it's easy to find and track.</li>
+          <li><strong>Upload it</strong> to the <a href="https://drive.google.com/drive/folders/19vsre-bLq4zDgwEAYGcSX22SpJ7hNvIM?usp=drive_link" target="_blank" rel="noopener">InvenTel University Quiz Results</a> folder.</li>
+          <li><strong>Notify the person who assigned the quiz</strong> — your onboarding manager, the Performance Team, your Department Lead, Brand Lead, or Agency Lead, depending on which quiz it was.</li>
+        </ol>
+        <div class="naming-box">
+          <strong>📄 File naming convention</strong><br>
+          <code>FirstName LastName_Team_Brand (or Platform)_Quiz_MMYYYY.pdf</code><br>
+          <span style="font-size:13px">Example for this hub: <code>Jane Doe_CX_CleanAndHit_Quiz_092026.pdf</code></span>
+        </div>
         <button class="quiz-start-btn" onclick="quizStart()">Start the quiz →</button>
       </div>
 
@@ -2920,14 +2812,14 @@ const quizQuestions = [
     correct: 2
   },
   {
-    q: "The first concept mockup in the Sample Winning Creatives gallery uses what visual structure?",
+    q: "A Clean & Hit ad shows a mud-caked club face with reduced spin and carry numbers, then the same face clean five seconds later. Which universal pattern is it using?",
     options: [
-      "A grid of four customer testimonials with star ratings",
-      "A 360-degree spinning view of the unit on a turntable",
-      "A single full-bleed photo of Beau Rials holding the product",
-      "Top half shows a dirty club face with mud and reduced spin/distance; bottom half shows the same face clean after 5 seconds — a vertical contrast with a gold CTA strip"
+      "Social Proof is Front and Center",
+      "Native, Authentic-Looking Creative",
+      "Contrast and \"Switch\" Framing",
+      "One Clear, Simple Message"
     ],
-    correct: 3
+    correct: 2
   },
   {
     q: "A reporter calls asking for a quote about the Clean & Hit founder story. What do you do?",
@@ -3066,7 +2958,7 @@ function quizFinish(){
           <li><a href="#returns" onclick="expandAndScroll('returns');return false;">Section 20 · Return Policy</a> — the 30-day window, processing fee, and the worked refund example</li>
           <li><a href="#fulfillment" onclick="expandAndScroll('fulfillment');return false;">Section 21 · Fulfillment</a> — warehouse address, cancellation window</li>
           <li><a href="#testorders" onclick="expandAndScroll('testorders');return false;">Section 22 · Test Orders</a> — the 'Test Order' First Name rule</li>
-          <li><a href="#creatives" onclick="expandAndScroll('creatives');return false;">Section 12 · Sample Winning Creatives</a> — universal patterns and the gallery</li>
+          <li><a href="#creatives" onclick="expandAndScroll('creatives');return false;">Section 12 · Sample Winning Creatives</a> — universal patterns and the Google Chat link</li>
         </ul>
         <div class="cert-actions">
           <button onclick="quizStart()">Retake</button>
